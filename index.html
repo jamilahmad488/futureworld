@@ -5,11 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FutureWorld Intelligence | Global Futures Dashboard</title>
   <meta name="description" content="FutureWorld Intelligence explains climate, AI, geopolitics, energy and future systems through concise cinematic intelligence briefings." />
-  <link rel="stylesheet" href="style.css?v=1.1" />
+  <link rel="stylesheet" href="style.css?v=2.0" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 </head>
 <body class="theme-home">
   <div class="cosmic-bg"></div>
+  <div class="scanline"></div>
+
   <nav class="floating-nav" aria-label="Primary navigation">
     <a class="brand-pill active" href="index.html"><img src="assets/logo.png" alt="FutureWorld Intelligence logo"> <span>FutureWorld</span></a>
     <a href="pages/climate.html">Climate</a>
@@ -22,7 +24,9 @@
   </nav>
 
   <main>
-    <section class="hero gateway">
+    <section class="hero gateway command-hero">
+      <div class="hud-ring ring-one"></div>
+      <div class="hud-ring ring-two"></div>
       <div class="hero-orbit"><img src="assets/logo.png" alt="FutureWorld Intelligence emblem"></div>
       <p class="eyebrow">AI-powered cinematic intelligence platform</p>
       <h1>FutureWorld Intelligence</h1>
@@ -31,9 +35,14 @@
         <a class="neon-btn" href="pages/climate.html">Enter Intelligence System</a>
         <a class="ghost-btn" href="pages/resources.html">View Production Resources</a>
       </div>
+      <div class="system-status">
+        <span><b></b> Intelligence Mode: Active</span>
+        <span><b></b> Briefing Grid: Online</span>
+        <span><b></b> Future Signals: Monitoring</span>
+      </div>
     </section>
 
-    <section class="dashboard-panel">
+    <section class="dashboard-panel command-panel">
       <div class="section-title">
         <p>Strategic Scope</p>
         <h2>Future systems explained as clear intelligence briefings</h2>
@@ -43,6 +52,19 @@
         <article class="intel-card ai"><span>02</span><h3>Artificial Intelligence</h3><p>AI systems, automation, future work, compute demand and human potential.</p></article>
         <article class="intel-card geo"><span>03</span><h3>Geopolitics</h3><p>Strategic regions, resource competition, power shifts and global stability.</p></article>
         <article class="intel-card energy"><span>04</span><h3>Energy Futures</h3><p>Energy security, renewables, grids, infrastructure and future civilization systems.</p></article>
+      </div>
+    </section>
+
+    <section class="dashboard-panel systems-board">
+      <div class="section-title">
+        <p>Command Dashboard</p>
+        <h2>Integrated future-intelligence operating view</h2>
+      </div>
+      <div class="metric-grid">
+        <div class="metric-card"><small>Domain</small><strong>Climate</strong><span>Planetary risk signals</span></div>
+        <div class="metric-card"><small>Domain</small><strong>AI</strong><span>Automation and intelligence systems</span></div>
+        <div class="metric-card"><small>Domain</small><strong>Geopolitics</strong><span>Global stability indicators</span></div>
+        <div class="metric-card"><small>Domain</small><strong>Energy</strong><span>Infrastructure transition futures</span></div>
       </div>
     </section>
   </main>

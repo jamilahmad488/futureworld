@@ -19,10 +19,16 @@ function applyLanguage(){
   const langBtn=document.querySelector('.lang-toggle');
   if(langBtn)langBtn.textContent=t.switch;
 }
+function getLoaderLogo(){
+  const pageLogo=document.querySelector('.brand-pill img,.connect-logo,.gateway-logo,.hero-orbit img');
+  if(pageLogo?.src)return pageLogo.src;
+  const scriptBase=new URL('.',document.currentScript?.src||window.location.href);
+  return new URL('assets/logo.png',scriptBase).href;
+}
 function createGlobalInterface(){
   const loader=document.createElement('div');
   loader.className='loading-gateway';
-  loader.innerHTML='<div class="loader-core"><img src="'+(document.querySelector('.brand-pill img')?.getAttribute('src')||'assets/logo.png')+'" alt="FutureWorld"><span>FutureWorld Intelligence</span><small>Initializing global intelligence systems</small></div>';
+  loader.innerHTML='<div class="loader-core"><img src="'+getLoaderLogo()+'" alt="FutureWorld"><span>FutureWorld Intelligence</span><small>Initializing global intelligence systems</small></div>';
   document.body.prepend(loader);
 
   const map=document.createElement('div');

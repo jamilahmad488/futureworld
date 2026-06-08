@@ -220,3 +220,59 @@ document.addEventListener("click", function(e){
     if(href.includes("mailto:")) gtag("event","contact_click",{platform:"email",link_text:label});
   }
 });
+
+/* FutureWorld UI Polish and Card Consistency v2.3 */
+(function(){
+  function injectPolish(){
+    if(document.getElementById('fwi-ui-polish-v23')) return;
+    const css=document.createElement('style');
+    css.id='fwi-ui-polish-v23';
+    css.textContent=`
+      .floating-nav{padding:11px 12px!important;border:1px solid rgba(77,243,255,.34)!important;background:rgba(2,6,23,.78)!important;box-shadow:0 0 34px rgba(77,243,255,.10), inset 0 0 0 1px rgba(255,255,255,.035)!important}
+      .floating-nav a{color:#f8fbff!important;-webkit-text-fill-color:#f8fbff!important;font-weight:850!important;text-shadow:0 0 10px rgba(77,243,255,.18);border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.035);letter-spacing:.02em}
+      .floating-nav a:hover,.floating-nav a.active,.floating-nav .nav-trigger.active{border-color:rgba(77,243,255,.62)!important;background:linear-gradient(135deg,rgba(77,243,255,.18),rgba(179,140,255,.10))!important;box-shadow:0 0 18px rgba(77,243,255,.18)}
+      .floating-nav .brand-pill{border-color:rgba(77,243,255,.45)!important;background:linear-gradient(135deg,rgba(77,243,255,.18),rgba(57,255,156,.08))!important;box-shadow:0 0 18px rgba(77,243,255,.12)}
+      .floating-nav .brand-pill span{color:#f8fbff!important;-webkit-text-fill-color:transparent!important;background-image:var(--startext);-webkit-background-clip:text;background-clip:text}
+      .floating-nav .nav-trigger:after{content:'▾';display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;margin-left:8px;border-radius:50%;font-size:.78rem;color:#39e8ff;background:rgba(77,243,255,.14);border:1px solid rgba(77,243,255,.36);box-shadow:0 0 10px rgba(77,243,255,.18)}
+      .floating-nav .nav-menu{border-color:rgba(77,243,255,.38)!important;background:rgba(2,6,23,.96)!important;box-shadow:0 20px 70px rgba(0,0,0,.50),0 0 26px rgba(77,243,255,.12)!important}
+      .fwi-return-home{position:fixed;right:18px;bottom:18px;z-index:8999;display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;border:1px solid rgba(77,243,255,.36);background:rgba(2,6,23,.80);backdrop-filter:blur(14px);color:#f8fbff;text-decoration:none;font-family:var(--font-display);font-size:.72rem;box-shadow:0 0 20px rgba(77,243,255,.12);transition:.25s ease}
+      .fwi-return-home:hover{transform:translateY(-3px);border-color:rgba(57,255,156,.55);box-shadow:0 0 24px rgba(57,255,156,.16)}
+      .intel-card a.ghost-btn,.intel-card a.neon-btn,.signal a,.metric-card a,.mini-widget a{cursor:pointer}
+      .intel-card:has(a),.metric-card:has(a),.signal:has(a),.mini-widget:has(a),.domain-card:has(a),.benefit-card:has(a){cursor:pointer;border-color:rgba(77,243,255,.22)!important}
+      .intel-card:has(a):hover,.metric-card:has(a):hover,.signal:has(a):hover,.mini-widget:has(a):hover,.domain-card:has(a):hover,.benefit-card:has(a):hover{border-color:rgba(77,243,255,.55)!important;box-shadow:0 0 28px rgba(77,243,255,.14);transform:translateY(-8px)}
+      .intel-card:has(a)::after,.metric-card:has(a)::after,.signal:has(a)::after,.mini-widget:has(a)::after{content:'Open →';display:inline-block;margin-top:14px;color:#39e8ff;font-family:var(--font-display);font-size:.72rem;letter-spacing:.08em;opacity:.86}
+      .intel-card:not(:has(a)),.metric-card:not(:has(a)),.signal:not(:has(a)),.mini-widget:not(:has(a)){cursor:default}
+      .intel-card:not(:has(a))::after,.metric-card:not(:has(a))::after,.signal:not(:has(a))::after,.mini-widget:not(:has(a))::after{content:'Info';display:inline-block;margin-top:14px;color:#9fb2ca;font-family:var(--font-display);font-size:.68rem;letter-spacing:.08em;border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:4px 8px;background:rgba(255,255,255,.035)}
+      @media(max-width:860px){.fwi-return-home{right:12px;bottom:146px;font-size:.66rem;padding:8px 11px}.floating-nav a{font-size:.78rem!important;padding:9px 12px!important}.floating-nav .nav-trigger:after{width:16px;height:16px}}
+    `;
+    document.head.appendChild(css);
+  }
+
+  function addReturnHome(){
+    const path=location.pathname.replace(/index\.html$/,'');
+    if(path==='/' || document.querySelector('.fwi-return-home')) return;
+    const a=document.createElement('a');
+    a.className='fwi-return-home';
+    a.href='/';
+    a.setAttribute('aria-label','Return to FutureWorld homepage');
+    a.textContent='← Main';
+    document.body.appendChild(a);
+  }
+
+  function makeCardsClickable(){
+    const cards=document.querySelectorAll('.intel-card,.metric-card,.signal,.mini-widget,.domain-card,.benefit-card');
+    cards.forEach(card=>{
+      const link=card.querySelector('a[href]');
+      if(!link || card.dataset.fwiCardReady) return;
+      card.dataset.fwiCardReady='1';
+      card.addEventListener('click',e=>{
+        if(e.target.closest('a')) return;
+        if(link.target==='_blank') window.open(link.href,'_blank','noopener');
+        else location.href=link.href;
+      });
+    });
+  }
+
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',()=>{injectPolish();addReturnHome();makeCardsClickable();});
+  else{injectPolish();addReturnHome();makeCardsClickable();}
+})();

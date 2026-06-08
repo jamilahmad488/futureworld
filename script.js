@@ -136,3 +136,23 @@ setInterval(()=>{
   if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",banner);}
   else{banner();}
 })();
+
+/* FutureWorld Analytics Events v2.1 */
+document.addEventListener("click", function(e){
+  const link = e.target.closest("a");
+  if(!link) return;
+
+  const href = link.getAttribute("href") || "";
+  const label = (link.getAttribute("aria-label") || link.innerText || "").trim();
+
+  if(typeof gtag === "function"){
+    if(href.includes("facebook.com")) gtag("event","social_click",{platform:"facebook",link_text:label});
+    if(href.includes("instagram.com")) gtag("event","social_click",{platform:"instagram",link_text:label});
+    if(href.includes("linkedin.com")) gtag("event","social_click",{platform:"linkedin",link_text:label});
+    if(href.includes("youtube.com")) gtag("event","social_click",{platform:"youtube",link_text:label});
+    if(href.includes("tiktok.com")) gtag("event","social_click",{platform:"tiktok",link_text:label});
+    if(href.includes("substack.com")) gtag("event","newsletter_click",{platform:"substack",link_text:label});
+    if(href.includes("wa.me")) gtag("event","contact_click",{platform:"whatsapp",link_text:label});
+    if(href.includes("mailto:")) gtag("event","contact_click",{platform:"email",link_text:label});
+  }
+});

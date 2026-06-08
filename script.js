@@ -1,3 +1,67 @@
+/* FutureWorld Navigation Architecture v2.2 */
+(function(){
+  function buildNav(){
+    const nav=document.querySelector('.floating-nav');
+    if(!nav) return;
+    nav.innerHTML=`
+      <a class="brand-pill" href="/"><img src="/assets/logo.png" alt="FutureWorld Intelligence logo"><span>FutureWorld</span></a>
+      <a class="nav-simple" href="/">Home</a>
+      <div class="nav-group">
+        <a class="nav-trigger" href="/pages/intelligence-index.html">Intelligence</a>
+        <div class="nav-menu">
+          <a href="/pages/climate.html">Climate</a>
+          <a href="/pages/ai.html">Artificial Intelligence</a>
+          <a href="/pages/geopolitics.html">Geopolitics</a>
+          <a href="/pages/energy.html">Energy</a>
+          <a href="/pages/futures.html">Futures</a>
+          <a href="/pages/intelligence-index.html">Intelligence Index</a>
+          <a href="/pages/command-center.html">Command Center</a>
+        </div>
+      </div>
+      <a class="nav-simple" href="/pages/resources.html">Resources</a>
+      <a class="nav-simple" href="/pages/gallery.html">Gallery</a>
+      <a class="nav-simple nav-connect" href="/connect/">Connect</a>
+      <div class="nav-group">
+        <a class="nav-trigger" href="/pages/about.html">About</a>
+        <div class="nav-menu nav-menu-right">
+          <a href="/pages/intro.html">What is FWI?</a>
+          <a href="/pages/about.html">Mission & Values</a>
+          <a href="/pages/privacy.html">Privacy & Cookies</a>
+        </div>
+      </div>`;
+
+    const path=location.pathname.replace(/index\.html$/,'');
+    nav.querySelectorAll('a').forEach(a=>{
+      const p=new URL(a.href,location.origin).pathname.replace(/index\.html$/,'');
+      if((path==='/'&&p==='/') || (path!=='/' && p===path)) a.classList.add('active');
+    });
+    nav.querySelectorAll('.nav-group').forEach(group=>{
+      if(group.querySelector('a.active')) group.querySelector('.nav-trigger')?.classList.add('active');
+    });
+  }
+
+  function navStyle(){
+    if(document.getElementById('fwi-nav-v22-style')) return;
+    const css=document.createElement('style');
+    css.id='fwi-nav-v22-style';
+    css.textContent=`
+      .floating-nav{gap:6px;max-width:min(1140px,92vw)}
+      .floating-nav .nav-group{position:relative;display:flex;align-items:center}
+      .floating-nav .nav-trigger:after{content:'▾';font-size:.68rem;margin-left:7px;color:var(--cyan)}
+      .floating-nav .nav-menu{position:absolute;top:calc(100% + 12px);left:0;min-width:245px;padding:10px;border:1px solid rgba(34,211,238,.22);border-radius:22px;background:rgba(2,6,23,.92);backdrop-filter:blur(18px);box-shadow:0 20px 60px rgba(0,0,0,.38);opacity:0;visibility:hidden;transform:translateY(8px);transition:.22s ease}
+      .floating-nav .nav-menu-right{left:auto;right:0;min-width:210px}
+      .floating-nav .nav-group:hover .nav-menu,.floating-nav .nav-group:focus-within .nav-menu{opacity:1;visibility:visible;transform:translateY(0)}
+      .floating-nav .nav-menu a{display:block;border-radius:14px;padding:10px 12px;font-size:.76rem;white-space:nowrap}
+      .floating-nav .nav-connect{border:1px solid rgba(57,255,156,.24);background:rgba(57,255,156,.08)}
+      @media(max-width:860px){.floating-nav{justify-content:flex-start}.floating-nav .nav-menu{top:auto;bottom:calc(100% + 12px)}.floating-nav .nav-menu-right{left:auto;right:0}.floating-nav .nav-simple,.floating-nav .nav-trigger{white-space:nowrap}}
+    `;
+    document.head.appendChild(css);
+  }
+
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',()=>{navStyle();buildNav();});
+  else{navStyle();buildNav();}
+})();
+
 document.querySelectorAll('.floating-nav a').forEach(link=>{if(link.href===location.href)link.classList.add('active')});
 
 window.addEventListener('load',()=>{document.body.classList.add('loaded')});

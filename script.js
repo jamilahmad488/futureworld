@@ -8,6 +8,12 @@
     ur:{mode:'انٹیلی جنس موڈ: فعال',grid:'بریفنگ گرڈ: آن لائن',signals:'مستقبل کے اشارے: زیر نگرانی',switch:'UR'}
   };
 
+  const iconHome='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 11.2 12 4l8.5 7.2"/><path d="M6.5 10.5v8h11v-8"/><path d="M9.5 18.5v-5h5v5"/></svg>';
+  const iconIntel='<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.8v3.1M12 18.1v3.1M2.8 12h3.1M18.1 12h3.1M5.5 5.5l2.2 2.2M16.3 16.3l2.2 2.2M18.5 5.5l-2.2 2.2M7.7 16.3l-2.2 2.2"/></svg>';
+  const iconResources='<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="12" height="16" rx="2"/><path d="M8 8h7M8 12h7M8 16h4"/><path d="M17 7h2v13h-2"/></svg>';
+  const iconConnect='<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="12" r="2.2"/><circle cx="18" cy="6" r="2.2"/><circle cx="18" cy="18" r="2.2"/><path d="M8 11 16 7M8 13l8 4"/></svg>';
+  const iconAbout='<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 10.5v6"/><path d="M12 7.2h.01"/></svg>';
+
   function injectStyles(){
     if(document.getElementById('fwi-global-polish')) return;
     const css=document.createElement('style');
@@ -39,8 +45,11 @@
         body{padding-bottom:108px}.floating-nav{display:none!important}.ai-live-panel{display:none!important}.fwi-return-home{display:none!important}
         .fwi-mobile-nav{position:fixed;left:14px;right:14px;bottom:14px;z-index:9500;display:grid;grid-template-columns:repeat(5,1fr);gap:6px;padding:10px;border-radius:28px;border:1px solid rgba(77,243,255,.36);background:linear-gradient(135deg,rgba(5,12,30,.92),rgba(57,255,156,.16));backdrop-filter:blur(20px);box-shadow:0 0 34px rgba(77,243,255,.18), inset 0 0 0 1px rgba(255,255,255,.04)}
         .fwi-mobile-nav a,.fwi-mobile-nav button{border:1px solid rgba(255,255,255,.16);border-radius:22px;min-height:66px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;text-decoration:none;color:#eaf8ff;background:rgba(255,255,255,.055);font-family:var(--font-display);font-size:10px;font-weight:900;letter-spacing:.02em;padding:6px;cursor:pointer;transition:.22s ease}
-        .fwi-mobile-nav a b,.fwi-mobile-nav button b{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(77,243,255,.30);background:rgba(77,243,255,.12);font-size:14px;box-shadow:0 0 12px rgba(77,243,255,.14)}
+        .fwi-mobile-nav a b,.fwi-mobile-nav button b{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(77,243,255,.38);background:radial-gradient(circle at 35% 25%,rgba(255,255,255,.16),rgba(77,243,255,.18),rgba(57,255,156,.08));box-shadow:0 0 14px rgba(77,243,255,.18), inset 0 0 12px rgba(255,255,255,.04)}
+        .fwi-mobile-nav svg{width:18px;height:18px;fill:none;stroke:#eaffff;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 6px rgba(77,243,255,.55))}
         .fwi-mobile-nav a.active,.fwi-mobile-nav button.active,.fwi-mobile-nav a:active,.fwi-mobile-nav button:active{transform:translateY(-5px) scale(1.06);border-color:rgba(57,255,156,.52);box-shadow:0 0 20px rgba(57,255,156,.18);background:linear-gradient(135deg,rgba(57,255,156,.18),rgba(77,243,255,.12))}
+        .fwi-mobile-nav a.active b,.fwi-mobile-nav button.active b,.fwi-mobile-nav a:active b,.fwi-mobile-nav button:active b{border-color:rgba(57,255,156,.60);background:radial-gradient(circle at 35% 25%,rgba(255,255,255,.22),rgba(57,255,156,.22),rgba(77,243,255,.12));box-shadow:0 0 18px rgba(57,255,156,.28)}
+        .fwi-mobile-nav a.active svg,.fwi-mobile-nav button.active svg,.fwi-mobile-nav a:active svg,.fwi-mobile-nav button:active svg{stroke:#caffdf;filter:drop-shadow(0 0 8px rgba(57,255,156,.70))}
         .fwi-mobile-sheet{position:fixed;left:16px;right:16px;bottom:102px;z-index:9499;padding:14px;border-radius:24px;border:1px solid rgba(77,243,255,.36);background:rgba(2,6,23,.96);backdrop-filter:blur(18px);box-shadow:0 0 34px rgba(77,243,255,.16);transform:translateY(14px);opacity:0;visibility:hidden;transition:.22s ease}
         .fwi-mobile-sheet.open{display:grid;grid-template-columns:1fr 1fr;gap:10px;transform:translateY(0);opacity:1;visibility:visible}
         .fwi-mobile-sheet a{display:block;text-decoration:none;color:#f8fbff;border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:12px;background:rgba(255,255,255,.055);font-family:var(--font-display);font-size:12px;text-align:center}
@@ -101,11 +110,11 @@
     nav.className='fwi-mobile-nav';
     nav.setAttribute('aria-label','Mobile navigation');
     nav.innerHTML=`
-      <a href="/"><b>⌂</b><span>FutureWorld</span></a>
-      <button type="button" data-sheet="intelligence"><b>◎</b><span>Intel</span></button>
-      <a href="/pages/resources.html"><b>▣</b><span>Resources</span></a>
-      <a href="/connect/"><b>↗</b><span>Connect</span></a>
-      <button type="button" data-sheet="about"><b>i</b><span>About</span></button>`;
+      <a href="/"><b>${iconHome}</b><span>FutureWorld</span></a>
+      <button type="button" data-sheet="intelligence"><b>${iconIntel}</b><span>Intel</span></button>
+      <a href="/pages/resources.html"><b>${iconResources}</b><span>Resources</span></a>
+      <a href="/connect/"><b>${iconConnect}</b><span>Connect</span></a>
+      <button type="button" data-sheet="about"><b>${iconAbout}</b><span>About</span></button>`;
     document.body.appendChild(nav);
 
     const intelligence=document.createElement('div');

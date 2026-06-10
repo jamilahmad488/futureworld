@@ -8,5 +8,17 @@ FutureWorld Intelligence is an AI-powered cinematic educational media platform f
 ## Deployment
 Upload all files and folders to the root of the GitHub repository named `futureworld`, then enable GitHub Pages from `main` branch and `/root`.
 
-Expected site URL:
+Primary site URL:
+`https://futureworldintelligence.org/`
+
+GitHub Pages fallback:
 `https://jamilahmad488.github.io/futureworld/`
+
+## Platform Priorities
+
+- Homepage = Global Futures Dashboard
+- Intelligence Index = public library of all briefings and reports
+- Domain pages = climate, AI, geopolitics, energy and futures portals
+- Resources = publishing tools, reports, templates and learning assets
+- Gallery = visual intelligence archive for maps, covers and campaign media
+- Connect = single public gateway for social, email and audience flow

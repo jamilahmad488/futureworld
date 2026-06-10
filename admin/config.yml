@@ -7,20 +7,57 @@ media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
 
 collections:
-  - name: "briefings"
-    label: "Intelligence Briefings"
-    folder: "content/briefings"
+  - name: "climate"
+    label: "Climate Intelligence"
+    folder: "content/climate"
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    extension: "html"
+    format: "frontmatter"
     fields:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Summary", name: "summary", widget: "text"}
       - {label: "Body", name: "body", widget: "markdown"}
 
-  - name: "reports"
-    label: "Reports"
-    folder: "content/reports"
+  - name: "ai"
+    label: "AI Intelligence"
+    folder: "content/ai"
     create: true
+    extension: "html"
+    format: "frontmatter"
     fields:
       - {label: "Title", name: "title", widget: "string"}
+      - {label: "Summary", name: "summary", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "geopolitics"
+    label: "Geopolitics Intelligence"
+    folder: "content/geopolitics"
+    create: true
+    extension: "html"
+    format: "frontmatter"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Summary", name: "summary", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "energy"
+    label: "Energy Intelligence"
+    folder: "content/energy"
+    create: true
+    extension: "html"
+    format: "frontmatter"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Summary", name: "summary", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "futures"
+    label: "Strategic Futures"
+    folder: "content/futures"
+    create: true
+    extension: "html"
+    format: "frontmatter"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Summary", name: "summary", widget: "text"}
       - {label: "Body", name: "body", widget: "markdown"}

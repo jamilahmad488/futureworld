@@ -171,7 +171,7 @@
     if(!document.querySelector('.ai-live-panel')){
       const dashboard=document.createElement('aside');
       dashboard.className='ai-live-panel';
-      dashboard.innerHTML='<strong>AI SIGNALS</strong><p>Climate Risk Scan</p><p>Energy Grid Monitor</p><p>Geopolitical Watch</p><p>Content System Online</p>';
+      dashboard.innerHTML='<button class="fwi-signal-toggle" type="button"><span>Signals</span><b>Open</b></button><strong>AI SIGNALS</strong><p>Climate Risk Scan</p><p>Energy Grid Monitor</p><p>Geopolitical Watch</p><p>Content System Online</p>';
       document.body.appendChild(dashboard);
     }
     if(!document.querySelector('.lang-toggle')){
@@ -282,7 +282,60 @@
     const panel=document.querySelector('.ai-live-panel');
     if(!panel) return;
     const threshold=Math.min(520, Math.max(300, window.innerHeight * 0.55));
+    if(window.scrollY > threshold){
+      panel.classList.remove('fwi-signal-open');
+      panel.setAttribute('aria-expanded','false');
+      panel.setAttribute('aria-label','Open FutureWorld signals');
+      const buttonLabel=panel.querySelector('.fwi-signal-toggle b');
+      if(buttonLabel) buttonLabel.textContent='Open';
+    }
     panel.classList.toggle('fwi-signal-hidden', window.scrollY > threshold);
+  }
+
+  function signalDropdown(){
+    const panel=document.querySelector('.ai-live-panel');
+    if(!panel || panel.dataset.fwiSignalDropdown) return;
+    panel.dataset.fwiSignalDropdown='1';
+    panel.setAttribute('role','button');
+    panel.setAttribute('tabindex','0');
+    panel.setAttribute('aria-expanded','false');
+    panel.setAttribute('aria-label','Open FutureWorld signals');
+    if(!panel.querySelector('.fwi-signal-toggle')){
+      const button=document.createElement('button');
+      button.className='fwi-signal-toggle';
+      button.type='button';
+      button.innerHTML='<span>Signals</span><b>Open</b>';
+      panel.prepend(button);
+    }
+
+    const toggle=()=>{
+      const open=!panel.classList.contains('fwi-signal-open');
+      panel.classList.toggle('fwi-signal-open',open);
+      panel.setAttribute('aria-expanded',open?'true':'false');
+      panel.setAttribute('aria-label',open?'Close FutureWorld signals':'Open FutureWorld signals');
+      const buttonLabel=panel.querySelector('.fwi-signal-toggle b');
+      if(buttonLabel) buttonLabel.textContent=open?'Close':'Open';
+    };
+
+    panel.addEventListener('click',e=>{
+      const link=e.target.closest('a[href]');
+      if(link && panel.classList.contains('fwi-signal-open')) return;
+      if(!e.target.closest('.fwi-signal-toggle') && e.target !== panel) return;
+      e.preventDefault();
+      toggle();
+    });
+    panel.addEventListener('keydown',e=>{
+      if(e.key==='Enter' || e.key===' '){e.preventDefault();toggle();}
+      if(e.key==='Escape'){panel.classList.remove('fwi-signal-open');panel.setAttribute('aria-expanded','false');}
+    });
+    document.addEventListener('click',e=>{
+      if(!panel.contains(e.target)){
+        panel.classList.remove('fwi-signal-open');
+        panel.setAttribute('aria-expanded','false');
+        const buttonLabel=panel.querySelector('.fwi-signal-toggle b');
+        if(buttonLabel) buttonLabel.textContent='Open';
+      }
+    });
   }
 
   function init(){
@@ -296,6 +349,7 @@
     revealInit();
     cookieConsent();
     analyticsEvents();
+    signalDropdown();
     signalPanelVisibility();
     window.addEventListener('scroll',signalPanelVisibility,{passive:true});
     window.addEventListener('resize',signalPanelVisibility);

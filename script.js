@@ -278,6 +278,13 @@
     });
   }
 
+  function signalPanelVisibility(){
+    const panel=document.querySelector('.ai-live-panel');
+    if(!panel) return;
+    const threshold=Math.min(520, Math.max(300, window.innerHeight * 0.55));
+    panel.classList.toggle('fwi-signal-hidden', window.scrollY > threshold);
+  }
+
   function init(){
     injectStyles();
     buildTopNav();
@@ -289,6 +296,9 @@
     revealInit();
     cookieConsent();
     analyticsEvents();
+    signalPanelVisibility();
+    window.addEventListener('scroll',signalPanelVisibility,{passive:true});
+    window.addEventListener('resize',signalPanelVisibility);
   }
 
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init);

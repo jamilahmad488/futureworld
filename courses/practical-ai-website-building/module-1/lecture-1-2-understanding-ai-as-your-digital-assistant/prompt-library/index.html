@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lecture 1.2 Prompt Library | Practical AI & Website Building Course</title>
+<meta name="description" content="Copyable prompt library for Lecture 1.2: Understanding AI as Your Digital Assistant." />
+<link rel="canonical" href="https://futureworldintelligence.org/courses/practical-ai-website-building/module-1/lecture-1-2-understanding-ai-as-your-digital-assistant/prompt-library/" />
+<style>
+:root{
+  --bg:#020611;--panel:#071225;--card:#0b1730;--ink:#eaf4ff;--muted:#9fb3c8;
+  --cyan:#37e8ff;--green:#39ff9c;--gold:#f5c95d;--red:#ff6b6b;--violet:#9a75ff;
+  --line:rgba(255,255,255,.15);--shadow:0 28px 90px rgba(0,0,0,.48);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at 12% 8%,rgba(55,232,255,.16),transparent 28%),radial-gradient(circle at 86% 10%,rgba(154,117,255,.13),transparent 26%),linear-gradient(180deg,#020611,#071225 58%,#020611);color:var(--ink);font-family:Inter,Segoe UI,Arial,sans-serif;line-height:1.65}
+body:before{content:"";position:fixed;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:46px 46px;pointer-events:none;opacity:.55;z-index:-1}
+a{color:var(--cyan);text-decoration:none}
+.wrap{width:min(1160px,92vw);margin:auto}
+.nav{position:sticky;top:0;z-index:50;background:rgba(2,6,17,.84);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:13px 0}
+.brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-weight:950;text-transform:uppercase;letter-spacing:.04em}
+.brand img{width:40px;height:40px;border-radius:12px;object-fit:cover}
+.navlinks{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end}
+.navlinks a{color:var(--muted);font-weight:850;font-size:13px}
+.hero{padding:68px 0 34px}
+.eyebrow{color:var(--gold);font-weight:950;text-transform:uppercase;letter-spacing:.18em;font-size:12px}
+h1{font-size:clamp(40px,7vw,78px);line-height:.96;margin:12px 0 18px;text-transform:uppercase;letter-spacing:-.055em}
+h1 span{color:var(--cyan)}
+h2{font-size:clamp(28px,4vw,48px);line-height:1.08;margin:0 0 14px;text-transform:uppercase;letter-spacing:-.03em}
+h3{margin:0 0 8px;color:#fff;font-size:22px}
+.lead{font-size:20px;color:#dce8fa;max-width:890px}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 16px;border-radius:999px;border:1px solid rgba(55,232,255,.35);background:rgba(55,232,255,.08);color:#eaffff;font-weight:950;text-decoration:none;cursor:pointer}
+.btn.primary{background:linear-gradient(135deg,var(--cyan),var(--green));color:#04111f}
+.btn.gold{background:rgba(245,201,93,.16);border-color:rgba(245,201,93,.42);color:#fff3c4}
+.btn.violet{background:rgba(154,117,255,.16);border-color:rgba(154,117,255,.42);color:#efeaff}
+.visual{margin:26px 0;border:1px solid rgba(55,232,255,.22);border-radius:28px;overflow:hidden;box-shadow:var(--shadow);background:#050b16}
+.visual img{display:block;width:100%;height:auto}
+.caption{padding:13px 16px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+.section{padding:42px 0}
+.panel{border:1px solid var(--line);border-radius:28px;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.025));box-shadow:var(--shadow);padding:24px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.card,.box{border:1px solid var(--line);border-radius:22px;background:rgba(255,255,255,.055);padding:18px}
+.card p,.box p{color:#dce8fa;margin:0}
+.card strong{color:var(--cyan);font-size:28px}
+.quote{border-left:6px solid var(--cyan);background:rgba(55,232,255,.08);border-radius:0 22px 22px 0;padding:24px;font-size:clamp(22px,3vw,34px);line-height:1.25;font-weight:900}
+.quote small{display:block;margin-top:12px;color:var(--muted);font-size:15px;font-weight:700}
+.prompt{background:rgba(55,232,255,.075);border:1px solid rgba(55,232,255,.28);border-radius:22px;overflow:hidden}
+.prompt-head{display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(55,232,255,.24);padding:12px 14px;color:#dffaff;font-weight:950}
+.prompt pre{margin:0;white-space:pre-wrap;color:#f7fbff;padding:18px;font-family:Consolas,Monaco,monospace;font-size:15px}
+.copybtn{border:1px solid rgba(57,255,156,.4);background:rgba(57,255,156,.11);color:#dfffee;border-radius:999px;padding:8px 12px;cursor:pointer;font-weight:900}
+.checklist li{margin:8px 0;color:#dce8fa}
+.warning{border-left:5px solid var(--gold);background:rgba(245,201,93,.08);padding:18px;border-radius:0 18px 18px 0}
+.danger{border-left:5px solid var(--red);background:rgba(255,107,107,.08);padding:18px;border-radius:0 18px 18px 0}
+.footer{border-top:1px solid var(--line);padding:32px 0;color:#8ea4bd;text-align:center}
+.table{width:100%;border-collapse:collapse;overflow:hidden;border-radius:18px}
+.table th,.table td{border:1px solid var(--line);padding:13px;text-align:left;vertical-align:top}
+.table th{background:rgba(55,232,255,.1);color:#fff}
+.table td{color:#dce8fa;background:rgba(255,255,255,.035)}
+@media(max-width:860px){.nav .wrap{align-items:flex-start;flex-direction:column}.navlinks{justify-content:flex-start}.grid,.grid2{grid-template-columns:1fr}.panel{padding:18px}}
+@media print{.nav,.actions,.copybtn{display:none}body{background:#020611}.visual,.panel{box-shadow:none;page-break-inside:avoid}.section{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="/courses/practical-ai-website-building/module-1/lecture-1-2-understanding-ai-as-your-digital-assistant/">
+      <img src="/assets/logo.png" alt="FutureWorld Intelligence logo">
+      <span>Lecture 1.2 Prompt Library</span>
+    </a>
+    <div class="navlinks">
+      <a href="/courses/practical-ai-website-building/module-1/lecture-1-2-understanding-ai-as-your-digital-assistant/">Back to Lecture 1.2</a>
+      <a href="/courses/practical-ai-website-building/module-1/">Module 1</a>
+    </div>
+  </div>
+</nav>
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Module 1 · Lecture 1.2</p>
+    <h1>Prompt <span>Library</span></h1>
+    <p class="lead">This library gives students ready-to-use prompts for understanding AI, improving prompts, comparing tools, installing software, using tools and troubleshooting problems.</p>
+  </div>
+</header>
+<main>
+  <section class="section">
+    <div class="wrap panel">
+      <p class="eyebrow">How to use this library</p>
+      <h2>Copy, customize, practice</h2>
+      <div class="grid">
+        <div class="card"><h3>Copy</h3><p>Use the copy button to copy a prompt.</p></div>
+        <div class="card"><h3>Customize</h3><p>Replace bracketed text such as [tool name] or [write your topic].</p></div>
+        <div class="card"><h3>Practice</h3><p>Save your best prompts in a personal prompt notebook.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap panel">
+      <p class="eyebrow">Prompt Library</p>
+      <h2>Lecture 1.2 copyable prompts</h2>
+      <div class="grid">
+        <div class="prompt"><div class="prompt-head"><span>1. Understand AI</span><button class="copybtn" onclick="copyPromptById('pl1')">Copy</button></div><pre id="pl1">Act as a beginner-friendly AI teacher. Explain what AI can and cannot do for a complete beginner who wants to build websites, create content, and learn digital skills. Use simple examples.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>2. Turn AI into my assistant</span><button class="copybtn" onclick="copyPromptById('pl2')">Copy</button></div><pre id="pl2">Act as my digital learning assistant. I am a beginner. Ask me questions about my project idea, then guide me step by step on how AI can help me research, plan, write, design, build, and improve my project.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>3. Improve my prompt</span><button class="copybtn" onclick="copyPromptById('pl3')">Copy</button></div><pre id="pl3">Act as a prompt improvement coach. I will give you a simple prompt. Improve it by adding role, task, context, output format, and constraints. Explain why the improved prompt is better.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>4. AI safety and verification</span><button class="copybtn" onclick="copyPromptById('pl4')">Copy</button></div><pre id="pl4">Act as a responsible AI guide. Teach me how to verify AI answers, avoid mistakes, check facts, and use AI safely for learning and website building.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>5. Explain any software tool</span><button class="copybtn" onclick="copyPromptById('pl5')">Copy</button></div><pre id="pl5">Explain [tool name] to me like I am a complete beginner. Tell me what it does, why I need it, when I will use it, and what mistakes beginners should avoid.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>6. Compare two tools</span><button class="copybtn" onclick="copyPromptById('pl6')">Copy</button></div><pre id="pl6">Compare [tool A] and [tool B] for a beginner website-building student. Explain the difference in simple language and tell me when to use each one.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>7. Installation guide</span><button class="copybtn" onclick="copyPromptById('pl7')">Copy</button></div><pre id="pl7">Act as my beginner computer setup assistant. Give me step-by-step instructions to install [software name] on Windows 10 or Windows 11. Include download link guidance, setup steps, and common mistakes to avoid.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>8. Tool usage guide</span><button class="copybtn" onclick="copyPromptById('pl8')">Copy</button></div><pre id="pl8">Act as a patient digital skills teacher. Teach me how to use [tool name] for [specific task]. Give me simple steps, explain each step, and tell me how to confirm that I did it correctly.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>9. Troubleshooting guide</span><button class="copybtn" onclick="copyPromptById('pl9')">Copy</button></div><pre id="pl9">I am a beginner and I am facing this problem: [describe problem]. Ask me for any missing details, then guide me step by step to troubleshoot and fix it safely.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>10. Prompt formula practice</span><button class="copybtn" onclick="copyPromptById('pl10')">Copy</button></div><pre id="pl10">Teach me the prompt formula Role + Task + Context + Output Format + Constraints. Then help me rewrite this weak prompt into a strong prompt: [paste weak prompt].</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>11. Learning roadmap</span><button class="copybtn" onclick="copyPromptById('pl11')">Copy</button></div><pre id="pl11">I am a beginner and I want to build a digital platform about [write your topic]. Create a simple learning roadmap for me. Break the journey into small steps and tell me what practical task I should complete today.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>12. Ask better questions</span><button class="copybtn" onclick="copyPromptById('pl12')">Copy</button></div><pre id="pl12">Act as a question improvement coach. I will give you a question I want to ask AI. Improve my question so that AI gives me a clearer, more practical and more accurate answer. Explain what you improved.</pre></div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="footer">FutureWorld Intelligence © 2026 | Lecture 1.2 Prompt Library</footer>
+<script>
+function copyPromptById(id){
+  const text=document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text).then(function(){
+    alert('Prompt copied. Paste it into ChatGPT and practice.');
+  });
+}
+</script>
+</body>
+</html>

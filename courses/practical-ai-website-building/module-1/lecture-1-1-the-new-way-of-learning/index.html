@@ -211,7 +211,7 @@ h3{margin:0 0 8px;color:#fff;font-size:22px}
     <p class="lead">This opening lecture changes the student’s mindset before any software installation. The goal is to understand that the future belongs to people who can think clearly, ask better questions, and guide AI with strong prompts.</p>
     <div class="actions">
       <a class="btn primary" href="#start">Start Lecture</a>
-      <a class="btn gold" href="#prompt">Copy Student Prompt</a>
+      <a class="btn gold" href="#prompt-lab">Open Prompt Lab</a>
       <a class="btn" onclick="window.print();return false;" href="#">Save / Print PDF</a>
     </div>
   </div>
@@ -327,17 +327,25 @@ h3{margin:0 0 8px;color:#fff;font-size:22px}
     </div>
   </section>
 
-  <section class="section" id="prompt">
+  <section class="section" id="prompt-lab">
     <div class="wrap panel">
-      <p class="eyebrow">Student AI Prompt</p>
-      <h2>Your first learning prompt</h2>
-      <p class="lead">Students should copy this prompt into ChatGPT and run it before moving to Lecture 1.2.</p>
-      <div class="prompt">
-        <div class="prompt-head">
-          <span>Copy and use this prompt</span>
-          <button class="copybtn" onclick="copyPrompt()">Copy Prompt</button>
+      <p class="eyebrow">Lecture 1.1 Prompt Lab</p>
+      <h2>Practical AI Prompt Bank</h2>
+      <p class="lead">This section keeps the practical prompts from the original Lecture 1.1 and adds two more beginner prompts. Students should copy, customize and use these prompts before moving forward.</p>
+      <div class="grid">
+        <div class="prompt">
+          <div class="prompt-head">
+            <span>Prompt 1 · Choose your digital platform</span>
+            <button class="copybtn" onclick="copyPromptById('promptPlatform')">Copy</button>
+          </div>
+          <pre id="promptPlatform">Act as a beginner-friendly digital skills teacher. I want to build a simple digital platform about [write your topic]. Explain what type of website I should create, what pages it should contain, and what tools I need in simple language.</pre>
         </div>
-        <pre id="studentPrompt">Act as my personal AI mentor.
+        <div class="prompt">
+          <div class="prompt-head">
+            <span>Prompt 2 · Become my AI mentor</span>
+            <button class="copybtn" onclick="copyPromptById('studentPrompt')">Copy</button>
+          </div>
+          <pre id="studentPrompt">Act as my personal AI mentor.
 
 I am a complete beginner.
 
@@ -346,7 +354,16 @@ Help me understand how AI can assist me in learning, creating, and building prac
 Explain using simple language and practical examples.
 
 Then ask me 5 questions to understand what kind of digital platform I want to build.</pre>
+        </div>
+        <div class="prompt">
+          <div class="prompt-head">
+            <span>Prompt 3 · Create my first learning roadmap</span>
+            <button class="copybtn" onclick="copyPromptById('promptRoadmap')">Copy</button>
+          </div>
+          <pre id="promptRoadmap">I am a beginner and I want to build a digital platform about [write your topic]. Create a simple learning roadmap for me. Break the journey into small steps. Tell me what I should learn first, what tools I need, and what practical task I should complete today.</pre>
+        </div>
       </div>
+      <div class="warning" style="margin-top:18px"><b>Teacher note:</b> Students do not need to memorize software menus at this stage. They need to learn how to explain their goal clearly and guide AI step by step.</div>
     </div>
   </section>
 
@@ -356,7 +373,7 @@ Then ask me 5 questions to understand what kind of digital platform I want to bu
       <h2>Before Lecture 1.2</h2>
       <div class="grid">
         <div class="box"><h3>Task 1</h3><p>Write one idea for a website or digital platform you want to build.</p></div>
-        <div class="box"><h3>Task 2</h3><p>Run the student prompt in ChatGPT and save the answer in your notes.</p></div>
+        <div class="box"><h3>Task 2</h3><p>Run at least two prompts from the Prompt Lab in ChatGPT and save the answers in your notes.</p></div>
         <div class="box"><h3>Task 3</h3><p>Write three things you believe AI can help you learn or create.</p></div>
       </div>
       <div class="warning" style="margin-top:18px"><b>Common mistake:</b> Do not try to install everything immediately. First understand the mindset and the learning direction.</div>
@@ -372,7 +389,7 @@ Then ask me 5 questions to understand what kind of digital platform I want to bu
         <li>I understand that clear thinking and correct prompts are powerful skills.</li>
         <li>I understand that AI can guide me step by step.</li>
         <li>I have selected one idea for a digital platform.</li>
-        <li>I have used the first AI mentor prompt.</li>
+        <li>I have used at least two prompts from the Lecture 1.1 Prompt Lab.</li>
       </ul>
       <div class="actions">
         <a class="btn primary" href="/courses/practical-ai-website-building/module-1/lecture-1-2-understanding-ai-as-your-digital-assistant/">Next Lecture 1.2</a>
@@ -387,8 +404,8 @@ Then ask me 5 questions to understand what kind of digital platform I want to bu
 </footer>
 
 <script>
-function copyPrompt(){
-  const text=document.getElementById('studentPrompt').innerText;
+function copyPromptById(id){
+  const text=document.getElementById(id).innerText;
   navigator.clipboard.writeText(text).then(()=>{
     alert('Prompt copied. Paste it into ChatGPT and begin your learning journey.');
   });

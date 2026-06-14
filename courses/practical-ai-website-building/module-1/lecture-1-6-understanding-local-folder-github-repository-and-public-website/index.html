@@ -1,12 +1,291 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lecture 1.6 Coming Soon | Practical AI & Website Building Course</title>
-<meta name="description" content="Lecture 1.6 is coming soon. Stay connected for the final Module 1 lecture.">
-<link rel="canonical" href="https://futureworldintelligence.org/courses/practical-ai-website-building/module-1/lecture-1-6-understanding-local-folder-github-repository-and-public-website/">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lecture 1.6: Understanding Local Folder, GitHub Repository and Public Website | Practical AI & Website Building Course</title>
+<meta name="description" content="Lecture 1.6 of the Practical AI & Website Building Course. Understand the difference between your local folder, GitHub repository and public website, and how they work together in a beginner-friendly workflow." />
+<link rel="canonical" href="https://futureworldintelligence.org/courses/practical-ai-website-building/module-1/lecture-1-6-understanding-local-folder-github-repository-and-public-website/" />
 <style>
-body{margin:0;background:radial-gradient(circle at 15% 8%,rgba(55,232,255,.16),transparent 28%),linear-gradient(180deg,#020611,#071225 70%,#020611);color:#eaf4ff;font-family:Inter,Segoe UI,Arial,sans-serif;line-height:1.65}.wrap{width:min(950px,92vw);margin:auto}.hero{min-height:82vh;display:grid;align-items:center}.panel{border:1px solid rgba(255,255,255,.15);border-radius:30px;background:rgba(255,255,255,.06);padding:30px;box-shadow:0 28px 90px rgba(0,0,0,.48)}.eyebrow{color:#f5c95d;font-weight:950;text-transform:uppercase;letter-spacing:.18em;font-size:12px}h1{font-size:clamp(40px,7vw,78px);line-height:.96;text-transform:uppercase;margin:12px 0}.lead{font-size:21px;color:#dce8fa}.btn{display:inline-flex;margin:14px 10px 0 0;padding:12px 16px;border-radius:999px;border:1px solid rgba(55,232,255,.35);background:rgba(55,232,255,.08);color:#eaffff;text-decoration:none;font-weight:950}.primary{background:linear-gradient(135deg,#37e8ff,#39ff9c);color:#04111f}.footer{text-align:center;color:#8ea4bd;padding:28px 0;border-top:1px solid rgba(255,255,255,.15)}
+:root{
+  --bg:#020611;--panel:#071225;--card:#0b1730;--ink:#eaf4ff;--muted:#9fb3c8;
+  --cyan:#37e8ff;--green:#39ff9c;--gold:#f5c95d;--red:#ff6b6b;--violet:#9a75ff;
+  --line:rgba(255,255,255,.15);--shadow:0 28px 90px rgba(0,0,0,.48);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 12% 8%,rgba(55,232,255,.16),transparent 28%),
+    radial-gradient(circle at 86% 10%,rgba(154,117,255,.13),transparent 26%),
+    linear-gradient(180deg,#020611,#071225 58%,#020611);
+  color:var(--ink);font-family:Inter,Segoe UI,Arial,sans-serif;line-height:1.65;
+}
+body:before{
+  content:"";position:fixed;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:46px 46px;pointer-events:none;opacity:.55;z-index:-1;
+}
+a{color:var(--cyan);text-decoration:none}
+.wrap{width:min(1160px,92vw);margin:auto}
+.nav{position:sticky;top:0;z-index:50;background:rgba(2,6,17,.84);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:13px 0}
+.brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-weight:950;text-transform:uppercase;letter-spacing:.04em}
+.brand img{width:40px;height:40px;border-radius:12px;object-fit:cover}
+.navlinks{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end}
+.navlinks a{color:var(--muted);font-weight:850;font-size:13px}
+.hero{padding:68px 0 34px}
+.eyebrow{color:var(--gold);font-weight:950;text-transform:uppercase;letter-spacing:.18em;font-size:12px}
+h1{font-size:clamp(38px,7vw,74px);line-height:.96;margin:12px 0 18px;text-transform:uppercase;letter-spacing:-.055em}
+h1 span{color:var(--cyan)}
+h2{font-size:clamp(28px,4vw,48px);line-height:1.08;margin:0 0 14px;text-transform:uppercase;letter-spacing:-.03em}
+h3{margin:0 0 8px;color:#fff;font-size:22px}
+.lead{font-size:20px;color:#dce8fa;max-width:920px}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 16px;border-radius:999px;border:1px solid rgba(55,232,255,.35);background:rgba(55,232,255,.08);color:#eaffff;font-weight:950;text-decoration:none;cursor:pointer}
+.btn.primary{background:linear-gradient(135deg,var(--cyan),var(--green));color:#04111f}
+.btn.gold{background:rgba(245,201,93,.16);border-color:rgba(245,201,93,.42);color:#fff3c4}
+.btn.violet{background:rgba(154,117,255,.16);border-color:rgba(154,117,255,.42);color:#efeaff}
+.visual{margin:26px 0;border:1px solid rgba(55,232,255,.22);border-radius:28px;overflow:hidden;box-shadow:var(--shadow);background:#050b16}
+.visual img{display:block;width:100%;height:auto}
+.caption{padding:13px 16px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+.section{padding:42px 0}
+.panel{border:1px solid var(--line);border-radius:28px;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.025));box-shadow:var(--shadow);padding:24px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.card,.box{border:1px solid var(--line);border-radius:22px;background:rgba(255,255,255,.055);padding:18px}
+.card p,.box p{color:#dce8fa;margin:0}
+.card strong{color:var(--cyan);font-size:28px}
+.quote{border-left:6px solid var(--cyan);background:rgba(55,232,255,.08);border-radius:0 22px 22px 0;padding:24px;font-size:clamp(22px,3vw,34px);line-height:1.25;font-weight:900}
+.quote small{display:block;margin-top:12px;color:var(--muted);font-size:15px;font-weight:700}
+.prompt{background:rgba(55,232,255,.075);border:1px solid rgba(55,232,255,.28);border-radius:22px;overflow:hidden}
+.prompt-head{display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(55,232,255,.24);padding:12px 14px;color:#dffaff;font-weight:950}
+.prompt pre{margin:0;white-space:pre-wrap;color:#f7fbff;padding:18px;font-family:Consolas,Monaco,monospace;font-size:15px}
+.copybtn{border:1px solid rgba(57,255,156,.4);background:rgba(57,255,156,.11);color:#dfffee;border-radius:999px;padding:8px 12px;cursor:pointer;font-weight:900}
+.checklist li{margin:8px 0;color:#dce8fa}
+.warning{border-left:5px solid var(--gold);background:rgba(245,201,93,.08);padding:18px;border-radius:0 18px 18px 0}
+.danger{border-left:5px solid var(--red);background:rgba(255,107,107,.08);padding:18px;border-radius:0 18px 18px 0}
+.safe{border-left:5px solid var(--green);background:rgba(57,255,156,.08);padding:18px;border-radius:0 18px 18px 0}
+.footer{border-top:1px solid var(--line);padding:32px 0;color:#8ea4bd;text-align:center}
+.table{width:100%;border-collapse:collapse;overflow:hidden;border-radius:18px}
+.table th,.table td{border:1px solid var(--line);padding:13px;text-align:left;vertical-align:top}
+.table th{background:rgba(55,232,255,.1);color:#fff}
+.table td{color:#dce8fa;background:rgba(255,255,255,.035)}
+.badge{display:inline-block;padding:7px 10px;border-radius:999px;background:rgba(55,232,255,.11);border:1px solid rgba(55,232,255,.3);font-size:12px;font-weight:900;color:#dffaff;text-transform:uppercase;letter-spacing:.08em}
+@media(max-width:860px){
+  .nav .wrap{align-items:flex-start;flex-direction:column}.navlinks{justify-content:flex-start}
+  .grid,.grid2{grid-template-columns:1fr}.panel{padding:18px}
+}
+@media print{
+  .nav,.actions,.copybtn{display:none}body{background:#020611}
+  .visual,.panel{box-shadow:none;page-break-inside:avoid}.section{page-break-inside:avoid}
+}
 </style>
+<script>
+function copyPrompt(id){
+  const text=document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text).then(()=>alert('Prompt copied.'));
+}
+</script>
 </head>
-<body><main class="hero"><div class="wrap panel"><p class="eyebrow">Module 1 · Lecture 1.6</p><h1>Local Folder, GitHub Repository and Public Website</h1><p class="lead">This final Module 1 lecture is being prepared. It will explain the difference between files on your computer, files saved in GitHub, and the public website link visitors can open.</p><a class="btn primary" href="/courses/practical-ai-website-building/module-1/">Back to Module 1</a><a class="btn" href="/courses/practical-ai-website-building/module-1/lecture-1-5-creating-project-folder-system/">Review Lecture 1.5</a></div></main><footer class="footer">© 2026 FutureWorld Intelligence. All rights reserved.</footer></body></html>
+<body>
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="/courses/practical-ai-website-building/">
+      <img src="/assets/logo.png" alt="FutureWorld Intelligence logo">
+      <span>Practical AI & Website Building Course</span>
+    </a>
+    <div class="navlinks">
+      <a href="/courses/practical-ai-website-building/">Course Home</a>
+      <a href="/courses/practical-ai-website-building/module-1/">Module 1</a>
+      <a href="/courses/practical-ai-website-building/module-1/lecture-1-6-understanding-local-folder-github-repository-and-public-website/prompt-library/">Prompt Library</a>
+      <a href="/copyright/">Copyright</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Module 1 · Lecture 1.6</p>
+    <h1>Understanding <span>Local Folder, GitHub Repository and Public Website</span></h1>
+    <p class="lead">This lecture removes one of the biggest beginner confusions in digital work. You will clearly understand what stays on your computer, what lives on GitHub, and what becomes visible to the world through a public website.</p>
+    <div class="actions">
+      <a class="btn primary" href="#start">Start Lecture</a>
+      <a class="btn gold" href="#workflow">See the Workflow</a>
+      <a class="btn violet" href="#prompt-lab">Prompt Library</a>
+      <a class="btn" onclick="window.print();return false;" href="#">Save / Print PDF</a>
+    </div>
+  </div>
+</header>
+
+<main id="start">
+  <section class="wrap">
+    <div class="visual">
+      <img src="/assets/courses/practical-ai-website-building/module-1/lecture-1-6/01-understanding-local-folder-github-public-website.png" alt="Understanding local folder, GitHub repository and public website.">
+      <div class="caption">Opening concept: your local folder, GitHub repository and public website are three different spaces with three different purposes.</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap panel">
+      <p class="eyebrow">What you will master</p>
+      <h2>Three spaces. One clear workflow.</h2>
+      <div class="grid">
+        <div class="card"><strong>01</strong><h3>Know the three parts</h3><p>Understand what a local folder is, what GitHub stores, and what a public website actually means.</p></div>
+        <div class="card"><strong>02</strong><h3>See the flow clearly</h3><p>Learn the exact journey: create locally → upload to GitHub → publish for the public.</p></div>
+        <div class="card"><strong>03</strong><h3>Avoid beginner confusion</h3><p>Stop mixing laptop file paths, repository links and live website URLs.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="quote">
+        If you understand these three layers, you understand one of the most important foundations of modern website building.
+        <small>Build locally. Store safely. Publish confidently.</small>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="visual">
+      <img src="/assets/courses/practical-ai-website-building/module-1/lecture-1-6/02-the-three-main-parts.png" alt="The three main parts.">
+      <div class="caption">The three main parts of your website journey: Local Folder, GitHub Repository and Public Website.</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap panel">
+      <p class="eyebrow">Concept Breakdown</p>
+      <h2>The three main parts</h2>
+      <table class="table">
+        <tr><th>Part</th><th>Meaning</th><th>What you do there</th><th>Visibility</th></tr>
+        <tr><td><span class="badge">Local Folder</span></td><td>The project folder saved on your own computer.</td><td>Create files, edit pages, save images, organize project work.</td><td>Private to your computer until you upload or share.</td></tr>
+        <tr><td><span class="badge">GitHub Repository</span></td><td>Your online project storage and version history.</td><td>Back up files, track changes, sync work, collaborate and prepare publishing.</td><td>Can be private or public depending on repo settings.</td></tr>
+        <tr><td><span class="badge">Public Website</span></td><td>The live web address visitors can open in a browser.</td><td>Show your work to learners, readers, clients or the general public.</td><td>Public and visible on the internet.</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="wrap" id="workflow">
+    <div class="visual">
+      <img src="/assets/courses/practical-ai-website-building/module-1/lecture-1-6/03-how-they-work-together.png" alt="How local folder, GitHub repository and public website work together.">
+      <div class="caption">Simple workflow: create and edit locally, upload to GitHub, then publish as a public website.</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap panel">
+      <p class="eyebrow">Workflow</p>
+      <h2>How they work together</h2>
+      <div class="grid2">
+        <div class="box"><h3>Step 1: Work locally</h3><p>Your first work happens in your local folder. This is where you create HTML files, edit CSS, save images and test drafts.</p></div>
+        <div class="box"><h3>Step 2: Upload to GitHub</h3><p>When the work is ready, you commit and push it to your GitHub repository so it is backed up and versioned online.</p></div>
+        <div class="box"><h3>Step 3: Publish online</h3><p>Your website hosting or GitHub Pages publishes the content, turning it into a live website for real visitors.</p></div>
+        <div class="box"><h3>Step 4: Update repeatedly</h3><p>Every future improvement follows the same flow: edit locally → push to GitHub → update the public site.</p></div>
+      </div>
+      <div class="safe" style="margin-top:18px"><b>Example:</b> Build locally → push to GitHub → publish online → people visit your site.</div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="visual">
+      <img src="/assets/courses/practical-ai-website-building/module-1/lecture-1-6/04-simple-analogy.png" alt="Simple analogy for local folder, GitHub repository and public website.">
+      <div class="caption">Analogy: Local Folder = your house, GitHub Repository = your secure vault, Public Website = your shop in the market.</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap panel">
+      <p class="eyebrow">Simple Analogy</p>
+      <h2>Think of it in an everyday way</h2>
+      <div class="grid">
+        <div class="card"><h3>Your House</h3><p><b>Local Folder</b><br>You build and organize your work here, privately, on your own device.</p></div>
+        <div class="card"><h3>Your Vault</h3><p><b>GitHub Repository</b><br>You store, protect and version your project online.</p></div>
+        <div class="card"><h3>Your Shop</h3><p><b>Public Website</b><br>This is what the world can visit, view and interact with.</p></div>
+      </div>
+      <div class="warning" style="margin-top:18px"><b>Why this analogy matters:</b> The thing inside your house is not automatically inside the vault, and the vault is not automatically the same as the public shop. Each step matters.</div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="visual">
+      <img src="/assets/courses/practical-ai-website-building/module-1/lecture-1-6/05-common-beginner-mistakes.png" alt="Common beginner mistakes.">
+      <div class="caption">The most common mistakes happen when beginners confuse local files, repository links and live website URLs.</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap panel">
+      <p class="eyebrow">Mistake Prevention</p>
+      <h2>Common beginner mistakes</h2>
+      <div class="grid2">
+        <div class="danger"><h3>Mistake 1</h3><p>Thinking a local file path like <code>C:\Users\Name\Desktop\site\index.html</code> is a public website link.</p></div>
+        <div class="danger"><h3>Mistake 2</h3><p>Editing files locally but never uploading them to GitHub or the web host.</p></div>
+        <div class="danger"><h3>Mistake 3</h3><p>Confusing the GitHub repository page with the actual live website visitors should open.</p></div>
+        <div class="danger"><h3>Mistake 4</h3><p>Forgetting to publish or update the live website after making changes.</p></div>
+      </div>
+      <table class="table" style="margin-top:18px">
+        <tr><th>If you see this…</th><th>It usually means…</th></tr>
+        <tr><td><code>C:\</code> or <code>D:\</code> file path</td><td>It is a local folder path on your own computer.</td></tr>
+        <tr><td><code>github.com/username/repo-name</code></td><td>It is the GitHub repository location.</td></tr>
+        <tr><td><code>https://yourdomain.com</code> or <code>https://username.github.io/project/</code></td><td>It is the live public website URL.</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="section" id="prompt-lab">
+    <div class="wrap panel">
+      <p class="eyebrow">Student Prompt</p>
+      <h2>Use AI to clarify your own project</h2>
+      <div class="prompt">
+        <div class="prompt-head"><span>Prompt for ChatGPT</span><button class="copybtn" onclick="copyPrompt('p1')">Copy</button></div>
+        <pre id="p1">Explain the difference between a local folder, a GitHub repository, and a public website URL as if I am a complete beginner. Use simple examples and also show how these three parts work together when building and publishing a website.</pre>
+      </div>
+      <div class="grid2" style="margin-top:18px">
+        <div class="safe"><h3>Practice Task</h3><p>Write three examples for your own project:<br>1. My local folder path<br>2. My GitHub repository link<br>3. My public website link<br><br>If you do not have one yet, write “not created yet.”</p></div>
+        <div class="warning"><h3>Important Reminder</h3><p>A local path works only on your computer. A GitHub repository stores your files online. A public website is the live address that other people can open in their browser.</p></div>
+      </div>
+      <div class="actions" style="margin-top:18px">
+        <a class="btn violet" href="/courses/practical-ai-website-building/module-1/lecture-1-6-understanding-local-folder-github-repository-and-public-website/prompt-library/">Open full Prompt Library</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="visual">
+      <img src="/assets/courses/practical-ai-website-building/module-1/lecture-1-6/06-key-takeaways-and-whats-next.png" alt="Key takeaways and what next.">
+      <div class="caption">Final summary: master the flow of local work, GitHub storage and public publishing, and you will build with confidence.</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap panel">
+      <p class="eyebrow">Final Checklist</p>
+      <h2>Key takeaways</h2>
+      <ul class="checklist">
+        <li>I understand what a local folder is.</li>
+        <li>I understand what a GitHub repository is.</li>
+        <li>I understand what a public website URL is.</li>
+        <li>I know that local paths are private and not public links.</li>
+        <li>I know the workflow: build locally → push to GitHub → publish online.</li>
+        <li>I can now explain these three layers to another beginner.</li>
+      </ul>
+      <div class="actions">
+        <a class="btn primary" href="/courses/practical-ai-website-building/module-1/">Back to Module 1</a>
+        <a class="btn gold" href="/courses/practical-ai-website-building/">Course Home</a>
+        <a class="btn violet" href="/courses/practical-ai-website-building/module-1/lecture-1-6-understanding-local-folder-github-repository-and-public-website/prompt-library/">Prompt Library</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <p>© FutureWorld Intelligence. Educational use within the Practical AI & Website Building Course.</p>
+  </div>
+</footer>
+</body>
+</html>

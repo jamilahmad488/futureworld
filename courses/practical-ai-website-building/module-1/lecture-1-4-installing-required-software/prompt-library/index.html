@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lecture 1.4 Prompt Library | Practical AI & Website Building Course</title>
+<meta name="description" content="Copyable prompt library for Lecture 1.4: Installing the Required Software." />
+<link rel="canonical" href="https://futureworldintelligence.org/courses/practical-ai-website-building/module-1/lecture-1-4-installing-required-software/prompt-library/" />
+<style>
+:root{
+  --bg:#020611;--panel:#071225;--card:#0b1730;--ink:#eaf4ff;--muted:#9fb3c8;
+  --cyan:#37e8ff;--green:#39ff9c;--gold:#f5c95d;--red:#ff6b6b;--violet:#9a75ff;
+  --line:rgba(255,255,255,.15);--shadow:0 28px 90px rgba(0,0,0,.48);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 12% 8%,rgba(55,232,255,.16),transparent 28%),
+    radial-gradient(circle at 86% 10%,rgba(154,117,255,.13),transparent 26%),
+    linear-gradient(180deg,#020611,#071225 58%,#020611);
+  color:var(--ink);font-family:Inter,Segoe UI,Arial,sans-serif;line-height:1.65;
+}
+body:before{
+  content:"";position:fixed;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:46px 46px;pointer-events:none;opacity:.55;z-index:-1;
+}
+a{color:var(--cyan);text-decoration:none}
+.wrap{width:min(1160px,92vw);margin:auto}
+.nav{position:sticky;top:0;z-index:50;background:rgba(2,6,17,.84);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:13px 0}
+.brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-weight:950;text-transform:uppercase;letter-spacing:.04em}
+.brand img{width:40px;height:40px;border-radius:12px;object-fit:cover}
+.navlinks{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end}
+.navlinks a{color:var(--muted);font-weight:850;font-size:13px}
+.hero{padding:68px 0 34px}
+.eyebrow{color:var(--gold);font-weight:950;text-transform:uppercase;letter-spacing:.18em;font-size:12px}
+h1{font-size:clamp(40px,7vw,78px);line-height:.96;margin:12px 0 18px;text-transform:uppercase;letter-spacing:-.055em}
+h1 span{color:var(--cyan)}
+h2{font-size:clamp(28px,4vw,48px);line-height:1.08;margin:0 0 14px;text-transform:uppercase;letter-spacing:-.03em}
+h3{margin:0 0 8px;color:#fff;font-size:22px}
+.lead{font-size:20px;color:#dce8fa;max-width:900px}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 16px;border-radius:999px;border:1px solid rgba(55,232,255,.35);background:rgba(55,232,255,.08);color:#eaffff;font-weight:950;text-decoration:none;cursor:pointer}
+.btn.primary{background:linear-gradient(135deg,var(--cyan),var(--green));color:#04111f}
+.btn.gold{background:rgba(245,201,93,.16);border-color:rgba(245,201,93,.42);color:#fff3c4}
+.btn.violet{background:rgba(154,117,255,.16);border-color:rgba(154,117,255,.42);color:#efeaff}
+.visual{margin:26px 0;border:1px solid rgba(55,232,255,.22);border-radius:28px;overflow:hidden;box-shadow:var(--shadow);background:#050b16}
+.visual img{display:block;width:100%;height:auto}
+.caption{padding:13px 16px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+.section{padding:42px 0}
+.panel{border:1px solid var(--line);border-radius:28px;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.025));box-shadow:var(--shadow);padding:24px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.card,.box{border:1px solid var(--line);border-radius:22px;background:rgba(255,255,255,.055);padding:18px}
+.card p,.box p{color:#dce8fa;margin:0}
+.card strong{color:var(--cyan);font-size:28px}
+.quote{border-left:6px solid var(--cyan);background:rgba(55,232,255,.08);border-radius:0 22px 22px 0;padding:24px;font-size:clamp(22px,3vw,34px);line-height:1.25;font-weight:900}
+.quote small{display:block;margin-top:12px;color:var(--muted);font-size:15px;font-weight:700}
+.prompt{background:rgba(55,232,255,.075);border:1px solid rgba(55,232,255,.28);border-radius:22px;overflow:hidden}
+.prompt-head{display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(55,232,255,.24);padding:12px 14px;color:#dffaff;font-weight:950}
+.prompt pre{margin:0;white-space:pre-wrap;color:#f7fbff;padding:18px;font-family:Consolas,Monaco,monospace;font-size:15px}
+.copybtn{border:1px solid rgba(57,255,156,.4);background:rgba(57,255,156,.11);color:#dfffee;border-radius:999px;padding:8px 12px;cursor:pointer;font-weight:900}
+.checklist li{margin:8px 0;color:#dce8fa}
+.warning{border-left:5px solid var(--gold);background:rgba(245,201,93,.08);padding:18px;border-radius:0 18px 18px 0}
+.danger{border-left:5px solid var(--red);background:rgba(255,107,107,.08);padding:18px;border-radius:0 18px 18px 0}
+.safe{border-left:5px solid var(--green);background:rgba(57,255,156,.08);padding:18px;border-radius:0 18px 18px 0}
+.footer{border-top:1px solid var(--line);padding:32px 0;color:#8ea4bd;text-align:center}
+.table{width:100%;border-collapse:collapse;overflow:hidden;border-radius:18px}
+.table th,.table td{border:1px solid var(--line);padding:13px;text-align:left;vertical-align:top}
+.table th{background:rgba(55,232,255,.1);color:#fff}
+.table td{color:#dce8fa;background:rgba(255,255,255,.035)}
+.download-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.download-card{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;border:1px solid var(--line);border-radius:22px;background:rgba(255,255,255,.055);padding:18px}
+.download-card p{color:#dce8fa;margin:0}
+.download-card .btn{margin-top:0;white-space:nowrap}
+@media(max-width:860px){
+  .nav .wrap{align-items:flex-start;flex-direction:column}.navlinks{justify-content:flex-start}
+  .grid,.grid2,.download-grid{grid-template-columns:1fr}.panel{padding:18px}.download-card{flex-direction:column}
+}
+@media print{
+  .nav,.actions,.copybtn{display:none}body{background:#020611}
+  .visual,.panel{box-shadow:none;page-break-inside:avoid}.section{page-break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="/courses/practical-ai-website-building/module-1/lecture-1-4-installing-required-software/">
+      <img src="/assets/logo.png" alt="FutureWorld Intelligence logo">
+      <span>Lecture 1.4 Prompt Library</span>
+    </a>
+    <div class="navlinks">
+      <a href="/courses/practical-ai-website-building/module-1/lecture-1-4-installing-required-software/">Back to Lecture 1.4</a>
+      <a href="/courses/practical-ai-website-building/module-1/">Module 1</a>
+      <a href="/copyright/">Copyright</a>
+    </div>
+  </div>
+</nav>
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Module 1 · Lecture 1.4</p>
+    <h1>Prompt <span>Library</span></h1>
+    <p class="lead">Use this library to install essential beginner software safely, understand each tool, and troubleshoot common setup problems.</p>
+  </div>
+</header>
+<main>
+  <section class="section">
+    <div class="wrap panel">
+      <p class="eyebrow">How to use this library</p>
+      <h2>Copy, customize, practice</h2>
+      <div class="grid">
+        <div class="card"><h3>Copy</h3><p>Use the copy button to copy a prompt.</p></div>
+        <div class="card"><h3>Customize</h3><p>Replace bracketed text such as [software name] or [describe problem].</p></div>
+        <div class="card"><h3>Practice</h3><p>Follow the steps slowly and confirm each installation.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap panel">
+      <p class="eyebrow">Prompt Library</p>
+      <h2>Lecture 1.4 copyable prompts</h2>
+      <div class="grid">
+        <div class="prompt"><div class="prompt-head"><span>1. Installation checklist</span><button class="copybtn" onclick="copyPromptById('pl1')">Copy</button></div><pre id="pl1">Act as my beginner computer setup assistant. I am preparing my laptop for website building. Give me a simple installation checklist for Chrome or Edge, VS Code, GitHub Desktop, Git for Windows, and a screen recorder. Explain what each tool is used for.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>2. Safe download guide</span><button class="copybtn" onclick="copyPromptById('pl2')">Copy</button></div><pre id="pl2">Act as a digital safety teacher. Teach me how to download software safely. Explain how to identify official websites, avoid fake download buttons, and prevent unnecessary software installation.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>3. Browser setup</span><button class="copybtn" onclick="copyPromptById('pl3')">Copy</button></div><pre id="pl3">Act as a beginner-friendly browser setup assistant. Explain how to install or confirm Chrome or Edge on Windows, set a default browser if needed, and use it to test website files.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>4. VS Code setup</span><button class="copybtn" onclick="copyPromptById('pl4')">Copy</button></div><pre id="pl4">Act as a beginner-friendly VS Code teacher. Guide me step by step to install VS Code on Windows, open a project folder, create an HTML file, and preview my website in a browser.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>5. GitHub Desktop setup</span><button class="copybtn" onclick="copyPromptById('pl5')">Copy</button></div><pre id="pl5">Act as a beginner-friendly GitHub Desktop teacher. Explain how to install GitHub Desktop, sign in, clone a repository, commit changes, and push changes to GitHub in simple language.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>6. Git for Windows setup</span><button class="copybtn" onclick="copyPromptById('pl6')">Copy</button></div><pre id="pl6">Act as a beginner Git teacher. Explain how to install Git for Windows and what Git Bash is. Then teach me the first five commands: git status, git add, git commit, git pull --rebase, and git push.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>7. OBS / screen recording</span><button class="copybtn" onclick="copyPromptById('pl7')">Copy</button></div><pre id="pl7">Act as a beginner screen recording teacher. Explain whether I need OBS Studio or Windows built-in screen recording. Give me a simple setup for recording short tutorial videos.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>8. Tool roles explained</span><button class="copybtn" onclick="copyPromptById('pl8')">Copy</button></div><pre id="pl8">Explain the difference between browser, VS Code, GitHub Desktop, Git for Windows, Git Bash, and OBS Studio. Use a simple table with what each tool does, why I need it, and when I will use it.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>9. Troubleshoot installation</span><button class="copybtn" onclick="copyPromptById('pl9')">Copy</button></div><pre id="pl9">I am a beginner and I am having this installation problem: [describe problem]. Ask me for non-sensitive details, then guide me step by step to fix it safely.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>10. Verify installation</span><button class="copybtn" onclick="copyPromptById('pl10')">Copy</button></div><pre id="pl10">Act as my software verification assistant. Tell me how to confirm that Chrome or Edge, VS Code, GitHub Desktop, and Git for Windows are installed correctly on my Windows computer.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>11. Avoid too many extensions</span><button class="copybtn" onclick="copyPromptById('pl11')">Copy</button></div><pre id="pl11">Explain why beginners should not install too many VS Code extensions or browser extensions at the start. Recommend only the safest basic setup for website-building beginners.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>12. Prepare for Lecture 1.5</span><button class="copybtn" onclick="copyPromptById('pl12')">Copy</button></div><pre id="pl12">Now that my software is installed, prepare me for creating a project folder system. Tell me what folders I should create for website files, images, screenshots, downloads, backups, and notes.</pre></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap panel">
+      <p class="eyebrow">Copyright Notice</p>
+      <h2>FutureWorld Intelligence materials</h2>
+      <p class="lead">© 2026 FutureWorld Intelligence. All modules, lectures, prompts, visuals, graphics, downloadable files and instructional designs are protected intellectual property. Students may use this material for personal learning and may share official links. Copying, re-uploading, selling, modifying, packaging, distributing or presenting this material as someone else’s work is not allowed without written permission.</p>
+      <a class="btn" href="/copyright/">Read Full Copyright Notice</a>
+    </div>
+  </section>
+</main>
+<footer class="footer">© 2026 FutureWorld Intelligence. All rights reserved. | Lecture 1.4 Prompt Library</footer>
+<script>
+function copyPromptById(id){
+  const text=document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text).then(function(){
+    alert('Prompt copied. Paste it into ChatGPT and practice.');
+  });
+}
+</script>
+</body>
+</html>

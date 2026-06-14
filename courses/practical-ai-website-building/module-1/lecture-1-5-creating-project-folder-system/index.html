@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lecture 1.5: Creating the Project Folder System | Practical AI & Website Building Course</title>
+<meta name="description" content="Lecture 1.5 of the Practical AI & Website Building Course. Learn how to create a clean project folder system for website files, images, documents, downloads, screenshots and backups." />
+<link rel="canonical" href="https://futureworldintelligence.org/courses/practical-ai-website-building/module-1/lecture-1-5-creating-project-folder-system/" />
+<style>
+:root{
+  --bg:#020611;--panel:#071225;--card:#0b1730;--ink:#eaf4ff;--muted:#9fb3c8;
+  --cyan:#37e8ff;--green:#39ff9c;--gold:#f5c95d;--red:#ff6b6b;--violet:#9a75ff;
+  --line:rgba(255,255,255,.15);--shadow:0 28px 90px rgba(0,0,0,.48);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 12% 8%,rgba(55,232,255,.16),transparent 28%),
+    radial-gradient(circle at 86% 10%,rgba(154,117,255,.13),transparent 26%),
+    linear-gradient(180deg,#020611,#071225 58%,#020611);
+  color:var(--ink);font-family:Inter,Segoe UI,Arial,sans-serif;line-height:1.65;
+}
+body:before{
+  content:"";position:fixed;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:46px 46px;pointer-events:none;opacity:.55;z-index:-1;
+}
+a{color:var(--cyan);text-decoration:none}
+.wrap{width:min(1160px,92vw);margin:auto}
+.nav{position:sticky;top:0;z-index:50;background:rgba(2,6,17,.84);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:13px 0}
+.brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-weight:950;text-transform:uppercase;letter-spacing:.04em}
+.brand img{width:40px;height:40px;border-radius:12px;object-fit:cover}
+.navlinks{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end}
+.navlinks a{color:var(--muted);font-weight:850;font-size:13px}
+.hero{padding:68px 0 34px}
+.eyebrow{color:var(--gold);font-weight:950;text-transform:uppercase;letter-spacing:.18em;font-size:12px}
+h1{font-size:clamp(40px,7vw,78px);line-height:.96;margin:12px 0 18px;text-transform:uppercase;letter-spacing:-.055em}
+h1 span{color:var(--cyan)}
+h2{font-size:clamp(28px,4vw,48px);line-height:1.08;margin:0 0 14px;text-transform:uppercase;letter-spacing:-.03em}
+h3{margin:0 0 8px;color:#fff;font-size:22px}
+.lead{font-size:20px;color:#dce8fa;max-width:900px}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 16px;border-radius:999px;border:1px solid rgba(55,232,255,.35);background:rgba(55,232,255,.08);color:#eaffff;font-weight:950;text-decoration:none;cursor:pointer}
+.btn.primary{background:linear-gradient(135deg,var(--cyan),var(--green));color:#04111f}
+.btn.gold{background:rgba(245,201,93,.16);border-color:rgba(245,201,93,.42);color:#fff3c4}
+.btn.violet{background:rgba(154,117,255,.16);border-color:rgba(154,117,255,.42);color:#efeaff}
+.visual{margin:26px 0;border:1px solid rgba(55,232,255,.22);border-radius:28px;overflow:hidden;box-shadow:var(--shadow);background:#050b16}
+.visual img{display:block;width:100%;height:auto}
+.caption{padding:13px 16px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+.section{padding:42px 0}
+.panel{border:1px solid var(--line);border-radius:28px;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.025));box-shadow:var(--shadow);padding:24px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.card,.box{border:1px solid var(--line);border-radius:22px;background:rgba(255,255,255,.055);padding:18px}
+.card p,.box p{color:#dce8fa;margin:0}
+.card strong{color:var(--cyan);font-size:28px}
+.quote{border-left:6px solid var(--cyan);background:rgba(55,232,255,.08);border-radius:0 22px 22px 0;padding:24px;font-size:clamp(22px,3vw,34px);line-height:1.25;font-weight:900}
+.quote small{display:block;margin-top:12px;color:var(--muted);font-size:15px;font-weight:700}
+.prompt{background:rgba(55,232,255,.075);border:1px solid rgba(55,232,255,.28);border-radius:22px;overflow:hidden}
+.prompt-head{display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(55,232,255,.24);padding:12px 14px;color:#dffaff;font-weight:950}
+.prompt pre{margin:0;white-space:pre-wrap;color:#f7fbff;padding:18px;font-family:Consolas,Monaco,monospace;font-size:15px}
+.copybtn{border:1px solid rgba(57,255,156,.4);background:rgba(57,255,156,.11);color:#dfffee;border-radius:999px;padding:8px 12px;cursor:pointer;font-weight:900}
+.checklist li{margin:8px 0;color:#dce8fa}
+.warning{border-left:5px solid var(--gold);background:rgba(245,201,93,.08);padding:18px;border-radius:0 18px 18px 0}
+.danger{border-left:5px solid var(--red);background:rgba(255,107,107,.08);padding:18px;border-radius:0 18px 18px 0}
+.safe{border-left:5px solid var(--green);background:rgba(57,255,156,.08);padding:18px;border-radius:0 18px 18px 0}
+.footer{border-top:1px solid var(--line);padding:32px 0;color:#8ea4bd;text-align:center}
+.table{width:100%;border-collapse:collapse;overflow:hidden;border-radius:18px}
+.table th,.table td{border:1px solid var(--line);padding:13px;text-align:left;vertical-align:top}
+.table th{background:rgba(55,232,255,.1);color:#fff}
+.table td{color:#dce8fa;background:rgba(255,255,255,.035)}
+.folder-tree{background:rgba(0,0,0,.28);border:1px solid rgba(55,232,255,.22);border-radius:22px;padding:18px;color:#eaf4ff;font-family:Consolas,Monaco,monospace;white-space:pre-wrap;overflow:auto}
+@media(max-width:860px){
+  .nav .wrap{align-items:flex-start;flex-direction:column}.navlinks{justify-content:flex-start}
+  .grid,.grid2{grid-template-columns:1fr}.panel{padding:18px}
+}
+@media print{
+  .nav,.actions,.copybtn{display:none}body{background:#020611}
+  .visual,.panel{box-shadow:none;page-break-inside:avoid}.section{page-break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="/courses/practical-ai-website-building/">
+      <img src="/assets/logo.png" alt="FutureWorld Intelligence logo">
+      <span>Practical AI & Website Building Course</span>
+    </a>
+    <div class="navlinks">
+      <a href="/courses/practical-ai-website-building/">Course Home</a>
+      <a href="/courses/practical-ai-website-building/module-1/">Module 1</a>
+      <a href="/courses/practical-ai-website-building/module-1/lecture-1-5-creating-project-folder-system/prompt-library/">Prompt Library</a>
+      <a href="/copyright/">Copyright</a>
+      <a href="/courses/practical-ai-website-building/module-1/lecture-1-6-understanding-local-folder-github-repository-and-public-website/">Next: 1.6</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Module 1 · Lecture 1.5</p>
+    <h1>Creating the Project <span>Folder System</span></h1>
+    <p class="lead">A clean folder system saves time, prevents confusion and protects your work. Before building a website, every learner needs one clear home for files, images, documents, screenshots, downloads and backups.</p>
+    <div class="actions">
+      <a class="btn primary" href="#start">Start Lecture</a>
+      <a class="btn gold" href="#folder-structure">Folder Structure</a>
+      <a class="btn violet" href="#prompt-lab">Prompt Lab</a>
+      <a class="btn" onclick="window.print();return false;" href="#">Save / Print PDF</a>
+    </div>
+  </div>
+</header>
+
+<main id="start">
+  <section class="wrap">
+    <div class="visual">
+      <img src="/assets/courses/practical-ai-website-building/module-1/lecture-1-5/01-create-project-folder-system.png" alt="Create the project folder system.">
+      <div class="caption">Opening idea: a clean structure saves time, prevents confusion and protects your work.</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap panel">
+      <p class="eyebrow">Mission Brief</p>
+      <h2>What this lecture will achieve</h2>
+      <div class="grid">
+        <div class="card"><strong>01</strong><h3>Create one project home</h3><p>Students create one main folder where all course and website work will live.</p></div>
+        <div class="card"><strong>02</strong><h3>Separate file types</h3><p>Students understand where website files, images, documents, screenshots and backups belong.</p></div>
+        <div class="card"><strong>03</strong><h3>Name files clearly</h3><p>Students learn simple naming rules that reduce mistakes and broken links.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow">Core Message</p>
+      <h2>Organization is part of digital skill</h2>
+      <div class="quote">
+        A beginner does not lose work because they are weak. They lose work because files are scattered. A good folder system makes learning easier.
+        <small>Organized today. Efficient tomorrow.</small>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" id="folder-structure">
+    <div class="visual">
+      <img src="/assets/courses/practical-ai-website-building/module-1/lecture-1-5/02-recommended-folder-structure.png" alt="Recommended main folder structure.">
+      <div class="caption">Recommended main folder: Digital_Projects with subfolders for website work, notes, images, documents, downloads, backups, screenshots and social content.</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap panel">
+      <p class="eyebrow">Recommended Structure</p>
+      <h2>Build one clear home for your work</h2>
+      <div class="folder-tree">Digital_Projects/
+├── Practice_Website/
+├── Course_Notes/
+├── Images/
+├── Documents/
+├── Downloads/
+├── Backup/
+├── Screenshots/
+└── Social_Media_Content/</div>
+      <div class="warning" style="margin-top:18px"><b>Important:</b> Do not keep project files randomly on Desktop, Downloads, WhatsApp folders or USB drives only.</div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="visual">
+      <img src="/assets/courses/practical-ai-website-building/module-1/lecture-1-5/03-website-project-folder.png" alt="Inside the website project folder.">
+      <div class="caption">The Practice_Website folder is where actual website files should live.</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap panel">
+      <p class="eyebrow">Website Folder</p>
+      <h2>Inside the website project folder</h2>
+      <table class="table">
+        <tr><th>File or folder</th><th>Purpose</th><th>Beginner note</th></tr>
+        <tr><td><b>index.html</b></td><td>Main homepage file.</td><td>Most websites start with this file.</td></tr>
+        <tr><td><b>about.html</b></td><td>About page content.</td><td>Use clear page names.</td></tr>
+        <tr><td><b>style.css</b></td><td>Controls colors, fonts and layout.</td><td>Keep style in one main CSS file at first.</td></tr>
+        <tr><td><b>main.js</b></td><td>Adds interactivity.</td><td>Optional for beginners at the start.</td></tr>
+        <tr><td><b>assets/</b></td><td>Reusable assets such as icons and fonts.</td><td>Use later when projects grow.</td></tr>
+        <tr><td><b>images/</b></td><td>Images used across the website.</td><td>Keep logos and graphics here.</td></tr>
+        <tr><td><b>downloads/</b></td><td>PDFs and documents users can download.</td><td>Only add files you want visitors to access.</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="visual">
+      <img src="/assets/courses/practical-ai-website-building/module-1/lecture-1-5/04-file-naming-rules.png" alt="File naming rules for web projects.">
+      <div class="caption">Simple file names reduce mistakes and improve speed.</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap panel">
+      <p class="eyebrow">File Naming Rules</p>
+      <h2>Use clear names and avoid confusion</h2>
+      <div class="grid2">
+        <div class="safe"><h3>Use clear names</h3><ul class="checklist"><li>homepage.html</li><li>about.html</li><li>style.css</li><li>main.js</li><li>logo.png</li><li>course-outline.pdf</li></ul></div>
+        <div class="danger"><h3>Avoid confusing names</h3><ul class="checklist"><li>finalfinalnew.html</li><li>my file copy 2.html</li><li>latest final edit v3.png</li><li>WhatsApp Image latest edited.png</li><li>random_file.ai</li></ul></div>
+      </div>
+      <div class="warning" style="margin-top:18px"><b>Rule:</b> Use short lowercase names, avoid spaces, and use hyphens or underscores only when needed.</div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="visual">
+      <img src="/assets/courses/practical-ai-website-building/module-1/lecture-1-5/05-where-files-belong.png" alt="Where each file belongs.">
+      <div class="caption">Store each file in the right place from the beginning.</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap panel">
+      <p class="eyebrow">File Placement</p>
+      <h2>Where each file belongs</h2>
+      <div class="grid">
+        <div class="card"><h3>HTML / CSS / JS</h3><p>Keep core website files in the website project folder.</p></div>
+        <div class="card"><h3>Images</h3><p>Store logos, graphics and media assets in the Images folder or website images folder.</p></div>
+        <div class="card"><h3>Documents</h3><p>Store notes, plans and references in Documents or Course_Notes.</p></div>
+        <div class="card"><h3>Downloads</h3><p>Keep installers, plugins and downloaded resources in Downloads.</p></div>
+        <div class="card"><h3>Screenshots</h3><p>Save proof, errors and references in Screenshots with dates if useful.</p></div>
+        <div class="card"><h3>Backups</h3><p>Keep backup copies in Backup and external storage when possible.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="visual">
+      <img src="/assets/courses/practical-ai-website-building/module-1/lecture-1-5/06-backup-organization-routine.png" alt="Backup and organization routine.">
+      <div class="caption">Organization today prevents loss tomorrow. Backups protect your progress.</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap panel">
+      <p class="eyebrow">Backup Routine</p>
+      <h2>Protect your work</h2>
+      <div class="grid">
+        <div class="card"><h3>Keep one main folder</h3><p>Do not scatter files across Desktop, Downloads and WhatsApp.</p></div>
+        <div class="card"><h3>Backup regularly</h3><p>Use an external drive, cloud storage or a separate backup folder.</p></div>
+        <div class="card"><h3>Save screenshots clearly</h3><p>Use screenshots for errors, settings and proof of completed work.</p></div>
+        <div class="card"><h3>Separate downloads</h3><p>Move important downloaded files into project folders if needed.</p></div>
+        <div class="card"><h3>Delete clutter carefully</h3><p>Do not delete files until you are sure they are no longer needed.</p></div>
+        <div class="card"><h3>Use GitHub later</h3><p>Website files will also be saved online through GitHub repositories.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="prompt-lab">
+    <div class="wrap panel">
+      <p class="eyebrow">Lecture 1.5 Prompt Lab</p>
+      <h2>Project Folder Prompt Library</h2>
+      <p class="lead">Students should use these prompts to create clean project folders and avoid file confusion.</p>
+      <div class="grid">
+        <div class="prompt"><div class="prompt-head"><span>Prompt 1 · Create folder structure</span><button class="copybtn" onclick="copyPromptById('p1')">Copy</button></div><pre id="p1">Help me create a clean folder structure for a beginner website project about [write your topic]. Include folders for website files, images, documents, downloads, backups, screenshots, and social media content. Also suggest simple file naming rules.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>Prompt 2 · Website folder plan</span><button class="copybtn" onclick="copyPromptById('p2')">Copy</button></div><pre id="p2">Act as a beginner website project organizer. Create a simple folder and file structure for my first website. Include index.html, about.html, style.css, main.js, images, assets, downloads, and README.txt.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>Prompt 3 · File naming rules</span><button class="copybtn" onclick="copyPromptById('p3')">Copy</button></div><pre id="p3">Create simple file naming rules for a beginner website project. Explain why I should avoid spaces, confusing names, random downloads, and repeated final versions.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>Prompt 4 · Clean messy files</span><button class="copybtn" onclick="copyPromptById('p4')">Copy</button></div><pre id="p4">I have a messy folder with website files, images, screenshots, downloads, documents, and backups. Act as my file organization assistant. Ask me what types of files I have, then suggest where each file should go.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>Prompt 5 · Backup routine</span><button class="copybtn" onclick="copyPromptById('p5')">Copy</button></div><pre id="p5">Act as a beginner backup coach. Create a simple backup routine for my website project. Include local backup, external drive backup, cloud backup, screenshots, and GitHub repository backup.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>Prompt 6 · README file</span><button class="copybtn" onclick="copyPromptById('p6')">Copy</button></div><pre id="p6">Create a simple README.txt template for my beginner website project. Include project name, purpose, folder explanation, important files, update notes, and backup instructions.</pre></div>
+      </div>
+      <div class="actions">
+        <a class="btn primary" href="/courses/practical-ai-website-building/module-1/lecture-1-5-creating-project-folder-system/prompt-library/">Open Full Lecture 1.5 Prompt Library</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap panel">
+      <p class="eyebrow">Practice Task</p>
+      <h2>Before Lecture 1.6</h2>
+      <div class="grid">
+        <div class="box"><h3>Task 1</h3><p>Create a main folder named <b>Digital_Projects</b>.</p></div>
+        <div class="box"><h3>Task 2</h3><p>Create the recommended subfolders for website files, notes, images, documents, downloads, backups, screenshots and social media content.</p></div>
+        <div class="box"><h3>Task 3</h3><p>Create a small README.txt file explaining what the project is and where files should go.</p></div>
+      </div>
+      <div class="warning" style="margin-top:18px"><b>Common mistake:</b> Do not start building the website while files are still scattered across random folders.</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap panel">
+      <p class="eyebrow">Final Checklist</p>
+      <h2>Lecture 1.5 complete</h2>
+      <ul class="checklist">
+        <li>I have created one main project folder.</li>
+        <li>I have created subfolders for website files, notes, images, documents, downloads, backups, screenshots and social media content.</li>
+        <li>I understand where each file type belongs.</li>
+        <li>I know simple file naming rules.</li>
+        <li>I understand why backups are important.</li>
+        <li>I have used at least two prompts from the Prompt Lab.</li>
+      </ul>
+      <div class="actions">
+        <a class="btn primary" href="/courses/practical-ai-website-building/module-1/lecture-1-6-understanding-local-folder-github-repository-and-public-website/">Next Lecture 1.6</a>
+        <a class="btn" href="/courses/practical-ai-website-building/module-1/">Back to Module 1</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap panel">
+      <p class="eyebrow">Copyright Notice</p>
+      <h2>FutureWorld Intelligence materials</h2>
+      <p class="lead">© 2026 FutureWorld Intelligence. All modules, lectures, prompts, visuals, graphics, downloadable files and instructional designs are protected intellectual property. Students may use this material for personal learning and may share official links. Copying, re-uploading, selling, modifying, packaging, distributing or presenting this material as someone else’s work is not allowed without written permission.</p>
+      <a class="btn" href="/copyright/">Read Full Copyright Notice</a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  © 2026 FutureWorld Intelligence. All rights reserved. | Practical AI & Website Building Course · Module 1 · Lecture 1.5
+</footer>
+
+<script>
+function copyPromptById(id){
+  const text=document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text).then(function(){
+    alert('Prompt copied. Paste it into ChatGPT and continue your practice.');
+  });
+}
+</script>
+</body>
+</html>

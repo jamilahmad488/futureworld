@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lecture 1.5 Prompt Library | Practical AI & Website Building Course</title>
+<meta name="description" content="Copyable prompt library for Lecture 1.5: Creating the Project Folder System." />
+<link rel="canonical" href="https://futureworldintelligence.org/courses/practical-ai-website-building/module-1/lecture-1-5-creating-project-folder-system/prompt-library/" />
+<style>
+:root{
+  --bg:#020611;--panel:#071225;--card:#0b1730;--ink:#eaf4ff;--muted:#9fb3c8;
+  --cyan:#37e8ff;--green:#39ff9c;--gold:#f5c95d;--red:#ff6b6b;--violet:#9a75ff;
+  --line:rgba(255,255,255,.15);--shadow:0 28px 90px rgba(0,0,0,.48);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 12% 8%,rgba(55,232,255,.16),transparent 28%),
+    radial-gradient(circle at 86% 10%,rgba(154,117,255,.13),transparent 26%),
+    linear-gradient(180deg,#020611,#071225 58%,#020611);
+  color:var(--ink);font-family:Inter,Segoe UI,Arial,sans-serif;line-height:1.65;
+}
+body:before{
+  content:"";position:fixed;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:46px 46px;pointer-events:none;opacity:.55;z-index:-1;
+}
+a{color:var(--cyan);text-decoration:none}
+.wrap{width:min(1160px,92vw);margin:auto}
+.nav{position:sticky;top:0;z-index:50;background:rgba(2,6,17,.84);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:13px 0}
+.brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-weight:950;text-transform:uppercase;letter-spacing:.04em}
+.brand img{width:40px;height:40px;border-radius:12px;object-fit:cover}
+.navlinks{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end}
+.navlinks a{color:var(--muted);font-weight:850;font-size:13px}
+.hero{padding:68px 0 34px}
+.eyebrow{color:var(--gold);font-weight:950;text-transform:uppercase;letter-spacing:.18em;font-size:12px}
+h1{font-size:clamp(40px,7vw,78px);line-height:.96;margin:12px 0 18px;text-transform:uppercase;letter-spacing:-.055em}
+h1 span{color:var(--cyan)}
+h2{font-size:clamp(28px,4vw,48px);line-height:1.08;margin:0 0 14px;text-transform:uppercase;letter-spacing:-.03em}
+h3{margin:0 0 8px;color:#fff;font-size:22px}
+.lead{font-size:20px;color:#dce8fa;max-width:900px}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 16px;border-radius:999px;border:1px solid rgba(55,232,255,.35);background:rgba(55,232,255,.08);color:#eaffff;font-weight:950;text-decoration:none;cursor:pointer}
+.btn.primary{background:linear-gradient(135deg,var(--cyan),var(--green));color:#04111f}
+.btn.gold{background:rgba(245,201,93,.16);border-color:rgba(245,201,93,.42);color:#fff3c4}
+.btn.violet{background:rgba(154,117,255,.16);border-color:rgba(154,117,255,.42);color:#efeaff}
+.visual{margin:26px 0;border:1px solid rgba(55,232,255,.22);border-radius:28px;overflow:hidden;box-shadow:var(--shadow);background:#050b16}
+.visual img{display:block;width:100%;height:auto}
+.caption{padding:13px 16px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+.section{padding:42px 0}
+.panel{border:1px solid var(--line);border-radius:28px;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.025));box-shadow:var(--shadow);padding:24px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.card,.box{border:1px solid var(--line);border-radius:22px;background:rgba(255,255,255,.055);padding:18px}
+.card p,.box p{color:#dce8fa;margin:0}
+.card strong{color:var(--cyan);font-size:28px}
+.quote{border-left:6px solid var(--cyan);background:rgba(55,232,255,.08);border-radius:0 22px 22px 0;padding:24px;font-size:clamp(22px,3vw,34px);line-height:1.25;font-weight:900}
+.quote small{display:block;margin-top:12px;color:var(--muted);font-size:15px;font-weight:700}
+.prompt{background:rgba(55,232,255,.075);border:1px solid rgba(55,232,255,.28);border-radius:22px;overflow:hidden}
+.prompt-head{display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(55,232,255,.24);padding:12px 14px;color:#dffaff;font-weight:950}
+.prompt pre{margin:0;white-space:pre-wrap;color:#f7fbff;padding:18px;font-family:Consolas,Monaco,monospace;font-size:15px}
+.copybtn{border:1px solid rgba(57,255,156,.4);background:rgba(57,255,156,.11);color:#dfffee;border-radius:999px;padding:8px 12px;cursor:pointer;font-weight:900}
+.checklist li{margin:8px 0;color:#dce8fa}
+.warning{border-left:5px solid var(--gold);background:rgba(245,201,93,.08);padding:18px;border-radius:0 18px 18px 0}
+.danger{border-left:5px solid var(--red);background:rgba(255,107,107,.08);padding:18px;border-radius:0 18px 18px 0}
+.safe{border-left:5px solid var(--green);background:rgba(57,255,156,.08);padding:18px;border-radius:0 18px 18px 0}
+.footer{border-top:1px solid var(--line);padding:32px 0;color:#8ea4bd;text-align:center}
+.table{width:100%;border-collapse:collapse;overflow:hidden;border-radius:18px}
+.table th,.table td{border:1px solid var(--line);padding:13px;text-align:left;vertical-align:top}
+.table th{background:rgba(55,232,255,.1);color:#fff}
+.table td{color:#dce8fa;background:rgba(255,255,255,.035)}
+.folder-tree{background:rgba(0,0,0,.28);border:1px solid rgba(55,232,255,.22);border-radius:22px;padding:18px;color:#eaf4ff;font-family:Consolas,Monaco,monospace;white-space:pre-wrap;overflow:auto}
+@media(max-width:860px){
+  .nav .wrap{align-items:flex-start;flex-direction:column}.navlinks{justify-content:flex-start}
+  .grid,.grid2{grid-template-columns:1fr}.panel{padding:18px}
+}
+@media print{
+  .nav,.actions,.copybtn{display:none}body{background:#020611}
+  .visual,.panel{box-shadow:none;page-break-inside:avoid}.section{page-break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="/courses/practical-ai-website-building/module-1/lecture-1-5-creating-project-folder-system/">
+      <img src="/assets/logo.png" alt="FutureWorld Intelligence logo">
+      <span>Lecture 1.5 Prompt Library</span>
+    </a>
+    <div class="navlinks">
+      <a href="/courses/practical-ai-website-building/module-1/lecture-1-5-creating-project-folder-system/">Back to Lecture 1.5</a>
+      <a href="/courses/practical-ai-website-building/module-1/">Module 1</a>
+      <a href="/copyright/">Copyright</a>
+    </div>
+  </div>
+</nav>
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Module 1 · Lecture 1.5</p>
+    <h1>Prompt <span>Library</span></h1>
+    <p class="lead">Use this library to create, clean, name, explain and back up your beginner website project folder system.</p>
+  </div>
+</header>
+<main>
+  <section class="section">
+    <div class="wrap panel">
+      <p class="eyebrow">How to use this library</p>
+      <h2>Copy, customize, organize</h2>
+      <div class="grid">
+        <div class="card"><h3>Copy</h3><p>Use the copy button to copy a prompt.</p></div>
+        <div class="card"><h3>Customize</h3><p>Replace bracketed text such as [write your topic].</p></div>
+        <div class="card"><h3>Apply</h3><p>Create real folders on your computer after each prompt.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap panel">
+      <p class="eyebrow">Prompt Library</p>
+      <h2>Lecture 1.5 copyable prompts</h2>
+      <div class="grid">
+        <div class="prompt"><div class="prompt-head"><span>1. Create folder structure</span><button class="copybtn" onclick="copyPromptById('pl1')">Copy</button></div><pre id="pl1">Help me create a clean folder structure for a beginner website project about [write your topic]. Include folders for website files, images, documents, downloads, backups, screenshots, and social media content. Also suggest simple file naming rules.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>2. Website folder plan</span><button class="copybtn" onclick="copyPromptById('pl2')">Copy</button></div><pre id="pl2">Act as a beginner website project organizer. Create a simple folder and file structure for my first website. Include index.html, about.html, style.css, main.js, images, assets, downloads, and README.txt.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>3. File naming rules</span><button class="copybtn" onclick="copyPromptById('pl3')">Copy</button></div><pre id="pl3">Create simple file naming rules for a beginner website project. Explain why I should avoid spaces, confusing names, random downloads, and repeated final versions.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>4. Clean messy files</span><button class="copybtn" onclick="copyPromptById('pl4')">Copy</button></div><pre id="pl4">I have a messy folder with website files, images, screenshots, downloads, documents, and backups. Act as my file organization assistant. Ask me what types of files I have, then suggest where each file should go.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>5. Backup routine</span><button class="copybtn" onclick="copyPromptById('pl5')">Copy</button></div><pre id="pl5">Act as a beginner backup coach. Create a simple backup routine for my website project. Include local backup, external drive backup, cloud backup, screenshots, and GitHub repository backup.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>6. README file</span><button class="copybtn" onclick="copyPromptById('pl6')">Copy</button></div><pre id="pl6">Create a simple README.txt template for my beginner website project. Include project name, purpose, folder explanation, important files, update notes, and backup instructions.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>7. Organize images</span><button class="copybtn" onclick="copyPromptById('pl7')">Copy</button></div><pre id="pl7">Act as a beginner image organization assistant. Tell me how to organize website images, logos, screenshots, social media graphics, and downloadable visuals into clear folders.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>8. Downloads cleanup</span><button class="copybtn" onclick="copyPromptById('pl8')">Copy</button></div><pre id="pl8">My Downloads folder is full of files. Create a safe cleanup plan that helps me move useful files into project folders, delete unnecessary files carefully, and avoid losing important work.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>9. Folder audit</span><button class="copybtn" onclick="copyPromptById('pl9')">Copy</button></div><pre id="pl9">Act as my folder audit coach. Ask me questions about my project folder and then tell me whether my folder system is clean, simple, beginner-friendly, and ready for website work.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>10. GitHub-ready structure</span><button class="copybtn" onclick="copyPromptById('pl10')">Copy</button></div><pre id="pl10">Create a GitHub-ready folder structure for a beginner website project. Explain which files should be uploaded to GitHub and which files should stay private or local.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>11. Screenshot naming</span><button class="copybtn" onclick="copyPromptById('pl11')">Copy</button></div><pre id="pl11">Create simple naming rules for screenshots in a website project. Include examples for error screenshots, design screenshots, proof of upload, and tutorial screenshots.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>12. Prepare for Lecture 1.6</span><button class="copybtn" onclick="copyPromptById('pl12')">Copy</button></div><pre id="pl12">Explain the difference between local folders, GitHub repositories, and public website URLs as a preview for my next lecture. Use simple examples for a beginner.</pre></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap panel">
+      <p class="eyebrow">Copyright Notice</p>
+      <h2>FutureWorld Intelligence materials</h2>
+      <p class="lead">© 2026 FutureWorld Intelligence. All modules, lectures, prompts, visuals, graphics, downloadable files and instructional designs are protected intellectual property. Students may use this material for personal learning and may share official links. Copying, re-uploading, selling, modifying, packaging, distributing or presenting this material as someone else’s work is not allowed without written permission.</p>
+      <a class="btn" href="/copyright/">Read Full Copyright Notice</a>
+    </div>
+  </section>
+</main>
+<footer class="footer">© 2026 FutureWorld Intelligence. All rights reserved. | Lecture 1.5 Prompt Library</footer>
+<script>
+function copyPromptById(id){
+  const text=document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text).then(function(){
+    alert('Prompt copied. Paste it into ChatGPT and practice.');
+  });
+}
+</script>
+</body>
+</html>

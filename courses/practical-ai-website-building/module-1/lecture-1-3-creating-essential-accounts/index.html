@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lecture 1.3: Creating the Essential Accounts | Practical AI & Website Building Course</title>
+<meta name="description" content="Lecture 1.3 of the Practical AI & Website Building Course. Learn how to create essential Google, ChatGPT and GitHub accounts safely and professionally." />
+<link rel="canonical" href="https://futureworldintelligence.org/courses/practical-ai-website-building/module-1/lecture-1-3-creating-essential-accounts/" />
+<style>
+:root{
+  --bg:#020611;--panel:#071225;--card:#0b1730;--ink:#eaf4ff;--muted:#9fb3c8;
+  --cyan:#37e8ff;--green:#39ff9c;--gold:#f5c95d;--red:#ff6b6b;--violet:#9a75ff;
+  --line:rgba(255,255,255,.15);--shadow:0 28px 90px rgba(0,0,0,.48);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 12% 8%,rgba(55,232,255,.16),transparent 28%),
+    radial-gradient(circle at 86% 10%,rgba(154,117,255,.13),transparent 26%),
+    linear-gradient(180deg,#020611,#071225 58%,#020611);
+  color:var(--ink);font-family:Inter,Segoe UI,Arial,sans-serif;line-height:1.65;
+}
+body:before{
+  content:"";position:fixed;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:46px 46px;pointer-events:none;opacity:.55;z-index:-1;
+}
+a{color:var(--cyan);text-decoration:none}
+.wrap{width:min(1160px,92vw);margin:auto}
+.nav{position:sticky;top:0;z-index:50;background:rgba(2,6,17,.84);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:13px 0}
+.brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-weight:950;text-transform:uppercase;letter-spacing:.04em}
+.brand img{width:40px;height:40px;border-radius:12px;object-fit:cover}
+.navlinks{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end}
+.navlinks a{color:var(--muted);font-weight:850;font-size:13px}
+.hero{padding:68px 0 34px}
+.eyebrow{color:var(--gold);font-weight:950;text-transform:uppercase;letter-spacing:.18em;font-size:12px}
+h1{font-size:clamp(40px,7vw,78px);line-height:.96;margin:12px 0 18px;text-transform:uppercase;letter-spacing:-.055em}
+h1 span{color:var(--cyan)}
+h2{font-size:clamp(28px,4vw,48px);line-height:1.08;margin:0 0 14px;text-transform:uppercase;letter-spacing:-.03em}
+h3{margin:0 0 8px;color:#fff;font-size:22px}
+.lead{font-size:20px;color:#dce8fa;max-width:900px}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 16px;border-radius:999px;border:1px solid rgba(55,232,255,.35);background:rgba(55,232,255,.08);color:#eaffff;font-weight:950;text-decoration:none;cursor:pointer}
+.btn.primary{background:linear-gradient(135deg,var(--cyan),var(--green));color:#04111f}
+.btn.gold{background:rgba(245,201,93,.16);border-color:rgba(245,201,93,.42);color:#fff3c4}
+.btn.violet{background:rgba(154,117,255,.16);border-color:rgba(154,117,255,.42);color:#efeaff}
+.visual{margin:26px 0;border:1px solid rgba(55,232,255,.22);border-radius:28px;overflow:hidden;box-shadow:var(--shadow);background:#050b16}
+.visual img{display:block;width:100%;height:auto}
+.caption{padding:13px 16px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+.section{padding:42px 0}
+.panel{border:1px solid var(--line);border-radius:28px;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.025));box-shadow:var(--shadow);padding:24px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.card,.box{border:1px solid var(--line);border-radius:22px;background:rgba(255,255,255,.055);padding:18px}
+.card p,.box p{color:#dce8fa;margin:0}
+.card strong{color:var(--cyan);font-size:28px}
+.quote{border-left:6px solid var(--cyan);background:rgba(55,232,255,.08);border-radius:0 22px 22px 0;padding:24px;font-size:clamp(22px,3vw,34px);line-height:1.25;font-weight:900}
+.quote small{display:block;margin-top:12px;color:var(--muted);font-size:15px;font-weight:700}
+.prompt{background:rgba(55,232,255,.075);border:1px solid rgba(55,232,255,.28);border-radius:22px;overflow:hidden}
+.prompt-head{display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(55,232,255,.24);padding:12px 14px;color:#dffaff;font-weight:950}
+.prompt pre{margin:0;white-space:pre-wrap;color:#f7fbff;padding:18px;font-family:Consolas,Monaco,monospace;font-size:15px}
+.copybtn{border:1px solid rgba(57,255,156,.4);background:rgba(57,255,156,.11);color:#dfffee;border-radius:999px;padding:8px 12px;cursor:pointer;font-weight:900}
+.checklist li{margin:8px 0;color:#dce8fa}
+.warning{border-left:5px solid var(--gold);background:rgba(245,201,93,.08);padding:18px;border-radius:0 18px 18px 0}
+.danger{border-left:5px solid var(--red);background:rgba(255,107,107,.08);padding:18px;border-radius:0 18px 18px 0}
+.safe{border-left:5px solid var(--green);background:rgba(57,255,156,.08);padding:18px;border-radius:0 18px 18px 0}
+.footer{border-top:1px solid var(--line);padding:32px 0;color:#8ea4bd;text-align:center}
+.table{width:100%;border-collapse:collapse;overflow:hidden;border-radius:18px}
+.table th,.table td{border:1px solid var(--line);padding:13px;text-align:left;vertical-align:top}
+.table th{background:rgba(55,232,255,.1);color:#fff}
+.table td{color:#dce8fa;background:rgba(255,255,255,.035)}
+@media(max-width:860px){
+  .nav .wrap{align-items:flex-start;flex-direction:column}.navlinks{justify-content:flex-start}
+  .grid,.grid2{grid-template-columns:1fr}.panel{padding:18px}
+}
+@media print{
+  .nav,.actions,.copybtn{display:none}body{background:#020611}
+  .visual,.panel{box-shadow:none;page-break-inside:avoid}.section{page-break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="/courses/practical-ai-website-building/">
+      <img src="/assets/logo.png" alt="FutureWorld Intelligence logo">
+      <span>Practical AI & Website Building Course</span>
+    </a>
+    <div class="navlinks">
+      <a href="/courses/practical-ai-website-building/">Course Home</a>
+      <a href="/courses/practical-ai-website-building/module-1/">Module 1</a>
+      <a href="/courses/practical-ai-website-building/module-1/lecture-1-3-creating-essential-accounts/prompt-library/">Prompt Library</a>
+      <a href="/copyright/">Copyright</a>
+      <a href="/courses/practical-ai-website-building/module-1/lecture-1-4-installing-required-software/">Next: 1.4</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Module 1 · Lecture 1.3</p>
+    <h1>Creating the <span>Essential Accounts</span></h1>
+    <p class="lead">Your accounts are your digital identity. Before building a website or digital platform, you must create safe, organized and recoverable accounts that you can trust for long-term learning and publishing.</p>
+    <div class="actions">
+      <a class="btn primary" href="#start">Start Lecture</a>
+      <a class="btn gold" href="#account-checklist">Account Checklist</a>
+      <a class="btn violet" href="#prompt-lab">Prompt Lab</a>
+      <a class="btn" onclick="window.print();return false;" href="#">Save / Print PDF</a>
+    </div>
+  </div>
+</header>
+
+<main id="start">
+  <section class="wrap">
+    <div class="visual">
+      <img src="/assets/courses/practical-ai-website-building/module-1/lecture-1-3/01-digital-identity-setup.png" alt="Creating essential accounts for beginners.">
+      <div class="caption">Opening idea: your accounts are your digital identity and the foundation for website building.</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap panel">
+      <p class="eyebrow">Mission Brief</p>
+      <h2>What this lecture will achieve</h2>
+      <div class="grid">
+        <div class="card"><strong>01</strong><h3>Create core accounts</h3><p>Students understand why Google, ChatGPT and GitHub accounts are needed.</p></div>
+        <div class="card"><strong>02</strong><h3>Protect access</h3><p>Students learn password safety, recovery settings and two-factor authentication.</p></div>
+        <div class="card"><strong>03</strong><h3>Stay organized</h3><p>Students create a simple account record and use professional naming habits.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow">Core Message</p>
+      <h2>Your accounts are your digital identity</h2>
+      <div class="quote">
+        A digital platform does not begin with code. It begins with safe access, clear identity, recoverable accounts and organized credentials.
+        <small>Simple setup now prevents major problems later.</small>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="visual">
+      <img src="/assets/courses/practical-ai-website-building/module-1/lecture-1-3/02-essential-accounts-ecosystem.png" alt="The essential accounts ecosystem: Google, ChatGPT and GitHub.">
+      <div class="caption">Three accounts, three roles, one beginner workflow: Google for access, ChatGPT for learning, GitHub for building and publishing.</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap panel">
+      <p class="eyebrow">Essential Accounts</p>
+      <h2>Three accounts every student needs</h2>
+      <div class="grid">
+        <div class="card"><h3>Google Account</h3><p>Used for Gmail, Google Drive, Search Console, Analytics, YouTube and account verification.</p></div>
+        <div class="card"><h3>ChatGPT Account</h3><p>Used for explanations, prompts, planning, writing, learning support and troubleshooting.</p></div>
+        <div class="card"><h3>GitHub Account</h3><p>Used for storing website files, version control, GitHub Pages publishing and collaboration.</p></div>
+      </div>
+      <div class="warning" style="margin-top:18px"><b>Important:</b> Do not buy a domain yet. Domain registrar account creation comes later when the student is ready to purchase a domain.</div>
+    </div>
+  </section>
+
+  <section class="wrap" id="account-checklist">
+    <div class="visual">
+      <img src="/assets/courses/practical-ai-website-building/module-1/lecture-1-3/03-set-up-accounts-right-way.png" alt="Set up your accounts the right way.">
+      <div class="caption">A safe account setup includes professional email, clear username, recovery phone, recovery email, profile basics and 2-step verification.</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap panel">
+      <p class="eyebrow">Setup Checklist</p>
+      <h2>Create accounts the right way</h2>
+      <table class="table">
+        <tr><th>Step</th><th>What to do</th><th>Why it matters</th></tr>
+        <tr><td><b>1</b></td><td>Use one professional email for learning and project work.</td><td>Keeps your digital work organized and credible.</td></tr>
+        <tr><td><b>2</b></td><td>Choose a clear username.</td><td>Your username may become part of public links.</td></tr>
+        <tr><td><b>3</b></td><td>Add recovery phone.</td><td>Helps you regain access if you are locked out.</td></tr>
+        <tr><td><b>4</b></td><td>Add recovery email.</td><td>Gives another safe way to recover your account.</td></tr>
+        <tr><td><b>5</b></td><td>Complete profile basics.</td><td>Reduces confusion and supports professional identity.</td></tr>
+        <tr><td><b>6</b></td><td>Turn on two-step verification.</td><td>Adds an extra security layer beyond your password.</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="visual">
+      <img src="/assets/courses/practical-ai-website-building/module-1/lecture-1-3/04-password-safety-2fa.png" alt="Password safety and two-factor authentication.">
+      <div class="caption">Protect your accounts before you build. Strong passwords and 2FA are the foundation of safe digital work.</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap panel">
+      <p class="eyebrow">Account Security</p>
+      <h2>Password safety and 2FA</h2>
+      <div class="grid">
+        <div class="card"><h3>Use strong passwords</h3><p>Use long, unique passwords. Do not use simple names, birthdays or common words.</p></div>
+        <div class="card"><h3>Do not reuse passwords</h3><p>If one account is compromised, reused passwords can put all accounts at risk.</p></div>
+        <div class="card"><h3>Turn on 2-step verification</h3><p>Use a phone, authenticator app or backup code method where available.</p></div>
+        <div class="card"><h3>Store backup codes safely</h3><p>Keep backup codes offline or in a secure password manager.</p></div>
+        <div class="card"><h3>Use a password manager</h3><p>A trusted password manager helps store and generate strong passwords.</p></div>
+        <div class="card"><h3>Never share passwords</h3><p>No course, teacher, friend or platform should ask for your password.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="visual">
+      <img src="/assets/courses/practical-ai-website-building/module-1/lecture-1-3/05-recovery-continuity.png" alt="Recovery and continuity for accounts.">
+      <div class="caption">Recovery settings protect your learning journey and ensure you do not lose access to your accounts.</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap panel">
+      <p class="eyebrow">Recovery Plan</p>
+      <h2>Never lose access to your learning accounts</h2>
+      <div class="grid">
+        <div class="box"><h3>Recovery email</h3><p>Keep an active email address that you can access.</p></div>
+        <div class="box"><h3>Recovery phone</h3><p>Add a phone number that belongs to you.</p></div>
+        <div class="box"><h3>Backup codes</h3><p>Save backup codes in a safe offline record.</p></div>
+        <div class="box"><h3>Secure notes</h3><p>Maintain a private account notebook or password manager record.</p></div>
+        <div class="box"><h3>Regular checks</h3><p>Review account recovery settings every few months.</p></div>
+        <div class="box"><h3>Trusted devices</h3><p>Use your own device and avoid logging in on public computers.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="visual">
+      <img src="/assets/courses/practical-ai-website-building/module-1/lecture-1-3/06-professional-digital-identity.png" alt="Professional digital identity do and don't guide.">
+      <div class="caption">Professional digital identity is about trust, organization and long-term credibility.</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap panel">
+      <p class="eyebrow">Digital Identity</p>
+      <h2>Do and do not for beginners</h2>
+      <div class="grid2">
+        <div class="safe"><h3>Do</h3><ul class="checklist"><li>Use real recovery details.</li><li>Keep accounts organized.</li><li>Use professional names.</li><li>Review security settings.</li><li>Save important account details safely.</li></ul></div>
+        <div class="danger"><h3>Do not</h3><ul class="checklist"><li>Share passwords.</li><li>Use confusing usernames.</li><li>Ignore recovery options.</li><li>Use the same password everywhere.</li><li>Use random emails you cannot access later.</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="prompt-lab">
+    <div class="wrap panel">
+      <p class="eyebrow">Lecture 1.3 Prompt Lab</p>
+      <h2>Essential Accounts Prompt Library</h2>
+      <p class="lead">Students should copy and use these prompts to set up their accounts safely and confidently.</p>
+      <div class="grid">
+        <div class="prompt"><div class="prompt-head"><span>Prompt 1 · Account setup checklist</span><button class="copybtn" onclick="copyPromptById('p1')">Copy</button></div><pre id="p1">Create a beginner checklist for setting up the accounts I need for building and publishing a website. Include Google account, ChatGPT account, GitHub account, and domain registrar account. Also include password safety and recovery tips.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>Prompt 2 · Professional email advice</span><button class="copybtn" onclick="copyPromptById('p2')">Copy</button></div><pre id="p2">Act as a beginner-friendly digital identity coach. Help me choose a professional email and username style for learning, GitHub, websites, and future online projects. Explain what names to avoid.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>Prompt 3 · Google account explained</span><button class="copybtn" onclick="copyPromptById('p3')">Copy</button></div><pre id="p3">Explain why a Google account is useful for a beginner website-building student. Include Gmail, Drive, YouTube, Search Console, Analytics, and account verification in simple language.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>Prompt 4 · ChatGPT account explained</span><button class="copybtn" onclick="copyPromptById('p4')">Copy</button></div><pre id="p4">Explain how I can use a ChatGPT account for learning website building, improving prompts, writing content, planning pages, solving errors, and understanding digital tools.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>Prompt 5 · GitHub account explained</span><button class="copybtn" onclick="copyPromptById('p5')">Copy</button></div><pre id="p5">Explain GitHub to me like I am a complete beginner. Tell me why I need a GitHub account for website files, repositories, version control, GitHub Pages, and publishing.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>Prompt 6 · Security checklist</span><button class="copybtn" onclick="copyPromptById('p6')">Copy</button></div><pre id="p6">Act as a digital safety teacher. Create a simple account security checklist for a beginner. Include strong passwords, password managers, two-step verification, recovery email, recovery phone, backup codes, and what not to share.</pre></div>
+      </div>
+      <div class="actions">
+        <a class="btn primary" href="/courses/practical-ai-website-building/module-1/lecture-1-3-creating-essential-accounts/prompt-library/">Open Full Lecture 1.3 Prompt Library</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap panel">
+      <p class="eyebrow">Practice Task</p>
+      <h2>Before Lecture 1.4</h2>
+      <div class="grid">
+        <div class="box"><h3>Task 1</h3><p>Create or confirm your Google account, ChatGPT account and GitHub account.</p></div>
+        <div class="box"><h3>Task 2</h3><p>Turn on recovery options and two-step verification wherever possible.</p></div>
+        <div class="box"><h3>Task 3</h3><p>Create a private account record with account name, email, recovery method and date created. Do not write passwords in an unsafe place.</p></div>
+      </div>
+      <div class="warning" style="margin-top:18px"><b>Common mistake:</b> Many beginners create accounts with random emails and later forget access details. Use a professional email and safe recovery settings.</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap panel">
+      <p class="eyebrow">Final Checklist</p>
+      <h2>Lecture 1.3 complete</h2>
+      <ul class="checklist">
+        <li>I understand that accounts are my digital identity.</li>
+        <li>I know why Google, ChatGPT and GitHub accounts are needed.</li>
+        <li>I understand why recovery email and phone are important.</li>
+        <li>I understand password safety and two-step verification.</li>
+        <li>I know not to share passwords with anyone.</li>
+        <li>I have started a private account record.</li>
+        <li>I have used at least two prompts from the Prompt Lab.</li>
+      </ul>
+      <div class="actions">
+        <a class="btn primary" href="/courses/practical-ai-website-building/module-1/lecture-1-4-installing-required-software/">Next Lecture 1.4</a>
+        <a class="btn" href="/courses/practical-ai-website-building/module-1/">Back to Module 1</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap panel">
+      <p class="eyebrow">Copyright Notice</p>
+      <h2>FutureWorld Intelligence materials</h2>
+      <p class="lead">© 2026 FutureWorld Intelligence. All modules, lectures, prompts, visuals, graphics, downloadable files and instructional designs are protected intellectual property. Students may use this material for personal learning and may share official links. Copying, re-uploading, selling, modifying, packaging, distributing or presenting this material as someone else’s work is not allowed without written permission.</p>
+      <a class="btn" href="/copyright/">Read Full Copyright Notice</a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  © 2026 FutureWorld Intelligence. All rights reserved. | Practical AI & Website Building Course · Module 1 · Lecture 1.3
+</footer>
+
+<script>
+function copyPromptById(id){
+  const text=document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text).then(function(){
+    alert('Prompt copied. Paste it into ChatGPT and continue your practice.');
+  });
+}
+</script>
+</body>
+</html>

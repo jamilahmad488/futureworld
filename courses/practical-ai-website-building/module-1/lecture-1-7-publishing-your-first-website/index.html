@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lecture 1.7: Publishing Your First Website | Practical AI & Website Building Course</title>
+<meta name="description" content="Lecture 1.7 of Module 1: Building Your Digital Foundation. Learn how to publish your first website by moving local files to GitHub and opening a live public website link." />
+<link rel="canonical" href="https://futureworldintelligence.org/courses/practical-ai-website-building/module-1/lecture-1-7-publishing-your-first-website/" />
+<style>
+:root{
+  --bg:#020611;--panel:#071225;--card:#0b1730;--ink:#eaf4ff;--muted:#9fb3c8;
+  --cyan:#37e8ff;--green:#39ff9c;--gold:#f5c95d;--red:#ff6b6b;--violet:#9a75ff;
+  --line:rgba(255,255,255,.15);--shadow:0 28px 90px rgba(0,0,0,.48);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 12% 8%,rgba(55,232,255,.16),transparent 28%),
+    radial-gradient(circle at 86% 10%,rgba(154,117,255,.13),transparent 26%),
+    linear-gradient(180deg,#020611,#071225 58%,#020611);
+  color:var(--ink);font-family:Inter,Segoe UI,Arial,sans-serif;line-height:1.65;
+}
+body:before{
+  content:"";position:fixed;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:46px 46px;pointer-events:none;opacity:.55;z-index:-1;
+}
+a{color:var(--cyan);text-decoration:none}
+.wrap{width:min(1160px,92vw);margin:auto}
+.nav{position:sticky;top:0;z-index:50;background:rgba(2,6,17,.84);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:13px 0}
+.brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-weight:950;text-transform:uppercase;letter-spacing:.04em}
+.brand img{width:40px;height:40px;border-radius:12px;object-fit:cover}
+.navlinks{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end}
+.navlinks a{color:var(--muted);font-weight:850;font-size:13px}
+.hero{padding:68px 0 34px}
+.eyebrow{color:var(--gold);font-weight:950;text-transform:uppercase;letter-spacing:.18em;font-size:12px}
+h1{font-size:clamp(40px,7vw,78px);line-height:.96;margin:12px 0 18px;text-transform:uppercase;letter-spacing:-.055em}
+h1 span{color:var(--cyan)}
+h2{font-size:clamp(28px,4vw,48px);line-height:1.08;margin:0 0 14px;text-transform:uppercase;letter-spacing:-.03em}
+h3{margin:0 0 8px;color:#fff;font-size:22px}
+.lead{font-size:20px;color:#dce8fa;max-width:900px}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 16px;border-radius:999px;border:1px solid rgba(55,232,255,.35);background:rgba(55,232,255,.08);color:#eaffff;font-weight:950;text-decoration:none;cursor:pointer}
+.btn.primary{background:linear-gradient(135deg,var(--cyan),var(--green));color:#04111f}
+.btn.gold{background:rgba(245,201,93,.16);border-color:rgba(245,201,93,.42);color:#fff3c4}
+.btn.violet{background:rgba(154,117,255,.16);border-color:rgba(154,117,255,.42);color:#efeaff}
+.visual{margin:26px 0;border:1px solid rgba(55,232,255,.22);border-radius:28px;overflow:hidden;box-shadow:var(--shadow);background:#050b16}
+.visual img{display:block;width:100%;height:auto}
+.caption{padding:13px 16px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+.section{padding:42px 0}
+.panel{border:1px solid var(--line);border-radius:28px;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.025));box-shadow:var(--shadow);padding:24px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.card,.box{border:1px solid var(--line);border-radius:22px;background:rgba(255,255,255,.055);padding:18px}
+.card p,.box p{color:#dce8fa;margin:0}
+.card strong{color:var(--cyan);font-size:28px}
+.quote{border-left:6px solid var(--cyan);background:rgba(55,232,255,.08);border-radius:0 22px 22px 0;padding:24px;font-size:clamp(22px,3vw,34px);line-height:1.25;font-weight:900}
+.quote small{display:block;margin-top:12px;color:var(--muted);font-size:15px;font-weight:700}
+.prompt{background:rgba(55,232,255,.075);border:1px solid rgba(55,232,255,.28);border-radius:22px;overflow:hidden}
+.prompt-head{display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(55,232,255,.24);padding:12px 14px;color:#dffaff;font-weight:950}
+.prompt pre{margin:0;white-space:pre-wrap;color:#f7fbff;padding:18px;font-family:Consolas,Monaco,monospace;font-size:15px}
+.copybtn{border:1px solid rgba(57,255,156,.4);background:rgba(57,255,156,.11);color:#dfffee;border-radius:999px;padding:8px 12px;cursor:pointer;font-weight:900}
+.checklist li{margin:8px 0;color:#dce8fa}
+.warning{border-left:5px solid var(--gold);background:rgba(245,201,93,.08);padding:18px;border-radius:0 18px 18px 0}
+.danger{border-left:5px solid var(--red);background:rgba(255,107,107,.08);padding:18px;border-radius:0 18px 18px 0}
+.safe{border-left:5px solid var(--green);background:rgba(57,255,156,.08);padding:18px;border-radius:0 18px 18px 0}
+.footer{border-top:1px solid var(--line);padding:32px 0;color:#8ea4bd;text-align:center}
+.table{width:100%;border-collapse:collapse;overflow:hidden;border-radius:18px}
+.table th,.table td{border:1px solid var(--line);padding:13px;text-align:left;vertical-align:top}
+.table th{background:rgba(55,232,255,.1);color:#fff}
+.table td{color:#dce8fa;background:rgba(255,255,255,.035)}
+.codebox{background:rgba(0,0,0,.28);border:1px solid rgba(55,232,255,.22);border-radius:22px;padding:18px;color:#eaf4ff;font-family:Consolas,Monaco,monospace;white-space:pre-wrap;overflow:auto}
+@media(max-width:860px){
+  .nav .wrap{align-items:flex-start;flex-direction:column}.navlinks{justify-content:flex-start}
+  .grid,.grid2{grid-template-columns:1fr}.panel{padding:18px}
+}
+@media print{
+  .nav,.actions,.copybtn{display:none}body{background:#020611}
+  .visual,.panel{box-shadow:none;page-break-inside:avoid}.section{page-break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="/courses/practical-ai-website-building/">
+      <img src="/assets/logo.png" alt="FutureWorld Intelligence logo">
+      <span>Practical AI & Website Building Course</span>
+    </a>
+    <div class="navlinks">
+      <a href="/courses/practical-ai-website-building/">Course Home</a>
+      <a href="/courses/practical-ai-website-building/module-1/">Module 1</a>
+      <a href="/courses/practical-ai-website-building/module-1/lecture-1-7-publishing-your-first-website/prompt-library/">Prompt Library</a>
+      <a href="/copyright/">Copyright</a>
+      <a href="/courses/practical-ai-website-building/module-1/lecture-1-8-module-1-practical-project/">Next: 1.8</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Module 1 · Lecture 1.7</p>
+    <h1>Publishing Your <span>First Website</span></h1>
+    <p class="lead">Publishing means turning files on your computer into a public website link that other people can open. In this lecture, beginners learn the simple path from local files to GitHub repository to live website.</p>
+    <div class="actions">
+      <a class="btn primary" href="#start">Start Lecture</a>
+      <a class="btn gold" href="#workflow">Publishing Workflow</a>
+      <a class="btn violet" href="#prompt-lab">Prompt Lab</a>
+      <a class="btn" onclick="window.print();return false;" href="#">Save / Print PDF</a>
+    </div>
+  </div>
+</header>
+
+<main id="start">
+  <section class="wrap">
+    <div class="visual">
+      <img src="/assets/courses/practical-ai-website-building/module-1/lecture-1-7/01-publishing-your-first-website.png" alt="Publishing your first website from local computer to GitHub repository to live website.">
+      <div class="caption">Opening idea: publishing turns your local files into a public website people can visit.</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap panel">
+      <p class="eyebrow">Mission Brief</p>
+      <h2>What this lecture will achieve</h2>
+      <div class="grid">
+        <div class="card"><strong>01</strong><h3>Understand publishing</h3><p>Students understand the difference between saving files locally and publishing a live website.</p></div>
+        <div class="card"><strong>02</strong><h3>Use GitHub workflow</h3><p>Students learn the basic commit, push and GitHub Pages publishing flow.</p></div>
+        <div class="card"><strong>03</strong><h3>Check before sharing</h3><p>Students test links, images, mobile view and content before sharing the website publicly.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow">Core Message</p>
+      <h2>Your website becomes real when it has a public link</h2>
+      <div class="quote">
+        A website file on your laptop is private. A published website link is public. Publishing is the bridge between your work and your audience.
+        <small>Build locally. Save to GitHub. Publish online.</small>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="visual">
+      <img src="/assets/courses/practical-ai-website-building/module-1/lecture-1-7/02-local-files-to-live-website.png" alt="Local folder to GitHub repository to live website.">
+      <div class="caption">The three-stage idea: local folder, GitHub repository, live website.</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap panel">
+      <p class="eyebrow">Publishing Concept</p>
+      <h2>From local files to live website</h2>
+      <table class="table">
+        <tr><th>Stage</th><th>Where it lives</th><th>Who can access it</th><th>Purpose</th></tr>
+        <tr><td><b>Local folder</b></td><td>Your computer</td><td>Only you</td><td>Create and edit website files.</td></tr>
+        <tr><td><b>GitHub repository</b></td><td>GitHub online storage</td><td>You and collaborators</td><td>Store, version and manage website files.</td></tr>
+        <tr><td><b>Live website</b></td><td>GitHub Pages or hosting platform</td><td>Public visitors</td><td>Share the website with the world.</td></tr>
+      </table>
+      <div class="warning" style="margin-top:18px"><b>Important:</b> A local laptop path is not a website link. Visitors need a public URL such as a GitHub Pages link or custom domain.</div>
+    </div>
+  </section>
+
+  <section class="wrap" id="workflow">
+    <div class="visual">
+      <img src="/assets/courses/practical-ai-website-building/module-1/lecture-1-7/03-basic-publishing-workflow.png" alt="The basic publishing workflow.">
+      <div class="caption">Basic publishing workflow: create files, save locally, commit, push, publish, open live link.</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap panel">
+      <p class="eyebrow">Publishing Workflow</p>
+      <h2>The beginner process</h2>
+      <div class="grid">
+        <div class="card"><strong>1</strong><h3>Create or edit files</h3><p>Edit your website files in VS Code.</p></div>
+        <div class="card"><strong>2</strong><h3>Save locally</h3><p>Save your changes inside the correct project folder.</p></div>
+        <div class="card"><strong>3</strong><h3>Commit changes</h3><p>Create a clear Git commit describing what changed.</p></div>
+        <div class="card"><strong>4</strong><h3>Push to GitHub</h3><p>Upload your commit to the online GitHub repository.</p></div>
+        <div class="card"><strong>5</strong><h3>GitHub Pages publishes</h3><p>GitHub Pages or your hosting platform serves the website.</p></div>
+        <div class="card"><strong>6</strong><h3>Open live link</h3><p>Test the public link in your browser.</p></div>
+      </div>
+      <div class="codebox" style="margin-top:18px">Common Git Bash flow:
+git status
+git add .
+git commit -m "Publish first website"
+git pull --rebase origin main
+git push origin main</div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="visual">
+      <img src="/assets/courses/practical-ai-website-building/module-1/lecture-1-7/04-check-before-you-go-live.png" alt="Check before publishing live website.">
+      <div class="caption">Check before you go live: homepage, navigation, images, mobile view, spelling, buttons and analytics if needed.</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap panel">
+      <p class="eyebrow">Quality Check</p>
+      <h2>Before you share your link</h2>
+      <div class="grid">
+        <div class="card"><h3>Homepage opens</h3><p>Confirm your main page opens correctly in the browser.</p></div>
+        <div class="card"><h3>Navigation works</h3><p>Click every menu item and internal link.</p></div>
+        <div class="card"><h3>Images load</h3><p>Check that images appear and paths are correct.</p></div>
+        <div class="card"><h3>Mobile view looks clean</h3><p>Use browser responsive mode or phone testing.</p></div>
+        <div class="card"><h3>Text reviewed</h3><p>Check spelling, titles and simple wording.</p></div>
+        <div class="card"><h3>Buttons tested</h3><p>Test buttons, downloads and contact links.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="visual">
+      <img src="/assets/courses/practical-ai-website-building/module-1/lecture-1-7/05-publishing-mistakes-best-practices.png" alt="Publishing mistakes and best practices.">
+      <div class="caption">Common publishing mistakes can usually be avoided with careful folder structure, simple names and repeated testing.</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap panel">
+      <p class="eyebrow">Common Mistakes</p>
+      <h2>Avoid these publishing problems</h2>
+      <div class="grid2">
+        <div class="danger">
+          <h3>Common mistakes</h3>
+          <ul class="checklist">
+            <li>Forgetting to push changes.</li>
+            <li>Using broken file paths.</li>
+            <li>Publishing from the wrong folder.</li>
+            <li>Using mixed-up file names.</li>
+            <li>Sharing an old cached page.</li>
+          </ul>
+        </div>
+        <div class="safe">
+          <h3>Better practice</h3>
+          <ul class="checklist">
+            <li>Commit and push every update.</li>
+            <li>Use clear relative links.</li>
+            <li>Keep folders organized.</li>
+            <li>Use simple lowercase file names.</li>
+            <li>Refresh and test live pages.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="warning" style="margin-top:18px"><b>Tip:</b> When something does not show online, first check: Did I save, commit, push, and refresh the public page?</div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="visual">
+      <img src="/assets/courses/practical-ai-website-building/module-1/lecture-1-7/06-your-first-website-is-live.png" alt="Your first website is live.">
+      <div class="caption">When your first website is live, the journey has only started. You can keep improving over time.</div>
+    </div>
+  </section>
+
+  <section class="section" id="prompt-lab">
+    <div class="wrap panel">
+      <p class="eyebrow">Lecture 1.7 Prompt Lab</p>
+      <h2>Publishing Prompt Library</h2>
+      <p class="lead">Students should use these prompts to understand publishing, check their work and solve beginner problems safely.</p>
+      <div class="grid">
+        <div class="prompt"><div class="prompt-head"><span>Prompt 1 · Explain publishing</span><button class="copybtn" onclick="copyPromptById('p1')">Copy</button></div><pre id="p1">Explain website publishing to me like I am a complete beginner. Show the difference between local files, GitHub repository, GitHub Pages, and a public website link.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>Prompt 2 · Publishing checklist</span><button class="copybtn" onclick="copyPromptById('p2')">Copy</button></div><pre id="p2">Create a beginner checklist for publishing my first website. Include saving files, checking links, committing changes, pushing to GitHub, enabling GitHub Pages, opening the live link, and testing mobile view.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>Prompt 3 · Git Bash workflow</span><button class="copybtn" onclick="copyPromptById('p3')">Copy</button></div><pre id="p3">Act as a beginner Git teacher. Explain these commands for publishing a website: git status, git add ., git commit -m, git pull --rebase origin main, and git push origin main.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>Prompt 4 · Troubleshoot 404</span><button class="copybtn" onclick="copyPromptById('p4')">Copy</button></div><pre id="p4">My published website shows a 404 error. Ask me for non-sensitive details such as file names, folder path, GitHub Pages settings, and public URL. Then guide me step by step to fix the issue.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>Prompt 5 · Fix broken images</span><button class="copybtn" onclick="copyPromptById('p5')">Copy</button></div><pre id="p5">My website images are not showing after publishing. Explain how to check image file names, folder paths, relative links, capital letters, spaces in names, and whether the images were pushed to GitHub.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>Prompt 6 · Review before sharing</span><button class="copybtn" onclick="copyPromptById('p6')">Copy</button></div><pre id="p6">Act as my website quality reviewer. Create a final checklist before I share my public website link. Include homepage, navigation, images, mobile view, spelling, buttons, downloads, speed, and copyright notice.</pre></div>
+      </div>
+      <div class="actions">
+        <a class="btn primary" href="/courses/practical-ai-website-building/module-1/lecture-1-7-publishing-your-first-website/prompt-library/">Open Full Lecture 1.7 Prompt Library</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap panel">
+      <p class="eyebrow">Practice Task</p>
+      <h2>Publish your first website</h2>
+      <div class="grid">
+        <div class="box"><h3>Task 1</h3><p>Create or confirm a simple website folder containing index.html and one CSS file.</p></div>
+        <div class="box"><h3>Task 2</h3><p>Push your website files to a GitHub repository.</p></div>
+        <div class="box"><h3>Task 3</h3><p>Open your public website link and test homepage, links, images and mobile view.</p></div>
+      </div>
+      <div class="warning" style="margin-top:18px"><b>Common mistake:</b> Do not share your local folder path as your website link. Share the public website URL only.</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap panel">
+      <p class="eyebrow">Final Checklist</p>
+      <h2>Lecture 1.7 complete</h2>
+      <ul class="checklist">
+        <li>I understand what publishing means.</li>
+        <li>I know the difference between local folder, GitHub repository and live website.</li>
+        <li>I understand the save, commit, push and publish workflow.</li>
+        <li>I know how to check the public website before sharing.</li>
+        <li>I know common publishing mistakes and how to avoid them.</li>
+        <li>I have used at least two prompts from the Prompt Lab.</li>
+      </ul>
+      <div class="actions">
+        <a class="btn primary" href="/courses/practical-ai-website-building/module-1/lecture-1-8-module-1-practical-project/">Next Lecture 1.8</a>
+        <a class="btn" href="/courses/practical-ai-website-building/module-1/">Back to Module 1</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap panel">
+      <p class="eyebrow">Copyright Notice</p>
+      <h2>FutureWorld Intelligence materials</h2>
+      <p class="lead">© 2026 FutureWorld Intelligence. All modules, lectures, prompts, visuals, graphics, downloadable files and instructional designs are protected intellectual property. Students may use this material for personal learning and may share official links. Copying, re-uploading, selling, modifying, packaging, distributing or presenting this material as someone else’s work is not allowed without written permission.</p>
+      <a class="btn" href="/copyright/">Read Full Copyright Notice</a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  © 2026 FutureWorld Intelligence. All rights reserved. | Practical AI & Website Building Course · Module 1 · Lecture 1.7
+</footer>
+
+<script>
+function copyPromptById(id){
+  const text=document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text).then(function(){
+    alert('Prompt copied. Paste it into ChatGPT and continue your practice.');
+  });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,2 @@
+window.FWI_GALLERY = [
+];

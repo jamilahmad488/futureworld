@@ -1,46 +1,269 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q12FMBHN20"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag("js", new Date());
-  gtag("config", "G-Q12FMBHN20");
-</script>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gallery | FutureWorld Intelligence</title>
-  <meta name="description" content="FutureWorld Intelligence gallery for report covers, maps, infographics, social media visuals, thumbnails and public education assets." />
-  <link rel="stylesheet" href="../style.css?v=2.6" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery | FutureWorld Intelligence</title>
+<style>
+:root{
+  --bg:#030712;
+  --panel:#0b1324;
+  --gold:#f2b544;
+  --cyan:#22c7f3;
+  --text:#f8fafc;
+  --muted:#a7b4c8;
+  --line:rgba(255,255,255,.14);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Inter,Segoe UI,Arial,sans-serif;
+  background:
+    radial-gradient(circle at 15% 0%,rgba(34,199,243,.18),transparent 32%),
+    radial-gradient(circle at 85% 8%,rgba(242,181,68,.16),transparent 30%),
+    linear-gradient(180deg,#020617 0%,#071426 52%,#030712 100%);
+  color:var(--text);
+  line-height:1.55;
+}
+a{color:inherit;text-decoration:none}
+header{
+  position:sticky;
+  top:0;
+  z-index:10;
+  background:rgba(3,7,18,.88);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.nav{
+  max-width:1280px;
+  margin:auto;
+  padding:14px 18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:14px;
+}
+.brand{
+  font-weight:900;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--gold);
+}
+.links{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.links a{
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:8px 12px;
+  color:var(--muted);
+  font-size:13px;
+}
+.links a:hover{
+  color:var(--text);
+  border-color:rgba(34,199,243,.5);
+  background:rgba(34,199,243,.08);
+}
+main{
+  max-width:1280px;
+  margin:auto;
+  padding:42px 18px 80px;
+}
+.hero{
+  border:1px solid var(--line);
+  border-radius:30px;
+  padding:34px;
+  background:linear-gradient(135deg,rgba(255,255,255,.06),rgba(255,255,255,.025));
+  box-shadow:0 24px 80px rgba(0,0,0,.32);
+  margin-bottom:24px;
+}
+.kicker{
+  color:var(--gold);
+  text-transform:uppercase;
+  letter-spacing:.16em;
+  font-size:12px;
+  font-weight:800;
+}
+h1{
+  font-size:clamp(36px,6vw,72px);
+  line-height:.96;
+  margin:12px 0;
+  letter-spacing:-.04em;
+}
+.lead{
+  max-width:900px;
+  color:#d7e2f2;
+  font-size:18px;
+}
+.filters{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin:24px 0;
+}
+.filters button{
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.05);
+  color:var(--text);
+  border-radius:999px;
+  padding:10px 14px;
+  cursor:pointer;
+  font-weight:700;
+}
+.filters button.active,
+.filters button:hover{
+  border-color:rgba(242,181,68,.65);
+  background:rgba(242,181,68,.12);
+}
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+}
+.card{
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:22px;
+  background:rgba(255,255,255,.045);
+}
+.card img{
+  width:100%;
+  height:240px;
+  object-fit:cover;
+  display:block;
+  background:#071426;
+}
+.card-body{
+  padding:15px;
+}
+.category{
+  display:inline-block;
+  font-size:11px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:6px;
+  font-weight:800;
+}
+.card h3{
+  margin:0 0 6px;
+  font-size:18px;
+}
+.card p{
+  margin:0;
+  color:var(--muted);
+  font-size:14px;
+}
+.empty{
+  display:none;
+  border:1px dashed rgba(242,181,68,.4);
+  border-radius:22px;
+  padding:24px;
+  color:#f8e4b5;
+  background:rgba(242,181,68,.07);
+}
+footer{
+  text-align:center;
+  color:var(--muted);
+  padding:28px;
+  border-top:1px solid var(--line);
+}
+@media(max-width:900px){
+  .nav{align-items:flex-start;flex-direction:column}
+  .gallery{grid-template-columns:1fr}
+  .hero{padding:24px}
+}
+</style>
 </head>
-<body class="theme-gallery">
-<div class="cosmic-bg"></div><div class="scanline"></div>
-<nav class="floating-nav" aria-label="Primary navigation">
-  <a class="brand-pill" href="../index.html"><img src="../assets/logo.png" alt="FutureWorld Intelligence logo"><span>FutureWorld</span></a>
-  <a href="climate.html">Climate</a><a href="ai.html">AI</a><a href="geopolitics.html">Geopolitics</a><a href="energy.html">Energy</a><a href="futures.html">Futures</a><a href="intelligence-index.html">Intelligence Index</a><a href="command-center.html">Command Center</a><a href="resources.html">Resources</a><a class="active" href="gallery.html">Gallery</a><a href="about.html">About Us</a>
-</nav>
+<body>
+
+<header>
+  <div class="nav">
+    <a class="brand" href="../index.html">FutureWorld Intelligence</a>
+    <nav class="links">
+      <a href="../index.html">Home</a>
+      <a href="climate.html">Climate</a>
+      <a href="geopolitics.html">Geopolitics</a>
+      <a href="gallery.html">Gallery</a>
+    </nav>
+  </div>
+</header>
+
 <main>
-<section class="page-hero"><div class="inner"><p class="eyebrow">Visual Intelligence Archive</p><h1>Gallery</h1><p>A growing archive for report covers, maps, infographics, social visuals, thumbnails and cinematic education assets.</p></div></section>
+  <section class="hero">
+    <div class="kicker">Visual Evidence Archive</div>
+    <h1>Gallery</h1>
+    <p class="lead">
+      A curated public archive of FutureWorld Intelligence visuals, including climate action,
+      forestry restoration, community mobilization, maps, dashboards, learning imagery,
+      events, campaigns, and branded media.
+    </p>
+  </section>
 
-<section class="page-section"><div class="section-title"><p>Visual System</p><h2>Every briefing should become visible knowledge</h2></div><div class="metric-grid">
-<div class="metric-card"><small>01</small><strong>Report Covers</strong><span>Strong visual identity for flagship reports, PDF downloads and Substack features.</span></div>
-<div class="metric-card"><small>02</small><strong>Maps and Diagrams</strong><span>Geographic, systems and process visuals that make complex change easier to understand.</span></div>
-<div class="metric-card"><small>03</small><strong>Social Cards</strong><span>Square, vertical and widescreen graphics for LinkedIn, Facebook, Instagram, TikTok and YouTube.</span></div>
-<div class="metric-card"><small>04</small><strong>Video Frames</strong><span>Opening titles, thumbnails, scene boards and visual prompts for short and long-form video.</span></div>
-</div></section>
+  <section class="filters" id="filters"></section>
 
-<section class="page-section"><div class="section-title"><p>Current Asset Priorities</p><h2>What the gallery should publish first</h2></div><div class="signal-list">
-<a class="signal" href="../content/climate/climate-flagship-report-001.html"><h3>Climate Flagship Visual Set</h3><p>Cover image, restoration cycle, watershed diagram, biodiversity recovery graphic and community model.</p></a>
-<a class="signal" href="../content/ai/ai-agents-future-digital-work.html"><h3>AI Agents Visual Set</h3><p>Agent workflow diagram, human-AI collaboration graphic, productivity stack and governance visual.</p></a>
-<a class="signal" href="../content/geopolitics/geopolitics-001-return-of-multipolarity.html"><h3>Multipolarity Visual Set</h3><p>Global order map, power-center diagram, corridor visual and strategic risk cards.</p></a>
-</div></section>
+  <section class="empty" id="empty">
+    No gallery item is available yet. Add public-facing images inside the categorized folders under assets/gallery and rebuild the gallery data.
+  </section>
 
-<section class="page-section"><div class="section-title"><p>Publishing Formats</p><h2>Design once, distribute everywhere</h2></div><div class="intel-grid">
-<article class="intel-card"><span>1:1</span><h3>Social Square</h3><p>For LinkedIn, Facebook and Instagram feed posts.</p></article>
-<article class="intel-card"><span>9:16</span><h3>Vertical Story</h3><p>For TikTok, Reels, Shorts covers and mobile-first explainers.</p></article>
-<article class="intel-card"><span>16:9</span><h3>Video Thumbnail</h3><p>For YouTube videos, web embeds and presentation title slides.</p></article>
-<article class="intel-card"><span>A4</span><h3>Report Page</h3><p>For PDF covers, briefing sheets and printable public education material.</p></article>
-</div></section>
-</main><footer>FutureWorld Intelligence &copy; 2026 | Visual intelligence archive</footer><script src="../script.js?v=1.2"></script></body></html>
+  <section class="gallery" id="gallery"></section>
+</main>
+
+<footer>
+  FutureWorld Intelligence — Climate, Geopolitics, AI and Strategic Knowledge for the Future
+</footer>
+
+<script src="../assets/gallery/gallery-data.js"></script>
+<script>
+const data = window.FWI_GALLERY || [];
+const gallery = document.getElementById('gallery');
+const filters = document.getElementById('filters');
+const empty = document.getElementById('empty');
+
+const categories = ['All', ...Array.from(new Set(data.map(item => item.category)))];
+
+function renderFilters(active='All'){
+  filters.innerHTML = '';
+  categories.forEach(cat => {
+    const btn = document.createElement('button');
+    btn.textContent = cat;
+    btn.className = cat === active ? 'active' : '';
+    btn.onclick = () => renderGallery(cat);
+    filters.appendChild(btn);
+  });
+}
+
+function renderGallery(category='All'){
+  renderFilters(category);
+  const items = category === 'All' ? data : data.filter(item => item.category === category);
+  gallery.innerHTML = '';
+
+  if(!items.length){
+    empty.style.display = 'block';
+    return;
+  }
+
+  empty.style.display = 'none';
+
+  items.forEach(item => {
+    const card = document.createElement('article');
+    card.className = 'card';
+    card.innerHTML = `
+      <img src="${item.src}" alt="${item.title}" loading="lazy">
+      <div class="card-body">
+        <span class="category">${item.category}</span>
+        <h3>${item.title}</h3>
+        <p>${item.caption}</p>
+      </div>
+    `;
+    gallery.appendChild(card);
+  });
+}
+
+renderGallery();
+</script>
+
+</body>
+</html>

@@ -1,5 +1,5 @@
-/* FutureWorld Phase 2 — Internal Navigation Design System
-   Purpose: one reusable style family for page-internal navigation across Intelligence, Courses, Reports, Gallery and Connect. */
+/* FutureWorld Phase 2/9 — Internal Navigation Design System
+   Purpose: one reusable style family for page-internal navigation across Intelligence, Courses, Reports, Gallery and Connect, with mobile and accessibility improvements. */
 
 :root{
   --fwi-nav-glass:rgba(2,6,23,.78);
@@ -70,7 +70,7 @@
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  min-height:42px;
+  min-height:44px;
   padding:10px 15px;
   border-radius:999px;
   border:1px solid rgba(255,255,255,.14);
@@ -110,11 +110,39 @@
 .fwi-report-toc a.active,
 .fwi-gallery-nav a.active,
 .fwi-connect-nav a.active,
-.fwi-internal-nav a.active{
+.fwi-internal-nav a.active,
+.fwi-section-nav button.active,
+.fwi-pillars-nav button.active,
+.fwi-module-nav button.active,
+.fwi-lecture-nav button.active,
+.fwi-report-toc button.active,
+.fwi-gallery-nav button.active,
+.fwi-connect-nav button.active,
+.fwi-internal-nav button.active{
   transform:translateY(-3px);
   border-color:rgba(77,243,255,.76);
   background:linear-gradient(135deg,rgba(77,243,255,.22),rgba(167,139,250,.12));
   box-shadow:0 0 22px rgba(77,243,255,.22);
+}
+
+.fwi-section-nav a:focus-visible,
+.fwi-pillars-nav a:focus-visible,
+.fwi-module-nav a:focus-visible,
+.fwi-lecture-nav a:focus-visible,
+.fwi-report-toc a:focus-visible,
+.fwi-gallery-nav a:focus-visible,
+.fwi-connect-nav a:focus-visible,
+.fwi-internal-nav a:focus-visible,
+.fwi-section-nav button:focus-visible,
+.fwi-pillars-nav button:focus-visible,
+.fwi-module-nav button:focus-visible,
+.fwi-lecture-nav button:focus-visible,
+.fwi-report-toc button:focus-visible,
+.fwi-gallery-nav button:focus-visible,
+.fwi-connect-nav button:focus-visible,
+.fwi-internal-nav button:focus-visible{
+  outline:3px solid rgba(242,181,68,.88);
+  outline-offset:3px;
 }
 
 .fwi-section-nav a.primary,
@@ -223,11 +251,22 @@
     margin-bottom:24px;
     justify-content:flex-start;
     overflow-x:auto;
+    overflow-y:hidden;
     flex-wrap:nowrap;
     padding:12px;
     border-radius:22px;
-    scroll-snap-type:x mandatory;
+    scroll-snap-type:x proximity;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
   }
+  .fwi-section-nav::-webkit-scrollbar,
+  .fwi-pillars-nav::-webkit-scrollbar,
+  .fwi-module-nav::-webkit-scrollbar,
+  .fwi-lecture-nav::-webkit-scrollbar,
+  .fwi-report-toc::-webkit-scrollbar,
+  .fwi-gallery-nav::-webkit-scrollbar,
+  .fwi-connect-nav::-webkit-scrollbar,
+  .fwi-internal-nav::-webkit-scrollbar{display:none}
   .fwi-section-nav a,
   .fwi-pillars-nav a,
   .fwi-module-nav a,
@@ -246,11 +285,28 @@
   .fwi-internal-nav button{
     white-space:nowrap;
     scroll-snap-align:start;
-    min-height:44px;
+    min-height:46px;
+    padding:11px 15px;
   }
   .fwi-nav-label,.fwi-nav-note{display:none}
   .fwi-breadcrumbs{margin-top:24px;padding:0 4px}
   .fwi-content-frame{padding:26px;border-radius:28px;margin-bottom:54px}
   .fwi-prev-next{grid-template-columns:1fr;margin-bottom:110px}
   .fwi-prev-next .next{text-align:left;align-items:flex-start}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .fwi-section-nav *,
+  .fwi-pillars-nav *,
+  .fwi-module-nav *,
+  .fwi-lecture-nav *,
+  .fwi-report-toc *,
+  .fwi-gallery-nav *,
+  .fwi-connect-nav *,
+  .fwi-internal-nav *,
+  .fwi-prev-next a{
+    transition:none!important;
+    animation:none!important;
+    transform:none!important;
+  }
 }

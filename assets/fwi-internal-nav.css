@@ -1,5 +1,6 @@
-/* FutureWorld Phase 2/9 — Internal Navigation Design System
-   Purpose: one reusable style family for page-internal navigation across Intelligence, Courses, Reports, Gallery and Connect, with mobile and accessibility improvements. */
+/* FutureWorld Phase 2/9/QA — Internal Navigation Design System
+   Purpose: compact internal navigation across Intelligence, Courses, Reports, Gallery and Connect.
+   Rule: keep individual neon capsule buttons; remove the large enclosing box from internal page navigation. */
 
 :root{
   --fwi-nav-glass:rgba(2,6,23,.78);
@@ -17,18 +18,18 @@
 .fwi-connect-nav,
 .fwi-internal-nav{
   width:min(1200px,92vw);
-  margin:0 auto 34px;
-  padding:14px;
+  margin:0 auto 28px;
+  padding:4px 0 8px;
   display:flex;
   align-items:center;
   justify-content:center;
   flex-wrap:wrap;
   gap:10px;
-  border:1px solid var(--fwi-nav-border);
-  border-radius:28px;
-  background:linear-gradient(135deg,rgba(2,6,23,.86),rgba(15,23,42,.66));
-  box-shadow:0 18px 60px rgba(0,0,0,.34), inset 0 0 0 1px rgba(255,255,255,.035);
-  backdrop-filter:blur(18px);
+  border:0;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+  backdrop-filter:none;
   position:relative;
   z-index:5;
 }
@@ -41,12 +42,8 @@
 .fwi-gallery-nav::before,
 .fwi-connect-nav::before,
 .fwi-internal-nav::before{
-  content:'';
-  position:absolute;
-  inset:0;
-  border-radius:inherit;
-  pointer-events:none;
-  background:radial-gradient(circle at 18% 10%,rgba(77,243,255,.12),transparent 34%),radial-gradient(circle at 82% 12%,rgba(242,181,68,.10),transparent 30%);
+  display:none;
+  content:none;
 }
 
 .fwi-section-nav a,
@@ -70,10 +67,10 @@
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  min-height:44px;
+  min-height:42px;
   padding:10px 15px;
   border-radius:999px;
-  border:1px solid rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.16);
   background:rgba(255,255,255,.045);
   color:#f8fbff;
   -webkit-text-fill-color:#f8fbff;
@@ -84,7 +81,8 @@
   letter-spacing:.04em;
   line-height:1.2;
   cursor:pointer;
-  transition:transform .22s ease, border-color .22s ease, background .22s ease, box-shadow .22s ease;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.025),0 0 18px rgba(77,243,255,.06);
+  transition:transform .22s ease, border-color .22s ease, background .22s ease, box-shadow .22s ease, color .22s ease;
 }
 
 .fwi-section-nav a:hover,
@@ -122,7 +120,7 @@
   transform:translateY(-3px);
   border-color:rgba(77,243,255,.76);
   background:linear-gradient(135deg,rgba(77,243,255,.22),rgba(167,139,250,.12));
-  box-shadow:0 0 22px rgba(77,243,255,.22);
+  box-shadow:0 0 22px rgba(77,243,255,.22), inset 0 0 0 1px rgba(255,255,255,.045);
 }
 
 .fwi-section-nav a:focus-visible,
@@ -179,7 +177,8 @@
   text-transform:uppercase;
   letter-spacing:.16em;
   font-size:.72rem;
-  margin:0 0 2px;
+  margin:0 0 4px;
+  text-shadow:0 0 12px rgba(77,243,255,.22);
 }
 
 .fwi-nav-note{
@@ -248,13 +247,14 @@
   .fwi-gallery-nav,
   .fwi-connect-nav,
   .fwi-internal-nav{
-    margin-bottom:24px;
+    width:min(100%,92vw);
+    margin-bottom:22px;
     justify-content:flex-start;
     overflow-x:auto;
     overflow-y:hidden;
     flex-wrap:nowrap;
-    padding:12px;
-    border-radius:22px;
+    padding:4px 0 10px;
+    border-radius:0;
     scroll-snap-type:x proximity;
     -webkit-overflow-scrolling:touch;
     scrollbar-width:none;

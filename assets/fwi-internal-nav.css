@@ -1,0 +1,256 @@
+/* FutureWorld Phase 2 — Internal Navigation Design System
+   Purpose: one reusable style family for page-internal navigation across Intelligence, Courses, Reports, Gallery and Connect. */
+
+:root{
+  --fwi-nav-glass:rgba(2,6,23,.78);
+  --fwi-nav-border:rgba(77,243,255,.38);
+  --fwi-nav-hover:rgba(77,243,255,.16);
+  --fwi-nav-gold:rgba(242,181,68,.72);
+}
+
+.fwi-section-nav,
+.fwi-pillars-nav,
+.fwi-module-nav,
+.fwi-lecture-nav,
+.fwi-report-toc,
+.fwi-gallery-nav,
+.fwi-connect-nav,
+.fwi-internal-nav{
+  width:min(1200px,92vw);
+  margin:0 auto 34px;
+  padding:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:10px;
+  border:1px solid var(--fwi-nav-border);
+  border-radius:28px;
+  background:linear-gradient(135deg,rgba(2,6,23,.86),rgba(15,23,42,.66));
+  box-shadow:0 18px 60px rgba(0,0,0,.34), inset 0 0 0 1px rgba(255,255,255,.035);
+  backdrop-filter:blur(18px);
+  position:relative;
+  z-index:5;
+}
+
+.fwi-section-nav::before,
+.fwi-pillars-nav::before,
+.fwi-module-nav::before,
+.fwi-lecture-nav::before,
+.fwi-report-toc::before,
+.fwi-gallery-nav::before,
+.fwi-connect-nav::before,
+.fwi-internal-nav::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  pointer-events:none;
+  background:radial-gradient(circle at 18% 10%,rgba(77,243,255,.12),transparent 34%),radial-gradient(circle at 82% 12%,rgba(242,181,68,.10),transparent 30%);
+}
+
+.fwi-section-nav a,
+.fwi-pillars-nav a,
+.fwi-module-nav a,
+.fwi-lecture-nav a,
+.fwi-report-toc a,
+.fwi-gallery-nav a,
+.fwi-connect-nav a,
+.fwi-internal-nav a,
+.fwi-section-nav button,
+.fwi-pillars-nav button,
+.fwi-module-nav button,
+.fwi-lecture-nav button,
+.fwi-report-toc button,
+.fwi-gallery-nav button,
+.fwi-connect-nav button,
+.fwi-internal-nav button{
+  position:relative;
+  z-index:1;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:42px;
+  padding:10px 15px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.045);
+  color:#f8fbff;
+  -webkit-text-fill-color:#f8fbff;
+  text-decoration:none;
+  font-family:var(--font-display,Arial,sans-serif);
+  font-size:.76rem;
+  font-weight:900;
+  letter-spacing:.04em;
+  line-height:1.2;
+  cursor:pointer;
+  transition:transform .22s ease, border-color .22s ease, background .22s ease, box-shadow .22s ease;
+}
+
+.fwi-section-nav a:hover,
+.fwi-pillars-nav a:hover,
+.fwi-module-nav a:hover,
+.fwi-lecture-nav a:hover,
+.fwi-report-toc a:hover,
+.fwi-gallery-nav a:hover,
+.fwi-connect-nav a:hover,
+.fwi-internal-nav a:hover,
+.fwi-section-nav button:hover,
+.fwi-pillars-nav button:hover,
+.fwi-module-nav button:hover,
+.fwi-lecture-nav button:hover,
+.fwi-report-toc button:hover,
+.fwi-gallery-nav button:hover,
+.fwi-connect-nav button:hover,
+.fwi-internal-nav button:hover,
+.fwi-section-nav a.active,
+.fwi-pillars-nav a.active,
+.fwi-module-nav a.active,
+.fwi-lecture-nav a.active,
+.fwi-report-toc a.active,
+.fwi-gallery-nav a.active,
+.fwi-connect-nav a.active,
+.fwi-internal-nav a.active{
+  transform:translateY(-3px);
+  border-color:rgba(77,243,255,.76);
+  background:linear-gradient(135deg,rgba(77,243,255,.22),rgba(167,139,250,.12));
+  box-shadow:0 0 22px rgba(77,243,255,.22);
+}
+
+.fwi-section-nav a.primary,
+.fwi-pillars-nav a.primary,
+.fwi-module-nav a.primary,
+.fwi-lecture-nav a.primary,
+.fwi-report-toc a.primary,
+.fwi-gallery-nav a.primary,
+.fwi-connect-nav a.primary,
+.fwi-internal-nav a.primary{
+  border-color:rgba(57,255,156,.50);
+  background:linear-gradient(135deg,rgba(57,255,156,.18),rgba(77,243,255,.08));
+}
+
+.fwi-section-nav a.gold,
+.fwi-pillars-nav a.gold,
+.fwi-module-nav a.gold,
+.fwi-lecture-nav a.gold,
+.fwi-report-toc a.gold,
+.fwi-gallery-nav a.gold,
+.fwi-connect-nav a.gold,
+.fwi-internal-nav a.gold{
+  border-color:var(--fwi-nav-gold);
+  color:#ffe6a6;
+  -webkit-text-fill-color:#ffe6a6;
+  background:linear-gradient(135deg,rgba(242,181,68,.20),rgba(34,199,243,.08));
+}
+
+.fwi-nav-label{
+  flex-basis:100%;
+  text-align:center;
+  font-family:var(--font-display,Arial,sans-serif);
+  color:var(--cyan,#22d3ee);
+  text-transform:uppercase;
+  letter-spacing:.16em;
+  font-size:.72rem;
+  margin:0 0 2px;
+}
+
+.fwi-nav-note{
+  flex-basis:100%;
+  text-align:center;
+  color:var(--muted,#9fb2ca);
+  font-size:.88rem;
+  margin:0 0 4px;
+}
+
+.fwi-content-frame{
+  width:min(1200px,92vw);
+  margin:0 auto 90px;
+  padding:44px;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:36px;
+  background:var(--panel,rgba(15,23,42,.72));
+  box-shadow:var(--shadow,0 30px 100px rgba(0,0,0,.55));
+  backdrop-filter:blur(18px);
+}
+
+.fwi-breadcrumbs{
+  width:min(1200px,92vw);
+  margin:118px auto 0;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  align-items:center;
+  color:var(--muted,#9fb2ca);
+  font-size:.82rem;
+}
+.fwi-breadcrumbs a{color:#dffcff;text-decoration:none;border-bottom:1px solid rgba(77,243,255,.35)}
+.fwi-breadcrumbs span{opacity:.72}
+
+.fwi-prev-next{
+  width:min(1200px,92vw);
+  margin:0 auto 70px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+.fwi-prev-next a{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  min-height:96px;
+  padding:20px;
+  border-radius:26px;
+  border:1px solid rgba(77,243,255,.26);
+  background:linear-gradient(145deg,rgba(15,23,42,.88),rgba(30,41,59,.48));
+  color:#f8fbff;
+  text-decoration:none;
+  transition:.22s ease;
+}
+.fwi-prev-next a:hover{transform:translateY(-4px);border-color:rgba(77,243,255,.66);box-shadow:0 0 28px rgba(77,243,255,.18)}
+.fwi-prev-next small{font-family:var(--font-display,Arial,sans-serif);color:var(--cyan,#22d3ee);letter-spacing:.12em;text-transform:uppercase}
+.fwi-prev-next strong{font-family:var(--font-display,Arial,sans-serif)}
+.fwi-prev-next .next{text-align:right;align-items:flex-end}
+
+@media(max-width:860px){
+  .fwi-section-nav,
+  .fwi-pillars-nav,
+  .fwi-module-nav,
+  .fwi-lecture-nav,
+  .fwi-report-toc,
+  .fwi-gallery-nav,
+  .fwi-connect-nav,
+  .fwi-internal-nav{
+    margin-bottom:24px;
+    justify-content:flex-start;
+    overflow-x:auto;
+    flex-wrap:nowrap;
+    padding:12px;
+    border-radius:22px;
+    scroll-snap-type:x mandatory;
+  }
+  .fwi-section-nav a,
+  .fwi-pillars-nav a,
+  .fwi-module-nav a,
+  .fwi-lecture-nav a,
+  .fwi-report-toc a,
+  .fwi-gallery-nav a,
+  .fwi-connect-nav a,
+  .fwi-internal-nav a,
+  .fwi-section-nav button,
+  .fwi-pillars-nav button,
+  .fwi-module-nav button,
+  .fwi-lecture-nav button,
+  .fwi-report-toc button,
+  .fwi-gallery-nav button,
+  .fwi-connect-nav button,
+  .fwi-internal-nav button{
+    white-space:nowrap;
+    scroll-snap-align:start;
+    min-height:44px;
+  }
+  .fwi-nav-label,.fwi-nav-note{display:none}
+  .fwi-breadcrumbs{margin-top:24px;padding:0 4px}
+  .fwi-content-frame{padding:26px;border-radius:28px;margin-bottom:54px}
+  .fwi-prev-next{grid-template-columns:1fr;margin-bottom:110px}
+  .fwi-prev-next .next{text-align:left;align-items:flex-start}
+}

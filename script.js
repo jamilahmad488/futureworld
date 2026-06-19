@@ -1,4 +1,4 @@
-/* FutureWorld Global Interface, Clean URL Navigation and Language Access - v2.2 */
+/* FutureWorld Global Interface, Clean URL Navigation and Language Access - v2.3 */
 (function(){
   const SITE='https://futureworldintelligence.org/';
   const url=(path='')=>new URL(path,SITE).href;
@@ -13,6 +13,12 @@
   const cleanMap=new Map([
     ['/pages/climate.html','/pages/climate/'],['/pages/ai.html','/pages/ai/'],['/pages/geopolitics.html','/pages/geopolitics/'],['/pages/energy.html','/pages/energy/'],['/pages/futures.html','/pages/futures/'],['/pages/intelligence-index.html','/pages/intelligence-index/'],['/pages/command-center.html','/pages/command-center/'],['/pages/resources.html','/pages/resources/'],['/pages/about.html','/pages/about/'],['/pages/intro.html','/pages/intro/'],['/pages/privacy.html','/pages/privacy/'],['/pages/gallery.html','/pages/gallery/'],['/content/ai/Practical_AI_Website_Building_Course_Intro_Landscape.html','/content/ai/practical-ai-website-building-course-intro-landscape/']
   ]);
+  function loadInternalNavCss(){
+    if(document.querySelector('link[data-fwi-internal-nav]'))return;
+    const link=document.createElement('link');
+    link.rel='stylesheet';link.href='/assets/fwi-internal-nav.css?v=2.0';link.dataset.fwiInternalNav='1';
+    document.head.appendChild(link);
+  }
   function injectStyles(){
     if(document.getElementById('fwi-clean-nav-style'))return;
     const css=document.createElement('style');css.id='fwi-clean-nav-style';
@@ -45,10 +51,16 @@
     nav.querySelectorAll('button[data-sheet]').forEach(btn=>btn.addEventListener('click',()=>{const sheet=document.querySelector('.fwi-mobile-sheet[data-sheet="'+btn.dataset.sheet+'"]');const open=sheet.classList.contains('open');document.querySelectorAll('.fwi-mobile-sheet.open').forEach(s=>s.classList.remove('open'));if(!open)sheet.classList.add('open')}));
     document.addEventListener('click',e=>{if(!e.target.closest('.fwi-mobile-nav')&&!e.target.closest('.fwi-mobile-sheet'))document.querySelectorAll('.fwi-mobile-sheet.open').forEach(s=>s.classList.remove('open'))})
   }
+  function enhanceInternalNavs(){
+    document.querySelectorAll('.fwi-section-nav,.fwi-pillars-nav,.fwi-module-nav,.fwi-lecture-nav,.fwi-report-toc,.fwi-gallery-nav,.fwi-connect-nav,.fwi-internal-nav').forEach(nav=>{
+      if(nav.dataset.fwiInternalReady)return;nav.dataset.fwiInternalReady='1';
+      nav.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',()=>{nav.querySelectorAll('a.active').forEach(x=>x.classList.remove('active'));a.classList.add('active')}));
+    });
+  }
   function makeCardsClickable(){document.querySelectorAll('.intel-card,.metric-card,.signal,.mini-widget,.domain-card,.benefit-card').forEach(card=>{const link=card.querySelector('a[href]');if(!link||card.dataset.fwiCardReady)return;card.dataset.fwiCardReady='1';card.addEventListener('click',e=>{if(!e.target.closest('a'))location.href=link.href})})}
   function addReturnHome(){if(location.pathname==='/'||document.querySelector('.fwi-return-home'))return;const a=document.createElement('a');a.className='fwi-return-home';a.href=isZh?navItems.zh:navItems.home;a.textContent=isZh?'← 中文首页':'← Main';document.body.appendChild(a)}
   function addTranslateFloat(){if(isZh||document.querySelector('.fwi-translate-float'))return;const a=document.createElement('a');a.className='fwi-translate-float';a.href=translateHref();a.rel='nofollow';a.lang='zh-CN';a.textContent='中文翻译';document.body.appendChild(a)}
   function fixCourseLinks(){document.querySelectorAll('a[href*="Practical_AI_Website_Building_Course_Intro_Landscape.html"]').forEach(a=>{a.href=navItems.courseIntro});document.querySelectorAll('a[href*="courses/practical-ai-website-building"]').forEach(a=>{a.href=navItems.course})}
-  function init(){injectStyles();rewriteLinks();buildTopNav();buildMobileNav();makeCardsClickable();addReturnHome();addTranslateFloat();fixCourseLinks();setActiveLinks()}
+  function init(){loadInternalNavCss();injectStyles();rewriteLinks();buildTopNav();buildMobileNav();enhanceInternalNavs();makeCardsClickable();addReturnHome();addTranslateFloat();fixCourseLinks();setActiveLinks()}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();window.addEventListener('load',()=>document.body.classList.add('loaded'));
 })();

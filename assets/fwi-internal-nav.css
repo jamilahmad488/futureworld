@@ -1,6 +1,5 @@
-/* FutureWorld Phase 2/9/QA — Internal Navigation Design System
-   Purpose: compact internal navigation across Intelligence, Courses, Reports, Gallery and Connect.
-   Rule: keep individual neon capsule buttons; remove the large enclosing box from internal page navigation. */
+/* FutureWorld Internal Navigation + Global Navigation Frame Override
+   v2.3 — keeps individual neon capsules, makes the top nav frame transparent and content-fitted. */
 
 :root{
   --fwi-nav-glass:rgba(2,6,23,.78);
@@ -9,14 +8,53 @@
   --fwi-nav-gold:rgba(242,181,68,.72);
 }
 
-.fwi-section-nav,
-.fwi-pillars-nav,
-.fwi-module-nav,
-.fwi-lecture-nav,
-.fwi-report-toc,
-.fwi-gallery-nav,
-.fwi-connect-nav,
-.fwi-internal-nav{
+/* Global top navigation frame refinement */
+html body .floating-nav{
+  width:fit-content!important;
+  max-width:calc(100vw - 34px)!important;
+  min-height:64px!important;
+  height:auto!important;
+  padding:7px 9px!important;
+  gap:8px!important;
+  border-radius:999px!important;
+  border:1px solid rgba(77,243,255,.56)!important;
+  background:rgba(2,6,23,.16)!important;
+  box-shadow:0 0 18px rgba(77,243,255,.14), inset 0 0 0 1px rgba(255,255,255,.025)!important;
+  backdrop-filter:blur(12px)!important;
+}
+html body .floating-nav a{
+  min-height:46px!important;
+  height:46px!important;
+}
+html body .floating-nav .nav-language>.nav-trigger{
+  writing-mode:horizontal-tb!important;
+  text-orientation:mixed!important;
+  min-width:132px!important;
+  width:132px!important;
+  max-width:132px!important;
+  flex-direction:row!important;
+}
+html body .floating-nav .nav-language .nav-trigger .nav-lang-label,
+html body .floating-nav .nav-language .nav-trigger .nav-lang-sub{
+  display:inline-block!important;
+  white-space:nowrap!important;
+}
+@media(max-width:1120px){
+  html body .floating-nav{
+    width:fit-content!important;
+    max-width:calc(100vw - 18px)!important;
+    padding:6px 8px!important;
+    gap:6px!important;
+    background:rgba(2,6,23,.14)!important;
+  }
+  html body .floating-nav a{font-size:.72rem!important;padding-left:12px!important;padding-right:12px!important}
+  html body .floating-nav .brand-pill{min-width:160px!important}
+  html body .floating-nav .nav-language>.nav-trigger{min-width:112px!important;width:112px!important;max-width:112px!important}
+  html body .floating-nav .nav-language .nav-trigger .nav-lang-sub{display:none!important}
+}
+
+/* Internal page navigation */
+.fwi-section-nav,.fwi-pillars-nav,.fwi-module-nav,.fwi-lecture-nav,.fwi-report-toc,.fwi-gallery-nav,.fwi-connect-nav,.fwi-internal-nav{
   width:min(1200px,92vw);
   margin:0 auto 28px;
   padding:4px 0 8px;
@@ -33,35 +71,8 @@
   position:relative;
   z-index:5;
 }
-
-.fwi-section-nav::before,
-.fwi-pillars-nav::before,
-.fwi-module-nav::before,
-.fwi-lecture-nav::before,
-.fwi-report-toc::before,
-.fwi-gallery-nav::before,
-.fwi-connect-nav::before,
-.fwi-internal-nav::before{
-  display:none;
-  content:none;
-}
-
-.fwi-section-nav a,
-.fwi-pillars-nav a,
-.fwi-module-nav a,
-.fwi-lecture-nav a,
-.fwi-report-toc a,
-.fwi-gallery-nav a,
-.fwi-connect-nav a,
-.fwi-internal-nav a,
-.fwi-section-nav button,
-.fwi-pillars-nav button,
-.fwi-module-nav button,
-.fwi-lecture-nav button,
-.fwi-report-toc button,
-.fwi-gallery-nav button,
-.fwi-connect-nav button,
-.fwi-internal-nav button{
+.fwi-section-nav::before,.fwi-pillars-nav::before,.fwi-module-nav::before,.fwi-lecture-nav::before,.fwi-report-toc::before,.fwi-gallery-nav::before,.fwi-connect-nav::before,.fwi-internal-nav::before{display:none;content:none}
+.fwi-section-nav a,.fwi-pillars-nav a,.fwi-module-nav a,.fwi-lecture-nav a,.fwi-report-toc a,.fwi-gallery-nav a,.fwi-connect-nav a,.fwi-internal-nav a,.fwi-section-nav button,.fwi-pillars-nav button,.fwi-module-nav button,.fwi-lecture-nav button,.fwi-report-toc button,.fwi-gallery-nav button,.fwi-connect-nav button,.fwi-internal-nav button{
   position:relative;
   z-index:1;
   display:inline-flex;
@@ -82,231 +93,27 @@
   line-height:1.2;
   cursor:pointer;
   box-shadow:inset 0 0 0 1px rgba(255,255,255,.025),0 0 18px rgba(77,243,255,.06);
-  transition:transform .22s ease, border-color .22s ease, background .22s ease, box-shadow .22s ease, color .22s ease;
+  transition:transform .22s ease,border-color .22s ease,background .22s ease,box-shadow .22s ease,color .22s ease;
 }
-
-.fwi-section-nav a:hover,
-.fwi-pillars-nav a:hover,
-.fwi-module-nav a:hover,
-.fwi-lecture-nav a:hover,
-.fwi-report-toc a:hover,
-.fwi-gallery-nav a:hover,
-.fwi-connect-nav a:hover,
-.fwi-internal-nav a:hover,
-.fwi-section-nav button:hover,
-.fwi-pillars-nav button:hover,
-.fwi-module-nav button:hover,
-.fwi-lecture-nav button:hover,
-.fwi-report-toc button:hover,
-.fwi-gallery-nav button:hover,
-.fwi-connect-nav button:hover,
-.fwi-internal-nav button:hover,
-.fwi-section-nav a.active,
-.fwi-pillars-nav a.active,
-.fwi-module-nav a.active,
-.fwi-lecture-nav a.active,
-.fwi-report-toc a.active,
-.fwi-gallery-nav a.active,
-.fwi-connect-nav a.active,
-.fwi-internal-nav a.active,
-.fwi-section-nav button.active,
-.fwi-pillars-nav button.active,
-.fwi-module-nav button.active,
-.fwi-lecture-nav button.active,
-.fwi-report-toc button.active,
-.fwi-gallery-nav button.active,
-.fwi-connect-nav button.active,
-.fwi-internal-nav button.active{
+.fwi-section-nav a:hover,.fwi-pillars-nav a:hover,.fwi-module-nav a:hover,.fwi-lecture-nav a:hover,.fwi-report-toc a:hover,.fwi-gallery-nav a:hover,.fwi-connect-nav a:hover,.fwi-internal-nav a:hover,.fwi-section-nav button:hover,.fwi-pillars-nav button:hover,.fwi-module-nav button:hover,.fwi-lecture-nav button:hover,.fwi-report-toc button:hover,.fwi-gallery-nav button:hover,.fwi-connect-nav button:hover,.fwi-internal-nav button:hover,.fwi-section-nav a.active,.fwi-pillars-nav a.active,.fwi-module-nav a.active,.fwi-lecture-nav a.active,.fwi-report-toc a.active,.fwi-gallery-nav a.active,.fwi-connect-nav a.active,.fwi-internal-nav a.active,.fwi-section-nav button.active,.fwi-pillars-nav button.active,.fwi-module-nav button.active,.fwi-lecture-nav button.active,.fwi-report-toc button.active,.fwi-gallery-nav button.active,.fwi-connect-nav button.active,.fwi-internal-nav button.active{
   transform:translateY(-3px);
   border-color:rgba(77,243,255,.76);
   background:linear-gradient(135deg,rgba(77,243,255,.22),rgba(167,139,250,.12));
-  box-shadow:0 0 22px rgba(77,243,255,.22), inset 0 0 0 1px rgba(255,255,255,.045);
+  box-shadow:0 0 22px rgba(77,243,255,.22),inset 0 0 0 1px rgba(255,255,255,.045);
 }
-
-.fwi-section-nav a:focus-visible,
-.fwi-pillars-nav a:focus-visible,
-.fwi-module-nav a:focus-visible,
-.fwi-lecture-nav a:focus-visible,
-.fwi-report-toc a:focus-visible,
-.fwi-gallery-nav a:focus-visible,
-.fwi-connect-nav a:focus-visible,
-.fwi-internal-nav a:focus-visible,
-.fwi-section-nav button:focus-visible,
-.fwi-pillars-nav button:focus-visible,
-.fwi-module-nav button:focus-visible,
-.fwi-lecture-nav button:focus-visible,
-.fwi-report-toc button:focus-visible,
-.fwi-gallery-nav button:focus-visible,
-.fwi-connect-nav button:focus-visible,
-.fwi-internal-nav button:focus-visible{
-  outline:3px solid rgba(242,181,68,.88);
-  outline-offset:3px;
-}
-
-.fwi-section-nav a.primary,
-.fwi-pillars-nav a.primary,
-.fwi-module-nav a.primary,
-.fwi-lecture-nav a.primary,
-.fwi-report-toc a.primary,
-.fwi-gallery-nav a.primary,
-.fwi-connect-nav a.primary,
-.fwi-internal-nav a.primary{
-  border-color:rgba(57,255,156,.50);
-  background:linear-gradient(135deg,rgba(57,255,156,.18),rgba(77,243,255,.08));
-}
-
-.fwi-section-nav a.gold,
-.fwi-pillars-nav a.gold,
-.fwi-module-nav a.gold,
-.fwi-lecture-nav a.gold,
-.fwi-report-toc a.gold,
-.fwi-gallery-nav a.gold,
-.fwi-connect-nav a.gold,
-.fwi-internal-nav a.gold{
-  border-color:var(--fwi-nav-gold);
-  color:#ffe6a6;
-  -webkit-text-fill-color:#ffe6a6;
-  background:linear-gradient(135deg,rgba(242,181,68,.20),rgba(34,199,243,.08));
-}
-
-.fwi-nav-label{
-  flex-basis:100%;
-  text-align:center;
-  font-family:var(--font-display,Arial,sans-serif);
-  color:var(--cyan,#22d3ee);
-  text-transform:uppercase;
-  letter-spacing:.16em;
-  font-size:.72rem;
-  margin:0 0 4px;
-  text-shadow:0 0 12px rgba(77,243,255,.22);
-}
-
-.fwi-nav-note{
-  flex-basis:100%;
-  text-align:center;
-  color:var(--muted,#9fb2ca);
-  font-size:.88rem;
-  margin:0 0 4px;
-}
-
-.fwi-content-frame{
-  width:min(1200px,92vw);
-  margin:0 auto 90px;
-  padding:44px;
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:36px;
-  background:var(--panel,rgba(15,23,42,.72));
-  box-shadow:var(--shadow,0 30px 100px rgba(0,0,0,.55));
-  backdrop-filter:blur(18px);
-}
-
-.fwi-breadcrumbs{
-  width:min(1200px,92vw);
-  margin:118px auto 0;
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  align-items:center;
-  color:var(--muted,#9fb2ca);
-  font-size:.82rem;
-}
-.fwi-breadcrumbs a{color:#dffcff;text-decoration:none;border-bottom:1px solid rgba(77,243,255,.35)}
-.fwi-breadcrumbs span{opacity:.72}
-
-.fwi-prev-next{
-  width:min(1200px,92vw);
-  margin:0 auto 70px;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:18px;
-}
-.fwi-prev-next a{
-  display:flex;
-  flex-direction:column;
-  gap:6px;
-  min-height:96px;
-  padding:20px;
-  border-radius:26px;
-  border:1px solid rgba(77,243,255,.26);
-  background:linear-gradient(145deg,rgba(15,23,42,.88),rgba(30,41,59,.48));
-  color:#f8fbff;
-  text-decoration:none;
-  transition:.22s ease;
-}
-.fwi-prev-next a:hover{transform:translateY(-4px);border-color:rgba(77,243,255,.66);box-shadow:0 0 28px rgba(77,243,255,.18)}
-.fwi-prev-next small{font-family:var(--font-display,Arial,sans-serif);color:var(--cyan,#22d3ee);letter-spacing:.12em;text-transform:uppercase}
-.fwi-prev-next strong{font-family:var(--font-display,Arial,sans-serif)}
-.fwi-prev-next .next{text-align:right;align-items:flex-end}
-
+.fwi-section-nav a:focus-visible,.fwi-pillars-nav a:focus-visible,.fwi-module-nav a:focus-visible,.fwi-lecture-nav a:focus-visible,.fwi-report-toc a:focus-visible,.fwi-gallery-nav a:focus-visible,.fwi-connect-nav a:focus-visible,.fwi-internal-nav a:focus-visible,.fwi-section-nav button:focus-visible,.fwi-pillars-nav button:focus-visible,.fwi-module-nav button:focus-visible,.fwi-lecture-nav button:focus-visible,.fwi-report-toc button:focus-visible,.fwi-gallery-nav button:focus-visible,.fwi-connect-nav button:focus-visible,.fwi-internal-nav button:focus-visible{outline:3px solid rgba(242,181,68,.88);outline-offset:3px}
+.fwi-section-nav a.primary,.fwi-pillars-nav a.primary,.fwi-module-nav a.primary,.fwi-lecture-nav a.primary,.fwi-report-toc a.primary,.fwi-gallery-nav a.primary,.fwi-connect-nav a.primary,.fwi-internal-nav a.primary{border-color:rgba(57,255,156,.50);background:linear-gradient(135deg,rgba(57,255,156,.18),rgba(77,243,255,.08))}
+.fwi-section-nav a.gold,.fwi-pillars-nav a.gold,.fwi-module-nav a.gold,.fwi-lecture-nav a.gold,.fwi-report-toc a.gold,.fwi-gallery-nav a.gold,.fwi-connect-nav a.gold,.fwi-internal-nav a.gold{border-color:var(--fwi-nav-gold);color:#ffe6a6;-webkit-text-fill-color:#ffe6a6;background:linear-gradient(135deg,rgba(242,181,68,.20),rgba(34,199,243,.08))}
+.fwi-nav-label{flex-basis:100%;text-align:center;font-family:var(--font-display,Arial,sans-serif);color:var(--cyan,#22d3ee);text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;margin:0 0 4px;text-shadow:0 0 12px rgba(77,243,255,.22)}
+.fwi-nav-note{flex-basis:100%;text-align:center;color:var(--muted,#9fb2ca);font-size:.88rem;margin:0 0 4px}
+.fwi-content-frame{width:min(1200px,92vw);margin:0 auto 90px;padding:44px;border:1px solid rgba(255,255,255,.08);border-radius:36px;background:var(--panel,rgba(15,23,42,.72));box-shadow:var(--shadow,0 30px 100px rgba(0,0,0,.55));backdrop-filter:blur(18px)}
+.fwi-breadcrumbs{width:min(1200px,92vw);margin:118px auto 0;display:flex;flex-wrap:wrap;gap:8px;align-items:center;color:var(--muted,#9fb2ca);font-size:.82rem}
+.fwi-breadcrumbs a{color:#dffcff;text-decoration:none;border-bottom:1px solid rgba(77,243,255,.35)}.fwi-breadcrumbs span{opacity:.72}
+.fwi-prev-next{width:min(1200px,92vw);margin:0 auto 70px;display:grid;grid-template-columns:1fr 1fr;gap:18px}.fwi-prev-next a{display:flex;flex-direction:column;gap:6px;min-height:96px;padding:20px;border-radius:26px;border:1px solid rgba(77,243,255,.26);background:linear-gradient(145deg,rgba(15,23,42,.88),rgba(30,41,59,.48));color:#f8fbff;text-decoration:none;transition:.22s ease}.fwi-prev-next a:hover{transform:translateY(-4px);border-color:rgba(77,243,255,.66);box-shadow:0 0 28px rgba(77,243,255,.18)}.fwi-prev-next small{font-family:var(--font-display,Arial,sans-serif);color:var(--cyan,#22d3ee);letter-spacing:.12em;text-transform:uppercase}.fwi-prev-next strong{font-family:var(--font-display,Arial,sans-serif)}.fwi-prev-next .next{text-align:right;align-items:flex-end}
 @media(max-width:860px){
-  .fwi-section-nav,
-  .fwi-pillars-nav,
-  .fwi-module-nav,
-  .fwi-lecture-nav,
-  .fwi-report-toc,
-  .fwi-gallery-nav,
-  .fwi-connect-nav,
-  .fwi-internal-nav{
-    width:min(100%,92vw);
-    margin-bottom:22px;
-    justify-content:flex-start;
-    overflow-x:auto;
-    overflow-y:hidden;
-    flex-wrap:nowrap;
-    padding:4px 0 10px;
-    border-radius:0;
-    scroll-snap-type:x proximity;
-    -webkit-overflow-scrolling:touch;
-    scrollbar-width:none;
-  }
-  .fwi-section-nav::-webkit-scrollbar,
-  .fwi-pillars-nav::-webkit-scrollbar,
-  .fwi-module-nav::-webkit-scrollbar,
-  .fwi-lecture-nav::-webkit-scrollbar,
-  .fwi-report-toc::-webkit-scrollbar,
-  .fwi-gallery-nav::-webkit-scrollbar,
-  .fwi-connect-nav::-webkit-scrollbar,
-  .fwi-internal-nav::-webkit-scrollbar{display:none}
-  .fwi-section-nav a,
-  .fwi-pillars-nav a,
-  .fwi-module-nav a,
-  .fwi-lecture-nav a,
-  .fwi-report-toc a,
-  .fwi-gallery-nav a,
-  .fwi-connect-nav a,
-  .fwi-internal-nav a,
-  .fwi-section-nav button,
-  .fwi-pillars-nav button,
-  .fwi-module-nav button,
-  .fwi-lecture-nav button,
-  .fwi-report-toc button,
-  .fwi-gallery-nav button,
-  .fwi-connect-nav button,
-  .fwi-internal-nav button{
-    white-space:nowrap;
-    scroll-snap-align:start;
-    min-height:46px;
-    padding:11px 15px;
-  }
-  .fwi-nav-label,.fwi-nav-note{display:none}
-  .fwi-breadcrumbs{margin-top:24px;padding:0 4px}
-  .fwi-content-frame{padding:26px;border-radius:28px;margin-bottom:54px}
-  .fwi-prev-next{grid-template-columns:1fr;margin-bottom:110px}
-  .fwi-prev-next .next{text-align:left;align-items:flex-start}
+  .fwi-section-nav,.fwi-pillars-nav,.fwi-module-nav,.fwi-lecture-nav,.fwi-report-toc,.fwi-gallery-nav,.fwi-connect-nav,.fwi-internal-nav{width:min(100%,92vw);margin-bottom:22px;justify-content:flex-start;overflow-x:auto;overflow-y:hidden;flex-wrap:nowrap;padding:4px 0 10px;border-radius:0;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .fwi-section-nav::-webkit-scrollbar,.fwi-pillars-nav::-webkit-scrollbar,.fwi-module-nav::-webkit-scrollbar,.fwi-lecture-nav::-webkit-scrollbar,.fwi-report-toc::-webkit-scrollbar,.fwi-gallery-nav::-webkit-scrollbar,.fwi-connect-nav::-webkit-scrollbar,.fwi-internal-nav::-webkit-scrollbar{display:none}
+  .fwi-section-nav a,.fwi-pillars-nav a,.fwi-module-nav a,.fwi-lecture-nav a,.fwi-report-toc a,.fwi-gallery-nav a,.fwi-connect-nav a,.fwi-internal-nav a,.fwi-section-nav button,.fwi-pillars-nav button,.fwi-module-nav button,.fwi-lecture-nav button,.fwi-report-toc button,.fwi-gallery-nav button,.fwi-connect-nav button,.fwi-internal-nav button{white-space:nowrap;scroll-snap-align:start;min-height:46px;padding:11px 15px}
+  .fwi-nav-label,.fwi-nav-note{display:none}.fwi-breadcrumbs{margin-top:24px;padding:0 4px}.fwi-content-frame{padding:26px;border-radius:28px;margin-bottom:54px}.fwi-prev-next{grid-template-columns:1fr;margin-bottom:110px}.fwi-prev-next .next{text-align:left;align-items:flex-start}
 }
-
-@media(prefers-reduced-motion:reduce){
-  .fwi-section-nav *,
-  .fwi-pillars-nav *,
-  .fwi-module-nav *,
-  .fwi-lecture-nav *,
-  .fwi-report-toc *,
-  .fwi-gallery-nav *,
-  .fwi-connect-nav *,
-  .fwi-internal-nav *,
-  .fwi-prev-next a{
-    transition:none!important;
-    animation:none!important;
-    transform:none!important;
-  }
-}
+@media(prefers-reduced-motion:reduce){.fwi-section-nav *,.fwi-pillars-nav *,.fwi-module-nav *,.fwi-lecture-nav *,.fwi-report-toc *,.fwi-gallery-nav *,.fwi-connect-nav *,.fwi-internal-nav *,.fwi-prev-next a{transition:none!important;animation:none!important;transform:none!important}}

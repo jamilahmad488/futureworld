@@ -1,0 +1,16 @@
+MANIFEST — FutureWorld Intelligence Force No. 2 AI Report Package
+
+content/ai/artificial-intelligence-cognitive-infrastructure/index.html
+content/ai/artificial-intelligence-cognitive-infrastructure/README_INSTALL.txt
+content/ai/artificial-intelligence-cognitive-infrastructure/REPORT_SOURCE.md
+content/ai/artificial-intelligence-cognitive-infrastructure/assets/fwi-logo.png
+content/ai/artificial-intelligence-cognitive-infrastructure/assets/figure-01-ai-cognitive-infrastructure.png
+content/ai/artificial-intelligence-cognitive-infrastructure/assets/figure-02-global-labour-exposure.png
+content/ai/artificial-intelligence-cognitive-infrastructure/assets/figure-03-jobs-skills-transformation-2030.png
+content/ai/artificial-intelligence-cognitive-infrastructure/assets/figure-04-enterprise-ai-adoption-gap.png
+content/ai/artificial-intelligence-cognitive-infrastructure/assets/figure-05-generative-ai-economic-potential.png
+content/ai/artificial-intelligence-cognitive-infrastructure/assets/figure-06-data-centres-electricity-demand.png
+content/ai/artificial-intelligence-cognitive-infrastructure/assets/figure-07-ai-governance-architecture.png
+content/ai/artificial-intelligence-cognitive-infrastructure/assets/figure-08-ai-geopolitics-sovereignty.png
+content/ai/artificial-intelligence-cognitive-infrastructure/assets/figure-09-sectoral-ai-impact-map.png
+content/ai/artificial-intelligence-cognitive-infrastructure/assets/figure-10-ai-toward-2035.png

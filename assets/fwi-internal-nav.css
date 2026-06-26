@@ -1,5 +1,5 @@
 /* FutureWorld Internal Navigation + Global Navigation Frame Override
-   v2.4 — keeps individual neon capsules, makes the top nav frame transparent and content-fitted, and refines force-report figure placement. */
+   v2.5 — keeps individual neon capsules, makes the top nav frame transparent and content-fitted, refines force-report figure placement, and simplifies report navigation. */
 
 :root{
   --fwi-nav-glass:rgba(2,6,23,.78);
@@ -179,6 +179,58 @@ html body .floating-nav .nav-language .nav-trigger .nav-lang-sub{
     max-height:none!important;
     object-fit:contain!important;
   }
+}
+
+/* Force No. 4 — compact main-heading report navigation */
+html body.energy-report .report-toc{
+  overflow:visible!important;
+  flex-wrap:wrap!important;
+  justify-content:center!important;
+  gap:9px!important;
+  max-height:none!important;
+  padding:12px!important;
+}
+html body.energy-report .report-toc a{
+  display:none!important;
+  font-size:0!important;
+  min-height:40px!important;
+  padding:9px 13px!important;
+  white-space:nowrap!important;
+}
+html body.energy-report .report-toc a:nth-child(2),
+html body.energy-report .report-toc a:nth-child(3),
+html body.energy-report .report-toc a:nth-child(4),
+html body.energy-report .report-toc a:nth-child(5),
+html body.energy-report .report-toc a:nth-child(8),
+html body.energy-report .report-toc a:nth-child(9),
+html body.energy-report .report-toc a:nth-child(12),
+html body.energy-report .report-toc a:nth-child(14),
+html body.energy-report .report-toc a:nth-child(18){
+  display:inline-flex!important;
+}
+html body.energy-report .report-toc a::after{
+  font-size:.74rem!important;
+  line-height:1!important;
+  letter-spacing:.045em!important;
+}
+html body.energy-report .report-toc a:nth-child(2)::after{content:"Summary";}
+html body.energy-report .report-toc a:nth-child(3)::after{content:"Thesis";}
+html body.energy-report .report-toc a:nth-child(4)::after{content:"Infrastructure";}
+html body.energy-report .report-toc a:nth-child(5)::after{content:"Investment";}
+html body.energy-report .report-toc a:nth-child(8)::after{content:"Grids & Storage";}
+html body.energy-report .report-toc a:nth-child(9)::after{content:"Energy Security";}
+html body.energy-report .report-toc a:nth-child(12)::after{content:"Access & Justice";}
+html body.energy-report .report-toc a:nth-child(14)::after{content:"2035 Outlook";}
+html body.energy-report .report-toc a:nth-child(18)::after{content:"Sources";}
+@media(max-width:860px){
+  html body.energy-report .report-toc{
+    justify-content:flex-start!important;
+    overflow-x:auto!important;
+    overflow-y:hidden!important;
+    flex-wrap:nowrap!important;
+    scrollbar-width:none!important;
+  }
+  html body.energy-report .report-toc::-webkit-scrollbar{display:none!important;}
 }
 
 @media(max-width:860px){

@@ -1,37 +1,31 @@
-FutureWorld Intelligence — Force No. 2 AI Report Package
-========================================================
+FutureWorld Intelligence — Force No. 2 Report Package
 
-Clean URL folder included:
+Title: Artificial Intelligence: The Cognitive Infrastructure Reshaping Work, Knowledge and Power
+
+This package contains the final full descriptive website report, not the earlier Word correction draft.
+
+Clean URL folder path:
 content/ai/artificial-intelligence-cognitive-infrastructure/index.html
 
-After copying into your website repo, the report will open as:
+Live URL after upload/deployment:
 https://www.futureworldintelligence.org/content/ai/artificial-intelligence-cognitive-infrastructure/
 
-Installation
-------------
-1. Extract this ZIP package.
-2. Copy the included `content` folder into your local website repository root:
-   /d/AI_Project/FutureWorld_Intelligence_v2/FutureWorld_Website/
-3. Allow overwrite only if you intentionally want to replace an earlier version.
-4. Run:
-
+Installation:
+1. Extract this ZIP.
+2. Copy the included content folder into the root of FutureWorld_Website.
+3. Replace the existing file at:
+   content/ai/artificial-intelligence-cognitive-infrastructure/index.html
+4. Keep the assets folder as included, because the index.html references these exact image filenames.
+5. Run:
    git status
    git add content/ai/artificial-intelligence-cognitive-infrastructure
-   git commit -m "Add AI cognitive infrastructure force report package"
+   git commit -m "Publish final AI cognitive infrastructure report package"
    git push origin main
 
-Local preview
--------------
-From your website root:
+Package contents:
+- Full final index.html with complete descriptive report text
+- 10 generated report figure images placed in their relevant report sections
+- FutureWorld standard logo
 
-   python -m http.server 8000
-
-Open:
-http://localhost:8000/content/ai/artificial-intelligence-cognitive-infrastructure/
-
-Notes
------
-- The folder contains index.html for clean URL access.
-- The assets folder contains the 10 final generated PNG figures and the FutureWorld standard logo.
-- The HTML references /style.css?v=2.6 and /script.js?v=2.5 from the main website.
-- REPORT_SOURCE.md is included only as an editable reference note.
+Note:
+The report uses a clean URL because index.html is inside the folder.

@@ -1,5 +1,5 @@
 /* FutureWorld Internal Navigation + Global Navigation Frame Override
-   v2.5 — keeps individual neon capsules, makes the top nav frame transparent and content-fitted, refines force-report figure placement, and simplifies report navigation. */
+   v2.6 — keeps individual neon capsules, refines force-report figures, and makes mobile report visuals compact. */
 
 :root{
   --fwi-nav-glass:rgba(2,6,23,.78);
@@ -22,31 +22,14 @@ html body .floating-nav{
   box-shadow:0 0 18px rgba(77,243,255,.14), inset 0 0 0 1px rgba(255,255,255,.025)!important;
   backdrop-filter:blur(12px)!important;
 }
-html body .floating-nav a{
-  min-height:46px!important;
-  height:46px!important;
-}
+html body .floating-nav a{min-height:46px!important;height:46px!important}
 html body .floating-nav .nav-language>.nav-trigger{
-  writing-mode:horizontal-tb!important;
-  text-orientation:mixed!important;
-  min-width:132px!important;
-  width:132px!important;
-  max-width:132px!important;
-  flex-direction:row!important;
+  writing-mode:horizontal-tb!important;text-orientation:mixed!important;min-width:132px!important;width:132px!important;max-width:132px!important;flex-direction:row!important;
 }
 html body .floating-nav .nav-language .nav-trigger .nav-lang-label,
-html body .floating-nav .nav-language .nav-trigger .nav-lang-sub{
-  display:inline-block!important;
-  white-space:nowrap!important;
-}
+html body .floating-nav .nav-language .nav-trigger .nav-lang-sub{display:inline-block!important;white-space:nowrap!important}
 @media(max-width:1120px){
-  html body .floating-nav{
-    width:fit-content!important;
-    max-width:calc(100vw - 18px)!important;
-    padding:6px 8px!important;
-    gap:6px!important;
-    background:rgba(2,6,23,.14)!important;
-  }
+  html body .floating-nav{width:fit-content!important;max-width:calc(100vw - 18px)!important;padding:6px 8px!important;gap:6px!important;background:rgba(2,6,23,.14)!important}
   html body .floating-nav a{font-size:.72rem!important;padding-left:12px!important;padding-right:12px!important}
   html body .floating-nav .brand-pill{min-width:160px!important}
   html body .floating-nav .nav-language>.nav-trigger{min-width:112px!important;width:112px!important;max-width:112px!important}
@@ -55,51 +38,14 @@ html body .floating-nav .nav-language .nav-trigger .nav-lang-sub{
 
 /* Internal page navigation */
 .fwi-section-nav,.fwi-pillars-nav,.fwi-module-nav,.fwi-lecture-nav,.fwi-report-toc,.fwi-gallery-nav,.fwi-connect-nav,.fwi-internal-nav{
-  width:min(1200px,92vw);
-  margin:0 auto 28px;
-  padding:4px 0 8px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:10px;
-  border:0;
-  border-radius:0;
-  background:transparent;
-  box-shadow:none;
-  backdrop-filter:none;
-  position:relative;
-  z-index:5;
+  width:min(1200px,92vw);margin:0 auto 28px;padding:4px 0 8px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:10px;border:0;border-radius:0;background:transparent;box-shadow:none;backdrop-filter:none;position:relative;z-index:5;
 }
 .fwi-section-nav::before,.fwi-pillars-nav::before,.fwi-module-nav::before,.fwi-lecture-nav::before,.fwi-report-toc::before,.fwi-gallery-nav::before,.fwi-connect-nav::before,.fwi-internal-nav::before{display:none;content:none}
 .fwi-section-nav a,.fwi-pillars-nav a,.fwi-module-nav a,.fwi-lecture-nav a,.fwi-report-toc a,.fwi-gallery-nav a,.fwi-connect-nav a,.fwi-internal-nav a,.fwi-section-nav button,.fwi-pillars-nav button,.fwi-module-nav button,.fwi-lecture-nav button,.fwi-report-toc button,.fwi-gallery-nav button,.fwi-connect-nav button,.fwi-internal-nav button{
-  position:relative;
-  z-index:1;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  min-height:42px;
-  padding:10px 15px;
-  border-radius:999px;
-  border:1px solid rgba(255,255,255,.16);
-  background:rgba(255,255,255,.045);
-  color:#f8fbff;
-  -webkit-text-fill-color:#f8fbff;
-  text-decoration:none;
-  font-family:var(--font-display,Arial,sans-serif);
-  font-size:.76rem;
-  font-weight:900;
-  letter-spacing:.04em;
-  line-height:1.2;
-  cursor:pointer;
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.025),0 0 18px rgba(77,243,255,.06);
-  transition:transform .22s ease,border-color .22s ease,background .22s ease,box-shadow .22s ease,color .22s ease;
+  position:relative;z-index:1;display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:10px 15px;border-radius:999px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.045);color:#f8fbff;-webkit-text-fill-color:#f8fbff;text-decoration:none;font-family:var(--font-display,Arial,sans-serif);font-size:.76rem;font-weight:900;letter-spacing:.04em;line-height:1.2;cursor:pointer;box-shadow:inset 0 0 0 1px rgba(255,255,255,.025),0 0 18px rgba(77,243,255,.06);transition:transform .22s ease,border-color .22s ease,background .22s ease,box-shadow .22s ease,color .22s ease;
 }
 .fwi-section-nav a:hover,.fwi-pillars-nav a:hover,.fwi-module-nav a:hover,.fwi-lecture-nav a:hover,.fwi-report-toc a:hover,.fwi-gallery-nav a:hover,.fwi-connect-nav a:hover,.fwi-internal-nav a:hover,.fwi-section-nav button:hover,.fwi-pillars-nav button:hover,.fwi-module-nav button:hover,.fwi-lecture-nav button:hover,.fwi-report-toc button:hover,.fwi-gallery-nav button:hover,.fwi-connect-nav button:hover,.fwi-internal-nav button:hover,.fwi-section-nav a.active,.fwi-pillars-nav a.active,.fwi-module-nav a.active,.fwi-lecture-nav a.active,.fwi-report-toc a.active,.fwi-gallery-nav a.active,.fwi-connect-nav a.active,.fwi-internal-nav a.active,.fwi-section-nav button.active,.fwi-pillars-nav button.active,.fwi-module-nav button.active,.fwi-lecture-nav button.active,.fwi-report-toc button.active,.fwi-gallery-nav button.active,.fwi-connect-nav button.active,.fwi-internal-nav button.active{
-  transform:translateY(-3px);
-  border-color:rgba(77,243,255,.76);
-  background:linear-gradient(135deg,rgba(77,243,255,.22),rgba(167,139,250,.12));
-  box-shadow:0 0 22px rgba(77,243,255,.22),inset 0 0 0 1px rgba(255,255,255,.045);
+  transform:translateY(-3px);border-color:rgba(77,243,255,.76);background:linear-gradient(135deg,rgba(77,243,255,.22),rgba(167,139,250,.12));box-shadow:0 0 22px rgba(77,243,255,.22),inset 0 0 0 1px rgba(255,255,255,.045);
 }
 .fwi-section-nav a:focus-visible,.fwi-pillars-nav a:focus-visible,.fwi-module-nav a:focus-visible,.fwi-lecture-nav a:focus-visible,.fwi-report-toc a:focus-visible,.fwi-gallery-nav a:focus-visible,.fwi-connect-nav a:focus-visible,.fwi-internal-nav a:focus-visible,.fwi-section-nav button:focus-visible,.fwi-pillars-nav button:focus-visible,.fwi-module-nav button:focus-visible,.fwi-lecture-nav button:focus-visible,.fwi-report-toc button:focus-visible,.fwi-gallery-nav button:focus-visible,.fwi-connect-nav button:focus-visible,.fwi-internal-nav button:focus-visible{outline:3px solid rgba(242,181,68,.88);outline-offset:3px}
 .fwi-section-nav a.primary,.fwi-pillars-nav a.primary,.fwi-module-nav a.primary,.fwi-lecture-nav a.primary,.fwi-report-toc a.primary,.fwi-gallery-nav a.primary,.fwi-connect-nav a.primary,.fwi-internal-nav a.primary{border-color:rgba(57,255,156,.50);background:linear-gradient(135deg,rgba(57,255,156,.18),rgba(77,243,255,.08))}
@@ -111,128 +57,44 @@ html body .floating-nav .nav-language .nav-trigger .nav-lang-sub{
 .fwi-breadcrumbs a{color:#dffcff;text-decoration:none;border-bottom:1px solid rgba(77,243,255,.35)}.fwi-breadcrumbs span{opacity:.72}
 .fwi-prev-next{width:min(1200px,92vw);margin:0 auto 70px;display:grid;grid-template-columns:1fr 1fr;gap:18px}.fwi-prev-next a{display:flex;flex-direction:column;gap:6px;min-height:96px;padding:20px;border-radius:26px;border:1px solid rgba(77,243,255,.26);background:linear-gradient(145deg,rgba(15,23,42,.88),rgba(30,41,59,.48));color:#f8fbff;text-decoration:none;transition:.22s ease}.fwi-prev-next a:hover{transform:translateY(-4px);border-color:rgba(77,243,255,.66);box-shadow:0 0 28px rgba(77,243,255,.18)}.fwi-prev-next small{font-family:var(--font-display,Arial,sans-serif);color:var(--cyan,#22d3ee);letter-spacing:.12em;text-transform:uppercase}.fwi-prev-next strong{font-family:var(--font-display,Arial,sans-serif)}.fwi-prev-next .next{text-align:right;align-items:flex-end}
 
-/* Professional Force Report figure layout — applies to Climate, AI and Geopolitics force reports */
+/* Professional Force Report figure layout */
 @media(min-width:900px){
-  html body main .report-section{
-    overflow:auto!important;
-    clear:both!important;
-  }
-  html body main .report-section::after{
-    content:""!important;
-    display:block!important;
-    clear:both!important;
-  }
+  html body main .report-section{overflow:auto!important;clear:both!important}
+  html body main .report-section::after{content:""!important;display:block!important;clear:both!important}
   html body main .report-section .figure,
-  html body main .report-section .figure-card{
-    width:min(42%,430px)!important;
-    max-width:430px!important;
-    min-width:330px!important;
-    float:right!important;
-    clear:right!important;
-    margin:6px 0 22px 30px!important;
-    padding:10px!important;
-    border-radius:22px!important;
-    overflow:hidden!important;
-    background:rgba(2,6,23,.52)!important;
-    border:1px solid rgba(77,243,255,.26)!important;
-    box-shadow:0 18px 48px rgba(0,0,0,.26),0 0 24px rgba(77,243,255,.07)!important;
-  }
+  html body main .report-section .figure-card{width:min(42%,430px)!important;max-width:430px!important;min-width:330px!important;float:right!important;clear:right!important;margin:6px 0 22px 30px!important;padding:10px!important;border-radius:22px!important;overflow:hidden!important;background:rgba(2,6,23,.52)!important;border:1px solid rgba(77,243,255,.26)!important;box-shadow:0 18px 48px rgba(0,0,0,.26),0 0 24px rgba(77,243,255,.07)!important}
   html body main .report-section:nth-of-type(even) .figure,
-  html body main .report-section:nth-of-type(even) .figure-card{
-    float:left!important;
-    clear:left!important;
-    margin:6px 30px 22px 0!important;
-  }
+  html body main .report-section:nth-of-type(even) .figure-card{float:left!important;clear:left!important;margin:6px 30px 22px 0!important}
   html body main .report-section .figure img,
-  html body main .report-section .figure-card img{
-    width:100%!important;
-    height:auto!important;
-    max-height:340px!important;
-    object-fit:contain!important;
-    display:block!important;
-    border-radius:16px!important;
-  }
+  html body main .report-section .figure-card img{width:100%!important;height:auto!important;max-height:340px!important;object-fit:contain!important;display:block!important;border-radius:16px!important}
   html body main .report-section .figure figcaption,
-  html body main .report-section .figure-card figcaption{
-    font-size:.82rem!important;
-    line-height:1.45!important;
-    color:#cfe8ff!important;
-    padding:10px 8px 4px!important;
-    margin:0!important;
-    background:transparent!important;
-    border-top:1px solid rgba(255,255,255,.08)!important;
-  }
+  html body main .report-section .figure-card figcaption{font-size:.82rem!important;line-height:1.45!important;color:#cfe8ff!important;padding:10px 8px 4px!important;margin:0!important;background:transparent!important;border-top:1px solid rgba(255,255,255,.08)!important}
 }
 @media(max-width:899px){
   html body main .report-section .figure,
-  html body main .report-section .figure-card{
-    width:100%!important;
-    max-width:100%!important;
-    float:none!important;
-    clear:both!important;
-    margin:22px 0!important;
-  }
+  html body main .report-section .figure-card{width:min(88vw,320px)!important;max-width:320px!important;min-width:0!important;float:none!important;clear:both!important;margin:18px auto 22px!important;padding:8px!important;border-radius:18px!important}
   html body main .report-section .figure img,
-  html body main .report-section .figure-card img{
-    width:100%!important;
-    height:auto!important;
-    max-height:none!important;
-    object-fit:contain!important;
-  }
+  html body main .report-section .figure-card img{width:100%!important;height:auto!important;max-height:230px!important;object-fit:contain!important;display:block!important;border-radius:14px!important}
+  html body main .report-section .figure figcaption,
+  html body main .report-section .figure-card figcaption{font-size:.75rem!important;line-height:1.35!important;padding:8px 5px 2px!important}
+}
+@media(max-width:430px){
+  html body main .report-section .figure,
+  html body main .report-section .figure-card{width:min(84vw,285px)!important;max-width:285px!important}
+  html body main .report-section .figure img,
+  html body main .report-section .figure-card img{max-height:205px!important}
 }
 
 /* Force No. 4 — compact main-heading report navigation */
-html body.energy-report .report-toc{
-  overflow:visible!important;
-  flex-wrap:wrap!important;
-  justify-content:center!important;
-  gap:9px!important;
-  max-height:none!important;
-  padding:12px!important;
-}
-html body.energy-report .report-toc a{
-  display:none!important;
-  font-size:0!important;
-  min-height:40px!important;
-  padding:9px 13px!important;
-  white-space:nowrap!important;
-}
-html body.energy-report .report-toc a:nth-child(2),
-html body.energy-report .report-toc a:nth-child(3),
-html body.energy-report .report-toc a:nth-child(4),
-html body.energy-report .report-toc a:nth-child(5),
-html body.energy-report .report-toc a:nth-child(8),
-html body.energy-report .report-toc a:nth-child(9),
-html body.energy-report .report-toc a:nth-child(12),
-html body.energy-report .report-toc a:nth-child(14),
-html body.energy-report .report-toc a:nth-child(18){
-  display:inline-flex!important;
-}
-html body.energy-report .report-toc a::after{
-  font-size:.74rem!important;
-  line-height:1!important;
-  letter-spacing:.045em!important;
-}
-html body.energy-report .report-toc a:nth-child(2)::after{content:"Summary";}
-html body.energy-report .report-toc a:nth-child(3)::after{content:"Thesis";}
-html body.energy-report .report-toc a:nth-child(4)::after{content:"Infrastructure";}
-html body.energy-report .report-toc a:nth-child(5)::after{content:"Investment";}
-html body.energy-report .report-toc a:nth-child(8)::after{content:"Grids & Storage";}
-html body.energy-report .report-toc a:nth-child(9)::after{content:"Energy Security";}
-html body.energy-report .report-toc a:nth-child(12)::after{content:"Access & Justice";}
-html body.energy-report .report-toc a:nth-child(14)::after{content:"2035 Outlook";}
-html body.energy-report .report-toc a:nth-child(18)::after{content:"Sources";}
+html body.energy-report .report-toc{overflow:visible!important;flex-wrap:wrap!important;justify-content:center!important;gap:9px!important;max-height:none!important;padding:12px!important}
+html body.energy-report .report-toc a{display:none!important;font-size:0!important;min-height:40px!important;padding:9px 13px!important;white-space:nowrap!important}
+html body.energy-report .report-toc a:nth-child(2),html body.energy-report .report-toc a:nth-child(3),html body.energy-report .report-toc a:nth-child(4),html body.energy-report .report-toc a:nth-child(5),html body.energy-report .report-toc a:nth-child(8),html body.energy-report .report-toc a:nth-child(9),html body.energy-report .report-toc a:nth-child(12),html body.energy-report .report-toc a:nth-child(14),html body.energy-report .report-toc a:nth-child(18){display:inline-flex!important}
+html body.energy-report .report-toc a::after{font-size:.74rem!important;line-height:1!important;letter-spacing:.045em!important}
+html body.energy-report .report-toc a:nth-child(2)::after{content:"Summary"}html body.energy-report .report-toc a:nth-child(3)::after{content:"Thesis"}html body.energy-report .report-toc a:nth-child(4)::after{content:"Infrastructure"}html body.energy-report .report-toc a:nth-child(5)::after{content:"Investment"}html body.energy-report .report-toc a:nth-child(8)::after{content:"Grids & Storage"}html body.energy-report .report-toc a:nth-child(9)::after{content:"Energy Security"}html body.energy-report .report-toc a:nth-child(12)::after{content:"Access & Justice"}html body.energy-report .report-toc a:nth-child(14)::after{content:"2035 Outlook"}html body.energy-report .report-toc a:nth-child(18)::after{content:"Sources"}
 @media(max-width:860px){
-  html body.energy-report .report-toc{
-    justify-content:flex-start!important;
-    overflow-x:auto!important;
-    overflow-y:hidden!important;
-    flex-wrap:nowrap!important;
-    scrollbar-width:none!important;
-  }
-  html body.energy-report .report-toc::-webkit-scrollbar{display:none!important;}
+  html body.energy-report .report-toc{justify-content:flex-start!important;overflow-x:auto!important;overflow-y:hidden!important;flex-wrap:nowrap!important;scrollbar-width:none!important}
+  html body.energy-report .report-toc::-webkit-scrollbar{display:none!important}
 }
-
 @media(max-width:860px){
   .fwi-section-nav,.fwi-pillars-nav,.fwi-module-nav,.fwi-lecture-nav,.fwi-report-toc,.fwi-gallery-nav,.fwi-connect-nav,.fwi-internal-nav{width:min(100%,92vw);margin-bottom:22px;justify-content:flex-start;overflow-x:auto;overflow-y:hidden;flex-wrap:nowrap;padding:4px 0 10px;border-radius:0;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;scrollbar-width:none}
   .fwi-section-nav::-webkit-scrollbar,.fwi-pillars-nav::-webkit-scrollbar,.fwi-module-nav::-webkit-scrollbar,.fwi-lecture-nav::-webkit-scrollbar,.fwi-report-toc::-webkit-scrollbar,.fwi-gallery-nav::-webkit-scrollbar,.fwi-connect-nav::-webkit-scrollbar,.fwi-internal-nav::-webkit-scrollbar{display:none}

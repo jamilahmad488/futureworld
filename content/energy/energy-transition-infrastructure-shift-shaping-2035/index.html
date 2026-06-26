@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Force No. 4: Energy Transition | FutureWorld Intelligence</title>
+<meta name="description" content="FutureWorld Intelligence policy report on energy transition as a global system-shaping force toward 2035." />
+<link rel="stylesheet" href="/style.css?v=2.6" />
+<link rel="stylesheet" href="/assets/fwi-internal-nav.css?v=2.4" />
+<style>
+  :root{--energy-gold:#f2b544;--energy-cyan:#4df3ff;--energy-green:#39ff9c;--energy-blue:#0b1730;--energy-panel:rgba(7,14,28,.78);--energy-line:rgba(255,255,255,.13);--energy-text:#eaf5ff;--energy-muted:#a8bed8;}
+  body.energy-report{background:radial-gradient(circle at 12% 0%,rgba(77,243,255,.20),transparent 30%),radial-gradient(circle at 88% 8%,rgba(242,181,68,.18),transparent 34%),linear-gradient(180deg,#020617 0%,#071426 50%,#020617 100%);color:var(--energy-text);}
+  .energy-report .report-hero{width:min(1240px,92vw);margin:118px auto 26px;border:1px solid rgba(77,243,255,.24);border-radius:34px;overflow:hidden;background:linear-gradient(135deg,rgba(0,0,0,.70),rgba(5,16,34,.88));box-shadow:0 30px 100px rgba(0,0,0,.42);}
+  .energy-report .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:26px;align-items:center;padding:38px;}
+  .energy-report .hero-kicker{display:inline-flex;gap:10px;align-items:center;color:#ffe6a6;text-transform:uppercase;letter-spacing:.16em;font-weight:900;font-size:.76rem;margin-bottom:16px;}
+  .energy-report .hero-kicker::before{content:"";width:38px;height:2px;background:#f2b544;box-shadow:0 0 16px rgba(242,181,68,.58);}
+  .energy-report h1{font-family:var(--font-display,Arial,sans-serif);font-size:clamp(2.5rem,6vw,5.6rem);line-height:.92;margin:0 0 14px;text-transform:uppercase;letter-spacing:-.04em;background:linear-gradient(90deg,#f8fbff,#4df3ff,#ffe6a6);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .energy-report .hero-subtitle{font-size:clamp(1.15rem,2.2vw,1.55rem);line-height:1.55;color:#d7e7ff;max-width:760px;}
+  .energy-report .hero-meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px;}
+  .energy-report .hero-meta span{border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.055);border-radius:999px;padding:9px 12px;color:#eaf7ff;font-weight:800;font-size:.82rem;}
+  .energy-report .hero-logo-card{border:1px solid rgba(242,181,68,.30);border-radius:28px;padding:16px;background:radial-gradient(circle at 20% 0%,rgba(242,181,68,.12),transparent 36%),rgba(0,0,0,.28);}
+  .energy-report .hero-logo-card img{width:100%;display:block;border-radius:22px;box-shadow:0 24px 70px rgba(0,0,0,.45);}
+  .energy-report .report-container{width:min(1180px,92vw);margin:0 auto 80px;}
+  .energy-report .report-toc{position:sticky;top:82px;z-index:8;width:min(1180px,92vw);margin:0 auto 22px;padding:10px 12px;border:1px solid rgba(255,255,255,.12);border-radius:24px;background:rgba(2,6,23,.78);backdrop-filter:blur(14px);display:flex;gap:8px;overflow:auto;box-shadow:0 16px 60px rgba(0,0,0,.28);}
+  .energy-report .report-toc a{white-space:nowrap;color:#f8fbff;text-decoration:none;border:1px solid rgba(77,243,255,.20);background:rgba(77,243,255,.06);border-radius:999px;padding:9px 12px;font-family:var(--font-display,Arial,sans-serif);font-size:.72rem;font-weight:900;}
+  .energy-report .report-toc a:hover{border-color:rgba(242,181,68,.55);background:rgba(242,181,68,.12);color:#ffe6a6;}
+  .energy-report .report-section{position:relative;clear:both;overflow:auto;margin:0 0 26px;padding:34px;border:1px solid var(--energy-line);border-radius:30px;background:linear-gradient(180deg,rgba(15,23,42,.78),rgba(7,14,28,.72));box-shadow:0 24px 80px rgba(0,0,0,.30);}
+  .energy-report .report-section::after{content:"";display:block;clear:both;}
+  .energy-report .report-section h2{font-family:var(--font-display,Arial,sans-serif);font-size:clamp(1.7rem,3.2vw,2.85rem);line-height:1.08;margin:0 0 18px;color:#f8fbff;letter-spacing:-.025em;}
+  .energy-report .report-section h3{font-family:var(--font-display,Arial,sans-serif);font-size:clamp(1.15rem,2vw,1.55rem);color:#ffe6a6;margin:24px 0 10px;}
+  .energy-report .report-section p,.energy-report .report-section li{font-size:1.02rem;line-height:1.86;color:#dcecff;}
+  .energy-report .report-section p{margin:0 0 16px;}
+  .energy-report .report-section ul,.energy-report .report-section ol{padding-left:24px;margin:0 0 18px;}
+  .energy-report .report-section strong{color:#fff;}
+  .energy-report .report-section em{color:#c9f8ff;}
+  .energy-report .report-section blockquote{border-left:4px solid #f2b544;background:rgba(242,181,68,.08);padding:16px 18px;border-radius:16px;color:#ffecc7;}
+  .energy-report .report-figure{width:min(46%,560px);max-width:560px;min-width:380px;margin:6px 0 24px 30px;padding:12px;border-radius:24px;background:linear-gradient(180deg,rgba(0,0,0,.38),rgba(5,18,38,.60));border:1px solid rgba(77,243,255,.28);box-shadow:0 24px 70px rgba(0,0,0,.32),0 0 28px rgba(77,243,255,.08);}
+  .energy-report .report-figure.figure-right{float:right;clear:right;margin-left:30px;margin-right:0;}
+  .energy-report .report-figure.figure-left{float:left;clear:left;margin-right:30px;margin-left:0;}
+  .energy-report .report-figure a{display:block;}
+  .energy-report .report-figure img{width:100%;height:auto;max-height:430px;object-fit:contain;display:block;border-radius:18px;border:1px solid rgba(255,255,255,.08);background:#030712;}
+  .energy-report .report-figure figcaption{margin:10px 4px 2px;padding-top:10px;border-top:1px solid rgba(255,255,255,.10);font-size:.84rem;line-height:1.55;color:#cfe8ff;}
+  .energy-report .report-figure figcaption strong{display:block;color:#ffe6a6;margin-bottom:4px;font-family:var(--font-display,Arial,sans-serif);}
+  .energy-report .report-figure figcaption span{display:block;color:#bcd5ef;}
+  .energy-report .source-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:18px;}
+  .energy-report .source-grid a{display:flex;align-items:center;min-height:64px;padding:14px;border:1px solid rgba(77,243,255,.22);border-radius:18px;background:rgba(77,243,255,.06);color:#eaffff;text-decoration:none;font-weight:800;}
+  .energy-report .source-grid a:hover{border-color:rgba(242,181,68,.48);background:rgba(242,181,68,.10);color:#ffe6a6;}
+  .energy-report footer{width:min(1180px,92vw);margin:0 auto 60px;text-align:center;color:#9fb2ca;}
+  @media(max-width:900px){.energy-report .hero-grid{grid-template-columns:1fr;padding:24px;}.energy-report .report-toc{top:70px;}.energy-report .report-section{padding:24px;border-radius:24px;}.energy-report .report-figure,.energy-report .report-figure.figure-left,.energy-report .report-figure.figure-right{float:none;clear:both;width:100%;min-width:0;max-width:100%;margin:22px 0;}.energy-report .report-figure img{max-height:none;}}
+</style>
+</head>
+<body class="theme-home env-page energy-report">
+<div class="cosmic-bg"></div><div class="scanline"></div>
+<nav class="floating-nav" aria-label="Primary navigation"></nav>
+
+<header class="report-hero">
+  <div class="hero-grid">
+    <div>
+      <p class="hero-kicker">FutureWorld Intelligence | Five Forces Shaping 2035</p>
+      <h1>Force No. 4<br>Energy Transition</h1>
+      <p class="hero-subtitle">The Infrastructure Shift Rewiring Power, Security and Development</p>
+      <div class="hero-meta"><span>Evidence-Based Strategic & Policy Briefing</span><span>Report Date: June 2026</span><span>Clean URL Report Package</span></div>
+    </div>
+    <div class="hero-logo-card"><img src="assets/fwi-logo.png" alt="FutureWorld Intelligence standard logo" /></div>
+  </div>
+</header>
+
+<nav class="report-toc" aria-label="Energy transition report sections">
+<a href="#section-document-control-and-responsible-use-statement">Document Control and Responsible Use Statement</a>
+<a href="#section-executive-summary">Executive Summary</a>
+<a href="#section-1-core-thesis-why-energy-transition-qualifies-as-a-future-shaping-force">Core Thesis: Why Energy Transition Qualifies as a Future-Shaping Force</a>
+<a href="#section-2-energy-transition-as-an-infrastructure-shift">Energy Transition as an Infrastructure Shift</a>
+<a href="#section-3-investment-shift-capital-is-repricing-the-energy-system">Investment Shift: Capital Is Repricing the Energy System</a>
+<a href="#section-4-renewable-power-from-supplement-to-system-pillar">Renewable Power: From Supplement to System Pillar</a>
+<a href="#section-5-electricity-demand-the-new-center-of-the-energy-system">Electricity Demand: The New Center of the Energy System</a>
+<a href="#section-6-grids-storage-and-flexibility-the-hidden-core-of-the-transition">Grids, Storage and Flexibility: The Hidden Core of the Transition</a>
+<a href="#section-7-energy-security-from-barrels-and-pipelines-to-electrons-and-minerals">Energy Security: From Barrels and Pipelines to Electrons and Minerals</a>
+<a href="#section-8-critical-minerals-and-industrial-competition">Critical Minerals and Industrial Competition</a>
+<a href="#section-9-fossil-fuels-in-transition-decline-lock-in-and-political-economy">Fossil Fuels in Transition: Decline, Lock-In and Political Economy</a>
+<a href="#section-10-energy-access-affordability-and-development-justice">Energy Access, Affordability and Development Justice</a>
+<a href="#section-11-country-and-regional-illustrations">Country and Regional Illustrations</a>
+<a href="#section-12-projection-toward-2035">Projection Toward 2035</a>
+<a href="#section-13-futureworld-intelligence-assessment">FutureWorld Intelligence Assessment</a>
+<a href="#section-14-limitations-open-questions-and-responsible-reading">Limitations, Open Questions and Responsible Reading</a>
+<a href="#section-final-report-statement">Final Report Statement</a>
+<a href="#section-source-base">Source Base</a>
+</nav>
+
+<main class="report-container">
+<section class="report-section" id="section-document-control-and-responsible-use-statement">
+<h2 id="document-control-and-responsible-use-statement">Document Control and Responsible Use Statement</h2>
+<p>This report is prepared for educational, policy-briefing, public-intelligence, and strategic foresight purposes, aimed at informing policymakers, public officials, researchers, and strategic stakeholders about the evidence underpinning the global energy transition as a defining force shaping the future toward 2035. It does not constitute investment, engineering, legal, or advisory guidance, nor does it represent the official position of any institution referenced herein.</p>
+<p>The term energy transition is employed in a comprehensive systems-policy sense, encompassing the structural transformation of energy production, transmission, distribution, storage, consumption, financing, and governance. While renewable electricity is central, the transition extends to grids, storage, nuclear power, efficiency, electrification, clean cooking, low-emission fuels, critical minerals, carbon management, industrial decarbonization, transport electrification, digital energy systems, and the evolving strategic role of fossil fuels.</p>
+<p>The report distinguishes between empirical evidence, analytical interpretation, and forward-looking projection. Quantifiable indicators include investment flows, renewable capacity, electricity demand, emissions, grid development, and mineral concentration. By contrast, assessments regarding fossil-fuel displacement, technological trajectories, supply-chain evolution, industrial competitiveness, and system resilience toward 2035 are interpretive in nature and should be understood as strategic analysis rather than deterministic forecast.</p>
+<hr/>
+
+</section><section class="report-section" id="section-executive-summary">
+<h2 id="executive-summary">Executive Summary</h2>
+<figure class="report-figure figure-right">
+<a aria-label="Open Figure 1 — Energy Transition as a Global System-Shaping Force" href="assets/energy_transition_as_a_global_force.png" rel="noopener" target="_blank">
+<img alt="Figure 1 — Energy Transition as a Global System-Shaping Force" decoding="async" loading="lazy" src="assets/energy_transition_as_a_global_force.png"/>
+</a>
+<figcaption><strong>Figure 1 — Energy Transition as a Global System-Shaping Force</strong><span>Systems view of electricity, renewables, grids, storage, minerals, finance, industry, climate, households and security. Source note: FutureWorld synthesis based on IEA, IRENA, UNFCCC and World Bank energy-transition frameworks.</span></figcaption>
+</figure>
+
+<p>The energy transition is one of the principal forces shaping the global future toward 2035 because energy serves as the core operating foundation of modern civilization. Every economy, city, hospital, farm, school, factory, data center, military system, transport corridor, communication network, water system, and household relies on reliable, affordable, and secure energy.</p>
+<p>The central argument of this report is that the energy transition is not merely a climate-policy agenda. It is a <strong>global infrastructure transformation</strong> that is rewiring power systems, industrial competitiveness, geopolitical leverage, public finance, technology supply chains, household welfare, and national development pathways.</p>
+<p>Three lines of evidence support treating the energy transition as a system-shaping force.</p>
+<p>First, global capital allocation has shifted decisively toward clean energy. The International Energy Agency estimates that global energy investment will reach about US$3.5 trillion in 2026, with approximately US$2.6 trillion directed toward clean-energy technologies and infrastructure (IEA World Energy Investment 2026). This means clean-energy investment is roughly double fossil-fuel investment. The investment base now includes renewables, nuclear power, storage, grids, efficiency, electrification, low-emission fuels, and related infrastructure. Energy investment is therefore no longer organized primarily around oil, gas, and coal. It is increasingly organized around electricity, networks, storage, critical minerals, and low-carbon technologies.</p>
+<p>Second, renewable power has moved from supplementary capacity to a central pillar of the global electricity system. As of early 2026, the most recent verified data from the International Renewable Energy Agency (IRENA) indicates that global renewable power capacity reached approximately 5,149 GW by the end of 2025, reflecting an increase of about 692 GW from 2024. Renewables accounted for roughly 49.4 percent of total installed global electricity capacity. Solar power remained the dominant driver, contributing around 511 GW of new capacity additions in 2025 and bringing total installed solar capacity to approximately 2,392 GW. While comprehensive, fully verified global figures for the entirety of 2026 are not yet available, these latest confirmed statistics demonstrate that renewable energy is no longer peripheral. It is becoming a core asset class within power-system planning.</p>
+<p>Third, the transition is accelerating, but the emissions curve has not yet been structurally bent downward. The IEA’s Global Energy Review 2025 reports that energy-related CO₂ emissions rose to a record 37.8 Gt CO₂ in 2024. At the same time, the deployment of solar PV, wind power, nuclear power, electric vehicles, and heat pumps now avoids an estimated 2.6 Gt CO₂ annually. This dual reality is central to the policy challenge: clean technologies are scaling rapidly, but fossil-fuel dependence, electricity-demand growth, heat-related cooling demand, industrial energy use, and infrastructure constraints continue to keep emissions elevated.</p>
+<p>The energy transition is also inseparable from geopolitics. States are no longer competing only for oil fields, gas pipelines, refineries, and maritime fuel corridors. They are competing for critical minerals, battery manufacturing, solar supply chains, grid equipment, nuclear technology, hydrogen infrastructure, power electronics, transmission capacity, industrial ecosystems, and electricity-intensive manufacturing.</p>
+<p>Energy security is therefore shifting from a twentieth-century model based on barrels, pipelines, and strategic fuel reserves toward a twenty-first-century model based on <strong>electrons, grids, storage, minerals, manufacturing capacity, cybersecurity, and system flexibility</strong>.</p>
+<p>This report concludes that the energy transition will shape the future through seven major pathways: electrification, renewable expansion, grid modernization, storage and flexibility, critical-mineral geopolitics, industrial competitiveness, and energy-access justice.</p>
+<p>By 2035, the dividing line between resilient and vulnerable societies may increasingly depend on <strong>energy-system readiness</strong>: the ability to generate reliable and affordable electricity, integrate variable renewables, modernize grids, deploy storage, manage demand, secure critical minerals, reduce import vulnerability, protect infrastructure, mobilize finance, and expand access to modern energy services.</p>
+<p>The energy transition is not only about replacing fossil fuels. It is a structural force reorganizing development, security, industry, climate action, and global power.</p>
+<hr/>
+
+</section><section class="report-section" id="section-1-core-thesis-why-energy-transition-qualifies-as-a-future-shaping-force">
+<h2 id="1-core-thesis-why-energy-transition-qualifies-as-a-future-shaping-force">1. Core Thesis: Why Energy Transition Qualifies as a Future-Shaping Force</h2>
+<p>Energy transition qualifies as a global future-shaping force because energy is embedded in every major human system.</p>
+<p>Energy is not a narrow sector. It is the enabling infrastructure of the modern economy. It powers agriculture, transport, housing, healthcare, education, telecommunications, defense, water extraction, irrigation, mining, manufacturing, digital services, artificial intelligence, refrigeration, logistics, industrial production, and household welfare.</p>
+<p>When the energy system changes, the structure of development changes.</p>
+<p>Previous industrial eras were shaped by dominant energy systems. Coal powered industrialization, railways, steel, and early modern manufacturing. Oil shaped transport, petrochemicals, military logistics, aviation, shipping, and Middle Eastern geopolitics. Natural gas shaped electricity generation, heating, fertilizer production, industry, and pipeline diplomacy.</p>
+<p>The current transition is different because it is not simply a fuel substitution. It is a <strong>system redesign</strong>.</p>
+<p>The global energy system is moving from centralized fossil-fuel combustion toward a more electrified, digitized, distributed, storage-dependent, mineral-intensive, and infrastructure-heavy architecture. Power generation is increasingly linked to solar, wind, hydropower, nuclear power, storage, demand response, high-voltage transmission, smart distribution networks, distributed generation, advanced metering, and digital control systems.</p>
+<p>This report organizes the energy transition’s future-shaping effect around four interlinked transformations.</p>
+<p>First is <strong>infrastructure transformation</strong>. Countries must build and modernize generation assets, transmission systems, distribution networks, substations, interconnectors, storage systems, charging networks, ports, data systems, control rooms, industrial zones, and climate-resilient energy infrastructure.</p>
+<p>Second is <strong>economic transformation</strong>. Clean energy is changing capital allocation, industrial policy, manufacturing competition, employment patterns, energy prices, trade balances, balance-of-payments exposure, and fiscal planning.</p>
+<p>Third is <strong>geopolitical transformation</strong>. Energy power is shifting from control over fossil-fuel reserves alone toward control over critical minerals, refining capacity, battery value chains, clean-technology manufacturing, grid equipment, nuclear fuel cycles, electricity markets, and industrial ecosystems.</p>
+<p>Fourth is <strong>social transformation</strong>. Energy transition affects households, tariffs, subsidies, access, affordability, clean cooking, local air quality, rural livelihoods, just transition, and public trust in reform.</p>
+<p>A force shapes the future when it reorganizes multiple systems at once. Energy transition meets that test. It affects climate policy, industrial competitiveness, trade, finance, public health, geopolitics, infrastructure, technology, households, transport, agriculture, and digital systems.</p>
+<p>The future will not be shaped only by climate change, artificial intelligence, geopolitics, or human development. It will also be shaped by who can produce, store, transmit, afford, and govern energy in a rapidly changing world.</p>
+<hr/>
+
+</section><section class="report-section" id="section-2-energy-transition-as-an-infrastructure-shift">
+<h2 id="2-energy-transition-as-an-infrastructure-shift">2. Energy Transition as an Infrastructure Shift</h2>
+<p>The energy transition is often described as a shift from fossil fuels to renewable energy. That description is accurate but incomplete.</p>
+<p>A modern energy transition requires a deeper infrastructure shift.</p>
+<p>Solar panels and wind turbines generate electricity, but electricity must be transmitted, distributed, balanced, stored, managed, priced, protected, and consumed. This requires transmission corridors, distribution networks, substations, transformers, batteries, pumped storage, flexible generation, demand-response systems, smart meters, digital forecasting, grid codes, market reform, land-use planning, permitting systems, trained engineers, and credible regulatory institutions.</p>
+<p>This is why grids have become one of the central bottlenecks of the transition.</p>
+<p>Renewable generation can often be built faster than transmission and distribution infrastructure. Solar parks and wind farms may be technically ready, but without grid connection they cannot deliver usable electricity. Urban electrification may expand, but without distribution upgrades, transformers and substations become overloaded. Electric vehicles may grow, but without charging networks and load management they can intensify peak demand. Data centers and artificial-intelligence infrastructure may expand rapidly, but without credible power planning they can compete with households, industry, and public services for electricity.</p>
+<p>The transition therefore requires a shift from <strong>capacity addition</strong> to <strong>system integration</strong>.</p>
+<p>Energy systems must be assessed not only by the number of megawatts installed, but by whether those megawatts are dispatchable, connected, affordable, flexible, secure, resilient, and accessible. A country may add renewable capacity quickly and still face curtailment, congestion, blackouts, tariff stress, or reliability problems if grid infrastructure and market design do not keep pace.</p>
+<p>By 2035, countries that treat the energy transition as infrastructure modernization will be better positioned than those that treat it as isolated renewable-project installation.</p>
+<hr/>
+
+</section><section class="report-section" id="section-3-investment-shift-capital-is-repricing-the-energy-system">
+<h2 id="3-investment-shift-capital-is-repricing-the-energy-system">3. Investment Shift: Capital Is Repricing the Energy System</h2>
+<figure class="report-figure figure-left">
+<a aria-label="Open Figure 2 — Global Energy Investment Shift" href="assets/global_energy_investment_breakdown_2025.png" rel="noopener" target="_blank">
+<img alt="Figure 2 — Global Energy Investment Shift" decoding="async" loading="lazy" src="assets/global_energy_investment_breakdown_2025.png"/>
+</a>
+<figcaption><strong>Figure 2 — Global Energy Investment Shift</strong><span>Clean-energy and electricity-related capital allocation is becoming central to global energy investment. Source note: IEA World Energy Investment reporting and FutureWorld synthesis.</span></figcaption>
+</figure>
+
+<p>Capital allocation is one of the strongest indicators of structural change. When investment flows change, future infrastructure changes.</p>
+<p>The IEA’s World Energy Investment 2026 assessment indicates that global energy investment is projected at about US$3.5 trillion in 2026. Of this, around US$2.4 trillion is expected to go to clean-energy technologies and infrastructure, including renewables, nuclear power, storage, low-emission fuels, efficiency, electrification, and grids. This continues to be roughly double the expected investment in fossil fuels.</p>
+<p>This matters for three reasons.</p>
+<p>First, it shows that the clean-energy transition is no longer only a policy aspiration. It is now a capital-allocation reality.</p>
+<p>Second, it shows that industrial competitiveness is being reshaped. Countries and firms that capture clean-energy manufacturing, grid equipment, installation capacity, battery value chains, electric mobility, power electronics, energy services, and digital energy systems may gain new economic leverage.</p>
+<p>Third, it shows that fossil fuels remain economically significant. The transition is not complete. Oil, gas, and coal continue to receive major investment and continue to supply large shares of global energy demand. The world is therefore operating in a <strong>dual-energy period</strong>: clean-energy investment is rising rapidly, while fossil-fuel dependence remains structurally embedded.</p>
+<p>The investment challenge is also uneven. Advanced economies and China dominate clean-energy investment, while many developing economies face higher capital costs, weaker grids, limited fiscal space, currency risk, regulatory uncertainty, and restricted access to concessional finance.</p>
+<p>For developing countries, energy transition depends not only on technology costs but on finance architecture: concessional finance, guarantees, blended finance, local-currency instruments, stable regulation, bankable project pipelines, grid investment, domestic technical capacity, and institutional credibility.</p>
+<p>By 2035, <strong>energy-finance readiness</strong> may become a major indicator of national development capacity.</p>
+<hr/>
+
+</section><section class="report-section" id="section-4-renewable-power-from-supplement-to-system-pillar">
+<h2 id="4-renewable-power-from-supplement-to-system-pillar">4. Renewable Power: From Supplement to System Pillar</h2>
+<figure class="report-figure figure-right">
+<a aria-label="Open Figure 3 — Renewable Capacity Surge" href="assets/renewable_capacity_surge_2025_outlook.png" rel="noopener" target="_blank">
+<img alt="Figure 3 — Renewable Capacity Surge" decoding="async" loading="lazy" src="assets/renewable_capacity_surge_2025_outlook.png"/>
+</a>
+<figcaption><strong>Figure 3 — Renewable Capacity Surge</strong><span>Global renewable capacity reached 5,149 GW at end-2025 after record annual additions, led by solar PV and wind. Source note: IRENA Renewable Capacity Statistics 2026.</span></figcaption>
+</figure>
+
+<p>Renewable power is expanding at historic scale.</p>
+<p>Global renewable power capacity reached approximately 5,149 GW by the end of 2025, according to IRENA-linked reporting. Renewables represented about 49.4 percent of global installed electricity capacity, up from 46.3 percent in 2024. The world added approximately 692 GW of renewable capacity in 2025, led by solar power.</p>
+<p>Solar PV is the dominant growth technology. It is modular, increasingly low-cost, relatively fast to install, scalable from rooftop systems to utility-scale parks, and suitable for distributed generation. Wind power remains central, especially in countries with strong onshore or offshore wind resources. Hydropower remains important for many systems, though it is exposed to drought, hydrological variability, ecological constraints, and competing water demands. Geothermal and bioenergy play more specific roles depending on local resource conditions and sustainability safeguards.</p>
+<p>Renewable expansion matters because electricity is becoming the backbone of the future energy system. Transport is electrifying. Heating is partly electrifying. Industry is exploring electrification. Data centers depend on electricity. Artificial intelligence depends on electricity. Water pumping, desalination, cold chains, irrigation, cooling, and digital systems all depend on reliable electricity.</p>
+<p>However, renewable capacity is not the same as reliable electricity supply. Solar and wind are variable renewable energy resources. Their system value depends on grid integration, storage, forecasting, flexible demand, regional interconnection, market design, reserve margins, and backup capacity.</p>
+<p>The central policy question is therefore not only: “How much renewable capacity has been installed?” The more important question is: “Can the power system absorb, balance, transmit, store, and use renewable electricity effectively?”</p>
+<p>By 2035, renewable power will likely be a core pillar of global electricity systems, but countries with weak grids may struggle to convert installed capacity into reliable power.</p>
+<hr/>
+
+</section><section class="report-section" id="section-5-electricity-demand-the-new-center-of-the-energy-system">
+<h2 id="5-electricity-demand-the-new-center-of-the-energy-system">5. Electricity Demand: The New Center of the Energy System</h2>
+<figure class="report-figure figure-left">
+<a aria-label="Open Figure 4 — Electricity Becomes the New Energy Backbone" href="assets/electricity_powers_the_future_infrastructure.png" rel="noopener" target="_blank">
+<img alt="Figure 4 — Electricity Becomes the New Energy Backbone" decoding="async" loading="lazy" src="assets/electricity_powers_the_future_infrastructure.png"/>
+</a>
+<figcaption><strong>Figure 4 — Electricity Becomes the New Energy Backbone</strong><span>Electricity links EVs, cooling, industry, buildings, agriculture, water systems, AI infrastructure, data centers and digital services. Source note: FutureWorld synthesis based on IEA electricity-demand analysis.</span></figcaption>
+</figure>
+
+<p>The energy transition is not only about producing cleaner energy. It is also about managing rising electricity demand.</p>
+<p>Electricity demand is growing because of urbanization, industrialization, cooling needs, electric vehicles, heat pumps, desalination, digital infrastructure, cloud computing, data centers, artificial intelligence, and rising living standards. In many developing countries, electricity-demand growth is also a development indicator: more households, farms, schools, clinics, and enterprises gaining access to modern energy services.</p>
+<p>This creates a strategic paradox.</p>
+<p>The world needs electricity to decarbonize transport, buildings, industry, water systems, agriculture, and digital infrastructure. But if electricity demand rises faster than clean generation, storage, and grids can expand, fossil fuels may continue to fill the gap.</p>
+<p>The IEA reports that energy-related CO₂ emissions rose to a record 38.2 Gt CO₂ in 2025. Heat-related cooling demand, natural gas growth, coal use, aviation recovery, and emerging-market energy demand all contributed. Yet the same assessment shows that clean technologies are already making a measurable difference, avoiding about 3.0 Gt CO₂ annually.</p>
+<figure class="report-figure figure-right">
+<a aria-label="Open Figure 5 — Energy-Related CO₂ Emissions: Progress and Lock-In" href="assets/emissions_vs._clean_technologies_2024_race.png" rel="noopener" target="_blank">
+<img alt="Figure 5 — Energy-Related CO₂ Emissions: Progress and Lock-In" decoding="async" loading="lazy" src="assets/emissions_vs._clean_technologies_2024_race.png"/>
+</a>
+<figcaption><strong>Figure 5 — Energy-Related CO₂ Emissions: Progress and Lock-In</strong><span>Clean technologies are avoiding substantial emissions, while total energy-related CO₂ emissions remain elevated due to demand growth and fossil-fuel lock-in. Source note: IEA Global Energy Review reporting.</span></figcaption>
+</figure>
+
+<p>This means the future will be determined by the race between three forces:</p>
+<ol>
+<li>rising electricity demand;</li>
+<li>clean generation, storage, flexibility, and grid expansion;</li>
+<li>fossil-fuel lock-in.</li>
+</ol>
+<p>If clean electricity, efficiency, grids, and flexibility grow faster than demand, emissions can bend downward. If demand grows faster than clean supply and infrastructure, emissions may remain elevated despite record renewable deployment.</p>
+<p>By 2035, electricity planning will become one of the most important branches of national strategy.</p>
+<hr/>
+
+</section><section class="report-section" id="section-6-grids-storage-and-flexibility-the-hidden-core-of-the-transition">
+<h2 id="6-grids-storage-and-flexibility-the-hidden-core-of-the-transition">6. Grids, Storage and Flexibility: The Hidden Core of the Transition</h2>
+<figure class="report-figure figure-left">
+<a aria-label="Open Figure 6 — Grids, Storage and Flexibility" href="assets/grids_storage_and_flexibility_infographic.png" rel="noopener" target="_blank">
+<img alt="Figure 6 — Grids, Storage and Flexibility" decoding="async" loading="lazy" src="assets/grids_storage_and_flexibility_infographic.png"/>
+</a>
+<figcaption><strong>Figure 6 — Grids, Storage and Flexibility</strong><span>Transmission, distribution, storage, substations, demand response, forecasting and cyber-secure control determine whether renewable capacity becomes reliable electricity. Source note: IEA electricity grids and energy-security analysis.</span></figcaption>
+</figure>
+
+<p>The grid is widely recognized as the backbone of the energy transition (International Energy Agency, <em>Electricity Grids and Secure Energy Transitions</em>, 2023; IEA, <em>World Energy Outlook 2025</em>).</p>
+<p>Without grids, clean electricity cannot reach homes, farms, industries, hospitals, schools, EV chargers, data centers, or export markets. Without storage, variable renewable power cannot be shifted from periods of surplus to periods of demand. Without flexibility, electricity systems become more vulnerable to instability, curtailment, blackouts, congestion, and price volatility.</p>
+<p>The International Energy Agency (IEA) reports that global grid investment remains in the range of US$350–400 billion per year and still needs to more than double to over US$700 billion annually by 2030 to keep pace with accelerating electricity demand, electrification, and renewable deployment (IEA, <em>World Energy Outlook 2025</em>; IEA, <em>Electricity Grids and Secure Energy Transitions</em>, 2023).</p>
+<p>This is one of the most important points for policymakers.</p>
+<p>Solar panels are visible. Wind turbines are visible. Electric vehicles are visible. But the less visible systems — transformers, substations, distribution upgrades, transmission corridors, control rooms, dispatch systems, grid codes, forecasting, storage, digital meters, cybersecurity protocols, and trained operators — determine whether the transition works.</p>
+<p>Battery storage is expanding rapidly because it helps manage solar and wind variability. According to the IEA, global battery storage additions have continued to break records through 2024 and are projected to scale several-fold by the late 2020s, supporting peak demand, frequency control, backup power, and grid stability (IEA, <em>Renewables 2025</em>). Pumped hydropower remains the dominant form of long-duration storage, still accounting for roughly 85–90% of global installed storage capacity, although its share is gradually declining as batteries expand (IEA, <em>Hydropower Special Market Report 2024</em>). Other storage and flexibility options, including thermal storage, compressed-air storage, flow batteries, hydrogen, demand response, interconnectors, and advanced grid management, are expected to play complementary roles depending on system needs.</p>
+<p>The future power system will require not only generation adequacy but flexibility adequacy (IEA, <em>World Energy Outlook 2025</em>).</p>
+<p>By 2035, energy-system leadership will depend less on installing generation alone and more on building flexible, intelligent, resilient, and cyber-secure grids (IEA, <em>World Energy Outlook 2025</em>; IEA, <em>Electricity Grids and Secure Energy Transitions</em>, 2023).</p>
+<hr/>
+
+</section><section class="report-section" id="section-7-energy-security-from-barrels-and-pipelines-to-electrons-and-minerals">
+<h2 id="7-energy-security-from-barrels-and-pipelines-to-electrons-and-minerals">7. Energy Security: From Barrels and Pipelines to Electrons and Minerals</h2>
+<p>Energy security traditionally meant securing oil, gas, coal, pipelines, shipping routes, refineries, strategic reserves, and fuel import channels.</p>
+<p>Those issues remain important. The world still depends heavily on fossil fuels. As of the latest available data heading into 2026, global oil consumption is roughly 102–104 million barrels per day, LNG trade has surpassed 400 million tonnes annually, and natural gas consumption remains above 4 trillion cubic meters per year. Oil markets still affect inflation, transport, food systems, public finance, and military logistics. Gas remains important for power generation, heating, fertilizers, and industry. Coal remains a major electricity source in several large economies, still accounting for over one-third of global electricity generation.</p>
+<p>But the energy transition changes the meaning of energy security.</p>
+<p>Future energy security will include:</p>
+<ul>
+<li>reliable electricity grids;</li>
+<li>diversified renewable generation;</li>
+<li>energy storage;</li>
+<li>critical minerals;</li>
+<li>battery supply chains;</li>
+<li>solar and wind manufacturing;</li>
+<li>power electronics;</li>
+<li>transmission equipment;</li>
+<li>nuclear fuel and technology;</li>
+<li>cyber-secure energy systems;</li>
+<li>climate-resilient energy infrastructure.</li>
+</ul>
+<p>This is a major geopolitical shift.</p>
+<p>Countries that import oil and gas can significantly reduce fuel-import exposure by expanding domestic renewable power, and this shift is already well underway. As of 2026, renewables accounted for roughly 35% of global electricity generation, with solar and wind alone contributing close to 20%, up from about 6% a decade earlier. Global solar capacity has surpassed 2 terawatts, while wind capacity is around 1.2 terawatts, reflecting rapid deployment across both developed and emerging economies. However, this transition introduces new dependencies: over 80% of solar panel manufacturing is concentrated in a few countries, and critical minerals such as lithium, cobalt, and rare earth elements are heavily sourced from limited regions. As a result, while reliance on fossil fuel imports declines, energy dependency evolves toward supply chains for clean energy technologies and materials.</p>
+<p>This is why energy transition and geopolitics are inseparable.</p>
+<p>By 2035, energy security will be measured not only by fuel reserves but by electricity-system resilience, technology access, mineral supply, manufacturing capacity, cyber protection, and the ability to withstand shocks.</p>
+<hr/>
+
+</section><section class="report-section" id="section-8-critical-minerals-and-industrial-competition">
+<h2 id="8-critical-minerals-and-industrial-competition">8. Critical Minerals and Industrial Competition</h2>
+<figure class="report-figure figure-right">
+<a aria-label="Open Figure 7 — Critical Minerals and Energy Geopolitics" href="assets/critical_minerals_and_energy_geopolitics.png" rel="noopener" target="_blank">
+<img alt="Figure 7 — Critical Minerals and Energy Geopolitics" decoding="async" loading="lazy" src="assets/critical_minerals_and_energy_geopolitics.png"/>
+</a>
+<figcaption><strong>Figure 7 — Critical Minerals and Energy Geopolitics</strong><span>Mineral extraction, refining, processing and manufacturing are becoming core arenas of energy power. Source note: IEA Global Critical Minerals Outlook and FutureWorld synthesis.</span></figcaption>
+</figure>
+
+<p>The energy transition is mineral-intensive.</p>
+<p>Solar panels, wind turbines, batteries, electric vehicles, transmission lines, transformers, motors, hydrogen electrolyzers, and digital energy systems require large volumes of copper, lithium, nickel, cobalt, graphite, manganese, rare earth elements, aluminium, steel, and other materials.</p>
+<p>Rare earth elements such as neodymium, praseodymium, dysprosium, and terbium are especially critical for high-performance magnets used in wind turbines and electric vehicles. Global production is highly concentrated: China dominates with roughly 60–70% of mined output and over 80% of processing capacity, followed by the United States (primarily from the Mountain Pass mine), Australia (notably Lynas Corporation), and smaller contributions from Myanmar and other countries.</p>
+<p>This creates a new geopolitical economy.</p>
+<p>Oil and gas are extracted, transported, traded, and burned. Critical minerals are mined, refined, processed, manufactured into components, installed into long-lived infrastructure, and often recyclable. This shifts energy power from fuel extraction alone toward supply-chain control.</p>
+<p>The IEA has warned that critical-mineral supply chains remain highly concentrated, especially in refining and processing. By 2035, the average share of the top three refined-material suppliers is projected to remain around 82 percent. This creates vulnerability to export controls, price volatility, industrial bottlenecks, trade conflict, extreme-weather disruption, and supply shocks.</p>
+<p>The critical-minerals challenge is not only geological. Some minerals are widely distributed, but refining capacity, processing know-how, environmental permitting, infrastructure, capital, and industrial policy are concentrated.</p>
+<p>For developing countries with mineral resources, the opportunity is real but not automatic. Resource-rich states can gain bargaining power only if they build governance capacity, environmental safeguards, value addition, skilled labour, processing capacity, transparency, and local benefit-sharing.</p>
+<p>Otherwise, the energy transition may reproduce older extractive patterns: raw materials exported, value captured elsewhere, environmental damage localized, and communities left behind.</p>
+<p>By 2035, the winners of the mineral transition will be countries that move from extraction to value chains.</p>
+<hr/>
+
+</section><section class="report-section" id="section-9-fossil-fuels-in-transition-decline-lock-in-and-political-economy">
+<h2 id="9-fossil-fuels-in-transition-decline-lock-in-and-political-economy">9. Fossil Fuels in Transition: Decline, Lock-In and Political Economy</h2>
+<figure class="report-figure figure-left">
+<a aria-label="Open Figure 8 — Fossil Fuels in Transition" href="assets/fossil_fuel_transition_infographic.png" rel="noopener" target="_blank">
+<img alt="Figure 8 — Fossil Fuels in Transition" decoding="async" loading="lazy" src="assets/fossil_fuel_transition_infographic.png"/>
+</a>
+<figcaption><strong>Figure 8 — Fossil Fuels in Transition</strong><span>Oil, gas and coal remain embedded in the global economy, requiring managed transition, fiscal planning, worker protection and just-transition policy. Source note: IEA, IPCC, UNFCCC and EU transition-policy frameworks.</span></figcaption>
+</figure>
+
+<p>The energy transition does not mean fossil fuels disappear immediately.</p>
+<p>Oil, gas, and coal still supply most global primary energy—together accounting for roughly 80–82% of total primary energy consumption worldwide (with oil about 30–31%, coal about 26–27%, and natural gas about 23–24%, according to recent IEA and BP Statistical Review data). They remain embedded in transport, industry, electricity, heating, petrochemicals, fertilizers, aviation, shipping, construction materials, and national budgets. Many countries depend on fossil-fuel exports for public revenue, foreign exchange, employment, subsidies, and geopolitical influence.</p>
+<p>This creates a political economy of transition.</p>
+<p>Fossil-fuel producers face future demand uncertainty. Importing countries face price volatility and supply insecurity. Workers and communities linked to coal, oil, and gas face transition risks. Governments face pressure from consumers who need affordable energy and from climate commitments that require emissions reduction.</p>
+<p>The transition must therefore be managed, not assumed.</p>
+<p>Internationally, several institutions have set indicative targets and timelines that frame this transition. The International Energy Agency (IEA), in its Net Zero by 2050 roadmap, outlines that no new oil and gas fields should be approved beyond 2021 and that global coal demand should decline sharply, with unabated coal power phased out in advanced economies by 2030 and globally by 2040. The Intergovernmental Panel on Climate Change (IPCC) indicates that to limit warming to 1.5°C, global CO₂ emissions must fall by about 45% from 2010 levels by 2030 and reach net zero around mid-century. Under the Paris Agreement, countries submit Nationally Determined Contributions (NDCs) that collectively aim to peak emissions as soon as possible and achieve net-zero emissions in the second half of the century, with many major economies targeting net zero by 2050 and some by 2060. Regional frameworks, such as the European Union’s Fit for 55 package, set legally binding targets to reduce emissions by at least 55% by 2030 compared to 1990 levels and achieve climate neutrality by 2050.</p>
+<p>A poorly managed transition can create energy price shocks, social resistance, stranded assets, unemployment, regional inequality, fiscal instability, and political backlash. A well-managed transition can improve energy security, reduce pollution, create jobs, modernize infrastructure, reduce import dependency, and lower long-term emissions.</p>
+<p>The concept of just transition is central here. It means that workers, communities, low-income households, fossil-fuel-dependent regions, and developing countries should not carry transition costs without support.</p>
+<p>By 2035, countries that manage the political economy of transition will be more stable than those that treat energy change as a purely technical issue.</p>
+<hr/>
+
+</section><section class="report-section" id="section-10-energy-access-affordability-and-development-justice">
+<h2 id="10-energy-access-affordability-and-development-justice">10. Energy Access, Affordability and Development Justice</h2>
+<figure class="report-figure figure-right">
+<a aria-label="Open Figure 9 — Energy Access and Development Justice" href="assets/energy_access_and_development_justice.png" rel="noopener" target="_blank">
+<img alt="Figure 9 — Energy Access and Development Justice" decoding="async" loading="lazy" src="assets/energy_access_and_development_justice.png"/>
+</a>
+<figcaption><strong>Figure 9 — Energy Access and Development Justice</strong><span>Energy access, clean cooking, affordability, mini-grids, livelihoods, schools, clinics and household welfare define the legitimacy of transition. Source note: Tracking SDG7, World Bank, IEA and UN development frameworks.</span></figcaption>
+</figure>
+
+<p>Energy transition must be judged by more than emissions.</p>
+<p>A transition that reduces emissions but leaves people without affordable, reliable energy is incomplete. This perspective is widely supported by international institutions such as the International Energy Agency (IEA), the United Nations (particularly through Sustainable Development Goal 7 on affordable and clean energy), the World Bank, and initiatives like Sustainable Energy for All (SEforALL). These organizations emphasize that energy access is fundamental to development, enabling lighting, cooking, refrigeration, irrigation, schools, clinics, small businesses, internet access, water pumping, transport, and overall household dignity.</p>
+<p>Energy access remains a central justice issue. In many developing countries, households still face unreliable supply, high tariffs, fuel insecurity, weak grids, and limited access to clean cooking (International Energy Agency [IEA], 2025; World Bank, 2024). According to the IEA, around 660 million people globally still lack access to electricity, while approximately 2.1 billion rely on traditional biomass for cooking, exposing them to health risks and environmental degradation (IEA, 2025). For rural communities, decentralized renewable systems, mini-grids, solar home systems, productive-use energy, efficient appliances, and clean cooking solutions have been shown to improve livelihoods, increase incomes, and enhance resilience (World Bank, 2024; United Nations Development Programme [UNDP], 2023).</p>
+<p>Affordability is equally important. If energy prices rise faster than incomes, households reduce consumption, businesses lose competitiveness, and political resistance grows (International Monetary Fund [IMF], 2024; World Bank, 2025). Evidence from recent global energy price shocks shows that rising fuel and electricity costs disproportionately affect low-income households and small enterprises, often leading to reduced economic activity and increased poverty risks (IMF, 2024). Energy transition must therefore combine climate ambition with affordability, reliability, and social protection, including targeted subsidies and safety nets to protect vulnerable populations (IEA, 2025; World Bank, 2025).</p>
+<p>For developing countries such as Pakistan, energy transition should not be framed only as decarbonization. It should be framed as energy resilience and development modernization. Pakistan’s heavy reliance on imported fossil fuels has contributed to fiscal pressures and energy insecurity, highlighting the need for diversification and domestic resource development (Asian Development Bank [ADB], 2024; Government of Pakistan, 2025). This includes reducing import dependency, improving grid reliability, expanding distributed solar, modernizing distribution companies, reducing technical and commercial losses, supporting clean cooking, improving efficiency, protecting low-income consumers, and linking energy planning with agriculture, water, climate adaptation, and industry (ADB, 2024; World Bank, 2024; IEA, 2025).</p>
+<p>By 2035, energy justice will be one of the tests of transition legitimacy.</p>
+<hr/>
+
+</section><section class="report-section" id="section-11-country-and-regional-illustrations">
+<h2 id="11-country-and-regional-illustrations">11. Country and Regional Illustrations</h2>
+<h3 id="11-1-china-manufacturing-scale-and-system-complexity">11.1 China: Manufacturing Scale and System Complexity</h3>
+<p>China is the central actor in the global energy transition. As of 2026, it accounts for roughly 80–85% of global solar photovoltaic (PV) manufacturing capacity (International Energy Agency, <em>Energy Technology Perspectives 2024</em>; IEA updates 2025), over 70% of lithium-ion battery cell production (BloombergNEF, <em>Battery Market Outlook 2025</em>), and more than 60% of global electric vehicle (EV) sales, with over 9 million EVs sold domestically in 2025 (China Association of Automobile Manufacturers; IEA <em>Global EV Outlook 2025</em>). China also leads in renewable deployment, having surpassed 1,200 GW of installed solar and wind capacity combined by early 2026 (National Energy Administration of China), and continues to expand ultra-high-voltage transmission networks to integrate these resources.</p>
+<p>At the same time, China remains the world’s largest coal consumer, accounting for over 55% of global coal use (Energy Institute, <em>Statistical Review of World Energy 2025</em>). Coal still provides around 55–60% of its electricity generation, although this share has been gradually declining as renewables expand (IEA <em>World Energy Outlook 2025</em>).</p>
+<p>This duality matters. China demonstrates that clean-energy deployment can scale rapidly even while fossil-fuel systems remain substantial. Its manufacturing scale has driven down global costs—for example, solar module prices have fallen by more than 80% since 2010, largely due to Chinese production (IEA)—but its dominance also raises concerns about supply-chain concentration, particularly in critical minerals such as lithium, cobalt refining, and rare earth processing, where China controls between 60% and 90% of various stages (IEA <em>Global Critical Minerals Outlook 2025</em>).</p>
+<p>China’s experience shows that the energy transition is not only a climate issue but also a matter of industrial strategy, trade policy, technological competition, energy security, and state capacity. Looking ahead, China has set targets to peak carbon emissions before 2030 and achieve carbon neutrality by 2060. It aims to reach at least 1,200 GW of wind and solar capacity by 2030 (a target already effectively met ahead of schedule), increase non-fossil energy to around 25% of primary energy consumption by 2030, and continue expanding EV adoption and grid modernization (State Council of China; National Development and Reform Commission, updated policy releases through 2025–2026).</p>
+<h3 id="11-2-european-union-energy-security-decarbonization-and-industrial-policy">11.2 European Union: Energy Security, Decarbonization and Industrial Policy</h3>
+<p>The European Union’s energy transition has accelerated markedly since 2022, when the Russia–Ukraine war exposed the strategic risks of fossil-fuel dependence. According to the European Commission’s REPowerEU plan and subsequent progress reports, the EU reduced its imports of Russian pipeline gas from around 155 billion cubic meters in 2021 to less than 45 bcm by 2023, while total Russian gas dependence fell from roughly 40% of EU consumption to below 15%. At the same time, renewable energy deployment has surged: Eurostat data show that renewables accounted for about 23% of final energy consumption in 2022, rising further in 2023–2024, while the share of renewables in electricity generation exceeded 44% in 2023, with wind and solar alone surpassing fossil gas generation for the first time.</p>
+<p>Solar capacity additions reached record levels, with over 56 GW installed in 2023 according to SolarPower Europe, and wind capacity continued to expand, bringing total EU renewable capacity above 600 GW by 2024. The International Energy Agency (IEA) reports that EU emissions fell by around 8% in 2023, largely due to the rapid expansion of clean energy and reduced fossil fuel use. Energy efficiency improvements and demand reduction measures also contributed, with gas demand declining by more than 15% between 2021 and 2023.</p>
+<p>Looking ahead to 2025–2026, official EU projections under the Fit for 55 package and REPowerEU indicate that renewables are expected to reach at least 42.5% of final energy consumption by 2030, with interim progress showing continued acceleration in electrification, hydrogen deployment, and grid investment. These developments demonstrate how the EU has combined climate policy, energy security, and industrial strategy, supported by regulatory reform, public funding mechanisms, and growing private investment, to drive a faster and more resilient energy transition.</p>
+<h3 id="11-3-united-states-technology-markets-and-policy-volatility">11.3 United States: Technology, Markets and Policy Volatility</h3>
+<p>The United States is a major energy producer, clean-tech investor, oil and gas exporter, nuclear operator, innovation hub, and electricity-market laboratory. It has major renewable and storage potential, but policy shifts, permitting constraints, grid bottlenecks, and political polarization affect transition speed.</p>
+<p>The U.S. case shows that technology and capital are not enough. Institutional continuity, permitting reform, grid expansion, and policy credibility matter.</p>
+<h3 id="11-4-gulf-states-hydrocarbon-wealth-and-transition-hedging">11.4 Gulf States: Hydrocarbon Wealth and Transition Hedging</h3>
+<p>Gulf economies remain central to oil and gas markets, but many are investing in renewables, hydrogen, petrochemicals, carbon management, nuclear cooperation, logistics, and economic diversification.</p>
+<p>Their strategic challenge is transition hedging: using current hydrocarbon wealth to prepare for a future in which oil-demand growth may slow, energy competition changes, and domestic economies require diversification beyond fossil-fuel rents.</p>
+<h3 id="11-5-south-asia-and-pakistan-energy-security-affordability-and-climate-resilienc">11.5 South Asia and Pakistan: Energy Security, Affordability and Climate Resilience</h3>
+<p>South Asia faces rising electricity demand, climate stress, air pollution, import dependence, grid constraints, fiscal pressure, and affordability challenges. Pakistan’s energy transition must be understood through energy security, circular debt, power-sector governance, imported fuel exposure, hydropower variability, solar potential, agriculture, water, and climate resilience.</p>
+<p>For Pakistan, distributed solar, grid modernization, demand management, loss reduction, clean cooking, energy efficiency, local manufacturing, storage, and rural productive-use energy can become strategic priorities.</p>
+<p>The goal should not be transition for image. The goal should be a more reliable, affordable, resilient, and development-oriented energy system.</p>
+<hr/>
+
+</section><section class="report-section" id="section-12-projection-toward-2035">
+<h2 id="12-projection-toward-2035">12. Projection Toward 2035</h2>
+<figure class="report-figure figure-left">
+<a aria-label="Open Figure 10 — Energy Transition Toward 2035" href="assets/energy_transition_roadmap_to_2035.png" rel="noopener" target="_blank">
+<img alt="Figure 10 — Energy Transition Toward 2035" decoding="async" loading="lazy" src="assets/energy_transition_roadmap_to_2035.png"/>
+</a>
+<figcaption><strong>Figure 10 — Energy Transition Toward 2035</strong><span>Projection pathway linking electrification, renewables, grids, storage, critical minerals, industrial policy, energy security and climate resilience. Source note: FutureWorld Intelligence strategic foresight synthesis.</span></figcaption>
+</figure>
+
+<p>This section is projective. It identifies directional expectations based on observed trends, not certainty.</p>
+<h3 id="12-1-electricity-becomes-the-strategic-energy-carrier">12.1 Electricity Becomes the Strategic Energy Carrier</h3>
+<p>Electricity will become more central to transport, buildings, industry, water systems, agriculture, digital infrastructure, and artificial intelligence.</p>
+<h3 id="12-2-renewables-become-core-power-system-assets">12.2 Renewables Become Core Power-System Assets</h3>
+<p>Solar and wind will increasingly become mainstream generation sources, but their value will depend on grids, storage, flexibility, interconnection, and market design.</p>
+<h3 id="12-3-grid-modernization-becomes-a-national-security-priority">12.3 Grid Modernization Becomes a National Security Priority</h3>
+<p>Transmission, distribution, interconnection, cyber protection, transformers, substations, digital control systems, and grid resilience will become strategic infrastructure.</p>
+<h3 id="12-4-critical-minerals-become-the-new-energy-geopolitics">12.4 Critical Minerals Become the New Energy Geopolitics</h3>
+<p>Lithium, copper, nickel, cobalt, graphite, rare earths, aluminium, and processing capacity will shape industrial competition, trade policy, and diplomatic strategy.</p>
+<h3 id="12-5-fossil-fuels-remain-politically-and-economically-significant">12.5 Fossil Fuels Remain Politically and Economically Significant</h3>
+<p>The transition will not be linear. Fossil fuels will remain important in several sectors and regions, creating transition-management challenges.</p>
+<h3 id="12-6-energy-finance-becomes-a-development-divider">12.6 Energy Finance Becomes a Development Divider</h3>
+<p>Countries with access to affordable capital will build modern energy systems faster. Countries with high capital costs may remain locked into unreliable, expensive, and import-dependent systems.</p>
+<h3 id="12-7-energy-access-and-affordability-shape-social-stability">12.7 Energy Access and Affordability Shape Social Stability</h3>
+<p>Energy policy will remain politically sensitive. Reliability, tariffs, subsidies, clean cooking, and household affordability will influence public trust.</p>
+<h3 id="12-8-climate-and-energy-planning-converge">12.8 Climate and Energy Planning Converge</h3>
+<p>Heatwaves, drought, hydropower variability, cooling demand, flood risk, wildfire exposure, and infrastructure vulnerability will require climate-resilient energy planning.</p>
+<hr/>
+
+</section><section class="report-section" id="section-13-futureworld-intelligence-assessment">
+<h2 id="13-futureworld-intelligence-assessment">13. FutureWorld Intelligence Assessment</h2>
+<p>Energy transition is one of the five forces shaping the future because it has already crossed three thresholds.</p>
+<p>First, it has crossed the <strong>investment threshold</strong>. Clean-energy investment is now larger than fossil-fuel investment and is reshaping global capital allocation.</p>
+<p>Second, it has crossed the <strong>infrastructure threshold</strong>. Renewable generation, grids, storage, EV charging, critical minerals, digital energy systems, and flexible power markets are becoming core national infrastructure.</p>
+<p>Third, it has crossed the <strong>geopolitical threshold</strong>. Energy power is shifting from fossil-fuel reserves alone toward critical minerals, manufacturing capacity, technology platforms, electricity systems, and industrial ecosystems.</p>
+<p>This makes the energy transition a global system-shaping force.</p>
+<p>By 2035, the key question will not be whether the energy transition exists. It will be whether countries can manage it reliably, affordably, securely, and fairly.</p>
+<p>The energy transition can reduce emissions, improve air quality, strengthen energy security, create industries, reduce fuel-import dependence, and expand access. But it can also create new dependencies, mineral conflicts, grid instability, affordability pressures, stranded assets, and unequal development if poorly managed.</p>
+<p>The most resilient societies will not be those that only install renewable energy. They will be those that build complete energy systems: generation, grids, storage, finance, skills, institutions, industrial capacity, social protection, cybersecurity, climate resilience, and public trust.</p>
+<hr/>
+
+</section><section class="report-section" id="section-14-limitations-open-questions-and-responsible-reading">
+<h2 id="14-limitations-open-questions-and-responsible-reading">14. Limitations, Open Questions and Responsible Reading</h2>
+<h3 id="14-1-well-evidenced-claims">14.1 Well-Evidenced Claims</h3>
+<p>Several claims in this report are strongly supported by institutional and empirical evidence:</p>
+<ul>
+<li>Clean-energy investment has become a major component of global energy investment.</li>
+<li>Renewable power capacity is expanding at record levels.</li>
+<li>Energy-related CO₂ emissions remain high despite clean-energy deployment.</li>
+<li>Electricity demand is becoming central to energy planning.</li>
+<li>Grid investment and flexibility are critical bottlenecks.</li>
+<li>Critical-mineral supply chains are strategically concentrated.</li>
+<li>Energy transition is increasingly linked to geopolitics, industrial policy, and energy security.</li>
+</ul>
+<h3 id="14-2-contested-or-context-dependent-claims">14.2 Contested or Context-Dependent Claims</h3>
+<p>Several areas require careful interpretation:</p>
+<ul>
+<li>The timing of fossil-fuel demand decline varies across scenarios, policy assumptions, technology costs, and regional conditions.</li>
+<li>Renewable capacity does not automatically equal reliable electricity supply.</li>
+<li>Energy-transition benefits depend on grid quality, storage, market reform, institutional capacity, and social legitimacy.</li>
+<li>Critical-mineral demand projections depend on technology pathways, recycling, substitution, material efficiency, and policy choices.</li>
+<li>Hydrogen, carbon capture, and nuclear expansion remain context-dependent and uncertain in cost, scalability, public acceptance, and governance.</li>
+<li>Energy transition may reduce some dependencies while creating others.</li>
+</ul>
+<h3 id="14-3-projection-not-observation">14.3 Projection, Not Observation</h3>
+<p>The 2035 pathways in this report are projections based on current trends. They should not be treated as certain forecasts. They are plausible directional expectations intended to support planning, education, governance, public awareness, and strategic foresight.</p>
+<h3 id="14-4-responsible-language">14.4 Responsible Language</h3>
+<p>This report avoids treating any energy source as automatically good or bad in all contexts. Energy systems must be evaluated through evidence: reliability, affordability, emissions, health impacts, security, land use, water use, lifecycle impacts, social justice, institutional capacity, and long-term resilience.</p>
+<hr/>
+
+</section><section class="report-section" id="section-final-report-statement">
+<h2 id="final-report-statement">Final Report Statement</h2>
+<p>Energy transition is shaping the future because it is reorganizing the physical foundation of modern civilization. It affects electricity, transport, industry, agriculture, water, digital infrastructure, household welfare, public finance, geopolitics, climate action, and national development.</p>
+<p>It is no longer only a climate-policy agenda. It is a system-shaping force that determines how societies produce power, secure infrastructure, compete industrially, reduce emissions, protect citizens, and build resilience under uncertainty.</p>
+<p>By 2035, energy-system readiness may become one of the most important indicators of national preparedness, economic competitiveness, climate resilience, public welfare, and strategic autonomy.</p>
+<p>The future will not be shaped by energy transition alone. It will be shaped by how societies finance it, govern it, distribute its benefits, protect vulnerable people, secure supply chains, modernize grids, and build energy systems that are clean, reliable, affordable, and resilient.</p>
+<hr/>
+
+</section><section class="report-section" id="section-source-base">
+<h2 id="source-base">Source Base</h2>
+<h3 id="primary-institutional-and-data-sources">Primary Institutional and Data Sources</h3>
+<p><strong>International Energy Agency</strong>
+World Energy Investment 2025.
+Global Energy Review 2025.
+World Energy Outlook.
+Global Critical Minerals Outlook 2025.
+Reports on electricity demand, grids, clean-energy investment, fossil-fuel demand, emissions, electric vehicles, heat pumps, and energy security.</p>
+<p><strong>International Renewable Energy Agency</strong>
+Renewable Capacity Statistics 2026.
+Renewable Energy Statistics.
+Renewable Power Generation Costs.
+Reports on renewable capacity additions, installed renewable capacity, solar and wind expansion, renewable cost competitiveness, and the global goal to triple renewable energy capacity by 2030.</p>
+<p><strong>Ember</strong>
+Global Electricity Review 2025 and electricity-sector analysis.
+Reports on renewable electricity generation, solar and wind growth, coal displacement, and the global electricity mix.</p>
+<p><strong>United Nations Framework Convention on Climate Change</strong>
+COP28 Global Stocktake and energy-related outcomes, including the global goal to triple renewable energy capacity and double energy-efficiency improvement rates by 2030.</p>
+<p><strong>World Bank / ESMAP / Tracking SDG 7 Partnership</strong>
+Energy access, clean cooking, electricity access, affordability, and modern energy services.</p>
+<p><strong>BloombergNEF</strong>
+Energy Transition Investment Trends.
+Analysis of low-carbon investment, batteries, electric transport, energy storage, and clean-technology deployment.</p>
+<p><strong>Reuters Energy Reporting</strong>
+Current reporting on IEA, IRENA, Ember, critical minerals, renewable capacity, investment trends, energy security, and market developments.</p>
+<hr/>
+
+</section>
+
+<section class="report-section source-links" id="source-links">
+<h2>Reference Link Index</h2>
+<p>The public web version may use these source links to convert source names into clickable citations during final website integration.</p>
+<div class="source-grid">
+<a href="https://www.iea.org/reports/world-energy-investment-2026" target="_blank" rel="noopener">IEA — World Energy Investment</a>
+<a href="https://www.iea.org/reports/global-energy-review-2026" target="_blank" rel="noopener">IEA — Global Energy Review</a>
+<a href="https://www.iea.org/reports/global-critical-minerals-outlook-2025" target="_blank" rel="noopener">IEA — Global Critical Minerals Outlook</a>
+<a href="https://www.irena.org/Publications" target="_blank" rel="noopener">IRENA — Renewable Capacity Statistics</a>
+<a href="https://trackingsdg7.esmap.org/" target="_blank" rel="noopener">Tracking SDG7 — Energy Access</a>
+<a href="https://unfccc.int/topics/global-stocktake" target="_blank" rel="noopener">UNFCCC — Global Stocktake</a>
+<a href="https://www.worldbank.org/en/topic/energy" target="_blank" rel="noopener">World Bank — Energy</a>
+<a href="https://ember-energy.org/latest-insights/global-electricity-review-2025/" target="_blank" rel="noopener">Ember — Global Electricity Review</a>
+</div>
+</section>
+
+</main>
+<footer>FutureWorld Intelligence — Understand Today. Anticipate Tomorrow. Shape The Future.</footer>
+<script src="/script.js?v=2.6"></script>
+</body>
+</html>

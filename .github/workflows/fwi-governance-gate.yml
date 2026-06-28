@@ -1,0 +1,75 @@
+name: FWI Fact-Check Governance Gate
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "content/**"
+      - ".github/workflows/fwi-governance-gate.yml"
+      - ".github/scripts/fwi_governance_gate.py"
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  fwi_fact_check_gate:
+    name: FWI Fact-Check Gate
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout public website repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Checkout private governance repo
+        uses: actions/checkout@v4
+        with:
+          repository: jamilahmad488/fwi-internal-governance
+          token: ${{ secrets.FWI_GOVERNANCE_TOKEN }}
+          path: governance
+
+      - name: Run FWI fact-check gate
+        run: python .github/scripts/fwi_governance_gate.py
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          GOVERNANCE_ROOT: governance
+
+      - name: Return fact-check gate report as PR comment
+        if: always()
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const marker = '<!-- FWI_FACT_CHECK_GATE_REPORT -->';
+            let body = marker + '\n# FWI Fact-Check Gate Report\n\nThe gate did not generate a report. Check workflow logs.';
+            if (fs.existsSync('fwi-fact-check-gate-report.md')) {
+              body = fs.readFileSync('fwi-fact-check-gate-report.md', 'utf8');
+            }
+            const { owner, repo } = context.repo;
+            const issue_number = context.issue.number;
+            const comments = await github.rest.issues.listComments({ owner, repo, issue_number, per_page: 100 });
+            const existing = comments.data.find(comment => comment.user.type === 'Bot' && comment.body.includes(marker));
+            if (existing) {
+              await github.rest.issues.updateComment({ owner, repo, comment_id: existing.id, body });
+            } else {
+              await github.rest.issues.createComment({ owner, repo, issue_number, body });
+            }
+
+      - name: Enforce FWI fact-check gate result
+        if: always()
+        run: |
+          if [ ! -f fwi-gate-result.txt ]; then
+            echo "FWI gate result file was not created. Blocking merge."
+            exit 1
+          fi
+          if [ "$(cat fwi-gate-result.txt)" != "PASS" ]; then
+            echo "FWI fact-check gate blocked this report update."
+            exit 1
+          fi
+          echo "FWI fact-check gate passed."

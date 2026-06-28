@@ -1,0 +1,4 @@
+Claim ID,Report Section,Claim Text,Claim Type,Source Title,Source Institution or Author,Source Tier,URL or DOI,Publication Date,Page or Section,Verification Status,Verifier,Verification Date,Notes,Action
+C001,Executive Summary,"Insert the factual claim exactly as written in the report",Evidence,"Insert exact source title","Insert institution/author",Tier 1,"Insert URL/DOI",YYYY-MM-DD,"Page/section/table",Pending,"",YYYY-MM-DD,"",Keep/Revise/Delete
+C002,Analysis,"Insert interpretive statement based on evidence",Analysis,"Insert supporting source title","Insert institution/author",Tier 1 or Tier 2,"Insert URL/DOI",YYYY-MM-DD,"Page/section/table",Pending,"",YYYY-MM-DD,"",Keep/Revise/Delete
+C003,Projection,"Insert future-oriented assessment",Projection,"Insert trend/evidence source","Insert institution/author",Tier 1 or Tier 2,"Insert URL/DOI",YYYY-MM-DD,"Page/section/table",Pending,"",YYYY-MM-DD,"Label clearly as projection",Keep/Revise/Delete

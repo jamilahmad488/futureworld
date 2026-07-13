@@ -104,6 +104,7 @@ EVIDENCE_REQUIRED_COLUMNS = {
 
 SENSITIVE_GATE_PATHS = {
     ".github/workflows/fwi-governance-gate.yml",
+    ".github/workflows/fwi-gate-bootstrap.yml",
     ".github/scripts/fwi_governance_gate.py",
     ".github/tests/test_fwi_governance_gate.py",
     ".github/CODEOWNERS",

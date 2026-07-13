@@ -4,10 +4,6 @@ on:
   pull_request:
     branches:
       - main
-    paths:
-      - "content/**"
-      - ".github/workflows/fwi-governance-gate.yml"
-      - ".github/scripts/fwi_governance_gate.py"
 
 permissions:
   contents: read

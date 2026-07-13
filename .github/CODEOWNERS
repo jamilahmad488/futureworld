@@ -1,0 +1,6 @@
+# FWI governance controls require review by the institutional repository owner.
+/.github/workflows/fwi-governance-gate.yml @jamilahmad488
+/.github/workflows/fwi-gate-bootstrap.yml @jamilahmad488
+/.github/scripts/fwi_governance_gate.py @jamilahmad488
+/.github/tests/test_fwi_governance_gate.py @jamilahmad488
+/GOVERNANCE_GATE.md @jamilahmad488

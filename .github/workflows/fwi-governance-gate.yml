@@ -29,7 +29,10 @@ jobs:
       - name: Checkout trusted gate code from the protected base revision
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
-          ref: ${{ github.event.pull_request.base.sha }}
+          # pull_request_target defines github.sha as the latest protected
+          # default-branch commit for this event. The PR payload's base.sha can
+          # be stale on long-lived pull requests and must not select gate code.
+          ref: ${{ github.sha }}
           path: trusted-gate
           persist-credentials: false
           sparse-checkout: |

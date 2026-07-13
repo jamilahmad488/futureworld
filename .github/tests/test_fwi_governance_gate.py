@@ -180,6 +180,14 @@ class GovernanceGateTests(unittest.TestCase):
         result = self.evaluate([GATE.ChangedFile("pages/about/index.html")])
         self.assertTrue(result.passed)
 
+    def test_workflow_uses_current_trusted_default_branch_revision(self):
+        workflow = (ROOT / "workflows" / "fwi-governance-gate.yml").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("ref: ${{ github.sha }}", workflow)
+        self.assertNotIn("github.event.pull_request.base.sha", workflow)
+        self.assertNotIn("ref: ${{ github.event.pull_request.head.sha }}", workflow)
+
     def test_complete_r1_report_passes(self):
         write_backend(self.governance)
         result = self.evaluate([report_change()])

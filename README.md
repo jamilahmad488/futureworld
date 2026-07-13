@@ -25,4 +25,6 @@ GitHub Pages fallback:
 
 ## Institutional Governance
 
-FutureWorld Intelligence operates under its adopted [Institutional and Editorial Charter](INSTITUTIONAL_EDITORIAL_CHARTER.md). The Charter defines FWI's public-interest mandate, editorial independence, evidence and analytical standards, responsible AI controls, corrections process, and human publication authority.
+FutureWorld Intelligence operates under its adopted [Institutional and Editorial Charter](INSTITUTIONAL_EDITORIAL_CHARTER.md) and [Public-Interest Research and Commercial Services Separation Policy](PUBLIC_INTEREST_COMMERCIAL_SEPARATION_POLICY.md). Together they define FWI's public-interest mandate, editorial independence, evidence and analytical standards, responsible AI controls, corrections process, human publication authority, and commercial boundaries.
+
+The public website repository is designated as FWI's public-interest publication channel. Blank classification records use the controlled [workstream template](governance/workstream-classification-template.yml); completed restricted commercial records must not be stored in the public repository.

@@ -65,7 +65,7 @@ FWI shall:
 - label paid, commissioned, or sponsored work so it cannot be mistaken for independently initiated public-interest research; and
 - document material editorial conditions attached to external support.
 
-Commercial activity may fund operations but may not override this Charter. The detailed institutional separation of public-interest research from commercial services is governed by a dedicated policy and operating controls.
+Commercial activity may fund operations but may not override this Charter. The detailed institutional separation of public-interest research from commercial services is governed by the [Public-Interest Research and Commercial Services Separation Policy](PUBLIC_INTEREST_COMMERCIAL_SEPARATION_POLICY.md) and its operating controls.
 
 ## 6. Evidence and source standards
 
@@ -203,4 +203,3 @@ These are alignment references only. FWI does not claim endorsement, accreditati
 ## Adoption
 
 By direction to implement Step 2 of FWI's institutional-readiness programme, FutureWorld Intelligence adopts this Charter as its institutional and editorial standard with effect from 13 July 2026.
-

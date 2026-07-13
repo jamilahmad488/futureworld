@@ -13,7 +13,7 @@ permissions:
 jobs:
   bootstrap_verification:
     name: FWI Fact-Check Gate
-    if: github.event.pull_request.number == 8 && github.head_ref == 'agent/step-6-governance-gate'
+    if: github.event.pull_request.number == 10 && github.head_ref == 'agent/fix-gate-comment-delivery'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -38,6 +38,8 @@ jobs:
           workflow = Path('.github/workflows/fwi-governance-gate.yml').read_text(encoding='utf-8')
           assert 'pull_request_target:' in workflow
           assert 'persist-credentials: false' in workflow
+          assert 'pull-requests: write' in workflow
+          assert 'continue-on-error: true' in workflow
           assert 'github.event.pull_request.base.sha' in workflow
           assert 'github.event.pull_request.head.sha' not in workflow.split('Inventory pull-request file metadata', 1)[0]
           actions = re.findall(r'uses:\s*([^\s#]+)', workflow)

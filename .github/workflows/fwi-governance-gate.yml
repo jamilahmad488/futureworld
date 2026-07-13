@@ -1,63 +1,113 @@
 name: FWI Fact-Check Governance Gate
 
 on:
-  pull_request:
+  pull_request_target:
     branches:
       - main
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - ready_for_review
+
+concurrency:
+  group: fwi-governance-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
-  pull-requests: write
+  pull-requests: read
+  issues: write
 
 jobs:
   fwi_fact_check_gate:
     name: FWI Fact-Check Gate
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     steps:
-      - name: Checkout public website repo
-        uses: actions/checkout@v4
+      - name: Checkout trusted gate code from the protected base revision
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
-          fetch-depth: 0
-          ref: ${{ github.event.pull_request.head.sha }}
+          ref: ${{ github.event.pull_request.base.sha }}
+          path: trusted-gate
+          persist-credentials: false
+          sparse-checkout: |
+            .github/scripts/fwi_governance_gate.py
+            .github/tests/test_fwi_governance_gate.py
+          sparse-checkout-cone-mode: false
 
-      - name: Checkout private governance repo
-        uses: actions/checkout@v4
+      - name: Inventory pull-request file metadata without checking out PR code
+        uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7.1.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const { owner, repo } = context.repo;
+            const pull_number = context.issue.number;
+            const files = await github.paginate(github.rest.pulls.listFiles, {
+              owner,
+              repo,
+              pull_number,
+              per_page: 100,
+            });
+            const controlled = files.map(({ filename, status, previous_filename }) => ({
+              filename,
+              status,
+              previous_filename: previous_filename || null,
+            }));
+            fs.writeFileSync('changed-files.json', JSON.stringify(controlled, null, 2) + '\n');
+
+      - name: Checkout private governance records read-only
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           repository: jamilahmad488/fwi-internal-governance
           token: ${{ secrets.FWI_GOVERNANCE_TOKEN }}
           path: governance
+          persist-credentials: false
+          fetch-depth: 1
 
-      - name: Run FWI fact-check gate
-        run: python .github/scripts/fwi_governance_gate.py
+      - name: Run trusted gate regression tests
+        run: python -m unittest discover -s trusted-gate/.github/tests -p 'test_*.py' -v
+
+      - name: Evaluate private report governance records
+        run: python trusted-gate/.github/scripts/fwi_governance_gate.py
         env:
-          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          CHANGED_FILES_JSON: ${{ github.workspace }}/changed-files.json
+          GOVERNANCE_ROOT: ${{ github.workspace }}/governance
+          OUTPUT_ROOT: ${{ github.workspace }}
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
-          GOVERNANCE_ROOT: governance
 
-      - name: Return fact-check gate report as PR comment
+      - name: Return the public-safe gate report as a PR comment
         if: always()
-        uses: actions/github-script@v7
+        uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7.1.0
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const fs = require('fs');
             const marker = '<!-- FWI_FACT_CHECK_GATE_REPORT -->';
-            let body = marker + '\n# FWI Fact-Check Gate Report\n\nThe gate did not generate a report. Check workflow logs.';
+            let body = marker + '\n# FWI Governance Gate Report\n\nThe gate did not generate a report. The pull request remains blocked.';
             if (fs.existsSync('fwi-fact-check-gate-report.md')) {
               body = fs.readFileSync('fwi-fact-check-gate-report.md', 'utf8');
             }
             const { owner, repo } = context.repo;
             const issue_number = context.issue.number;
-            const comments = await github.rest.issues.listComments({ owner, repo, issue_number, per_page: 100 });
-            const existing = comments.data.find(comment => comment.user.type === 'Bot' && comment.body.includes(marker));
+            const comments = await github.paginate(github.rest.issues.listComments, {
+              owner,
+              repo,
+              issue_number,
+              per_page: 100,
+            });
+            const existing = comments.find(
+              comment => comment.user.type === 'Bot' && comment.body.includes(marker)
+            );
             if (existing) {
               await github.rest.issues.updateComment({ owner, repo, comment_id: existing.id, body });
             } else {
               await github.rest.issues.createComment({ owner, repo, issue_number, body });
             }
 
-      - name: Enforce FWI fact-check gate result
+      - name: Enforce FWI governance decision
         if: always()
         run: |
           if [ ! -f fwi-gate-result.txt ]; then
@@ -65,7 +115,7 @@ jobs:
             exit 1
           fi
           if [ "$(cat fwi-gate-result.txt)" != "PASS" ]; then
-            echo "FWI fact-check gate blocked this report update."
+            echo "FWI governance gate blocked this pull request."
             exit 1
           fi
-          echo "FWI fact-check gate passed."
+          echo "FWI governance gate passed."

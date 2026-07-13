@@ -1,0 +1,97 @@
+schema_version: "1.0"
+record_status: "draft" # draft | approved | returned | closed
+
+project:
+  project_id: "" # PI-YYYY-NNN | PS-YYYY-NNN | CS-YYYY-NNN
+  title: ""
+  classification: "" # PI | PS | CS
+  classification_date: "YYYY-MM-DD"
+  classification_reason: ""
+  primary_purpose: ""
+  intended_beneficiaries: ""
+  intended_users: ""
+  release_plan: "" # public | restricted | private | public_after_embargo
+
+external_relationship:
+  external_party_present: false
+  party_name: ""
+  party_type: "" # client | sponsor | donor | grantor | partner | data_provider | other
+  beneficial_client_or_payer: ""
+  paid_or_in_kind_support: false
+  amount_or_range: ""
+  material_in_kind_support: ""
+  private_or_exclusive_benefit: ""
+  conditions_attached: ""
+
+editorial_control:
+  fwi_controls_methods: true
+  fwi_controls_evidence_assessment: true
+  fwi_controls_findings: true
+  fwi_controls_validation: true
+  fwi_controls_corrections: true
+  fwi_controls_final_release: true
+  external_scope_rights: ""
+  external_fact_review_rights: ""
+  external_confidentiality_review_rights: ""
+  external_approval_or_veto_rights: "none"
+  requested_prepublication_access: ""
+
+deliverables_and_rights:
+  deliverables: ""
+  confidentiality: "none"
+  intellectual_property_terms: ""
+  distribution_rights: ""
+  licensing_rights: ""
+  adaptation_or_reuse_rights: ""
+
+data_and_systems:
+  storage_zone: "" # public-research | restricted-partner | restricted-commercial
+  access_group: ""
+  source_data_provenance: ""
+  personal_or_sensitive_data: false
+  data_reuse_permission: ""
+  retention_rule: ""
+  deletion_rule: ""
+  public_repository_allowed: false
+
+conflicts_and_risk:
+  declared_conflicts: "none declared"
+  recusals_or_mitigations: ""
+  human_rights_and_safety_review: ""
+  legal_or_regulatory_review_needed: false
+  reputation_or_influence_risk: ""
+
+public_disclosure:
+  required_label: "" # FWI Public-Interest Research | Partner-Supported Public-Interest Research | Commercial / Commissioned Work
+  funding_or_payment_statement: ""
+  external_party_role_statement: ""
+  conflict_statement: ""
+  methods_or_provenance_statement: ""
+  correction_contact: "futureworldintelligence@gmail.com"
+
+roles:
+  institutional_lead: ""
+  editorial_authority: ""
+  commercial_lead: ""
+  validation_reviewer: ""
+  data_custodian: ""
+  authorized_human_approver: ""
+  independent_check_required: false
+  independent_reviewer: ""
+
+classification_checks:
+  no_concealed_payment_or_support: false
+  no_purchased_or_predetermined_conclusion: false
+  no_suppression_of_material_findings: false
+  no_deceptive_public_interest_label: false
+  no_unauthorized_confidential_data_reuse: false
+  duties_and_disclosures_accepted: false
+
+approval:
+  decision: "" # approved | returned | declined
+  approved_classification: "" # PI | PS | CS
+  approved_by: ""
+  approval_date: "YYYY-MM-DD"
+  conditions_or_exceptions: "none"
+  next_review_trigger: "material change or annual review"
+

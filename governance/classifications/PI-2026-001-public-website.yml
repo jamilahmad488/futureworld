@@ -1,0 +1,96 @@
+schema_version: "1.0"
+record_status: "approved"
+
+project:
+  project_id: "PI-2026-001"
+  title: "FutureWorld Intelligence public website and knowledge platform"
+  classification: "PI"
+  classification_date: "2026-07-13"
+  classification_reason: "Independently initiated educational and analytical publication channel intended for broad public benefit, with no detected client-specific offer or external funding control."
+  primary_purpose: "Publish accessible public-interest research, educational content and institutional transparency records."
+  intended_beneficiaries: "General public, students, professionals, researchers and decision-makers."
+  intended_users: "Open public audience."
+  release_plan: "public"
+
+external_relationship:
+  external_party_present: false
+  party_name: "not applicable"
+  party_type: "not applicable"
+  beneficial_client_or_payer: "none"
+  paid_or_in_kind_support: false
+  amount_or_range: "none"
+  material_in_kind_support: "none identified in the public repository baseline"
+  private_or_exclusive_benefit: "none"
+  conditions_attached: "none"
+
+editorial_control:
+  fwi_controls_methods: true
+  fwi_controls_evidence_assessment: true
+  fwi_controls_findings: true
+  fwi_controls_validation: true
+  fwi_controls_corrections: true
+  fwi_controls_final_release: true
+  external_scope_rights: "none"
+  external_fact_review_rights: "none unless separately disclosed for a specific publication"
+  external_confidentiality_review_rights: "none unless separately disclosed for a specific publication"
+  external_approval_or_veto_rights: "none"
+  requested_prepublication_access: "none"
+
+deliverables_and_rights:
+  deliverables: "Public website pages, reports, briefings, courses, visual material and governance disclosures."
+  confidentiality: "none for published outputs; unpublished governance and source records follow their own access controls"
+  intellectual_property_terms: "Governed by repository licence and publication-specific source or licence notices."
+  distribution_rights: "Public web access."
+  licensing_rights: "No commercial licence granted by this classification record."
+  adaptation_or_reuse_rights: "Governed by applicable copyright and publication-specific notices."
+
+data_and_systems:
+  storage_zone: "public-research"
+  access_group: "public for published files; controlled access before publication"
+  source_data_provenance: "Publication-specific evidence records and public sources; optional consented analytics may include provider-controlled device or network metadata."
+  personal_or_sensitive_data: true
+  data_reuse_permission: "Publication-specific rights and privacy review required; analytics may be used only in aggregate for platform improvement under the Privacy Policy."
+  retention_rule: "Published versions and material correction history retained; backend records follow governance retention controls."
+  deletion_rule: "Removal only through documented correction, withdrawal, rights, safety or legal process."
+  public_repository_allowed: true
+
+conflicts_and_risk:
+  declared_conflicts: "No channel-level commercial conflict identified in the repository baseline. Publication-specific declarations remain required."
+  recusals_or_mitigations: "Apply Charter and Separation Policy per publication."
+  human_rights_and_safety_review: "Required proportionately for each publication."
+  legal_or_regulatory_review_needed: false
+  reputation_or_influence_risk: "Misclassification or undisclosed external influence; controlled through publication-specific intake, disclosure and approval."
+
+public_disclosure:
+  required_label: "FWI Public-Interest Research"
+  funding_or_payment_statement: "No channel-level external payer or sponsor identified at classification."
+  external_party_role_statement: "No channel-level external editorial role."
+  conflict_statement: "Publication-specific conflicts must be disclosed."
+  methods_or_provenance_statement: "Publication-specific methods and evidence records remain required."
+  correction_contact: "futureworldintelligence@gmail.com"
+
+roles:
+  institutional_lead: "FWI Institutional Lead"
+  editorial_authority: "FWI Editorial Authority"
+  commercial_lead: "not applicable"
+  validation_reviewer: "Assigned per publication"
+  data_custodian: "FWI Governance Administrator"
+  authorized_human_approver: "Assigned and recorded per publication"
+  independent_check_required: false
+  independent_reviewer: "Required per publication when risk, funding or role concentration triggers it"
+
+classification_checks:
+  no_concealed_payment_or_support: true
+  no_purchased_or_predetermined_conclusion: true
+  no_suppression_of_material_findings: true
+  no_deceptive_public_interest_label: true
+  no_unauthorized_confidential_data_reuse: true
+  duties_and_disclosures_accepted: true
+
+approval:
+  decision: "approved"
+  approved_classification: "PI"
+  approved_by: "FWI Institutional Lead"
+  approval_date: "2026-07-13"
+  conditions_or_exceptions: "This channel classification does not approve or validate individual publications."
+  next_review_trigger: "Material funding, service, access, use or operating-model change; otherwise annual review."

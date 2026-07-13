@@ -91,3 +91,7 @@ The record must bind the exact head SHA and the SHA-256 digest of the sorted sen
 The trusted regression suite runs during every gate execution. Missing inputs, malformed records, private-repository checkout failure, absent result artifacts, or a failed control all fail closed. The public PR comment contains control codes and remediation direction but excludes private evidence and reviewer narratives.
 
 The repository's `main` protection must continue to require the status check named `FWI Fact-Check Gate`. CODEOWNERS protection should require the institutional owner to review governance-control changes.
+
+## 8. One-time trigger migration
+
+The adoption PR includes `fwi-gate-bootstrap.yml` solely because GitHub will not execute a new `pull_request_target` workflow until that workflow exists on the default branch, while repository rules correctly require the existing check before merge. The bootstrap has no secrets or write permissions, is path-scoped to its own file, is restricted to adoption PR #8, and runs the regression suite. It must be removed immediately after gate version 2.0 reaches `main`; that removal is then evaluated by the real trusted-base gate.

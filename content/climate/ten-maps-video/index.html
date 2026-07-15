@@ -50,8 +50,66 @@ a{color:inherit;text-decoration:none}
 .primary{border:none;border-radius:999px;padding:14px 22px;background:linear-gradient(90deg,var(--gold),#ffe39a);color:#101621;font-weight:900;cursor:pointer} .secondary{border:1px solid var(--line);border-radius:999px;padding:14px 22px;background:rgba(255,255,255,.06);color:var(--text);font-weight:900;cursor:pointer}
 @media (max-width: 1100px){.frame{grid-template-columns:1fr} .content{border-left:none;border-top:1px solid var(--line)} .stage{inset:94px 10px 128px} .quick{display:none} .map-wrap{min-height:48vh}}
 </style>
+<!-- FWI-PUBLICATION-METADATA:START -->
+<link rel="stylesheet" href="/style.css?v=2.7" data-fwi-publication-style="1" />
+<meta name="description" content="Present the Ten Maps report as a narrated video" />
+<meta name="author" content="FutureWorld Intelligence" />
+<meta name="publisher" content="FutureWorld Intelligence" />
+<meta name="robots" content="index,follow,max-image-preview:large" />
+<meta name="citation_title" content="Ten Maps That Explain Climate Change" />
+<meta name="citation_author" content="FutureWorld Intelligence" />
+<meta name="citation_language" content="en" />
+<meta name="citation_public_url" content="https://futureworldintelligence.org/content/climate/ten-maps-video/" />
+<link rel="canonical" href="https://futureworldintelligence.org/content/climate/ten-maps-video/" />
+<meta property="og:type" content="video.other" />
+<meta property="og:site_name" content="FutureWorld Intelligence" />
+<meta property="og:title" content="Ten Maps That Explain Climate Change" />
+<meta property="og:description" content="Present the Ten Maps report as a narrated video" />
+<meta property="og:url" content="https://futureworldintelligence.org/content/climate/ten-maps-video/" />
+<meta property="og:image" content="https://futureworldintelligence.org/content/climate/ten-maps-video/assets/Logo.png" />
+<meta property="og:image:alt" content="Ten Maps That Explain Climate Change — FutureWorld Intelligence" />
+<meta property="og:locale" content="en_US" />
+<meta property="article:modified_time" content="2026-07-15" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Ten Maps That Explain Climate Change" />
+<meta name="twitter:description" content="Present the Ten Maps report as a narrated video" />
+<meta name="twitter:image" content="https://futureworldintelligence.org/content/climate/ten-maps-video/assets/Logo.png" />
+<meta name="twitter:image:alt" content="Ten Maps That Explain Climate Change — FutureWorld Intelligence" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "Ten Maps That Explain Climate Change",
+  "headline": "Ten Maps That Explain Climate Change",
+  "description": "Present the Ten Maps report as a narrated video",
+  "url": "https://futureworldintelligence.org/content/climate/ten-maps-video/",
+  "image": "https://futureworldintelligence.org/content/climate/ten-maps-video/assets/Logo.png",
+  "inLanguage": "en",
+  "dateModified": "2026-07-15",
+  "version": "Web edition 1.0",
+  "creativeWorkStatus": "Published; retrospective validation pending",
+  "author": {
+    "@type": "Organization",
+    "name": "FutureWorld Intelligence"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "FutureWorld Intelligence"
+  },
+  "isPartOf": {
+    "@type": "CreativeWorkSeries",
+    "name": "Ten Maps video adaptation"
+  },
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "Public and social-media audiences"
+  },
+  "about": "Climate Intelligence"
+}
+</script>
+<!-- FWI-PUBLICATION-METADATA:END -->
 </head>
-<body>
+<body class="fwi-has-publication-identity fwi-publication-multimedia">
 <nav class="topnav" aria-label="FutureWorld standard navigation"><div class="inner"><a class="brand" href="../../../index.html" aria-label="Return to FutureWorld Intelligence home"><img src="assets/Logo.png" alt="FutureWorld Intelligence logo"><span>FutureWorld</span></a><div class="quick"><a class="home-link" href="../../../index.html">Home</a><a href="../../../pages/climate.html">Climate Center</a><a class="active" href="#">Video</a><button id="jumpMaps">Maps</button></div></div></nav>
 <div class="stage"><div class="frame"><section class="visual"><div class="map-wrap"><img id="slideImage" src="assets/Logo.png" alt="Climate map visual"></div><div class="caption" id="slideCaption"></div></section><section class="content"><div class="kicker">FutureWorld Intelligence • 16:9 Climate Video</div><h1 id="slideTitle"></h1><p id="slideSubtitle"></p><ul class="bullets" id="slideBullets"></ul><div class="source" id="slideSource"></div></section></div></div>
 <div class="lowerbar"><div class="controls"><div class="ctrl-group"><button class="ctrl-btn" id="prevBtn">◀ Prev</button><button class="ctrl-btn" id="playBtn">Play</button><button class="ctrl-btn" id="pauseBtn">Pause</button><button class="ctrl-btn" id="nextBtn">Next ▶</button><button class="ctrl-btn" id="muteBtn">Mute Voice</button></div><div class="progress-wrap"><div class="progress-meta"><span id="progressText">Slide 1 of 13</span><span id="timerText">Ready</span></div><div class="progress"><div id="progressBar"></div></div></div><div class="slide-dots" id="slideDots"></div></div></div>
@@ -78,5 +136,8 @@ startBtn.onclick=()=>{ startOverlay.style.display='none'; play(); }; manualBtn.o
 document.querySelectorAll('.topnav a[href]').forEach(a=>{if(a.getAttribute('href') !== '#'){a.addEventListener('click',()=>stopPresentation());}});
 document.addEventListener('keydown',e=>{ if(e.key==='ArrowRight') nextManual(); if(e.key==='ArrowLeft') prevManual(); if(e.key===' '){ e.preventDefault(); playing?pause():play(); } });
 </script>
+<!-- FWI-PUBLICATION-IDENTITY:START -->
+<section class="publication-identity publication-identity--multimedia" id="publication-details" aria-labelledby="publication-identity-heading"><div class="publication-identity__inner"><div class="publication-identity__header"><div><p class="publication-identity__eyebrow">FWI publication information</p><h2 id="publication-identity-heading">Identity, scope and status</h2></div><span class="publication-status">Retrospective validation pending</span></div><dl class="publication-identity__grid"><div class="publication-identity__item"><dt>Publication family</dt><dd>Multimedia Publications</dd></div><div class="publication-identity__item"><dt>Publication type</dt><dd>FWI Multimedia Derivative</dd></div><div class="publication-identity__item"><dt>Domain</dt><dd>Climate Intelligence</dd></div><div class="publication-identity__item"><dt>Series and number</dt><dd>Ten Maps video adaptation</dd></div><div class="publication-identity__item"><dt>Institutional author</dt><dd>FutureWorld Intelligence</dd></div><div class="publication-identity__item"><dt>Publication year</dt><dd>Not recorded</dd></div><div class="publication-identity__item"><dt>Current web edition</dt><dd>1.0</dd></div><div class="publication-identity__item"><dt>Metadata updated</dt><dd>15 July 2026</dd></div><div class="publication-identity__item publication-identity__item--wide"><dt>Purpose</dt><dd>Present the Ten Maps report as a narrated video</dd></div><div class="publication-identity__item publication-identity__item--wide"><dt>Intended audience</dt><dd>Public and social-media audiences</dd></div><div class="publication-identity__item publication-identity__item--wide"><dt>Method and evidence basis</dt><dd>Derivative multimedia adaptation</dd></div><div class="publication-identity__item publication-identity__item--wide"><dt>Evidence cut-off</dt><dd>The exact historical evidence cut-off was not recorded when the original web publication was prepared. Source currency will be confirmed during retrospective validation.</dd></div><div class="publication-identity__item publication-identity__item--wide"><dt>Limitations and disclosures</dt><dd>This multimedia publication may summarize or adapt source material. Source consistency, media rights, accessibility and disclosure checks remain part of the pending retrospective validation.</dd></div></dl><p class="publication-identity__note"><strong>Validation note:</strong> This classification does not itself validate the publication. Retrospective factual, citation, originality, disclosure and readiness checks must be completed and human-approved before the status can change to “Validated — human approved.”</p><div class="publication-citation" aria-label="Recommended citation"><strong>Recommended citation</strong><p>FutureWorld Intelligence. (n.d.). <em>Ten Maps That Explain Climate Change</em> (Ten Maps video adaptation; Web edition 1.0). <a href="https://futureworldintelligence.org/content/climate/ten-maps-video/">https://futureworldintelligence.org/content/climate/ten-maps-video/</a></p></div></div></section>
+<!-- FWI-PUBLICATION-IDENTITY:END -->
 </body>
 </html>

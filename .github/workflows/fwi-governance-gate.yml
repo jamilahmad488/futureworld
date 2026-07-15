@@ -36,6 +36,7 @@ jobs:
           path: trusted-gate
           persist-credentials: false
           sparse-checkout: |
+            .github/workflows/fwi-governance-gate.yml
             .github/scripts/fwi_governance_gate.py
             .github/tests/test_fwi_governance_gate.py
           sparse-checkout-cone-mode: false

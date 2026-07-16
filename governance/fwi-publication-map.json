@@ -1,0 +1,583 @@
+{
+  "schema_version": "1.0",
+  "publication_count": 72,
+  "public_repository": "jamilahmad488/futureworld",
+  "publications": [
+    {
+      "inventory_id": "FWI-INV-001",
+      "source_path": "content/ai/ai-agents-future-digital-work.html",
+      "domain": "ai",
+      "slug": "ai-agents-future-digital-work",
+      "backend_path": "reports-backend/ai/ai-agents-future-digital-work/",
+      "family": "Briefs and Applied Knowledge"
+    },
+    {
+      "inventory_id": "FWI-INV-002",
+      "source_path": "content/ai/ai-literacy-and-model-foundations/index.html",
+      "domain": "ai",
+      "slug": "ai-literacy-and-model-foundations",
+      "backend_path": "reports-backend/ai/ai-literacy-and-model-foundations/",
+      "family": "Principles and Explainers"
+    },
+    {
+      "inventory_id": "FWI-INV-004",
+      "source_path": "content/ai/artificial-intelligence-cognitive-infrastructure/index.html",
+      "domain": "ai",
+      "slug": "artificial-intelligence-cognitive-infrastructure",
+      "backend_path": "reports-backend/ai/artificial-intelligence-cognitive-infrastructure/",
+      "family": "Research and Strategic Analysis"
+    },
+    {
+      "inventory_id": "FWI-INV-003",
+      "source_path": "content/ai/artificial-intelligence-technologies-systems-risks-strategic-futures/index.html",
+      "domain": "ai",
+      "slug": "artificial-intelligence-technologies-systems-risks-strategic-futures",
+      "backend_path": "reports-backend/ai/artificial-intelligence-technologies-systems-risks-strategic-futures/",
+      "family": "Research and Strategic Analysis"
+    },
+    {
+      "inventory_id": "FWI-INV-006",
+      "source_path": "content/climate/Bajaur_TBTTP_ANR_Plantation_HTML_Video.html",
+      "domain": "climate",
+      "slug": "bajaur-tbttp-anr-plantation-html-video",
+      "backend_path": "reports-backend/climate/bajaur-tbttp-anr-plantation-html-video/",
+      "family": "Research and Strategic Analysis"
+    },
+    {
+      "inventory_id": "FWI-INV-026",
+      "source_path": "content/climate/climate-001-assisted-natural-regeneration.html",
+      "domain": "climate",
+      "slug": "climate-001-assisted-natural-regeneration",
+      "backend_path": "reports-backend/climate/climate-001-assisted-natural-regeneration/",
+      "family": "Briefs and Applied Knowledge"
+    },
+    {
+      "inventory_id": "FWI-INV-028",
+      "source_path": "content/climate/climate-change-global-system-shaping-force/index.html",
+      "domain": "climate",
+      "slug": "climate-change-global-system-shaping-force",
+      "backend_path": "reports-backend/climate/climate-change-global-system-shaping-force/",
+      "family": "Research and Strategic Analysis"
+    },
+    {
+      "inventory_id": "FWI-INV-027",
+      "source_path": "content/climate/climate-flagship-report-001.html",
+      "domain": "climate",
+      "slug": "climate-flagship-report-001",
+      "backend_path": "reports-backend/climate/climate-flagship-report-001/",
+      "family": "Briefs and Applied Knowledge"
+    },
+    {
+      "inventory_id": "FWI-INV-025",
+      "source_path": "content/climate/Climate_Warning_Before_2031_FutureWorld_HTML_Video_.html",
+      "domain": "climate",
+      "slug": "climate-warning-before-2031-futureworld-html-video",
+      "backend_path": "reports-backend/climate/climate-warning-before-2031-futureworld-html-video/",
+      "family": "Multimedia Publications"
+    },
+    {
+      "inventory_id": "FWI-INV-017",
+      "source_path": "content/climate/principles/adaptation-climate-resilient-development/index.html",
+      "domain": "climate",
+      "slug": "principles-adaptation-climate-resilient-development",
+      "backend_path": "reports-backend/climate/principles-adaptation-climate-resilient-development/",
+      "family": "Principles and Explainers"
+    },
+    {
+      "inventory_id": "FWI-INV-008",
+      "source_path": "content/climate/principles/climate-cycles-human-forcing/index.html",
+      "domain": "climate",
+      "slug": "principles-climate-cycles-human-forcing",
+      "backend_path": "reports-backend/climate/principles-climate-cycles-human-forcing/",
+      "family": "Principles and Explainers"
+    },
+    {
+      "inventory_id": "FWI-INV-014",
+      "source_path": "content/climate/principles/climate-finance-gcf-readiness/index.html",
+      "domain": "climate",
+      "slug": "principles-climate-finance-gcf-readiness",
+      "backend_path": "reports-backend/climate/principles-climate-finance-gcf-readiness/",
+      "family": "Principles and Explainers"
+    },
+    {
+      "inventory_id": "FWI-INV-015",
+      "source_path": "content/climate/principles/climate-justice-just-transition/index.html",
+      "domain": "climate",
+      "slug": "principles-climate-justice-just-transition",
+      "backend_path": "reports-backend/climate/principles-climate-justice-just-transition/",
+      "family": "Principles and Explainers"
+    },
+    {
+      "inventory_id": "FWI-INV-009",
+      "source_path": "content/climate/principles/climate-mechanisms-risk-theory/index.html",
+      "domain": "climate",
+      "slug": "principles-climate-mechanisms-risk-theory",
+      "backend_path": "reports-backend/climate/principles-climate-mechanisms-risk-theory/",
+      "family": "Principles and Explainers"
+    },
+    {
+      "inventory_id": "FWI-INV-022",
+      "source_path": "content/climate/principles/community-centered-climate-action/index.html",
+      "domain": "climate",
+      "slug": "principles-community-centered-climate-action",
+      "backend_path": "reports-backend/climate/principles-community-centered-climate-action/",
+      "family": "Principles and Explainers"
+    },
+    {
+      "inventory_id": "FWI-INV-013",
+      "source_path": "content/climate/principles/cop-process-global-climate-governance/index.html",
+      "domain": "climate",
+      "slug": "principles-cop-process-global-climate-governance",
+      "backend_path": "reports-backend/climate/principles-cop-process-global-climate-governance/",
+      "family": "Principles and Explainers"
+    },
+    {
+      "inventory_id": "FWI-INV-010",
+      "source_path": "content/climate/principles/current-climate-reality-implementation-gap/index.html",
+      "domain": "climate",
+      "slug": "principles-current-climate-reality-implementation-gap",
+      "backend_path": "reports-backend/climate/principles-current-climate-reality-implementation-gap/",
+      "family": "Principles and Explainers"
+    },
+    {
+      "inventory_id": "FWI-INV-020",
+      "source_path": "content/climate/principles/disaster-risk-reduction-early-warning/index.html",
+      "domain": "climate",
+      "slug": "principles-disaster-risk-reduction-early-warning",
+      "backend_path": "reports-backend/climate/principles-disaster-risk-reduction-early-warning/",
+      "family": "Principles and Explainers"
+    },
+    {
+      "inventory_id": "FWI-INV-007",
+      "source_path": "content/climate/principles/historical-climate-literacy/index.html",
+      "domain": "climate",
+      "slug": "principles-historical-climate-literacy",
+      "backend_path": "reports-backend/climate/principles-historical-climate-literacy/",
+      "family": "Principles and Explainers"
+    },
+    {
+      "inventory_id": "FWI-INV-016",
+      "source_path": "content/climate/principles/mitigation-low-emission-development/index.html",
+      "domain": "climate",
+      "slug": "principles-mitigation-low-emission-development",
+      "backend_path": "reports-backend/climate/principles-mitigation-low-emission-development/",
+      "family": "Principles and Explainers"
+    },
+    {
+      "inventory_id": "FWI-INV-023",
+      "source_path": "content/climate/principles/monitoring-reporting-learning/index.html",
+      "domain": "climate",
+      "slug": "principles-monitoring-reporting-learning",
+      "backend_path": "reports-backend/climate/principles-monitoring-reporting-learning/",
+      "family": "Principles and Explainers"
+    },
+    {
+      "inventory_id": "FWI-INV-019",
+      "source_path": "content/climate/principles/mountain-watershed-local-geography-intelligence/index.html",
+      "domain": "climate",
+      "slug": "principles-mountain-watershed-local-geography-intelligence",
+      "backend_path": "reports-backend/climate/principles-mountain-watershed-local-geography-intelligence/",
+      "family": "Principles and Explainers"
+    },
+    {
+      "inventory_id": "FWI-INV-018",
+      "source_path": "content/climate/principles/nature-based-biodiversity-watershed-resilience/index.html",
+      "domain": "climate",
+      "slug": "principles-nature-based-biodiversity-watershed-resilience",
+      "backend_path": "reports-backend/climate/principles-nature-based-biodiversity-watershed-resilience/",
+      "family": "Principles and Explainers"
+    },
+    {
+      "inventory_id": "FWI-INV-012",
+      "source_path": "content/climate/principles/paris-agreement-ndc-alignment/index.html",
+      "domain": "climate",
+      "slug": "principles-paris-agreement-ndc-alignment",
+      "backend_path": "reports-backend/climate/principles-paris-agreement-ndc-alignment/",
+      "family": "Principles and Explainers"
+    },
+    {
+      "inventory_id": "FWI-INV-021",
+      "source_path": "content/climate/principles/responsible-ai-climate-intelligence/index.html",
+      "domain": "climate",
+      "slug": "principles-responsible-ai-climate-intelligence",
+      "backend_path": "reports-backend/climate/principles-responsible-ai-climate-intelligence/",
+      "family": "Principles and Explainers"
+    },
+    {
+      "inventory_id": "FWI-INV-011",
+      "source_path": "content/climate/principles/sdg-aligned-climate-action/index.html",
+      "domain": "climate",
+      "slug": "principles-sdg-aligned-climate-action",
+      "backend_path": "reports-backend/climate/principles-sdg-aligned-climate-action/",
+      "family": "Principles and Explainers"
+    },
+    {
+      "inventory_id": "FWI-INV-029",
+      "source_path": "content/climate/ten-maps-that-explain-climate-change/index.html",
+      "domain": "climate",
+      "slug": "ten-maps-that-explain-climate-change",
+      "backend_path": "reports-backend/climate/ten-maps-that-explain-climate-change/",
+      "family": "Research and Strategic Analysis"
+    },
+    {
+      "inventory_id": "FWI-INV-024",
+      "source_path": "content/climate/ten-maps-video/index.html",
+      "domain": "climate",
+      "slug": "ten-maps-video",
+      "backend_path": "reports-backend/climate/ten-maps-video/",
+      "family": "Multimedia Publications"
+    },
+    {
+      "inventory_id": "FWI-INV-065",
+      "source_path": "content/energy/energy-001-global-energy-transition.html",
+      "domain": "energy",
+      "slug": "energy-001-global-energy-transition",
+      "backend_path": "reports-backend/energy/energy-001-global-energy-transition/",
+      "family": "Briefs and Applied Knowledge"
+    },
+    {
+      "inventory_id": "FWI-INV-066",
+      "source_path": "content/energy/energy-transition-infrastructure-shift-shaping-2035/index.html",
+      "domain": "energy",
+      "slug": "energy-transition-infrastructure-shift-shaping-2035",
+      "backend_path": "reports-backend/energy/energy-transition-infrastructure-shift-shaping-2035/",
+      "family": "Research and Strategic Analysis"
+    },
+    {
+      "inventory_id": "FWI-INV-068",
+      "source_path": "content/futures/five-forces-shaping-2035/index.html",
+      "domain": "futures",
+      "slug": "five-forces-shaping-2035",
+      "backend_path": "reports-backend/futures/five-forces-shaping-2035/",
+      "family": "Research and Strategic Analysis"
+    },
+    {
+      "inventory_id": "FWI-INV-067",
+      "source_path": "content/futures/strategic-futures-foresight-resilience-governance-shaping-2035/index.html",
+      "domain": "futures",
+      "slug": "strategic-futures-foresight-resilience-governance-shaping-2035",
+      "backend_path": "reports-backend/futures/strategic-futures-foresight-resilience-governance-shaping-2035/",
+      "family": "Research and Strategic Analysis"
+    },
+    {
+      "inventory_id": "FWI-INV-081",
+      "source_path": "content/geopolitics/critical-minerals-systems-power/index.html",
+      "domain": "geopolitics",
+      "slug": "critical-minerals-systems-power",
+      "backend_path": "reports-backend/geopolitics/critical-minerals-systems-power/",
+      "family": "Research and Strategic Analysis"
+    },
+    {
+      "inventory_id": "FWI-INV-091",
+      "source_path": "content/geopolitics/geopolitics-fragmented-power-system-shaping-2035/index.html",
+      "domain": "geopolitics",
+      "slug": "geopolitics-fragmented-power-system-shaping-2035",
+      "backend_path": "reports-backend/geopolitics/geopolitics-fragmented-power-system-shaping-2035/",
+      "family": "Research and Strategic Analysis"
+    },
+    {
+      "inventory_id": "FWI-INV-087",
+      "source_path": "content/geopolitics/gulf-region-energy-maritime-chokepoints-strategic-power/index.html",
+      "domain": "geopolitics",
+      "slug": "gulf-region-energy-maritime-chokepoints-strategic-power",
+      "backend_path": "reports-backend/geopolitics/gulf-region-energy-maritime-chokepoints-strategic-power/",
+      "family": "Research and Strategic Analysis"
+    },
+    {
+      "inventory_id": "FWI-INV-088",
+      "source_path": "content/geopolitics/indo-pacific-maritime-power-technology-supply-chains-pakistan/index.html",
+      "domain": "geopolitics",
+      "slug": "indo-pacific-maritime-power-technology-supply-chains-pakistan",
+      "backend_path": "reports-backend/geopolitics/indo-pacific-maritime-power-technology-supply-chains-pakistan/",
+      "family": "Research and Strategic Analysis"
+    },
+    {
+      "inventory_id": "FWI-INV-071",
+      "source_path": "content/geopolitics/is-geopolitics-a-discipline/index.html",
+      "domain": "geopolitics",
+      "slug": "is-geopolitics-a-discipline",
+      "backend_path": "reports-backend/geopolitics/is-geopolitics-a-discipline/",
+      "family": "Research and Strategic Analysis"
+    },
+    {
+      "inventory_id": "FWI-INV-072",
+      "source_path": "content/geopolitics/key-principles/alliances-organizations-agreements/index.html",
+      "domain": "geopolitics",
+      "slug": "key-principles-alliances-organizations-agreements",
+      "backend_path": "reports-backend/geopolitics/key-principles-alliances-organizations-agreements/",
+      "family": "Principles and Explainers"
+    },
+    {
+      "inventory_id": "FWI-INV-073",
+      "source_path": "content/geopolitics/key-principles/continental-regional-power-structure/index.html",
+      "domain": "geopolitics",
+      "slug": "key-principles-continental-regional-power-structure",
+      "backend_path": "reports-backend/geopolitics/key-principles-continental-regional-power-structure/",
+      "family": "Principles and Explainers"
+    },
+    {
+      "inventory_id": "FWI-INV-074",
+      "source_path": "content/geopolitics/key-principles/future-scenarios-strategic-foresight/index.html",
+      "domain": "geopolitics",
+      "slug": "key-principles-future-scenarios-strategic-foresight",
+      "backend_path": "reports-backend/geopolitics/key-principles-future-scenarios-strategic-foresight/",
+      "family": "Principles and Explainers"
+    },
+    {
+      "inventory_id": "FWI-INV-075",
+      "source_path": "content/geopolitics/key-principles/geography/index.html",
+      "domain": "geopolitics",
+      "slug": "key-principles-geography",
+      "backend_path": "reports-backend/geopolitics/key-principles-geography/",
+      "family": "Principles and Explainers"
+    },
+    {
+      "inventory_id": "FWI-INV-076",
+      "source_path": "content/geopolitics/key-principles/global-systems-view/index.html",
+      "domain": "geopolitics",
+      "slug": "key-principles-global-systems-view",
+      "backend_path": "reports-backend/geopolitics/key-principles-global-systems-view/",
+      "family": "Principles and Explainers"
+    },
+    {
+      "inventory_id": "FWI-INV-077",
+      "source_path": "content/geopolitics/key-principles/international-law-global-order/index.html",
+      "domain": "geopolitics",
+      "slug": "key-principles-international-law-global-order",
+      "backend_path": "reports-backend/geopolitics/key-principles-international-law-global-order/",
+      "family": "Principles and Explainers"
+    },
+    {
+      "inventory_id": "FWI-INV-078",
+      "source_path": "content/geopolitics/key-principles/maritime-geography-strategic-corridors/index.html",
+      "domain": "geopolitics",
+      "slug": "key-principles-maritime-geography-strategic-corridors",
+      "backend_path": "reports-backend/geopolitics/key-principles-maritime-geography-strategic-corridors/",
+      "family": "Principles and Explainers"
+    },
+    {
+      "inventory_id": "FWI-INV-079",
+      "source_path": "content/geopolitics/key-principles/state-power-national-capability/index.html",
+      "domain": "geopolitics",
+      "slug": "key-principles-state-power-national-capability",
+      "backend_path": "reports-backend/geopolitics/key-principles-state-power-national-capability/",
+      "family": "Principles and Explainers"
+    },
+    {
+      "inventory_id": "FWI-INV-080",
+      "source_path": "content/geopolitics/key-principles/theoretical-lenses/index.html",
+      "domain": "geopolitics",
+      "slug": "key-principles-theoretical-lenses",
+      "backend_path": "reports-backend/geopolitics/key-principles-theoretical-lenses/",
+      "family": "Principles and Explainers"
+    },
+    {
+      "inventory_id": "FWI-INV-082",
+      "source_path": "content/geopolitics/maritime-chokepoints/index.html",
+      "domain": "geopolitics",
+      "slug": "maritime-chokepoints",
+      "backend_path": "reports-backend/geopolitics/maritime-chokepoints/",
+      "family": "Research and Strategic Analysis"
+    },
+    {
+      "inventory_id": "FWI-INV-083",
+      "source_path": "content/geopolitics/red-sea-chokepoint-leverage-bab-el-mandeb-hormuz/index.html",
+      "domain": "geopolitics",
+      "slug": "red-sea-chokepoint-leverage-bab-el-mandeb-hormuz",
+      "backend_path": "reports-backend/geopolitics/red-sea-chokepoint-leverage-bab-el-mandeb-hormuz/",
+      "family": "Research and Strategic Analysis"
+    },
+    {
+      "inventory_id": "FWI-INV-089",
+      "source_path": "content/geopolitics/return-of-multipolarity/index.html",
+      "domain": "geopolitics",
+      "slug": "return-of-multipolarity",
+      "backend_path": "reports-backend/geopolitics/return-of-multipolarity/",
+      "family": "Research and Strategic Analysis"
+    },
+    {
+      "inventory_id": "FWI-INV-084",
+      "source_path": "content/geopolitics/strategic-regions-global-power-centers/index.html",
+      "domain": "geopolitics",
+      "slug": "strategic-regions-global-power-centers",
+      "backend_path": "reports-backend/geopolitics/strategic-regions-global-power-centers/",
+      "family": "Research and Strategic Analysis"
+    },
+    {
+      "inventory_id": "FWI-INV-085",
+      "source_path": "content/geopolitics/systemic-power/index.html",
+      "domain": "geopolitics",
+      "slug": "systemic-power",
+      "backend_path": "reports-backend/geopolitics/systemic-power/",
+      "family": "Research and Strategic Analysis"
+    },
+    {
+      "inventory_id": "FWI-INV-086",
+      "source_path": "content/geopolitics/systems-capacity-global-power/index.html",
+      "domain": "geopolitics",
+      "slug": "systems-capacity-global-power",
+      "backend_path": "reports-backend/geopolitics/systems-capacity-global-power/",
+      "family": "Research and Strategic Analysis"
+    },
+    {
+      "inventory_id": "FWI-INV-090",
+      "source_path": "content/geopolitics/the-systems-race-china-america-infrastructure-global-power/index.html",
+      "domain": "geopolitics",
+      "slug": "the-systems-race-china-america-infrastructure-global-power",
+      "backend_path": "reports-backend/geopolitics/the-systems-race-china-america-infrastructure-global-power/",
+      "family": "Research and Strategic Analysis"
+    },
+    {
+      "inventory_id": "FWI-INV-103",
+      "source_path": "copyright/index.html",
+      "domain": "institutional",
+      "slug": "copyright",
+      "backend_path": "reports-backend/institutional/copyright/",
+      "family": "Institutional Publications"
+    },
+    {
+      "inventory_id": "FWI-INV-048",
+      "source_path": "courses/practical-ai-website-building/index.html",
+      "domain": "education",
+      "slug": "practical-ai-website-building",
+      "backend_path": "reports-backend/education/practical-ai-website-building/",
+      "family": "Courses and Learning Resources"
+    },
+    {
+      "inventory_id": "FWI-INV-063",
+      "source_path": "courses/practical-ai-website-building/module-1/index.html",
+      "domain": "education",
+      "slug": "practical-ai-website-building-module-1",
+      "backend_path": "reports-backend/education/practical-ai-website-building-module-1/",
+      "family": "Courses and Learning Resources"
+    },
+    {
+      "inventory_id": "FWI-INV-049",
+      "source_path": "courses/practical-ai-website-building/module-1/lecture-1-1-the-new-way-of-learning/index.html",
+      "domain": "education",
+      "slug": "practical-ai-website-building-module-1-lecture-1-1-the-new-way-of-learning",
+      "backend_path": "reports-backend/education/practical-ai-website-building-module-1-lecture-1-1-the-new-way-of-learning/",
+      "family": "Courses and Learning Resources"
+    },
+    {
+      "inventory_id": "FWI-INV-050",
+      "source_path": "courses/practical-ai-website-building/module-1/lecture-1-2-understanding-ai-as-your-digital-assistant/index.html",
+      "domain": "education",
+      "slug": "practical-ai-website-building-module-1-lecture-1-2-understanding-ai-as-your-digital-assistant",
+      "backend_path": "reports-backend/education/practical-ai-website-building-module-1-lecture-1-2-understanding-ai-as-your-digital-assistant/",
+      "family": "Courses and Learning Resources"
+    },
+    {
+      "inventory_id": "FWI-INV-057",
+      "source_path": "courses/practical-ai-website-building/module-1/lecture-1-2-understanding-ai-as-your-digital-assistant/prompt-library/index.html",
+      "domain": "education",
+      "slug": "practical-ai-website-building-module-1-lecture-1-2-understanding-ai-as-your-digital-assistant-prompt-library",
+      "backend_path": "reports-backend/education/practical-ai-website-building-module-1-lecture-1-2-understanding-ai-as-your-digital-assistant-prompt-library/",
+      "family": "Courses and Learning Resources"
+    },
+    {
+      "inventory_id": "FWI-INV-051",
+      "source_path": "courses/practical-ai-website-building/module-1/lecture-1-3-creating-essential-accounts/index.html",
+      "domain": "education",
+      "slug": "practical-ai-website-building-module-1-lecture-1-3-creating-essential-accounts",
+      "backend_path": "reports-backend/education/practical-ai-website-building-module-1-lecture-1-3-creating-essential-accounts/",
+      "family": "Courses and Learning Resources"
+    },
+    {
+      "inventory_id": "FWI-INV-058",
+      "source_path": "courses/practical-ai-website-building/module-1/lecture-1-3-creating-essential-accounts/prompt-library/index.html",
+      "domain": "education",
+      "slug": "practical-ai-website-building-module-1-lecture-1-3-creating-essential-accounts-prompt-library",
+      "backend_path": "reports-backend/education/practical-ai-website-building-module-1-lecture-1-3-creating-essential-accounts-prompt-library/",
+      "family": "Courses and Learning Resources"
+    },
+    {
+      "inventory_id": "FWI-INV-052",
+      "source_path": "courses/practical-ai-website-building/module-1/lecture-1-4-installing-required-software/index.html",
+      "domain": "education",
+      "slug": "practical-ai-website-building-module-1-lecture-1-4-installing-required-software",
+      "backend_path": "reports-backend/education/practical-ai-website-building-module-1-lecture-1-4-installing-required-software/",
+      "family": "Courses and Learning Resources"
+    },
+    {
+      "inventory_id": "FWI-INV-059",
+      "source_path": "courses/practical-ai-website-building/module-1/lecture-1-4-installing-required-software/prompt-library/index.html",
+      "domain": "education",
+      "slug": "practical-ai-website-building-module-1-lecture-1-4-installing-required-software-prompt-library",
+      "backend_path": "reports-backend/education/practical-ai-website-building-module-1-lecture-1-4-installing-required-software-prompt-library/",
+      "family": "Courses and Learning Resources"
+    },
+    {
+      "inventory_id": "FWI-INV-053",
+      "source_path": "courses/practical-ai-website-building/module-1/lecture-1-5-creating-project-folder-system/index.html",
+      "domain": "education",
+      "slug": "practical-ai-website-building-module-1-lecture-1-5-creating-project-folder-system",
+      "backend_path": "reports-backend/education/practical-ai-website-building-module-1-lecture-1-5-creating-project-folder-system/",
+      "family": "Courses and Learning Resources"
+    },
+    {
+      "inventory_id": "FWI-INV-060",
+      "source_path": "courses/practical-ai-website-building/module-1/lecture-1-5-creating-project-folder-system/prompt-library/index.html",
+      "domain": "education",
+      "slug": "practical-ai-website-building-module-1-lecture-1-5-creating-project-folder-system-prompt-library",
+      "backend_path": "reports-backend/education/practical-ai-website-building-module-1-lecture-1-5-creating-project-folder-system-prompt-library/",
+      "family": "Courses and Learning Resources"
+    },
+    {
+      "inventory_id": "FWI-INV-054",
+      "source_path": "courses/practical-ai-website-building/module-1/lecture-1-6-understanding-local-folder-github-repository-and-public-website/index.html",
+      "domain": "education",
+      "slug": "practical-ai-website-building-module-1-lecture-1-6-understanding-local-folder-github-repository-and-public-website",
+      "backend_path": "reports-backend/education/practical-ai-website-building-module-1-lecture-1-6-understanding-local-folder-github-repository-and-public-website/",
+      "family": "Courses and Learning Resources"
+    },
+    {
+      "inventory_id": "FWI-INV-061",
+      "source_path": "courses/practical-ai-website-building/module-1/lecture-1-6-understanding-local-folder-github-repository-and-public-website/prompt-library/index.html",
+      "domain": "education",
+      "slug": "practical-ai-website-building-module-1-lecture-1-6-understanding-local-folder-github-repository-and-public-website-prompt-library",
+      "backend_path": "reports-backend/education/practical-ai-website-building-module-1-lecture-1-6-understanding-local-folder-github-repository-and-public-website-prompt-library/",
+      "family": "Courses and Learning Resources"
+    },
+    {
+      "inventory_id": "FWI-INV-055",
+      "source_path": "courses/practical-ai-website-building/module-1/lecture-1-7-publishing-your-first-website/index.html",
+      "domain": "education",
+      "slug": "practical-ai-website-building-module-1-lecture-1-7-publishing-your-first-website",
+      "backend_path": "reports-backend/education/practical-ai-website-building-module-1-lecture-1-7-publishing-your-first-website/",
+      "family": "Courses and Learning Resources"
+    },
+    {
+      "inventory_id": "FWI-INV-062",
+      "source_path": "courses/practical-ai-website-building/module-1/lecture-1-7-publishing-your-first-website/prompt-library/index.html",
+      "domain": "education",
+      "slug": "practical-ai-website-building-module-1-lecture-1-7-publishing-your-first-website-prompt-library",
+      "backend_path": "reports-backend/education/practical-ai-website-building-module-1-lecture-1-7-publishing-your-first-website-prompt-library/",
+      "family": "Courses and Learning Resources"
+    },
+    {
+      "inventory_id": "FWI-INV-056",
+      "source_path": "courses/practical-ai-website-building/outline/index.html",
+      "domain": "education",
+      "slug": "practical-ai-website-building-outline",
+      "backend_path": "reports-backend/education/practical-ai-website-building-outline/",
+      "family": "Courses and Learning Resources"
+    },
+    {
+      "inventory_id": "FWI-INV-104",
+      "source_path": "pages/institutional-editorial-charter/index.html",
+      "domain": "institutional",
+      "slug": "pages-institutional-editorial-charter",
+      "backend_path": "reports-backend/institutional/pages-institutional-editorial-charter/",
+      "family": "Institutional Publications"
+    },
+    {
+      "inventory_id": "FWI-INV-106",
+      "source_path": "pages/research-commercial-independence/index.html",
+      "domain": "institutional",
+      "slug": "pages-research-commercial-independence",
+      "backend_path": "reports-backend/institutional/pages-research-commercial-independence/",
+      "family": "Institutional Publications"
+    }
+  ]
+}

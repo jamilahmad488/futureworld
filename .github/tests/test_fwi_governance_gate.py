@@ -21,6 +21,14 @@ HEAD = "a" * 40
 DOMAIN = "geopolitics"
 SLUG = "test-report"
 PUBLIC_PATH = f"content/{DOMAIN}/{SLUG}/index.html"
+TEST_PUBLICATION = GATE.PublicationRecord(
+    inventory_id="FWI-TEST-001",
+    source_path=PUBLIC_PATH,
+    domain=DOMAIN,
+    slug=SLUG,
+    backend_path=f"reports-backend/{DOMAIN}/{SLUG}/",
+    family="Research and Strategic Analysis",
+)
 
 R1_SCORES = {
     "D1": 7,
@@ -166,12 +174,13 @@ class GovernanceGateTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.governance = pathlib.Path(self.temp.name)
+        self.publications = [TEST_PUBLICATION]
 
     def tearDown(self):
         self.temp.cleanup()
 
     def evaluate(self, changes, head: str = HEAD):
-        return GATE.evaluate_changes(changes, self.governance, head)
+        return GATE.evaluate_changes(changes, self.governance, head, self.publications)
 
     def codes(self, result):
         return {check.code for check in result.checks if not check.passed}
@@ -180,11 +189,62 @@ class GovernanceGateTests(unittest.TestCase):
         result = self.evaluate([GATE.ChangedFile("pages/about/index.html")])
         self.assertTrue(result.passed)
 
+    def test_controlled_map_has_72_unique_publications_and_backends(self):
+        publication_map = ROOT.parent / "governance" / "fwi-publication-map.json"
+        records = GATE.load_publication_map(publication_map)
+        self.assertEqual(72, len(records))
+        self.assertEqual(72, len({record.source_path for record in records}))
+        self.assertEqual(72, len({record.backend_path for record in records}))
+
+    def test_nested_principles_map_to_distinct_backends(self):
+        publication_map = ROOT.parent / "governance" / "fwi-publication-map.json"
+        records = GATE.load_publication_map(publication_map)
+        first = GATE.match_publication(
+            "content/climate/principles/adaptation-climate-resilient-development/index.html",
+            records,
+        )
+        second = GATE.match_publication(
+            "content/climate/principles/climate-cycles-human-forcing/index.html",
+            records,
+        )
+        self.assertIsNotNone(first)
+        self.assertIsNotNone(second)
+        self.assertNotEqual(first.backend_path, second.backend_path)
+
+    def test_courses_institutional_and_legacy_uppercase_paths_are_mapped(self):
+        publication_map = ROOT.parent / "governance" / "fwi-publication-map.json"
+        records = GATE.load_publication_map(publication_map)
+        paths = (
+            "courses/practical-ai-website-building/module-1/index.html",
+            "pages/institutional-editorial-charter/index.html",
+            "content/climate/Bajaur_TBTTP_ANR_Plantation_HTML_Video.html",
+            "content/climate/Climate_Warning_Before_2031_FutureWorld_HTML_Video_.html",
+        )
+        matches = [GATE.match_publication(path, records) for path in paths]
+        self.assertTrue(all(matches))
+        self.assertEqual(4, len({record.backend_path for record in matches}))
+
+    def test_all_72_registered_pages_produce_72_unique_gate_controls(self):
+        publication_map = ROOT.parent / "governance" / "fwi-publication-map.json"
+        records = GATE.load_publication_map(publication_map)
+        changes = [GATE.ChangedFile(record.source_path) for record in records]
+        reports, unknown = GATE.identify_report_changes(changes, records)
+        self.assertEqual([], unknown)
+        self.assertEqual(72, len(reports))
+        self.assertEqual(72, len({report.backend_path for report in reports}))
+
+    def test_unmapped_content_html_blocks(self):
+        result = self.evaluate([GATE.ChangedFile("content/ai/new-publication/index.html")])
+        self.assertFalse(result.passed)
+        self.assertIn("FWI-GATE-401", self.codes(result))
+
     def test_workflow_uses_current_trusted_default_branch_revision(self):
         workflow = (ROOT / "workflows" / "fwi-governance-gate.yml").read_text(
             encoding="utf-8"
         )
         self.assertIn("ref: ${{ github.sha }}", workflow)
+        self.assertIn("governance/fwi-publication-map.json", workflow)
+        self.assertIn("PUBLICATION_MAP_JSON:", workflow)
         self.assertNotIn("github.event.pull_request.base.sha", workflow)
         self.assertNotIn("ref: ${{ github.event.pull_request.head.sha }}", workflow)
 

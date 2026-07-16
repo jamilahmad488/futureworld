@@ -109,6 +109,7 @@ SENSITIVE_GATE_PATHS = {
     ".github/tests/test_fwi_governance_gate.py",
     ".github/CODEOWNERS",
     "GOVERNANCE_GATE.md",
+    "governance/fwi-publication-map.json",
 }
 
 PLACEHOLDER_PATTERNS = (
@@ -130,10 +131,22 @@ class ChangedFile:
 
 @dataclass(frozen=True)
 class ReportChange:
+    inventory_id: str
     domain: str
     slug: str
     public_path: str
+    backend_path: str
     action: str
+
+
+@dataclass(frozen=True)
+class PublicationRecord:
+    inventory_id: str
+    source_path: str
+    domain: str
+    slug: str
+    backend_path: str
+    family: str
 
 
 @dataclass
@@ -202,44 +215,101 @@ def parse_flat_yaml(path: pathlib.Path) -> dict[str, str]:
     return data
 
 
-def report_identity(path: str) -> tuple[str, str, str] | None:
+def load_publication_map(path: pathlib.Path) -> list[PublicationRecord]:
+    raw = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(raw, dict) or raw.get("schema_version") != "1.0":
+        raise ValueError("publication map must use schema_version 1.0")
+    if raw.get("public_repository") != PUBLIC_REPOSITORY:
+        raise ValueError("publication map public repository does not match the controlled value")
+    publications = raw.get("publications")
+    if not isinstance(publications, list) or raw.get("publication_count") != len(publications):
+        raise ValueError("publication map count does not match its publication records")
+    if len(publications) != 72:
+        raise ValueError("controlled publication map must contain exactly 72 records")
+    records: list[PublicationRecord] = []
+    required = {"inventory_id", "source_path", "domain", "slug", "backend_path", "family"}
+    for item in publications:
+        if not isinstance(item, dict) or any(not isinstance(item.get(key), str) for key in required):
+            raise ValueError("publication map contains an incomplete record")
+        record = PublicationRecord(**{key: item[key].strip() for key in required})
+        expected_backend = f"reports-backend/{record.domain}/{record.slug}/"
+        if record.backend_path != expected_backend:
+            raise ValueError(f"publication map backend mismatch for {record.inventory_id}")
+        source = pathlib.PurePosixPath(record.source_path)
+        if source.is_absolute() or ".." in source.parts or source.suffix.lower() not in {".html", ".htm"}:
+            raise ValueError(f"publication map has an unsafe source path for {record.inventory_id}")
+        if not re.fullmatch(r"[a-z0-9][a-z0-9-]*", record.domain) or not re.fullmatch(
+            r"[a-z0-9][a-z0-9-]*", record.slug
+        ):
+            raise ValueError(f"publication map has an unsafe backend identity for {record.inventory_id}")
+        records.append(record)
+    if len({record.inventory_id for record in records}) != len(records):
+        raise ValueError("publication map inventory IDs must be unique")
+    if len({record.source_path for record in records}) != len(records):
+        raise ValueError("publication map source paths must be unique")
+    if len({record.backend_path for record in records}) != len(records):
+        raise ValueError("publication map backend paths must be unique")
+    return records
+
+
+def match_publication(path: str, publications: Iterable[PublicationRecord]) -> PublicationRecord | None:
+    exact = [record for record in publications if path == record.source_path]
+    if exact:
+        return exact[0]
+    # An unregistered HTML document is never absorbed into an ancestor record.
+    # This forces every newly added publication to receive its own controlled map entry.
+    if pathlib.PurePosixPath(path).suffix.lower() in {".html", ".htm"}:
+        return None
+    candidates: list[tuple[int, PublicationRecord]] = []
+    for record in publications:
+        pure = pathlib.PurePosixPath(record.source_path)
+        if pure.name.lower() != "index.html":
+            continue
+        root = pure.parent.as_posix()
+        if path.startswith(root + "/"):
+            candidates.append((len(root), record))
+    return max(candidates, key=lambda item: item[0])[1] if candidates else None
+
+
+def is_unmapped_publication_path(path: str) -> bool:
     pure = pathlib.PurePosixPath(path)
-    parts = pure.parts
-    if len(parts) < 3 or parts[0] != "content":
-        return None
-    domain = parts[1]
-    if len(parts) >= 4:
-        slug = parts[2]
-        public_path = f"content/{domain}/{slug}/index.html"
-    elif pure.suffix.lower() == ".html" and pure.name != "index.html":
-        slug = pure.stem
-        public_path = path
-    else:
-        return None
-    if not re.fullmatch(r"[a-z0-9][a-z0-9-]*", domain) or not re.fullmatch(
-        r"[a-z0-9][a-z0-9-]*", slug
-    ):
-        return None
-    return domain, slug, public_path
+    if pure.suffix.lower() not in {".html", ".htm"} or not pure.parts:
+        return False
+    if pure.parts[0] in {"content", "courses"}:
+        return True
+    return len(pure.parts) >= 2 and pure.parts[0] == "pages" and pure.parts[1].startswith(
+        "institutional-"
+    )
 
 
-def identify_report_changes(changes: Iterable[ChangedFile]) -> list[ReportChange]:
+def identify_report_changes(
+    changes: Iterable[ChangedFile], publications: Iterable[PublicationRecord]
+) -> tuple[list[ReportChange], list[str]]:
+    publications = tuple(publications)
     found: dict[tuple[str, str, str], ReportChange] = {}
+    unknown: set[str] = set()
+
+    def register(path: str, action: str) -> None:
+        record = match_publication(path, publications)
+        if record:
+            found[(record.inventory_id, record.slug, action)] = ReportChange(
+                record.inventory_id,
+                record.domain,
+                record.slug,
+                record.source_path,
+                record.backend_path,
+                action,
+            )
+        elif is_unmapped_publication_path(path):
+            unknown.add(path)
+
     for item in changes:
         status = item.status.lower()
-        current = report_identity(item.filename)
-        if current and status != "removed":
-            domain, slug, public_path = current
-            found[(domain, slug, "publish")] = ReportChange(domain, slug, public_path, "publish")
-        if current and status == "removed":
-            domain, slug, public_path = current
-            found[(domain, slug, "withdraw")] = ReportChange(domain, slug, public_path, "withdraw")
+        register(item.filename, "withdraw" if status == "removed" else "publish")
         if status == "renamed" and item.previous_filename:
-            previous = report_identity(item.previous_filename)
-            if previous:
-                domain, slug, public_path = previous
-                found[(domain, slug, "withdraw")] = ReportChange(domain, slug, public_path, "withdraw")
-    return sorted(found.values(), key=lambda x: (x.domain, x.slug, x.action))
+            register(item.previous_filename, "withdraw")
+    reports = sorted(found.values(), key=lambda x: (x.domain, x.slug, x.action))
+    return reports, sorted(unknown)
 
 
 def validate_no_placeholders(backend: pathlib.Path, result: GateResult) -> None:
@@ -289,7 +359,7 @@ def validate_approval(
     head_sha: str,
     result: GateResult,
 ) -> None:
-    expected_backend = f"reports-backend/{change.domain}/{change.slug}/"
+    expected_backend = change.backend_path
     exact_values = {
         "schema_version": "1.0",
         "template_pack_version": "1.1",
@@ -431,7 +501,7 @@ def validate_approval(
 
 def validate_report(change: ReportChange, governance_root: pathlib.Path, head_sha: str) -> GateResult:
     result = GateResult()
-    backend = governance_root / "reports-backend" / change.domain / change.slug
+    backend = governance_root / change.backend_path
     if not backend.is_dir():
         result.add(False, "FWI-GATE-101", "matching private report backend is missing")
         return result
@@ -510,7 +580,12 @@ def validate_gate_change(
     return result
 
 
-def evaluate_changes(changes: list[ChangedFile], governance_root: pathlib.Path, head_sha: str) -> GateResult:
+def evaluate_changes(
+    changes: list[ChangedFile],
+    governance_root: pathlib.Path,
+    head_sha: str,
+    publications: Iterable[PublicationRecord],
+) -> GateResult:
     final = GateResult()
     if not re.fullmatch(r"[0-9a-f]{40}", head_sha):
         final.add(False, "FWI-GATE-001", "HEAD_SHA is missing or invalid")
@@ -521,13 +596,19 @@ def evaluate_changes(changes: list[ChangedFile], governance_root: pathlib.Path, 
     for check in control_result.checks:
         final.add(check.passed, check.code, check.message)
 
-    reports = identify_report_changes(changes)
-    if not reports:
+    reports, unknown = identify_report_changes(changes, publications)
+    for path in unknown:
+        final.add(
+            False,
+            "FWI-GATE-401",
+            f"{path}: publication-like HTML path is missing from the controlled publication map",
+        )
+    if not reports and not unknown:
         final.add(True, "FWI-GATE-002", "No public report content changed")
     for report in reports:
         report_result = validate_report(report, governance_root, head_sha)
         for check in report_result.checks:
-            prefix = f"{report.domain}/{report.slug} ({report.action}): "
+            prefix = f"{report.inventory_id} {report.domain}/{report.slug} ({report.action}): "
             final.add(check.passed, check.code, prefix + check.message)
     return final
 
@@ -582,10 +663,14 @@ def main() -> int:
     output_root = pathlib.Path(os.environ.get("OUTPUT_ROOT", ".")).resolve()
     governance_root = pathlib.Path(os.environ.get("GOVERNANCE_ROOT", "governance")).resolve()
     changed_path = pathlib.Path(os.environ.get("CHANGED_FILES_JSON", "changed-files.json")).resolve()
+    publication_map_path = pathlib.Path(
+        os.environ.get("PUBLICATION_MAP_JSON", "governance/fwi-publication-map.json")
+    ).resolve()
     head_sha = os.environ.get("HEAD_SHA", "").strip().lower()
     try:
         changes = load_changes(changed_path)
-        result = evaluate_changes(changes, governance_root, head_sha)
+        publications = load_publication_map(publication_map_path)
+        result = evaluate_changes(changes, governance_root, head_sha, publications)
     except (OSError, UnicodeError, ValueError, json.JSONDecodeError) as exc:
         result = GateResult(False)
         result.add(False, "FWI-GATE-000", f"Gate input failure: {exc}")

@@ -2,7 +2,7 @@
 
 | Control | Adopted value |
 |---|---|
-| Gate version | 2.0 |
+| Gate version | 2.1 |
 | Readiness rubric | FWI-RR-1.0 |
 | Hard-block catalog | FWI-HB-1.0 |
 | Required check name | `FWI Fact-Check Gate` |
@@ -32,15 +32,13 @@ The workflow runs on `pull_request_target` because it must read a private reposi
 
 The secret `FWI_GOVERNANCE_TOKEN` must be a read-only, fine-grained credential limited to private-repository contents. It must be rotated after suspected exposure and reviewed periodically.
 
-## 3. Report-change detection
+## 3. Publication-change detection
 
-All files below `content/<domain>/<report-slug>/`, including images and other assets, map to:
+The trusted file `governance/fwi-publication-map.json` provides the exact mapping for all 72 controlled publications. Every record has a unique inventory ID, exact public source path and unique private backend path. This covers research reports, briefs, principles, multimedia, courses, learning resources and institutional publications, including nested and legacy uppercase paths.
 
-```text
-reports-backend/<domain>/<report-slug>/
-```
+Exact HTML matches identify the publication. Asset changes use the deepest matching registered publication root, preventing a nested lecture or principle from inheriting its parent publication's approval. An unregistered publication-like HTML path under `content/` or `courses/` fails closed and requires a reviewed map entry.
 
-A single-file report at `content/<domain>/<report>.html` maps to the corresponding domain and filename stem. Renames require both a controlled withdrawal record for the previous identity and a publication record for the new identity.
+Renames require both a controlled withdrawal record for the previous identity and a publication record for the new identity.
 
 ## 4. Required private backend
 
@@ -78,7 +76,7 @@ An automated pass means only that the authorized approval record and its control
 
 ## 6. Gate self-protection
 
-A pull request changing the workflow, evaluator, regression tests, CODEOWNERS entry, or this control document must have a private record at:
+A pull request changing the workflow, evaluator, regression tests, controlled publication map, CODEOWNERS entry, or this control document must have a private record at:
 
 ```text
 gate-changes/<public-head-sha>.yml

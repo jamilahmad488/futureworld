@@ -39,6 +39,7 @@ jobs:
             .github/workflows/fwi-governance-gate.yml
             .github/scripts/fwi_governance_gate.py
             .github/tests/test_fwi_governance_gate.py
+            governance/fwi-publication-map.json
           sparse-checkout-cone-mode: false
 
       - name: Inventory pull-request file metadata without checking out PR code
@@ -81,6 +82,7 @@ jobs:
           GOVERNANCE_ROOT: ${{ github.workspace }}/governance
           OUTPUT_ROOT: ${{ github.workspace }}
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          PUBLICATION_MAP_JSON: ${{ github.workspace }}/trusted-gate/governance/fwi-publication-map.json
 
       - name: Return the public-safe gate report as a PR comment
         if: always()

@@ -39,6 +39,7 @@ jobs:
             .github/workflows/fwi-governance-gate.yml
             .github/scripts/fwi_governance_gate.py
             .github/tests/test_fwi_governance_gate.py
+            .github/workflows/fwi-governance-gate.yml
           sparse-checkout-cone-mode: false
 
       - name: Inventory pull-request file metadata without checking out PR code

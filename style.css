@@ -42,6 +42,16 @@ body.fwi-has-publication-identity.fwi-publication-multimedia{height:auto!importa
 .publication-citation{margin-top:17px;padding:17px;border:1px solid rgba(255,255,255,.12);border-radius:16px;background:rgba(0,0,0,.18)}
 .publication-citation strong{display:block;margin-bottom:5px;color:#fff}
 .publication-citation p{margin:0;color:#d8e7ff}
+.publication-evidence-note{width:min(1120px,92vw);margin:42px auto;padding:0;color:#dbeafe}
+.publication-evidence-note__inner{border:1px solid rgba(34,211,238,.24);border-left:4px solid var(--cyan);border-radius:24px;padding:26px;background:linear-gradient(145deg,rgba(8,18,40,.94),rgba(15,23,42,.78));box-shadow:0 20px 60px rgba(0,0,0,.28)}
+.publication-evidence-note__eyebrow{margin:0 0 8px!important;color:var(--gold)!important;font-family:var(--font-display);font-size:.74rem!important;font-weight:800;letter-spacing:.13em;text-transform:uppercase}
+.publication-evidence-note h2{margin:0 0 12px!important;color:#f8fafc!important;font-size:clamp(1.45rem,3vw,2.25rem)!important;line-height:1.15!important;text-transform:none!important;letter-spacing:-.02em!important}
+.publication-evidence-note p{margin:0 0 12px;color:#dbeafe;line-height:1.65}
+.publication-evidence-note__sources{display:grid;gap:8px;margin:16px 0 18px;padding-left:22px}
+.publication-evidence-note__sources a{color:#7dd3fc;text-decoration:underline;text-decoration-color:rgba(125,211,252,.42);text-underline-offset:3px}
+.publication-evidence-note__limitation{border-top:1px solid rgba(255,255,255,.12);padding-top:14px}
+.publication-evidence-note__date{margin-bottom:0!important;color:#94a3b8!important;font-size:.86rem}
+@media(max-width:700px){.publication-evidence-note__inner{padding:20px}.publication-evidence-note{margin:30px auto}}
 .publication-identity--multimedia{margin-top:100vh}
 @media(max-width:760px){.publication-identity{padding:34px 16px}.publication-identity__header{align-items:flex-start}.publication-identity__grid{grid-template-columns:1fr}.publication-identity--multimedia{margin-top:100vh}}
 @media print{.publication-identity{break-inside:avoid;background:#fff!important;color:#111!important;border:1px solid #888}.publication-identity h2,.publication-identity dd,.publication-citation strong{color:#111!important;-webkit-text-fill-color:#111}.publication-identity dt,.publication-citation p,.publication-identity__note{color:#333!important}}

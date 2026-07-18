@@ -21,7 +21,14 @@ class UniversalHeroTests(unittest.TestCase):
             if hero.active_page(text):
                 pages.append(path)
                 headings += len(hero.h1_matches(text))
-                errors.extend(hero.validate_text(path.relative_to(ROOT), text))
+                relative = path.relative_to(ROOT)
+                errors.extend(
+                    hero.validate_text(
+                        relative,
+                        text,
+                        publication=relative.parts[0] == "content",
+                    )
+                )
         self.assertEqual(len(pages), 107)
         self.assertEqual(headings, 108)
         self.assertEqual(errors, [])
@@ -40,6 +47,23 @@ class UniversalHeroTests(unittest.TestCase):
             source = path.read_text(encoding="utf-8", errors="replace")
             with self.subTest(path=path.relative_to(ROOT)):
                 self.assertNotIn("archive/legacy-hero-heading-styles", source)
+
+    def test_publication_spacing_is_scoped_to_conventional_content(self):
+        conventional_publications = 0
+        for path in hero.html_files(ROOT):
+            text = path.read_text(encoding="utf-8", errors="replace")
+            relative = path.relative_to(ROOT)
+            if not hero.active_page(text):
+                continue
+            should_have_modifier = relative.parts[0] == "content" and not hero.is_multimedia(text)
+            if should_have_modifier:
+                conventional_publications += 1
+                container = hero.publication_hero_match(text)
+                self.assertIsNotNone(container, relative)
+                self.assertIn(hero.PUBLICATION_HERO_CLASS, container.group(0), relative)
+            else:
+                self.assertNotIn(hero.PUBLICATION_HERO_CLASS, text, relative)
+        self.assertEqual(conventional_publications, 67)
 
 
 if __name__ == "__main__":

@@ -9,7 +9,7 @@ SHARED_STYLE = ROOT / "style.css"
 HERO_STYLE = ROOT / "assets" / "fwi-universal-hero.css"
 ARCHIVED_STYLE = ROOT / "archive" / "legacy-hero-heading-styles" / "fwi-publication-heading-v3.2.css"
 STYLE_VERSION = "3.2"
-HERO_VERSION = "1.0"
+HERO_VERSION = "1.1"
 
 
 class PublicationHeadingTests(unittest.TestCase):

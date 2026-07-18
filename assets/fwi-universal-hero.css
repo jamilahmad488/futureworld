@@ -1,6 +1,6 @@
 /*
  * FutureWorld Intelligence Universal Hero System
- * Standard: FWI-HERO-1.0
+ * Standard: FWI-HERO-1.1
  *
  * Reference: Climate Intelligence domain-page hero.
  * Scope: website pages, publications, reports, principles and courses.
@@ -196,6 +196,16 @@
   --fwi-hero-block-end: clamp(2.75rem, 5vw, 4.5rem);
 }
 
+/*
+ * Publication pages use content-driven height instead of legacy viewport-height
+ * centering. This keeps the title close to the top of its hero while retaining
+ * balanced space around the complete text-and-visual composition.
+ */
+.fwi-standard-hero--publication {
+  min-height: auto !important;
+  padding-block: clamp(2.5rem, 3vw, 3rem) !important;
+}
+
 .fwi-standard-hero--multimedia {
   --fwi-hero-min-height: 100svh;
   width: 100%;
@@ -225,6 +235,10 @@
     padding-block: 5.625rem 7.5rem;
   }
 
+  .fwi-standard-hero--publication {
+    padding-block: 2rem !important;
+  }
+
   .fwi-standard-hero__content,
   .fwi-standard-hero .inner,
   .fwi-standard-hero .hero-copy,
@@ -248,6 +262,10 @@
   .fwi-standard-hero {
     --fwi-hero-inline-padding: 1.125rem;
     padding-block: 7.375rem 6.875rem;
+  }
+
+  .fwi-standard-hero--publication {
+    padding-block: 1.5rem !important;
   }
 
   .fwi-standard-hero__title,

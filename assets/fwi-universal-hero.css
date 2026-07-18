@@ -1,0 +1,293 @@
+/*
+ * FutureWorld Intelligence Universal Hero System
+ * Standard: FWI-HERO-1.0
+ *
+ * Reference: Climate Intelligence domain-page hero.
+ * Scope: website pages, publications, reports, principles and courses.
+ *
+ * Integration contract:
+ *   1. Load this file after page-specific and legacy styles.
+ *   2. Add class="fwi-universal-hero-title" to the hero H1.
+ *   3. For new components, add class="fwi-standard-hero" to the container.
+ *   4. Select one controlled layout modifier only when required.
+ */
+
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700&family=Orbitron:wght@500;600;700;800;900&display=swap");
+
+:root {
+  --fwi-hero-display-font: "Orbitron", Arial, sans-serif;
+  --fwi-hero-body-font: "Exo 2", Arial, sans-serif;
+  --fwi-hero-text: #f8fafc;
+  --fwi-hero-muted: #a9c5f5;
+  --fwi-hero-cyan: #22d3ee;
+  --fwi-hero-gold: #facc15;
+  --fwi-hero-gradient: linear-gradient(
+    115deg,
+    #22d3ee 0%,
+    #ffffff 32%,
+    #a78bfa 68%,
+    #facc15 100%
+  );
+  --fwi-hero-max-width: 1540px;
+  --fwi-hero-content-width: 980px;
+  --fwi-hero-min-height: 78vh;
+  --fwi-hero-inline-padding: clamp(1.25rem, 5vw, 5.625rem);
+  --fwi-hero-block-start: clamp(7.25rem, 10vw, 9.375rem);
+  --fwi-hero-block-end: clamp(4.375rem, 6vw, 7.5rem);
+  --fwi-hero-column-gap: clamp(2rem, 4vw, 3.5rem);
+  --fwi-hero-title-size: clamp(2.8rem, 8vw, 7rem);
+  --fwi-hero-title-line-height: 1.04;
+  --fwi-hero-title-letter-spacing: 0.035em;
+  --fwi-hero-lead-size: clamp(1.08rem, 2.2vw, 1.35rem);
+}
+
+/* Standard split hero */
+.fwi-standard-hero {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, 1.28fr) minmax(300px, 0.72fr);
+  align-items: center;
+  gap: var(--fwi-hero-column-gap);
+  width: min(var(--fwi-hero-max-width), 94vw);
+  min-height: var(--fwi-hero-min-height);
+  margin-inline: auto;
+  padding: var(--fwi-hero-block-start) var(--fwi-hero-inline-padding)
+    var(--fwi-hero-block-end);
+  overflow: hidden;
+  color: var(--fwi-hero-text);
+  font-family: var(--fwi-hero-body-font);
+  text-align: left;
+}
+
+.fwi-standard-hero > * {
+  min-width: 0;
+}
+
+.fwi-standard-hero__content,
+.fwi-standard-hero .inner,
+.fwi-standard-hero .hero-copy,
+.fwi-standard-hero .hero-text {
+  width: min(100%, var(--fwi-hero-content-width));
+  text-align: left;
+}
+
+/* Eyebrow */
+.fwi-standard-hero__eyebrow,
+.fwi-standard-hero .eyebrow,
+.fwi-standard-hero .hero-kicker,
+.fwi-standard-hero .report-kicker {
+  margin: 0 0 0.75rem;
+  color: var(--fwi-hero-cyan);
+  font-family: var(--fwi-hero-display-font);
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+/* Authoritative hero-title typography */
+.fwi-standard-hero__title,
+.fwi-standard-hero h1 {
+  max-width: var(--fwi-hero-content-width);
+  margin: 0;
+  padding: 0;
+  background-image: var(--fwi-hero-gradient);
+  background-clip: text;
+  color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: var(--fwi-hero-display-font);
+  font-size: var(--fwi-hero-title-size);
+  font-weight: 700;
+  line-height: var(--fwi-hero-title-line-height);
+  letter-spacing: var(--fwi-hero-title-letter-spacing);
+  text-align: left;
+  text-transform: uppercase;
+  text-wrap: balance;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+/*
+ * Direct migration hook for legacy pages.
+ *
+ * Existing FWI pages contain many differently named hero containers and
+ * embedded selectors. Applying this class directly to the H1 makes this file
+ * authoritative without disturbing the surrounding page-specific layout.
+ */
+.fwi-universal-hero-title {
+  max-width: var(--fwi-hero-content-width) !important;
+  margin-block: 0 !important;
+  background-image: var(--fwi-hero-gradient) !important;
+  background-clip: text !important;
+  color: transparent !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  font-family: var(--fwi-hero-display-font) !important;
+  font-size: var(--fwi-hero-title-size) !important;
+  font-weight: 700 !important;
+  line-height: var(--fwi-hero-title-line-height) !important;
+  letter-spacing: var(--fwi-hero-title-letter-spacing) !important;
+  text-align: left !important;
+  text-transform: uppercase !important;
+  text-wrap: balance;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+}
+
+.fwi-universal-hero-title--multimedia {
+  font-size: clamp(1.85rem, 4.2vw, 4.75rem) !important;
+  letter-spacing: 0.02em !important;
+}
+
+/* Supporting description */
+.fwi-standard-hero__lead,
+.fwi-standard-hero .lead,
+.fwi-standard-hero .report-lead,
+.fwi-standard-hero .hero-subtitle {
+  max-width: 900px;
+  margin: 1.125rem 0 0;
+  color: var(--fwi-hero-muted);
+  font-family: var(--fwi-hero-body-font);
+  font-size: var(--fwi-hero-lead-size);
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+  text-align: left;
+}
+
+/* Shared action row; individual button colour variants remain page-controlled. */
+.fwi-standard-hero__actions,
+.fwi-standard-hero .hero-actions,
+.fwi-standard-hero .cta-row,
+.fwi-standard-hero .ctaRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 1rem;
+  margin-top: 2.25rem;
+}
+
+/* Optional visual column */
+.fwi-standard-hero__visual,
+.fwi-standard-hero .hero-visual,
+.fwi-standard-hero .env-visual {
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* Controlled variants */
+.fwi-standard-hero--single {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.fwi-standard-hero--single .fwi-standard-hero__content,
+.fwi-standard-hero--single .inner,
+.fwi-standard-hero--single .hero-copy,
+.fwi-standard-hero--single .hero-text {
+  width: min(100%, var(--fwi-hero-content-width));
+}
+
+.fwi-standard-hero--compact {
+  --fwi-hero-min-height: auto;
+  --fwi-hero-block-start: clamp(6rem, 8vw, 7.5rem);
+  --fwi-hero-block-end: clamp(2.75rem, 5vw, 4.5rem);
+}
+
+.fwi-standard-hero--multimedia {
+  --fwi-hero-min-height: 100svh;
+  width: 100%;
+  max-width: none;
+}
+
+/* Domain-page reference scale: 1100–1499px */
+@media (min-width: 1100px) {
+  :root {
+    --fwi-hero-title-size: clamp(3rem, 3.7vw, 4.65rem);
+  }
+}
+
+/* Domain-page reference scale: 1500px and wider */
+@media (min-width: 1500px) {
+  :root {
+    --fwi-hero-title-size: clamp(3.2rem, 3.6vw, 4.9rem);
+  }
+}
+
+/* Tablet */
+@media (max-width: 860px) {
+  .fwi-standard-hero {
+    grid-template-columns: minmax(0, 1fr);
+    width: min(100% - 1.75rem, var(--fwi-hero-max-width));
+    min-height: auto;
+    padding-block: 5.625rem 7.5rem;
+  }
+
+  .fwi-standard-hero__content,
+  .fwi-standard-hero .inner,
+  .fwi-standard-hero .hero-copy,
+  .fwi-standard-hero .hero-text,
+  .fwi-standard-hero__title,
+  .fwi-standard-hero h1,
+  .fwi-standard-hero__lead,
+  .fwi-standard-hero .lead,
+  .fwi-standard-hero .report-lead,
+  .fwi-standard-hero .hero-subtitle {
+    max-width: 100%;
+  }
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+  :root {
+    --fwi-hero-title-size: clamp(2.15rem, 11.5vw, 3.8rem);
+  }
+
+  .fwi-standard-hero {
+    --fwi-hero-inline-padding: 1.125rem;
+    padding-block: 7.375rem 6.875rem;
+  }
+
+  .fwi-standard-hero__title,
+  .fwi-standard-hero h1,
+  .fwi-universal-hero-title {
+    letter-spacing: 0.02em;
+    overflow-wrap: anywhere;
+  }
+
+  .fwi-standard-hero__actions,
+  .fwi-standard-hero .hero-actions,
+  .fwi-standard-hero .cta-row,
+  .fwi-standard-hero .ctaRow {
+    gap: 0.625rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fwi-standard-hero,
+  .fwi-standard-hero * {
+    scroll-behavior: auto;
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
+    transition-duration: 0.01ms;
+  }
+}
+
+@media print {
+  .fwi-standard-hero {
+    display: block;
+    width: 100%;
+    min-height: auto;
+    padding: 1.5rem 0;
+    color: #111827;
+  }
+
+  .fwi-standard-hero__title,
+  .fwi-standard-hero h1 {
+    background: none;
+    color: #111827;
+    -webkit-text-fill-color: #111827;
+  }
+}

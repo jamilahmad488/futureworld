@@ -249,7 +249,11 @@ def remove_controlled_metadata(text: str) -> str:
     def link_replacement(match: re.Match[str]) -> str:
         attrs = parse_attrs(match.group(0))
         rel = attrs.get("rel", "").lower().split()
-        if "canonical" in rel or attrs.get("data-fwi-publication-style") == "1":
+        if (
+            "canonical" in rel
+            or attrs.get("data-fwi-publication-style") == "1"
+            or attrs.get("data-fwi-hero-style") == "1"
+        ):
             return ""
         return match.group(0)
 
@@ -288,7 +292,8 @@ def metadata_block(item: dict[str, Any]) -> str:
 
     lines = [
         METADATA_START,
-        '<link rel="stylesheet" href="/style.css?v=2.7" data-fwi-publication-style="1" />',
+        '<link rel="stylesheet" href="/style.css?v=3.2" data-fwi-publication-style="1" />',
+        '<link rel="stylesheet" href="/assets/fwi-universal-hero.css?v=1.0" data-fwi-hero-style="1" />',
         f'<meta name="description" content="{description}" />',
         '<meta name="author" content="FutureWorld Intelligence" />',
         '<meta name="publisher" content="FutureWorld Intelligence" />',
@@ -407,6 +412,27 @@ def add_body_classes(text: str, multimedia: bool) -> str:
     return re.sub(r"<body\b[^>]*>", replacement, text, count=1, flags=re.I)
 
 
+def add_hero_heading_classes(text: str, multimedia: bool) -> str:
+    """Attach the universal hero contract directly to every publication H1."""
+
+    def replacement(match: re.Match[str]) -> str:
+        tag = match.group(0)
+        required = ["fwi-universal-hero-title"]
+        if multimedia:
+            required.append("fwi-universal-hero-title--multimedia")
+        class_match = re.search(r"\bclass\s*=\s*([\"'])(.*?)\1", tag, flags=re.I | re.S)
+        if class_match:
+            classes = class_match.group(2).split()
+            for value in required:
+                if value not in classes:
+                    classes.append(value)
+            new_attr = f'class="{" ".join(classes)}"'
+            return tag[: class_match.start()] + new_attr + tag[class_match.end() :]
+        return tag[:-1] + f' class="{" ".join(required)}">'
+
+    return re.sub(r"<h1\b[^>]*>", replacement, text, flags=re.I)
+
+
 def insert_identity(text: str, block: str, multimedia: bool) -> str:
     if multimedia:
         body_end = re.search(r"</body\s*>", text, flags=re.I)
@@ -513,6 +539,7 @@ def apply_item(repo_root: Path, item: dict[str, Any]) -> bool:
     if is_runtime_loader:
         text = apply_runtime_loader_item(text, item)
         text = add_body_classes(text, multimedia)
+        text = add_hero_heading_classes(text, multimedia)
         if text != original:
             path.write_text(text, encoding="utf-8")
             return True
@@ -535,6 +562,7 @@ def apply_item(repo_root: Path, item: dict[str, Any]) -> bool:
         text = insert_identity(text, identity_block(item), multimedia)
 
     text = add_body_classes(text, multimedia)
+    text = add_hero_heading_classes(text, multimedia)
     if text != original:
         path.write_text(text, encoding="utf-8")
         return True
@@ -554,6 +582,7 @@ def validate(repo_root: Path, manifest: dict[str, Any]) -> list[str]:
         errors.append("manifest contains duplicate canonical URLs")
 
     for item in publications:
+        multimedia = item["family"] == "Multimedia Publications" or item["publication_type"] == "FWI Field/GIS Assessment Presentation"
         path = repo_root / item["source_path"]
         if not path.is_file():
             errors.append(f"missing publication: {item['source_path']}")
@@ -566,12 +595,18 @@ def validate(repo_root: Path, manifest: dict[str, Any]) -> list[str]:
             item["publication_type"],
             item["public_url"],
             "fwi-has-publication-identity",
+            'data-fwi-hero-style="1"',
+            "fwi-universal-hero-title",
         ]
         for value in required:
             if value not in text and html_lib.escape(str(value)) not in text:
                 errors.append(f"{item['source_path']}: missing {value!r}")
         if text.lower().count('rel="canonical"') != 1:
             errors.append(f"{item['source_path']}: expected exactly one canonical link")
+        if text.count('data-fwi-hero-style="1"') != 1:
+            errors.append(f"{item['source_path']}: expected exactly one universal hero stylesheet link")
+        if multimedia and "fwi-universal-hero-title--multimedia" not in text:
+            errors.append(f"{item['source_path']}: missing multimedia hero-title variant")
         if "const fwiPublicationIdentity=" in text:
             if text.count("publication-details") != 1:
                 errors.append(f"{item['source_path']}: expected one runtime publication-details block")

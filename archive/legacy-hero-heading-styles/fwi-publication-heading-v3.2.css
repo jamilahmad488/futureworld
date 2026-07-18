@@ -1,0 +1,39 @@
+/*
+ * ARCHIVED — superseded by /assets/fwi-universal-hero.css (FWI-HERO-1.0)
+ *
+ * This was the temporary publication-only heading correction in style.css.
+ * It is retained for audit history and must not be linked by public pages.
+ */
+body.fwi-has-publication-identity .hero h1,
+body.fwi-has-publication-identity .page-hero h1,
+body.fwi-has-publication-identity .report-hero h1,
+body.fwi-has-publication-identity .fwi-hero h1 {
+  font-size: clamp(2.8rem, 8vw, 7rem) !important;
+}
+
+@media (min-width: 1100px) {
+  body.fwi-has-publication-identity .hero h1,
+  body.fwi-has-publication-identity .page-hero h1,
+  body.fwi-has-publication-identity .report-hero h1,
+  body.fwi-has-publication-identity .fwi-hero h1 {
+    font-size: clamp(3rem, 3.7vw, 4.65rem) !important;
+  }
+}
+
+@media (min-width: 1500px) {
+  body.fwi-has-publication-identity .hero h1,
+  body.fwi-has-publication-identity .page-hero h1,
+  body.fwi-has-publication-identity .report-hero h1,
+  body.fwi-has-publication-identity .fwi-hero h1 {
+    font-size: clamp(3.2rem, 3.6vw, 4.9rem) !important;
+  }
+}
+
+@media (max-width: 700px) {
+  body.fwi-has-publication-identity .hero h1,
+  body.fwi-has-publication-identity .page-hero h1,
+  body.fwi-has-publication-identity .report-hero h1,
+  body.fwi-has-publication-identity .fwi-hero h1 {
+    font-size: clamp(2.15rem, 11.5vw, 3.8rem) !important;
+  }
+}

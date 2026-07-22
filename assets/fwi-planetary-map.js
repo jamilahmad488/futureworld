@@ -1,9 +1,10 @@
-/* FutureWorld Intelligence Planetary Computer map integration v1.0 */
+/* FutureWorld Intelligence Planetary Computer map integration v1.1 */
 (function(){
   'use strict';
 
   const STAC_API='https://planetarycomputer.microsoft.com/api/stac/v1';
   const DATA_API='https://planetarycomputer.microsoft.com/api/data/v1';
+  const THEME_BASE='/pages/climate/evidence-explorer/themes/';
   const MAX_LONGITUDE_SPAN=12;
   const MAX_LATITUDE_SPAN=9;
   const REQUEST_TIMEOUT=45000;
@@ -19,6 +20,49 @@
   const COLLECTIONS={
     'sentinel-2-l2a':{label:'Sentinel-2 L2A',cloud:true},
     'landsat-c2-l2':{label:'Landsat Collection 2 Level-2',cloud:true}
+  };
+
+  const THEMES={
+    'temperature-emissions':{
+      label:'Global temperature and emissions trends',
+      type:'Indicator evidence',
+      note:'Use the map for geographic context only. Temperature and emissions trends require authoritative time-series and inventory datasets.'
+    },
+    'forests-land-cover':{
+      label:'Forests and land-cover change',
+      type:'Live map context',
+      note:'Use Sentinel-2 or Landsat to inspect forest condition, land transitions and restoration signals. Confirm change through validated analysis and field evidence.'
+    },
+    'water-drought':{
+      label:'Water stress and drought',
+      type:'Live map context',
+      note:'Inspect surface-water and vegetation context. Drought and water-stress conclusions require precipitation, hydrological and validated indicator datasets.'
+    },
+    'wildfires-burned-areas':{
+      label:'Wildfires and burned areas',
+      type:'Thematic layer pathway',
+      note:'Use before-and-after imagery for visual context. Active-fire, burned-area and operational warning evidence require dedicated validated products.'
+    },
+    'biodiversity-ecosystems':{
+      label:'Biodiversity and ecosystem condition',
+      type:'Live map context',
+      note:'Use imagery for habitat and vegetation context. Biodiversity conclusions require ecosystem indicators, species evidence and field verification.'
+    },
+    'glaciers-snow-mountains':{
+      label:'Glaciers, snow and mountain systems',
+      type:'Thematic layer pathway',
+      note:'Inspect seasonal mountain imagery. Glacier, snow and cryosphere trends require dedicated time-series, elevation and climate datasets.'
+    },
+    'hazards-vulnerability':{
+      label:'Climate hazards and vulnerability',
+      type:'Risk evidence',
+      note:'The map provides exposure context only and is not an early-warning system. Risk analysis requires hazard, population, infrastructure and vulnerability datasets.'
+    },
+    'commitments-implementation':{
+      label:'International climate commitments and implementation',
+      type:'Policy evidence',
+      note:'This theme is primarily documentary and institutional. Use the thematic guide for NDCs, adaptation, finance, transparency and delivery evidence.'
+    }
   };
 
   let instanceCounter=0;
@@ -55,10 +99,13 @@
     }
   }
 
-  function makeShell(root,id,dates){
+  function makeShell(root,id,dates,themeKey){
     root.innerHTML=`
       <div class="fwi-pc-map-shell">
         <div class="fwi-pc-map-toolbar" aria-label="Planetary Computer map controls">
+          <label class="fwi-pc-theme-control"><span>Evidence theme</span><select data-pc-control="theme">
+            ${Object.entries(THEMES).map(([key,theme])=>`<option value="${key}"${key===themeKey?' selected':''}>${escapeHtml(theme.label)}</option>`).join('')}
+          </select></label>
           <label><span>Geography</span><select data-pc-control="geography">
             ${Object.entries(PRESETS).map(([key,preset])=>`<option value="${key}">${preset.label}</option>`).join('')}
           </select></label>
@@ -70,19 +117,21 @@
           <label><span>Maximum cloud <output data-pc-output="cloud">25%</output></span><input type="range" min="0" max="80" step="5" value="25" data-pc-control="cloud"></label>
           <label><span>Rendering</span><select data-pc-control="render"><option value="">Loading options…</option></select></label>
           <label><span>Imagery opacity <output data-pc-output="opacity">85%</output></span><input type="range" min="10" max="100" step="5" value="85" data-pc-control="opacity"></label>
+          <div class="fwi-pc-theme-guidance" data-pc-theme-guidance></div>
           <div class="fwi-pc-map-actions"><button type="button" class="neon-btn" data-pc-action="load">Load imagery for current view</button><button type="button" class="ghost-btn" data-pc-action="clear">Clear imagery</button></div>
         </div>
         <div class="fwi-pc-map-stage">
           <div id="${id}" class="fwi-pc-map-canvas" role="application" aria-label="Interactive climate evidence map"></div>
-          <div class="fwi-pc-map-status" data-pc-status aria-live="polite"><span class="ready"></span><strong>Map ready.</strong> Select a focused area or zoom in, then load imagery.</div>
+          <div class="fwi-pc-map-status" data-pc-status aria-live="polite"><span class="ready"></span><strong>Map ready.</strong> Select an evidence theme and focused area, then load imagery.</div>
         </div>
         <div class="fwi-pc-map-meta" data-pc-meta>
+          <div><small>Evidence theme</small><strong>${escapeHtml(THEMES[themeKey].label)}</strong></div>
           <div><small>Operational status</small><strong>Live STAC interface</strong></div>
           <div><small>Evidence class</small><strong>Remote-sensing visualization</strong></div>
           <div><small>Source platform</small><strong>Microsoft Planetary Computer</strong></div>
           <div><small>Verification</small><strong>Field review required</strong></div>
         </div>
-        <div class="fwi-pc-map-notice"><strong>Use responsibly:</strong> geography presets are viewing extents, not authoritative administrative boundaries. Imagery may contain clouds, haze, seasonal differences, terrain effects or gaps. Do not treat visual change as proof of causation or intervention success without field and documentary verification.</div>
+        <div class="fwi-pc-map-notice"><strong>Use responsibly:</strong> evidence themes guide the search question but do not convert imagery into a validated indicator. Geography presets are viewing extents, not authoritative administrative boundaries. Do not treat visible change as proof of causation, hazard severity, vulnerability, emissions trends or implementation success without appropriate datasets and verification.</div>
       </div>`;
   }
 
@@ -94,10 +143,12 @@
 
     const id=`fwi-pc-map-${++instanceCounter}`;
     const dates=defaultDates();
-    makeShell(root,id,dates);
+    const themeKey=THEMES[root.dataset.theme]?root.dataset.theme:'forests-land-cover';
+    makeShell(root,id,dates,themeKey);
 
     const presetKey=PRESETS[root.dataset.preset]?root.dataset.preset:'bajaur';
     const controls={
+      theme:root.querySelector('[data-pc-control="theme"]'),
       geography:root.querySelector('[data-pc-control="geography"]'),
       collection:root.querySelector('[data-pc-control="collection"]'),
       start:root.querySelector('[data-pc-control="start"]'),
@@ -109,6 +160,7 @@
       clear:root.querySelector('[data-pc-action="clear"]'),
       cloudOutput:root.querySelector('[data-pc-output="cloud"]'),
       opacityOutput:root.querySelector('[data-pc-output="opacity"]'),
+      guidance:root.querySelector('[data-pc-theme-guidance]'),
       status:root.querySelector('[data-pc-status]'),
       meta:root.querySelector('[data-pc-meta]')
     };
@@ -125,18 +177,24 @@
     let extentLayer=null;
     let imageryLayer=null;
     let renderOptions=[];
+    let lastMeta=null;
+
+    function selectedTheme(){return THEMES[controls.theme.value]||THEMES['forests-land-cover']}
 
     function setStatus(kind,title,message){
       controls.status.className=`fwi-pc-map-status ${kind||''}`;
       controls.status.innerHTML=`<span class="${kind||'ready'}"></span><strong>${escapeHtml(title)}</strong>${message?` ${escapeHtml(message)}`:''}`;
     }
 
+    function updateThemeGuidance(){
+      const theme=selectedTheme();
+      controls.guidance.innerHTML=`<div><small>${escapeHtml(theme.type)}</small><strong>${escapeHtml(theme.label)}</strong><span>${escapeHtml(theme.note)}</span></div><a href="${THEME_BASE}#${encodeURIComponent(controls.theme.value)}">Open theme guide</a>`;
+    }
+
     function drawExtent(preset){
       if(extentLayer)map.removeLayer(extentLayer);
       const [west,south,east,north]=preset.bbox;
-      extentLayer=L.rectangle([[south,west],[north,east]],{
-        color:'#f2b544',weight:1.5,opacity:.9,fillOpacity:.035,dashArray:'7 6',interactive:false
-      }).addTo(map);
+      extentLayer=L.rectangle([[south,west],[north,east]],{color:'#f2b544',weight:1.5,opacity:.9,fillOpacity:.035,dashArray:'7 6',interactive:false}).addTo(map);
     }
 
     function applyPreset(key){
@@ -163,6 +221,8 @@
 
     function updateMeta(data){
       const cards=[
+        ['Evidence theme',selectedTheme().label],
+        ['Theme evidence class',selectedTheme().type],
         ['Dataset',data.dataset],
         ['Display mode',data.mode],
         ['Scenes matched',String(data.sceneCount)],
@@ -201,14 +261,12 @@
       })[0];
     }
 
-    function featureDate(feature){
-      return feature?.properties?.datetime||feature?.properties?.start_datetime||'';
-    }
+    function featureDate(feature){return feature?.properties?.datetime||feature?.properties?.start_datetime||''}
 
     function observationRange(features){
-      const dates=features.map(featureDate).filter(Boolean).map(value=>new Date(value)).filter(date=>!Number.isNaN(date.getTime())).sort((a,b)=>a-b);
-      if(!dates.length)return `${controls.start.value} to ${controls.end.value}`;
-      return `${isoDate(dates[0])} to ${isoDate(dates[dates.length-1])}`;
+      const values=features.map(featureDate).filter(Boolean).map(value=>new Date(value)).filter(date=>!Number.isNaN(date.getTime())).sort((a,b)=>a-b);
+      if(!values.length)return `${controls.start.value} to ${controls.end.value}`;
+      return `${isoDate(values[0])} to ${isoDate(values[values.length-1])}`;
     }
 
     function collectionProviders(collection){
@@ -223,20 +281,14 @@
       try{
         const info=await requestJson(`${DATA_API}/mosaic/info?collection=${encodeURIComponent(collection)}`);
         renderOptions=(info.renderOptions||[]).filter(option=>option&&option.type==='raster-tile');
-      }catch(error){
-        renderOptions=[];
-      }
-      if(!renderOptions.length){
-        renderOptions=[{name:'Collection default',description:'Default visualization supplied by the collection',options:''}];
-      }
+      }catch(error){renderOptions=[];}
+      if(!renderOptions.length)renderOptions=[{name:'Collection default',description:'Default visualization supplied by the collection',options:''}];
       controls.render.innerHTML=renderOptions.map((option,index)=>`<option value="${index}">${escapeHtml(option.name||`Rendering ${index+1}`)}</option>`).join('');
       controls.render.disabled=false;
     }
 
     async function buildMosaic(searchParameters,renderConfig){
-      const registered=await requestJson(`${DATA_API}/mosaic/register`,{
-        method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(searchParameters)
-      });
+      const registered=await requestJson(`${DATA_API}/mosaic/register`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(searchParameters)});
       const tileLink=(registered.links||[]).find(link=>link.rel==='tilejson')?.href;
       if(!tileLink)throw new Error('The mosaic service did not return a TileJSON link.');
       const params=new URLSearchParams(renderConfig?.options||'');
@@ -258,17 +310,12 @@
 
       controls.load.disabled=true;
       controls.load.textContent='Loading satellite evidence…';
-      setStatus('loading','Searching Planetary Computer…','This may take several seconds.');
+      setStatus('loading',`Searching ${selectedTheme().label}…`,'Planetary Computer imagery may take several seconds.');
 
       const collectionId=controls.collection.value;
       const collectionConfig=COLLECTIONS[collectionId];
-      const searchParameters={
-        collections:[collectionId],
-        bbox,
-        datetime:`${controls.start.value}/${controls.end.value}`,
-        limit:100
-      };
-      if(collectionConfig?.cloud){searchParameters.query={'eo:cloud_cover':{lt:Number(controls.cloud.value)}};}
+      const searchParameters={collections:[collectionId],bbox,datetime:`${controls.start.value}/${controls.end.value}`,limit:100};
+      if(collectionConfig?.cloud)searchParameters.query={'eo:cloud_cover':{lt:Number(controls.cloud.value)}};
 
       try{
         const [results,collectionMeta]=await Promise.all([
@@ -282,9 +329,7 @@
         let mode='Planetary Computer mosaic';
         let tileJson;
         let selectedItem=null;
-        try{
-          tileJson=await buildMosaic(searchParameters,selectedRender);
-        }catch(mosaicError){
+        try{tileJson=await buildMosaic(searchParameters,selectedRender)}catch(mosaicError){
           const fallback=await buildSingleItem(features);
           tileJson=fallback.tileJson;
           selectedItem=fallback.selected;
@@ -294,17 +339,10 @@
         const datasetName=collectionMeta?.title||COLLECTIONS[collectionId]?.label||collectionId;
         addTileLayer(tileJson,datasetName);
         const sceneCount=Number(results.context?.matched??results.numberMatched??features.length);
-        updateMeta({
-          dataset:datasetName,
-          mode,
-          sceneCount,
-          observationRange:observationRange(features),
-          rendering:mode.includes('fallback')?'Collection default':selectedRender.name,
-          providers:collectionProviders(collectionMeta),
-          license:collectionMeta?.license||'See collection metadata'
-        });
+        lastMeta={dataset:datasetName,mode,sceneCount,observationRange:observationRange(features),rendering:mode.includes('fallback')?'Collection default':selectedRender.name,providers:collectionProviders(collectionMeta),license:collectionMeta?.license||'See collection metadata'};
+        updateMeta(lastMeta);
         const selectedNote=selectedItem?` Scene: ${selectedItem.id}.`:'';
-        setStatus('success','Imagery loaded.',`${mode}; ${sceneCount} matching scene${sceneCount===1?'':'s'}.${selectedNote}`);
+        setStatus('success','Imagery loaded.',`${selectedTheme().label}; ${mode}; ${sceneCount} matching scene${sceneCount===1?'':'s'}.${selectedNote}`);
       }catch(error){
         console.error('FWI Planetary Computer map error',error);
         setStatus('error','Unable to load imagery.',error.name==='AbortError'?'The request timed out. Please try a smaller area.':error.message);
@@ -314,8 +352,13 @@
       }
     }
 
+    controls.theme.addEventListener('change',()=>{
+      updateThemeGuidance();
+      if(lastMeta)updateMeta(lastMeta);
+      setStatus('ready',`${selectedTheme().label} selected.`,selectedTheme().note);
+    });
     controls.geography.addEventListener('change',event=>applyPreset(event.target.value));
-    controls.collection.addEventListener('change',()=>{removeImagery();loadRenderOptions();setStatus('ready','Dataset changed.','Load imagery to refresh the map.');});
+    controls.collection.addEventListener('change',()=>{removeImagery();lastMeta=null;loadRenderOptions();setStatus('ready','Dataset changed.','Load imagery to refresh the map.');});
     controls.cloud.addEventListener('input',()=>{controls.cloudOutput.textContent=`${controls.cloud.value}%`;});
     controls.opacity.addEventListener('input',()=>{
       controls.opacityOutput.textContent=`${controls.opacity.value}%`;
@@ -324,6 +367,7 @@
     controls.load.addEventListener('click',loadImagery);
     controls.clear.addEventListener('click',()=>{
       removeImagery();
+      lastMeta=null;
       setStatus('ready','Imagery cleared.','The base map remains active.');
     });
     map.on('moveend',()=>{
@@ -334,11 +378,27 @@
       }
     });
 
+    updateThemeGuidance();
     applyPreset(presetKey);
     loadRenderOptions();
     setTimeout(()=>map.invalidateSize(),250);
   }
 
-  function init(){document.querySelectorAll('[data-fwi-planetary-map]').forEach(initMap)}
+  function simplifyThemeNavigation(){
+    document.querySelectorAll('.fwi-theme-nav-menu').forEach(menu=>{
+      const group=menu.closest('.fwi-evidence-nav-group');
+      if(!group)return;
+      const link=group.querySelector(':scope > a');
+      if(link){
+        link.classList.add('fwi-theme-index-link');
+        group.replaceWith(link);
+      }
+    });
+  }
+
+  function init(){
+    simplifyThemeNavigation();
+    document.querySelectorAll('[data-fwi-planetary-map]').forEach(initMap);
+  }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
 })();

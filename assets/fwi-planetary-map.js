@@ -181,7 +181,19 @@
     return points;
   }
 
-  function childWithinParent(child,parent){
+  function explicitParentMatches(child,parent){
+    const childProps=child?.properties||{};const parentProps=parent?.properties||{};
+    const parentName=featureName(parent).trim().toLowerCase();
+    const candidateNames=['shapeGroup','parent','parentName','ADM1_NAME','NAME_1','admin1Name'];
+    if(candidateNames.some(key=>String(childProps[key]||'').trim().toLowerCase()===parentName))return true;
+    const childId=String(childProps.shapeID||childProps.GID_2||childProps.GID_1||'');
+    const parentId=String(parentProps.shapeID||parentProps.GID_1||parentProps.shapeISO||'');
+    return Boolean(parentId&&childId&&(childId===parentId||childId.startsWith(`${parentId}_`)||childId.startsWith(`${parentId}.`)));
+  }
+
+  function childWithinParent(childFeature,parentFeature){
+    if(explicitParentMatches(childFeature,parentFeature))return true;
+    const child=childFeature?.geometry,parent=parentFeature?.geometry;
     const childBbox=geometryBbox(child);const parentBbox=geometryBbox(parent);
     if(!childBbox||!parentBbox)return false;
     if(childBbox[2]<parentBbox[0]||childBbox[0]>parentBbox[2]||childBbox[3]<parentBbox[1]||childBbox[1]>parentBbox[3])return false;
@@ -358,7 +370,7 @@
       try{
         const adm2Bundle=await boundaryBundle(iso,'ADM2');
         if(token!==adm1Token)return;
-        const matching=adm2Bundle.geojson.features.filter(child=>childWithinParent(child.geometry,feature.geometry));
+        const matching=adm2Bundle.geojson.features.filter(child=>childWithinParent(child,feature));
         adm2Features=mapFeatures(matching);
         populateSelect(controls.adm2,[...adm2Features].map(([value,item])=>({value,label:featureName(item)})).sort((a,b)=>a.label.localeCompare(b.label)),`Select ${adminTerms(iso).adm2.toLowerCase()}`);
         controls.adm2.dataset.source=JSON.stringify({source:adm2Bundle.metadata.boundarySource,year:adm2Bundle.metadata.boundaryYearRepresented,license:adm2Bundle.metadata.boundaryLicense});

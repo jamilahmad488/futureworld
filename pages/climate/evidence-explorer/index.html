@@ -13,8 +13,8 @@
 <link rel="stylesheet" href="/style.css?v=3.0" />
 <link rel="stylesheet" href="/assets/fwi-universal-hero.css?v=1.1" data-fwi-hero-style="1" />
 <link rel="stylesheet" href="/assets/fwi-climate-evidence.css?v=1.2" />
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9d/miZyoHS5obTRR9BMY=" crossorigin="" />
-<link rel="stylesheet" href="/assets/fwi-planetary-map.css?v=1.3" />
+<link rel="stylesheet" href="/assets/vendor/leaflet/leaflet.css?v=1.9.4">
+<link rel="stylesheet" href="/assets/fwi-planetary-map.css?v=1.4" />
 </head>
 <body class="theme-climate env-page climate-env">
 <div class="cosmic-bg"></div><div class="scanline"></div>
@@ -40,10 +40,10 @@
 <section class="page-section" id="data-method"><div class="section-title"><p>Data and Method</p><h2>Evidence and boundaries must remain transparent</h2></div><div class="evidence-page-grid"><article class="evidence-panel"><h3>Administrative Geography</h3><p>The viewer loads geoBoundaries gbOpen country, ADM1 and ADM2 geometries on demand and records source, represented year and licence information.</p></article><article class="evidence-panel"><h3>Earth Observation</h3><p>The selected polygon is sent through the Microsoft Planetary Computer STAC search and Data API or item TileJSON services.</p></article><article class="evidence-panel"><h3>Evidence Validation</h3><p>Rainfall, climatic water balance, hydrology, official records and field evidence must complement satellite indicators before public conclusions are confirmed.</p></article><article class="evidence-panel"><h3>Boundary Neutrality</h3><p>Displayed administrative boundaries support geographic analysis and do not express an FWI position on sovereignty, legal status or disputed territories.</p></article></div><div class="evidence-source-note"><strong>Operational status:</strong> worldwide country and subnational boundary discovery, polygon-based searches, NDMI and NDVI visualization, dynamic legends, evidence summaries and optional point sampling are included for deployed-browser validation. The current implementation uses geoBoundaries ISO alpha-3 catalog entries for direct compatibility with its boundary API; UN M49 harmonization remains a formal data-governance enhancement. Each analytical product must retain its producer, licence, date, resolution, processing method and limitations.</div></section>
 </main>
 <footer>FutureWorld Intelligence &copy; 2026 | Climate Evidence Explorer</footer>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-<script src="/assets/fwi-leaflet-resize-fix.js?v=1.0"></script>
+<script src="/assets/vendor/leaflet/leaflet.js?v=1.9.4"></script>
+
 <script src="/assets/fwi-geoboundaries-loader.js?v=1.0"></script>
-<script src="/assets/fwi-planetary-map.js?v=1.3"></script>
+<script src="/assets/fwi-planetary-map.js?v=1.4"></script>
 <script src="/script.js?v=3.2"></script>
 </body>
 </html>

@@ -1,0 +1,64 @@
+name: Vendor Leaflet 1.9.4
+
+on:
+  push:
+    branches:
+      - agent/self-host-leaflet-1-9-4
+
+permissions:
+  contents: write
+
+jobs:
+  vendor:
+    if: ${{ !contains(github.event.head_commit.message, '[skip vendor-leaflet]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out feature branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/self-host-leaflet-1-9-4
+          persist-credentials: true
+
+      - name: Download official Leaflet package
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf .vendor-leaflet-tmp assets/vendor/leaflet
+          mkdir -p .vendor-leaflet-tmp assets/vendor/leaflet
+          cd .vendor-leaflet-tmp
+          npm pack leaflet@1.9.4
+          tar -xzf leaflet-1.9.4.tgz
+          cd ..
+          cp .vendor-leaflet-tmp/package/dist/leaflet.js assets/vendor/leaflet/leaflet.js
+          cp .vendor-leaflet-tmp/package/dist/leaflet.css assets/vendor/leaflet/leaflet.css
+          cp -R .vendor-leaflet-tmp/package/dist/images assets/vendor/leaflet/images
+          cp .vendor-leaflet-tmp/package/LICENSE assets/vendor/leaflet/LICENSE
+          rm -rf .vendor-leaflet-tmp
+
+      - name: Verify vendored release
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s assets/vendor/leaflet/leaflet.js
+          test -s assets/vendor/leaflet/leaflet.css
+          test -s assets/vendor/leaflet/images/layers.png
+          test -s assets/vendor/leaflet/images/layers-2x.png
+          test -s assets/vendor/leaflet/images/marker-icon.png
+          test -s assets/vendor/leaflet/images/marker-icon-2x.png
+          test -s assets/vendor/leaflet/images/marker-shadow.png
+          grep -q 'Leaflet 1.9.4' assets/vendor/leaflet/leaflet.js
+          grep -q 'position: absolute' assets/vendor/leaflet/leaflet.css
+
+      - name: Commit vendor assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/vendor/leaflet
+          if git diff --cached --quiet; then
+            echo 'Leaflet vendor assets are already current.'
+            exit 0
+          fi
+          git commit -m 'Vendor Leaflet 1.9.4 [skip vendor-leaflet]'
+          git push origin HEAD:agent/self-host-leaflet-1-9-4

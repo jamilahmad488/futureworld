@@ -1,4 +1,4 @@
-/* FutureWorld Intelligence Planetary Computer map integration v1.3 */
+/* FutureWorld Intelligence Planetary Computer map integration v1.4 */
 (function(){
   'use strict';
 
@@ -230,7 +230,20 @@
     </div>`;
   }
 
-  function initMap(root){
+  function leafletCssReady(scope){
+  if(!scope)return false;
+  const probe=document.createElement('img');
+  probe.className='leaflet-tile';
+  probe.alt='';
+  probe.setAttribute('aria-hidden','true');
+  probe.style.visibility='hidden';
+  scope.append(probe);
+  const ready=getComputedStyle(probe).position==='absolute';
+  probe.remove();
+  return ready;
+}
+
+function initMap(root){
     if(typeof window.L==='undefined'){root.textContent='The interactive map library could not be loaded.';return}
     const query=new URLSearchParams(location.search);
     const requestedTheme=query.get('theme');
@@ -242,10 +255,32 @@
       theme:root.querySelector('[data-pc-control="theme"]'),indicator:root.querySelector('[data-pc-control="indicator"]'),country:root.querySelector('[data-pc-control="country"]'),adm1:root.querySelector('[data-pc-control="adm1"]'),adm2:root.querySelector('[data-pc-control="adm2"]'),collection:root.querySelector('[data-pc-control="collection"]'),start:root.querySelector('[data-pc-control="start"]'),end:root.querySelector('[data-pc-control="end"]'),cloud:root.querySelector('[data-pc-control="cloud"]'),render:root.querySelector('[data-pc-control="render"]'),opacity:root.querySelector('[data-pc-control="opacity"]'),load:root.querySelector('[data-pc-action="load"]'),clear:root.querySelector('[data-pc-action="clear"]'),cloudOutput:root.querySelector('[data-pc-output="cloud"]'),opacityOutput:root.querySelector('[data-pc-output="opacity"]'),adm1Label:root.querySelector('[data-pc-label="adm1"]'),adm2Label:root.querySelector('[data-pc-label="adm2"]'),guidance:root.querySelector('[data-pc-theme-guidance]'),summary:root.querySelector('[data-pc-summary]'),legend:root.querySelector('[data-pc-legend]'),status:root.querySelector('[data-pc-status]'),meta:root.querySelector('[data-pc-meta]')
     };
 
-    const map=L.map(id,{zoomControl:true,preferCanvas:true}).setView(WORLD_CENTER,WORLD_ZOOM);
+    const mapCanvas=root.querySelector('.fwi-pc-map-canvas');
+  if(!leafletCssReady(mapCanvas)){
+    root.querySelectorAll('.fwi-pc-map-toolbar select, .fwi-pc-map-toolbar input, .fwi-pc-map-toolbar button').forEach(control=>{control.disabled=true});
+    mapCanvas.classList.add('fwi-map-assets-error');
+    mapCanvas.setAttribute('role','alert');
+    mapCanvas.innerHTML='<div><strong>Map presentation assets did not load.</strong><span>Please refresh the page.</span></div>';
+    controls.status.className='fwi-pc-map-status error';
+    controls.status.innerHTML='<span class="error"></span><strong>Map presentation assets did not load.</strong> Please refresh the page.';
+    return;
+  }
+
+  const map=L.map(id,{zoomControl:true,preferCanvas:true}).setView(WORLD_CENTER,WORLD_ZOOM);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors'}).addTo(map);
     map.attributionControl.addAttribution('Administrative boundaries: <a href="https://www.geoboundaries.org/" target="_blank" rel="noopener">geoBoundaries</a>');
     L.control.scale({imperial:false}).addTo(map);
+
+  let resizeFrame=0;
+  function invalidateMapSize(){
+    if(map._container&&map._container.isConnected)map.invalidateSize({pan:false});
+  }
+  function handleWindowResize(){
+    if(resizeFrame)window.cancelAnimationFrame(resizeFrame);
+    resizeFrame=window.requestAnimationFrame(()=>{resizeFrame=0;invalidateMapSize()});
+  }
+  window.addEventListener('resize',handleWindowResize,{passive:true});
+  window.requestAnimationFrame(invalidateMapSize);
 
     let boundaryLayer=null,imageryLayer=null,renderOptions=[],activePointBase='',activePointParams=null,lastMeta=null;
     let selectedBoundary=null,selectedBoundaryMeta=null,selectedLevel='',selectedPath=[];
@@ -281,7 +316,10 @@
     function drawBoundary(feature){
       if(boundaryLayer)map.removeLayer(boundaryLayer);
       boundaryLayer=L.geoJSON(feature,{style:{color:'#f2b544',weight:2.2,opacity:1,fillColor:'#4df3ff',fillOpacity:.055,dashArray:'7 5'}}).addTo(map);
-      if(boundaryLayer.getBounds().isValid())map.fitBounds(boundaryLayer.getBounds(),{padding:[24,24],maxZoom:11});
+      if(boundaryLayer.getBounds().isValid()){
+      map.fitBounds(boundaryLayer.getBounds(),{padding:[24,24],maxZoom:11});
+      window.requestAnimationFrame(invalidateMapSize);
+    }
       if(imageryLayer)imageryLayer.bringToFront();
       boundaryLayer.bringToFront();
     }
@@ -407,7 +445,7 @@
       if(!tileJson||!Array.isArray(tileJson.tiles)||!tileJson.tiles[0])throw new Error('The tile service returned no usable map tiles.');
       removeImagery();
       imageryLayer=L.tileLayer(tileJson.tiles[0],{minZoom:Number.isFinite(tileJson.minzoom)?tileJson.minzoom:0,maxZoom:Number.isFinite(tileJson.maxzoom)?tileJson.maxzoom:24,opacity:Number(controls.opacity.value)/100,attribution:`${escapeHtml(label)} via <a href="https://planetarycomputer.microsoft.com/" target="_blank" rel="noopener">Microsoft Planetary Computer</a>`}).addTo(map);
-      imageryLayer.bringToFront();if(boundaryLayer)boundaryLayer.bringToFront();renderLegend(true);
+      imageryLayer.bringToFront();if(boundaryLayer)boundaryLayer.bringToFront();renderLegend(true);window.requestAnimationFrame(invalidateMapSize);
     }
 
     function selectBestItem(features){return [...features].sort((a,b)=>{const cloudA=Number(a.properties?.['eo:cloud_cover']??999),cloudB=Number(b.properties?.['eo:cloud_cover']??999);if(cloudA!==cloudB)return cloudA-cloudB;return new Date(b.properties?.datetime||0)-new Date(a.properties?.datetime||0)})[0]}
@@ -508,7 +546,6 @@
       const requestedCountry=query.get('country');
       if(requestedCountry&&countryCatalog.has(requestedCountry)){controls.country.value=requestedCountry;await chooseCountry(requestedCountry,query.get('adm1')||'',query.get('adm2')||'')}
     });
-    setTimeout(()=>map.invalidateSize(),250);
   }
 
   function simplifyThemeNavigation(){document.querySelectorAll('.fwi-theme-nav-menu').forEach(menu=>{const group=menu.closest('.fwi-evidence-nav-group');if(!group)return;const link=group.querySelector(':scope > a');if(link){link.classList.add('fwi-theme-index-link');group.replaceWith(link)}})}

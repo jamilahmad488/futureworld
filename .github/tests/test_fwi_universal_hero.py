@@ -29,8 +29,8 @@ class UniversalHeroTests(unittest.TestCase):
                         publication=relative.parts[0] == "content",
                     )
                 )
-        self.assertEqual(len(pages), 107)
-        self.assertEqual(headings, 108)
+        self.assertEqual(len(pages), 115)
+        self.assertEqual(headings, 116)
         self.assertEqual(errors, [])
 
     def test_redirect_pages_remain_outside_contract(self):
@@ -40,7 +40,7 @@ class UniversalHeroTests(unittest.TestCase):
             if hero.is_redirect_page(text):
                 redirects.append(path)
                 self.assertNotIn('data-fwi-hero-style="1"', text)
-        self.assertEqual(len(redirects), 8)
+        self.assertEqual(len(redirects), 14)
 
     def test_archived_styles_are_not_linked(self):
         for path in hero.html_files(ROOT):

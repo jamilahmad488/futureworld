@@ -1,7 +1,13 @@
+import contextlib
+import io
 import json
 import re
+import tempfile
 import unittest
+from html.parser import HTMLParser
 from pathlib import Path
+from unittest.mock import patch
+from urllib.parse import urljoin, urlparse
 from xml.etree import ElementTree as ET
 
 
@@ -11,6 +17,22 @@ import sys
 
 sys.path.insert(0, str(ROOT / "tools"))
 import fwi_seo_upgrade as seo  # noqa: E402
+
+
+class ResourceParser(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.resources = []
+        self.body_classes = []
+
+    def handle_starttag(self, tag, attributes):
+        attrs = dict(attributes)
+        if tag == "body":
+            self.body_classes = attrs.get("class", "").split()
+        if tag in ("script", "img") and attrs.get("src"):
+            self.resources.append(attrs["src"])
+        if tag == "link" and attrs.get("rel") == "stylesheet":
+            self.resources.append(attrs["href"])
 
 
 class FwiSeoContractTests(unittest.TestCase):
@@ -41,17 +63,76 @@ class FwiSeoContractTests(unittest.TestCase):
                 parsed = json.loads(payloads[0])
                 self.assertEqual(parsed["@context"], "https://schema.org")
 
-    def test_clean_routes_are_real_pages_and_legacy_routes_redirect(self):
+    def test_clean_and_legacy_routes_are_real_pages_without_reload_loops(self):
         for page in (item for item in seo.PAGES if item.legacy):
             with self.subTest(page=page.source):
                 clean = (ROOT / page.source).read_text(encoding="utf-8")
                 legacy = (ROOT / page.legacy).read_text(encoding="utf-8")
+                self.assertEqual(clean, legacy)
                 self.assertNotRegex(clean, r"document\.write\s*\(")
                 self.assertNotRegex(clean, r"fetch\s*\(")
                 self.assertIn("<main", clean.lower())
-                self.assertIn('http-equiv="refresh"', legacy.lower())
-                self.assertIn('content="noindex,follow"', legacy.lower())
-                self.assertIn(page.url, legacy)
+                self.assertNotRegex(legacy.lower(), r"http-equiv\s*=\s*['\"]refresh")
+                self.assertNotRegex(
+                    legacy, r"location\s*(?:\.\s*(?:replace|assign)\s*\(|(?:\.href)?\s*=)"
+                )
+                self.assertNotIn('content="noindex,follow"', legacy.lower())
+                self.assertEqual(seo.canonical_from(legacy, page.legacy), page.url)
+
+    def test_migrated_pages_do_not_depend_on_scripts_to_hide_the_loader(self):
+        for page in (item for item in seo.PAGES if item.legacy):
+            for source in (page.source, page.legacy):
+                with self.subTest(page=source):
+                    parser = ResourceParser()
+                    parser.feed((ROOT / source).read_text(encoding="utf-8"))
+                    self.assertIn("loaded", parser.body_classes)
+
+    def test_resources_resolve_from_clean_legacy_and_cached_wrapper_urls(self):
+        for page in (item for item in seo.PAGES if item.legacy):
+            parser = ResourceParser()
+            parser.feed((ROOT / page.source).read_text(encoding="utf-8"))
+            # Old wrappers inserted <base href="../"> before document.write.
+            for base in (page.url, f"{seo.SITE}/{page.legacy}", f"{seo.SITE}/pages/"):
+                for resource in parser.resources:
+                    resolved = urlparse(urljoin(base, resource))
+                    if resolved.netloc != urlparse(seo.SITE).netloc:
+                        continue
+                    with self.subTest(page=page.source, base=base, resource=resource):
+                        self.assertTrue((ROOT / resolved.path.lstrip("/")).is_file())
+
+    def test_generator_preserves_clean_source_and_replaces_stale_alias(self):
+        page = next(item for item in seo.PAGES if item.legacy)
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            target, legacy = root / page.source, root / page.legacy
+            target.parent.mkdir(parents=True)
+            target.write_text(
+                "<html><head></head><body><main><h1>Current content</h1></main></body></html>",
+                encoding="utf-8",
+            )
+            legacy.write_text("Outdated legacy content", encoding="utf-8")
+            with patch.object(seo, "ROOT", root), patch.object(seo, "PAGES", (page,)), patch.object(
+                seo, "build_sitemap", return_value="sitemap"
+            ):
+                documents = seo.generated_files()
+            self.assertIn("Current content", documents[target])
+            self.assertEqual(documents[target], documents[legacy])
+            self.assertNotIn("Outdated legacy content", documents[target])
+
+    def test_check_mode_reports_drift_without_writing(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            target = root / "page.html"
+            target.write_text("original", encoding="utf-8")
+            with patch.object(seo, "ROOT", root), patch.object(
+                seo, "generated_files", return_value={target: "updated"}
+            ), contextlib.redirect_stdout(io.StringIO()) as output:
+                self.assertEqual(seo.main(["--check"]), 1)
+                self.assertEqual(target.read_text(encoding="utf-8"), "original")
+                self.assertIn("Out of date: page.html", output.getvalue())
+                self.assertEqual(seo.main([]), 0)
+                self.assertEqual(target.read_text(encoding="utf-8"), "updated")
+                self.assertEqual(seo.main(["--check"]), 0)
 
     def test_sitemap_is_canonical_complete_and_clean(self):
         tree = ET.parse(ROOT / "sitemap.xml")

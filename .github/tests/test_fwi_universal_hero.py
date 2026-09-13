@@ -29,8 +29,9 @@ class UniversalHeroTests(unittest.TestCase):
                         publication=relative.parts[0] == "content",
                     )
                 )
-        self.assertEqual(len(pages), 115)
-        self.assertEqual(headings, 116)
+        # Six legacy URLs retain real content for cached pre-migration loaders.
+        self.assertEqual(len(pages), 121)
+        self.assertEqual(headings, 122)
         self.assertEqual(errors, [])
 
     def test_redirect_pages_remain_outside_contract(self):
@@ -40,7 +41,7 @@ class UniversalHeroTests(unittest.TestCase):
             if hero.is_redirect_page(text):
                 redirects.append(path)
                 self.assertNotIn('data-fwi-hero-style="1"', text)
-        self.assertEqual(len(redirects), 14)
+        self.assertEqual(len(redirects), 8)
 
     def test_archived_styles_are_not_linked(self):
         for path in hero.html_files(ROOT):

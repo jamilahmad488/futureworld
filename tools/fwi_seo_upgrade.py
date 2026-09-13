@@ -8,6 +8,7 @@ canonical sitemap assembled from those two sources.
 
 from __future__ import annotations
 
+import argparse
 import html
 import json
 import re
@@ -332,27 +333,6 @@ def apply_metadata(document: str, page: Page) -> str:
     )
 
 
-def redirect_document(page: Page) -> str:
-    title = html.escape(page.title, quote=True)
-    return f"""<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Redirecting | {title}</title>
-  <link rel="canonical" href="{page.url}" />
-  <meta name="robots" content="noindex,follow" />
-  <meta http-equiv="refresh" content="0; url={page.url}" />
-  <script>location.replace({json.dumps(page.url)});</script>
-</head>
-<body>
-  <h1>Redirecting to {title}</h1>
-  <p>This page has moved to <a href="{page.url}">{title}</a>.</p>
-</body>
-</html>
-"""
-
-
 def canonical_from(document: str, source: str) -> str:
     match = re.search(
         r"<link\b(?=[^>]*\brel=[\"']canonical[\"'])(?=[^>]*\bhref=[\"']([^\"']+)[\"'])[^>]*>",
@@ -406,23 +386,49 @@ def build_sitemap() -> str:
     ) + "\n"
 
 
-def main() -> None:
+def generated_files() -> dict[Path, str]:
+    """Use clean pages as the source; legacy URLs are compatible content mirrors.
+
+    Cached pre-migration wrappers fetch the legacy HTML and document.write it
+    into the clean URL. Redirecting that response back to the clean URL creates
+    a reload loop. Keep real HTML at both paths, with the clean canonical URL;
+    script.js normalizes old URLs using history.replaceState without reloading.
+    """
+    documents = {}
     for page in PAGES:
         target = ROOT / page.source
+        source = target.read_text(encoding="utf-8")
+        if page.legacy and (
+            "<main" not in source.lower()
+            or re.search(r"document\.write\s*\(", source)
+            or re.search(r"http-equiv\s*=\s*['\"]refresh['\"]", source, re.I)
+        ):
+            raise ValueError(f"{page.source}: expected a real clean-route source page")
+        document = apply_metadata(source, page)
+        documents[target] = document
         if page.legacy:
-            legacy = ROOT / page.legacy
-            source_document = legacy.read_text(encoding="utf-8")
-            if "http-equiv=\"refresh\"" in source_document.lower():
-                source_document = target.read_text(encoding="utf-8")
-            target.write_text(apply_metadata(source_document, page), encoding="utf-8")
-            legacy.write_text(redirect_document(page), encoding="utf-8")
-        else:
-            target.write_text(
-                apply_metadata(target.read_text(encoding="utf-8"), page),
-                encoding="utf-8",
-            )
-    (ROOT / "sitemap.xml").write_text(build_sitemap(), encoding="utf-8")
+            documents[ROOT / page.legacy] = document
+    documents[ROOT / "sitemap.xml"] = build_sitemap()
+    return documents
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--check", action="store_true", help="Check without writing files")
+    args = parser.parse_args(argv)
+    documents = generated_files()
+    changed = [
+        path for path, document in documents.items()
+        if not path.exists() or path.read_text(encoding="utf-8") != document
+    ]
+    if args.check:
+        for path in changed:
+            print(f"Out of date: {path.relative_to(ROOT)}")
+        return int(bool(changed))
+    for path in changed:
+        path.write_text(documents[path], encoding="utf-8")
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

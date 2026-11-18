@@ -12,5 +12,32 @@
 <body>
   <h1>Redirecting to Climate Intelligence | FutureWorld Intelligence</h1>
   <p>This page has moved to <a href="https://futureworldintelligence.org/pages/climate/">Climate Intelligence | FutureWorld Intelligence</a>.</p>
+
+<!-- FWI Interactive Carbon Offset Calculator Widget -->
+<section id="climate-calculator-widget" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 2rem; margin: 2rem 0; font-family: inherit;">
+  <div style="max-width: 700px; margin: 0 auto;">
+    <h3 style="color: #0f172a; margin-bottom: 0.5rem; font-size: 1.5rem;">Interactive Carbon Footprint & Offset Calculator</h3>
+    <p style="color: #475569; font-size: 0.95rem; margin-bottom: 1.5rem;">Estimate your annual carbon emissions and discover offset requirements.</p>
+    <form id="fwi-calc-form" style="display: grid; gap: 1.25rem;">
+      <div><label style="display: block; font-weight: 600; margin-bottom: 0.4rem; font-size: 0.9rem;">Annual Air Travel (Hours / Year):</label><input type="number" id="calc-flights" value="10" min="0" style="width: 100%; padding: 0.65rem; border: 1px solid #cbd5e1; border-radius: 6px;" /></div>
+      <div><label style="display: block; font-weight: 600; margin-bottom: 0.4rem; font-size: 0.9rem;">Monthly Electricity Usage (kWh):</label><input type="number" id="calc-electricity" value="350" min="0" style="width: 100%; padding: 0.65rem; border: 1px solid #cbd5e1; border-radius: 6px;" /></div>
+      <button type="button" onclick="calculateFWIFootprint()" style="background: #0f172a; color: #fff; padding: 0.75rem 1.5rem; border: none; border-radius: 6px; font-weight: 600; cursor: pointer;">Calculate Emissions</button>
+    </form>
+    <div id="calc-results" style="display: none; margin-top: 1.5rem; padding: 1.25rem; background: #fff; border: 1px solid #cbd5e1; border-radius: 8px;">
+      <h4 style="margin: 0 0 0.5rem 0; color: #0f172a;">Estimated Footprint: <span id="output-tonnes" style="color: #2563eb;">0.0</span> tonnes CO₂e/year</h4>
+      <a href="https://futuremind1.gumroad.com/l/cwdcv" target="_blank" style="background: #16a34a; color: #fff; padding: 0.5rem 1rem; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.85rem; display: inline-block; margin-top: 0.5rem;">Get FWI Climate & Carbon Kit ($35) →</a>
+    </div>
+  </div>
+</section>
+<script>
+function calculateFWIFootprint() {
+  const f = parseFloat(document.getElementById("calc-flights").value) || 0;
+  const e = parseFloat(document.getElementById("calc-electricity").value) || 0;
+  const total = (f * 0.25) + ((e * 12) * 0.0004) + 2.5;
+  document.getElementById("output-tonnes").innerText = total.toFixed(2);
+  document.getElementById("calc-results").style.display = "block";
+}
+</script>
+
 </body>
 </html>

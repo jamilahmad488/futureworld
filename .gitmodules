@@ -1,0 +1,6 @@
+[submodule "FutureWorld_CMS"]
+    path = FutureWorld_CMS
+    url = https://github.com/jamilahmad488/FutureWorld_CMS.git
+[submodule "FutureWorld_Knowledge_Base"]
+    path = FutureWorld_Knowledge_Base
+    url = https://github.com/jamilahmad488/FutureWorld_Knowledge_Base.git

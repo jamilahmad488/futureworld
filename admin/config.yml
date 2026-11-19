@@ -1,7 +1,6 @@
 backend:
-  name: github
-  repo: jamilahmad488/futureworld
-  branch: main
+  name: turbo-github
+  turbo_site_id: 455ef8ce-07d0-448a-a892-26dc8517df25
 
 media_folder: "assets/uploads"
 public_folder: "/assets/uploads"

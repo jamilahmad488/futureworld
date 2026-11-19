@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="{{ page.summary | escape }}">
+  <title>{{ page.title | escape }} | FutureWorld Intelligence</title>
+  <style>
+    :root{color-scheme:dark;--bg:#06101d;--panel:#0c1b2b;--line:rgba(255,255,255,.13);--text:#edf5ff;--muted:#b8c9dc;--accent:#4df3ff;--gold:#f2b544}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 15% 0%,rgba(77,243,255,.10),transparent 32%),linear-gradient(180deg,#06101d,#091827 60%,#06101d);color:var(--text);font:17px/1.75 system-ui,-apple-system,Segoe UI,sans-serif}
+    a{color:var(--accent)}.site-header{border-bottom:1px solid var(--line);padding:18px 5vw}.brand{font-weight:800;letter-spacing:.04em;color:#fff;text-decoration:none}.wrap{max-width:920px;margin:0 auto;padding:64px 22px 90px}
+    .eyebrow{color:var(--accent);font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;font-weight:800}.hero{padding:32px 0 28px;border-bottom:1px solid var(--line)}h1{font-size:clamp(2.3rem,6vw,4.5rem);line-height:1.08;letter-spacing:-.04em;margin:14px 0 18px}.summary{font-size:1.2rem;color:#d5e5f5;max-width:780px}.meta{color:var(--muted);font-size:.9rem;margin-top:22px}.article{padding:32px 0}.article h2,.article h3{line-height:1.2;margin-top:1.8em}.article img{max-width:100%;height:auto;border-radius:14px}.article blockquote{border-left:3px solid var(--gold);padding-left:20px;color:#d8e5f3}.source{margin-top:34px;padding:20px;border:1px solid var(--line);border-radius:14px;background:var(--panel)}.site-footer{border-top:1px solid var(--line);padding:24px 5vw;color:var(--muted);font-size:.9rem}
+  </style>
+</head>
+<body>
+  <header class="site-header"><a class="brand" href="/">FUTUREWORLD INTELLIGENCE</a></header>
+  <main class="wrap">
+    <div class="hero">
+      <div class="eyebrow">FutureWorld Intelligence · {{ page.collection_label | default: "Research & Analysis" }}</div>
+      <h1>{{ page.title | escape }}</h1>
+      {% if page.summary %}<p class="summary">{{ page.summary | escape }}</p>{% endif %}
+      <div class="meta">{% if page.author %}{{ page.author | escape }}{% endif %}{% if page.date %} · {{ page.date | date: "%d %B %Y" }}{% endif %}</div>
+    </div>
+    <article class="article">{{ content }}</article>
+    {% if page.source_url %}<aside class="source"><strong>Related original publication</strong><p>This CMS-managed article is connected to an existing FutureWorld Intelligence publication.</p><a href="{{ page.source_url }}">Open the original publication →</a></aside>{% endif %}
+  </main>
+  <footer class="site-footer">© {{ site.time | date: "%Y" }} FutureWorld Intelligence · Independent research and strategic intelligence.</footer>
+</body>
+</html>

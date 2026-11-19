@@ -5,58 +5,85 @@ backend:
 media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
 
+publish_mode: editorial_workflow
+
 collections:
   - name: "climate"
     label: "Climate Intelligence"
-    folder: "content/climate"
+    folder: "content/climate/cms"
     create: true
-    extension: "html"
+    extension: "md"
     format: "frontmatter"
+    slug: "{{slug}}"
     fields:
+      - {label: "Layout", name: "layout", widget: "hidden", default: "fwi-article"}
       - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publication date", name: "date", widget: "datetime"}
       - {label: "Summary", name: "summary", widget: "text"}
-      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Author", name: "author", widget: "string", default: "FutureWorld Intelligence"}
+      - {label: "Existing publication URL", name: "source_url", widget: "string", required: false}
+      - {label: "Article", name: "body", widget: "markdown"}
 
   - name: "ai"
     label: "AI Intelligence"
-    folder: "content/ai"
+    folder: "content/ai/cms"
     create: true
-    extension: "html"
+    extension: "md"
     format: "frontmatter"
+    slug: "{{slug}}"
     fields:
+      - {label: "Layout", name: "layout", widget: "hidden", default: "fwi-article"}
       - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publication date", name: "date", widget: "datetime"}
       - {label: "Summary", name: "summary", widget: "text"}
-      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Author", name: "author", widget: "string", default: "FutureWorld Intelligence"}
+      - {label: "Existing publication URL", name: "source_url", widget: "string", required: false}
+      - {label: "Article", name: "body", widget: "markdown"}
 
   - name: "geopolitics"
     label: "Geopolitics Intelligence"
-    folder: "content/geopolitics"
+    folder: "content/geopolitics/cms"
     create: true
-    extension: "html"
+    extension: "md"
     format: "frontmatter"
+    slug: "{{slug}}"
     fields:
+      - {label: "Layout", name: "layout", widget: "hidden", default: "fwi-article"}
       - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publication date", name: "date", widget: "datetime"}
       - {label: "Summary", name: "summary", widget: "text"}
-      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Author", name: "author", widget: "string", default: "FutureWorld Intelligence"}
+      - {label: "Existing publication URL", name: "source_url", widget: "string", required: false}
+      - {label: "Article", name: "body", widget: "markdown"}
 
   - name: "energy"
     label: "Energy Intelligence"
-    folder: "content/energy"
+    folder: "content/energy/cms"
     create: true
-    extension: "html"
+    extension: "md"
     format: "frontmatter"
+    slug: "{{slug}}"
     fields:
+      - {label: "Layout", name: "layout", widget: "hidden", default: "fwi-article"}
       - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publication date", name: "date", widget: "datetime"}
       - {label: "Summary", name: "summary", widget: "text"}
-      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Author", name: "author", widget: "string", default: "FutureWorld Intelligence"}
+      - {label: "Existing publication URL", name: "source_url", widget: "string", required: false}
+      - {label: "Article", name: "body", widget: "markdown"}
 
   - name: "futures"
     label: "Strategic Futures"
-    folder: "content/futures"
+    folder: "content/futures/cms"
     create: true
-    extension: "html"
+    extension: "md"
     format: "frontmatter"
+    slug: "{{slug}}"
     fields:
+      - {label: "Layout", name: "layout", widget: "hidden", default: "fwi-article"}
       - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publication date", name: "date", widget: "datetime"}
       - {label: "Summary", name: "summary", widget: "text"}
-      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Author", name: "author", widget: "string", default: "FutureWorld Intelligence"}
+      - {label: "Existing publication URL", name: "source_url", widget: "string", required: false}
+      - {label: "Article", name: "body", widget: "markdown"}
